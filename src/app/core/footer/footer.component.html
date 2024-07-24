@@ -20,7 +20,7 @@
             <div class="w-full flex flex-col mt-12 lg:flex-row lg:mt-0 lg:gap-36 lg:pl-[20%]">
                 <ul class="text-[#AED1B9] text-sm space-y-4 lg:text-base">
                     <li class="hover:text-white">About Us</li>
-                    <li class="hover:text-white">Contact</li>
+                    <li [routerLink]="['/contact']" routerLinkActive="text-white" class="hover:text-white">Contact</li>
                     <li class="hover:text-white">Add Your Property</li>
                 </ul>
                 <ul class="text-[#AED1B9] text-sm space-y-4 mt-8 lg:mt-0 lg:text-base">
@@ -39,9 +39,9 @@
             <!-- Terms -->
             <div class="col-span-2 lg:col-span-1 flex justify-center mt-5 w-full px-4 lg:order-2">
                 <ul class="text-[#BEDAC7] text-[11px] flex justify-between items-center w-full">
-                    <li class="hover:text-white">Terms Of Use</li>
-                    <li class="hover:text-white">Privacy Policy</li>
-                    <li class="hover:text-white">Cookie Policy</li>
+                    <li [routerLink]="['/terms-of-use']" routerLinkActive="text-white" class="hover:text-white">Terms Of Use</li>
+                    <li [routerLink]="['/privacy-policy']" routerLinkActive="text-white" class="hover:text-white">Privacy Policy</li>
+                    <li [routerLink]="['/cookies-policy']" routerLinkActive="text-white" class="hover:text-white">Cookie Policy</li>
                 </ul>
             </div>
             <!-- / Terms -->
@@ -64,26 +64,6 @@
             </div>
             <!-- / Language -->
         </div>
-        <!-- / Bottom Nav -->
-
-        <!-- Footer Tags Desktop -->
-        <!-- <div class="lg:w-full lg:flex lg:flex-row lg:mt-5 lg:items-center lg:justify-between hidden">
-            <p class="lg:text-[#BEDAC7] lg:text-[11px]">© 2024 Opla Immobiliare</p>
-            <div class="lg:flex lg:justify-center">
-                <ul class="lg:text-[#BEDAC7] lg:text-[11px] lg:flex lg:flex-row lg:gap-12">
-                    <li class="hover:text-white">Terms Of Use</li>
-                    <li class="hover:text-white">Privacy Policy</li>
-                    <li class="hover:text-white">Cookie Policy</li>
-                </ul>
-            </div>
-            <div class="lg:w-full lg:max-w-[162px] lg:h-10 lg:px-4 lg:bg-[#2E5139] lg:rounded-[24px] lg:flex lg:flex-row lg:justify-between lg:items-center">
-                <div class="lg:flex lg:flex-row lg:gap-3">
-                    <img class="w-5 h-auto" src="{{getCountryFlag('Italian')}}" alt="Italian" />
-                    <p class="lg:text-white lg:text-[13px]">Italiano</p>
-                </div>
-                <app-arrow-icon></app-arrow-icon>
-            </div>
-        </div> -->
-    
+        <!-- / Bottom Nav -->    
     </div>
 </div>
