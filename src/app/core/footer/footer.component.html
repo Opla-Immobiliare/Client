@@ -1,1 +1,72 @@
-<p>footer works!</p>
+<div class="p-4 w-full lg:px-[90px]">
+    <div class="pt-16 px-4 pb-4 bg-[#213A29] flex flex-col items-center border-none rounded-[30px] w-full lg:px-20 lg:pt-24">
+        
+        <div class="lg:w-full lg:flex lg:flex-row lg:justify-between">
+            <div class="lg:flex lg:flex-col lg:justify-center">
+                <!-- Opla Immobiliare Logo -->
+                <div class="flex justify-center w-full">
+                    <app-opla-logo></app-opla-logo>
+                </div>
+            
+                <!-- Social Icons -->
+                <div class="flex flex-row justify-center gap-6 mt-12 w-full">
+                    <app-linkedin-icon></app-linkedin-icon>
+                    <app-instagram-icon></app-instagram-icon>
+                    <app-x-icon></app-x-icon>
+                </div>
+            </div>
+    
+            <!-- Footer Menu -->
+            <div class="w-full flex flex-col mt-12 lg:flex-row lg:mt-0 lg:gap-36 lg:pl-[20%]">
+                <ul class="text-[#AED1B9] text-sm space-y-4 lg:text-base">
+                    <li>About Us</li>
+                    <li>Contact</li>
+                    <li>Add Your Property</li>
+                </ul>
+                <ul class="text-[#AED1B9] text-sm space-y-4 mt-8 lg:mt-0 lg:text-base">
+                    <li>Register As Professional</li>
+                    <li>Register As Private</li>
+                    <li>Log In</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Line -->
+        <div class="w-full border border-[#2E5139] mt-10"></div>
+
+        <!-- Terms -->
+        <div class="flex justify-center mt-5 w-full px-4 lg:hidden">
+            <ul class="text-[#BEDAC7] text-[11px] flex justify-between items-center w-full">
+                <li>Terms Of Use</li>
+                <li>Privacy Policy</li>
+                <li>Cookie Policy</li>
+            </ul>
+        </div>
+
+        <!-- Footer Tags -->
+        <div class="flex justify-between items-center mt-6 w-full lg:hidden">
+            <p class="text-[#BEDAC7] text-[11px] font-normal">© 2024 Opla Immobiliare</p>
+            <div class="w-full max-w-[145px] h-10 bg-[#2E5139] rounded-[24px] flex justify-between items-center px-4">
+                <p class="text-white text-[13px]">🇮🇹 Italiano</p> 
+                <app-arrow-icon></app-arrow-icon>
+            </div>
+        </div>
+
+        <!-- Footer Tags Desktop -->
+        <div class="lg:w-full lg:flex lg:flex-row lg:mt-5 lg:items-center lg:justify-between hidden">
+            <p class="lg:text-[#BEDAC7] lg:text-[11px]">© 2024 Opla Immobiliare</p>
+            <div class="lg:flex lg:justify-center">
+                <ul class="lg:text-[#BEDAC7] lg:text-[11px] lg:flex lg:flex-row lg:gap-12">
+                    <li>Terms Of Use</li>
+                    <li>Privacy Policy</li>
+                    <li>Cookie Policy</li>
+                </ul>
+            </div>
+            <div class="lg:w-full lg:max-w-[162px] lg:h-10 lg:px-4 lg:bg-[#2E5139] lg:rounded-[24px] lg:flex lg:flex-row lg:justify-between lg:items-center">
+                <p class="lg:text-white lg:text-[13px]">🇮🇹 Italiano</p>
+                <app-arrow-icon></app-arrow-icon>
+            </div>
+        </div>
+    
+    </div>
+</div>
