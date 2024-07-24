@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { IconsModule } from '../shared/icons/icons.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -13,11 +14,12 @@ import { IconsModule } from '../shared/icons/icons.module';
   ],
   imports: [
     CommonModule,
-    IconsModule
+    IconsModule,
+    RouterModule
   ],
   exports: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
   ]
 })
 export class CoreModule { }
