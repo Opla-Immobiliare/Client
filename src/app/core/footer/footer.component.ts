@@ -7,9 +7,7 @@ import { findFlagUrlByNationality } from "node_modules/country-flags-svg/dist/in
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
-export class FooterComponent {
-  public boom = findFlagUrlByNationality("Italian");
-  
+export class FooterComponent { 
   getCountryFlag(country: string): string{
     return findFlagUrlByNationality(country);
   }
