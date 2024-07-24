@@ -34,29 +34,40 @@
         <!-- Line -->
         <div class="w-full border border-[#2E5139] mt-10"></div>
 
-        <!-- Terms -->
-        <div class="flex justify-center mt-5 w-full px-4 lg:hidden">
-            <ul class="text-[#BEDAC7] text-[11px] flex justify-between items-center w-full">
-                <li class="hover:text-white">Terms Of Use</li>
-                <li class="hover:text-white">Privacy Policy</li>
-                <li class="hover:text-white">Cookie Policy</li>
-            </ul>
-        </div>
-
-        <!-- Footer Tags -->
-        <div class="flex justify-between items-center mt-6 w-full lg:hidden">
-            <p class="text-[#BEDAC7] text-[11px] font-normal">© 2024 Opla Immobiliare</p>
-            <div class="w-full max-w-[145px] h-10 bg-[#2E5139] rounded-[24px] flex justify-between items-center px-4">
-                <div class="flex flex-row gap-2">
-                    <img class="w-5 h-auto" src="{{getCountryFlag('Italian')}}" alt="Italian" />
-                    <p class="text-white text-[11px]">Italiano</p>
-                </div>
-                <app-arrow-icon></app-arrow-icon>
+        <!-- Bottom Nav -->
+        <div class="grid grid-cols-2 lg:grid-cols-3 items-center w-full space-y-6">
+            <!-- Terms -->
+            <div class="col-span-2 lg:col-span-1 flex justify-center mt-5 w-full px-4 lg:order-2">
+                <ul class="text-[#BEDAC7] text-[11px] flex justify-between items-center w-full">
+                    <li class="hover:text-white">Terms Of Use</li>
+                    <li class="hover:text-white">Privacy Policy</li>
+                    <li class="hover:text-white">Cookie Policy</li>
+                </ul>
             </div>
+            <!-- / Terms -->
+
+            <!-- Copyright -->
+            <div class="justify-self-start lg:order-1">
+                <p class="text-[#BEDAC7] text-[11px] font-normal">© 2024 Opla Immobiliare</p>
+            </div>
+            <!-- / Copyright -->
+            
+            <!-- Language -->
+            <div class="justify-self-end lg:order-3">
+                <div class="max-w-[145px] h-10 bg-[#2E5139] rounded-[24px] flex justify-between items-center px-4">
+                    <div class="flex flex-row gap-2">
+                        <img class="w-5 h-auto" src="{{getCountryFlag('Italian')}}" alt="Italian" />
+                        <p class="text-white text-[11px]">Italiano</p>
+                    </div>
+                    <app-arrow-icon></app-arrow-icon>
+                </div>
+            </div>
+            <!-- / Language -->
         </div>
+        <!-- / Bottom Nav -->
 
         <!-- Footer Tags Desktop -->
-        <div class="lg:w-full lg:flex lg:flex-row lg:mt-5 lg:items-center lg:justify-between hidden">
+        <!-- <div class="lg:w-full lg:flex lg:flex-row lg:mt-5 lg:items-center lg:justify-between hidden">
             <p class="lg:text-[#BEDAC7] lg:text-[11px]">© 2024 Opla Immobiliare</p>
             <div class="lg:flex lg:justify-center">
                 <ul class="lg:text-[#BEDAC7] lg:text-[11px] lg:flex lg:flex-row lg:gap-12">
@@ -72,7 +83,7 @@
                 </div>
                 <app-arrow-icon></app-arrow-icon>
             </div>
-        </div>
+        </div> -->
     
     </div>
 </div>
