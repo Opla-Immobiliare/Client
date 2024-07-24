@@ -5,6 +5,7 @@ import { LinkedinIconComponent } from './linkedin-icon/linkedin-icon.component';
 import { InstagramIconComponent } from './instagram-icon/instagram-icon.component';
 import { XIconComponent } from './x-icon/x-icon.component';
 import { ArrowIconComponent } from './arrow-icon/arrow-icon.component';
+import { RightArrowIconComponent } from './right-arrow-icon/right-arrow-icon.component';
 
 
 
@@ -14,7 +15,8 @@ import { ArrowIconComponent } from './arrow-icon/arrow-icon.component';
     LinkedinIconComponent,
     InstagramIconComponent,
     XIconComponent,
-    ArrowIconComponent
+    ArrowIconComponent,
+    RightArrowIconComponent
   ],
   imports: [
     CommonModule
@@ -24,7 +26,8 @@ import { ArrowIconComponent } from './arrow-icon/arrow-icon.component';
     LinkedinIconComponent,
     InstagramIconComponent,
     XIconComponent,
-    ArrowIconComponent
+    ArrowIconComponent,
+    RightArrowIconComponent
   ]
 })
 export class IconsModule { }
