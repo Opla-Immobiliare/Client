@@ -47,7 +47,10 @@
         <div class="flex justify-between items-center mt-6 w-full lg:hidden">
             <p class="text-[#BEDAC7] text-[11px] font-normal">© 2024 Opla Immobiliare</p>
             <div class="w-full max-w-[145px] h-10 bg-[#2E5139] rounded-[24px] flex justify-between items-center px-4">
-                <p class="text-white text-[13px]">🇮🇹 Italiano</p> 
+                <div class="flex flex-row gap-2">
+                    <img class="w-5 h-auto" src="{{getCountryFlag('Italian')}}" alt="Italian" />
+                    <p class="text-white text-[11px]">Italiano</p>
+                </div>
                 <app-arrow-icon></app-arrow-icon>
             </div>
         </div>
@@ -64,8 +67,10 @@
             </div>
             <!-- TODO: Flags-->
             <div class="lg:w-full lg:max-w-[162px] lg:h-10 lg:px-4 lg:bg-[#2E5139] lg:rounded-[24px] lg:flex lg:flex-row lg:justify-between lg:items-center">
-                <p class="lg:text-white lg:text-[13px]">Italiano</p>
-                <img src="{{getCountryFlag('Italian')}}" alt="">
+                <div class="lg:flex lg:flex-row lg:gap-3">
+                    <img class="w-5 h-auto" src="{{getCountryFlag('Italian')}}" alt="Italian" />
+                    <p class="lg:text-white lg:text-[13px]">Italiano</p>
+                </div>
                 <app-arrow-icon></app-arrow-icon>
             </div>
         </div>
