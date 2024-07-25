@@ -6,6 +6,11 @@ import { InstagramIconComponent } from './instagram-icon/instagram-icon.componen
 import { XIconComponent } from './x-icon/x-icon.component';
 import { ArrowIconComponent } from './arrow-icon/arrow-icon.component';
 import { RightArrowIconComponent } from './right-arrow-icon/right-arrow-icon.component';
+import { UserIconComponent } from './user-icon/user-icon.component';
+import { SettingsIconComponent } from './settings-icon/settings-icon.component';
+import { AddIconComponent } from './add-icon/add-icon.component';
+import { SearchIconComponent } from './search-icon/search-icon.component';
+import { HeartIconComponent } from './heart-icon/heart-icon.component';
 
 
 
@@ -16,7 +21,12 @@ import { RightArrowIconComponent } from './right-arrow-icon/right-arrow-icon.com
     InstagramIconComponent,
     XIconComponent,
     ArrowIconComponent,
-    RightArrowIconComponent
+    RightArrowIconComponent,
+    UserIconComponent,
+    SettingsIconComponent,
+    AddIconComponent,
+    SearchIconComponent,
+    HeartIconComponent
   ],
   imports: [
     CommonModule
@@ -27,7 +37,12 @@ import { RightArrowIconComponent } from './right-arrow-icon/right-arrow-icon.com
     InstagramIconComponent,
     XIconComponent,
     ArrowIconComponent,
-    RightArrowIconComponent
+    RightArrowIconComponent,
+    UserIconComponent,
+    SettingsIconComponent,
+    AddIconComponent,
+    SearchIconComponent,
+    HeartIconComponent
   ]
 })
 export class IconsModule { }
