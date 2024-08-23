@@ -1,3 +1,28 @@
+<style>
+    .button {
+        width: 225px;
+        height: 48px;
+        background-color: #FBE525;
+        border: none;
+        border-radius: 24px;
+        font-size: 13px;
+        font-weight: 700;
+        display: flex;
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
+        margin-top: 35px;
+        cursor: pointer;
+    }
+    .button:hover {
+        box-shadow: 0px 0px 20px 0px #FBE525;
+    }
+    .button:active {
+        background-color: #E1CB04;
+        border: none;
+        box-shadow: none;
+    }
+</style>
 <div style="width: 100%; display: flex; justify-content: center; background-color: #EBE7E0; padding: 0px; margin: 0px;">
     <div style="width: 550px; height: auto; font-family: arial; background-color: #EBE7E0;">
         <div style="width: 100%; height: 64px; background-color: #FBE525; border-radius: 20px; display: flex; align-items: center;">
@@ -23,7 +48,7 @@
         <p style="color: #4D4333; font-size: 39px; text-align: center;">One more step...</p>
         <p style="color: black; font-size: 15px; text-align: justify; line-height: 25.6px;">We're almost done creating your account. You've provided your email (email@domain.com) but haven't finished the process. Please enter a password to complete your registration.</p>
         <div style="display: flex; justify-content: center;">
-            <input type="button" style="width: 226px; height: 48px; background-color: #FBE525; border: none; border-radius: 24px; display: flex; justify-content: center; justify-items: center; align-items: center; font-size: 13px; font-weight: 700; margin-top: 35px ;cursor: pointer" value="Add Password" onmouseover="this.style.boxShadow='0px 0px 20px 0px #FBE525'" onmouseout="this.style.boxShadow='none'" onclick="this.style.backgroundColor='#E1CB04'; this.style.boxShadow='none'"></input>
+            <input type="button" class="button" value="Add Password"></input>
         </div>
         <div style="width: 100%; border-bottom: 1px solid #E0DAD1; padding-top: 100px"></div>
         <div style="display: flex; flex-direction: row; justify-content: space-between;">

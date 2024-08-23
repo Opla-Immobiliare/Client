@@ -1,3 +1,36 @@
+<style>
+    .links {
+        text-decoration: none;
+        color: black;
+    }
+    .links:hover {
+        color: #7D7102;
+    }
+    .button {
+        width: 226px;
+        height: 48px;
+        background-color: #EBE7E0;
+        border: 2px solid #FBE525;
+        border-radius: 24px;
+        font-size: 13px;
+        font-weight: 700;
+        display: flex;
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
+        margin-top: 35px;
+        cursor: pointer;
+    }
+    .button:hover {
+        background-color: #FBE525;
+        box-shadow: 0px 0px 20px 0px #FBE525;
+    }
+    .button:active {
+        background-color: #E1CB04;
+        border: none;
+        box-shadow: none;
+    }
+</style>
 <div style="width: 100%; display: flex; justify-content: center; background-color: #EBE7E0; padding: 0px; margin: 0px;">
     <div style="width: 550px; height: auto; font-family: arial; background-color: #EBE7E0;">
         <div style="width: 100%; height: 64px; background-color: #FBE525; border-radius: 20px; display: flex; align-items: center;">
@@ -21,7 +54,7 @@
             </svg>                      
         </div>
         <p style="color: #4D4333; font-size: 39px; text-align: center;">Thank you for your payment!😊</p>
-        <p style="color: black; font-size: 15px; text-align: justify; line-height: 25.6px;">We have successfully processed payment for your recurring Professional team (monthly) subscription to Opla, and you may find your receipt here. If you believe this charge to be in error or have any questions, please email <a href="mailTo:support@opla.com" style="text-decoration: none; color: black" onmouseover="this.style.color='#7D7102'" onmouseout="this.style.color='black'">support@opla.com</a>.</p>
+        <p style="color: black; font-size: 15px; text-align: justify; line-height: 25.6px;">We have successfully processed payment for your recurring Professional team (monthly) subscription to Opla, and you may find your receipt here. If you believe this charge to be in error or have any questions, please email <a href="mailTo:support@opla.com" class="links">support@opla.com</a>.</p>
         <div style="display: flex; justify-content: space-between; padding-top: 40px;">
             <div style="font-size: 16px; font-weight: 400;">
                 <p>Plan</p>
@@ -37,7 +70,7 @@
             </div>
         </div>
         <div style="display: flex; justify-content: center;">
-            <input type="button" style="width: 226px; height: 48px; background-color: #EBE7E0 ;border: 2px solid #FBE525; border-radius: 24px; display: flex; justify-content: center; justify-items: center; align-items: center; font-size: 13px; font-weight: 700; margin-top: 35px; cursor: pointer;" value="Manage your subscribtion" onmouseover="this.style.backgroundColor='#FBE525'; this.style.boxShadow='0px 0px 20px 0px #FBE525'" onmouseout="this.style.backgroundColor='#EBE7E0'; this.style.boxShadow='none'" onclick="this.style.backgroundColor='#E1CB04'; this.style.border='none'; this.style.boxShadow='none'"></input>
+            <input type="button" class="button" value="Manage Your Subscription"></input>
         </div>
         <div style="width: 100%; border-bottom: 1px solid #C2B6A3; margin-top: 20px"></div>
         <p style="font-size: 11px; line-height: 17.6px; padding-top: 10px">You can cancel your subscription at any time by clicking 'Cancel plan'  from Settings tab of the team. If you cancel your subscription, Opla will downgrade your team to a free Starter plan and you will lose access to Professional plan features at the end of your billing period.</p>
