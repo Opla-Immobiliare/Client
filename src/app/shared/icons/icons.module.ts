@@ -11,6 +11,8 @@ import { SettingsIconComponent } from './settings-icon/settings-icon.component';
 import { AddIconComponent } from './add-icon/add-icon.component';
 import { SearchIconComponent } from './search-icon/search-icon.component';
 import { HeartIconComponent } from './heart-icon/heart-icon.component';
+import { BackArrowComponent } from './back-arrow/back-arrow.component';
+import { CaretDownComponent } from './caret-down/caret-down.component';
 
 
 
@@ -26,7 +28,9 @@ import { HeartIconComponent } from './heart-icon/heart-icon.component';
     SettingsIconComponent,
     AddIconComponent,
     SearchIconComponent,
-    HeartIconComponent
+    HeartIconComponent,
+    BackArrowComponent,
+    CaretDownComponent
   ],
   imports: [
     CommonModule
@@ -42,7 +46,9 @@ import { HeartIconComponent } from './heart-icon/heart-icon.component';
     SettingsIconComponent,
     AddIconComponent,
     SearchIconComponent,
-    HeartIconComponent
+    HeartIconComponent,
+    BackArrowComponent,
+    CaretDownComponent
   ]
 })
 export class IconsModule { }

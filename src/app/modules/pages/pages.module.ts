@@ -5,6 +5,7 @@ import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
 import { RouterModule, Routes } from '@angular/router';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { CookiesPolicyComponent } from './cookies-policy/cookies-policy.component';
+import { IconsModule } from "../../shared/icons/icons.module";
 
 export const routes: Routes = [
   {
@@ -34,7 +35,8 @@ export const routes: Routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
-  ]
+    RouterModule.forChild(routes),
+    IconsModule
+]
 })
 export class PagesModule { }
