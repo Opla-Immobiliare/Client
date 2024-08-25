@@ -5,6 +5,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
+import { IconsModule } from "../../shared/icons/icons.module";
 
 export const routes = [
   {
@@ -34,7 +35,8 @@ export const routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
-  ]
+    RouterModule.forChild(routes),
+    IconsModule
+]
 })
 export class AuthModule { }

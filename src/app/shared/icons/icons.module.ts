@@ -13,6 +13,8 @@ import { SearchIconComponent } from './search-icon/search-icon.component';
 import { HeartIconComponent } from './heart-icon/heart-icon.component';
 import { BackArrowComponent } from './back-arrow/back-arrow.component';
 import { CaretDownComponent } from './caret-down/caret-down.component';
+import { GoogleLogoComponent } from './google-logo/google-logo.component';
+import { LeftArrowComponent } from './left-arrow/left-arrow.component';
 
 
 
@@ -30,7 +32,9 @@ import { CaretDownComponent } from './caret-down/caret-down.component';
     SearchIconComponent,
     HeartIconComponent,
     BackArrowComponent,
-    CaretDownComponent
+    CaretDownComponent,
+    GoogleLogoComponent,
+    LeftArrowComponent
   ],
   imports: [
     CommonModule
@@ -48,7 +52,9 @@ import { CaretDownComponent } from './caret-down/caret-down.component';
     SearchIconComponent,
     HeartIconComponent,
     BackArrowComponent,
-    CaretDownComponent
+    CaretDownComponent,
+    GoogleLogoComponent,
+    LeftArrowComponent
   ]
 })
 export class IconsModule { }
