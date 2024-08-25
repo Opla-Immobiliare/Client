@@ -15,6 +15,7 @@ import { BackArrowComponent } from './back-arrow/back-arrow.component';
 import { CaretDownComponent } from './caret-down/caret-down.component';
 import { GoogleLogoComponent } from './google-logo/google-logo.component';
 import { LeftArrowComponent } from './left-arrow/left-arrow.component';
+import { CancelIconComponent } from './cancel-icon/cancel-icon.component';
 
 
 
@@ -34,7 +35,8 @@ import { LeftArrowComponent } from './left-arrow/left-arrow.component';
     BackArrowComponent,
     CaretDownComponent,
     GoogleLogoComponent,
-    LeftArrowComponent
+    LeftArrowComponent,
+    CancelIconComponent
   ],
   imports: [
     CommonModule
@@ -54,7 +56,8 @@ import { LeftArrowComponent } from './left-arrow/left-arrow.component';
     BackArrowComponent,
     CaretDownComponent,
     GoogleLogoComponent,
-    LeftArrowComponent
+    LeftArrowComponent,
+    CancelIconComponent
   ]
 })
 export class IconsModule { }
