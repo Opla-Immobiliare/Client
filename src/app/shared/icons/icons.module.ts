@@ -16,6 +16,7 @@ import { CaretDownComponent } from './caret-down/caret-down.component';
 import { GoogleLogoComponent } from './google-logo/google-logo.component';
 import { LeftArrowComponent } from './left-arrow/left-arrow.component';
 import { CancelIconComponent } from './cancel-icon/cancel-icon.component';
+import { CheckCircleComponent } from './check-circle/check-circle.component';
 
 
 
@@ -36,7 +37,8 @@ import { CancelIconComponent } from './cancel-icon/cancel-icon.component';
     CaretDownComponent,
     GoogleLogoComponent,
     LeftArrowComponent,
-    CancelIconComponent
+    CancelIconComponent,
+    CheckCircleComponent
   ],
   imports: [
     CommonModule
@@ -57,7 +59,8 @@ import { CancelIconComponent } from './cancel-icon/cancel-icon.component';
     CaretDownComponent,
     GoogleLogoComponent,
     LeftArrowComponent,
-    CancelIconComponent
+    CancelIconComponent,
+    CheckCircleComponent
   ]
 })
 export class IconsModule { }
