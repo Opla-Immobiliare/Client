@@ -13,6 +13,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { EntityDataModule } from '@ngrx/data';
 import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
+import { AuthModule } from './modules/auth/auth.module';
 
 const routes: Routes = [
   {
@@ -34,6 +35,7 @@ const routes: Routes = [
     CoreModule,
     HttpClientModule,
     RouterModule.forRoot(routes, {}),
+    AuthModule.forRoot(),
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {
