@@ -6,8 +6,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { CookiesPolicyComponent } from './cookies-policy/cookies-policy.component';
 import { IconsModule } from "../../shared/icons/icons.module";
+import { HomeComponent } from './home/home.component';
 
 export const routes: Routes = [
+  {
+    path: '',
+    component: HomeComponent
+  },
   {
     path: 'terms-of-use',
     component: TermsOfUseComponent
@@ -31,7 +36,8 @@ export const routes: Routes = [
     ContactComponent,
     TermsOfUseComponent,
     PrivacyPolicyComponent,
-    CookiesPolicyComponent
+    CookiesPolicyComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,
