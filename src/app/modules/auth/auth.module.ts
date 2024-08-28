@@ -49,7 +49,10 @@ export const routes = [
     HttpClientModule,
     StoreModule.forFeature("auth", authReducer),
     EffectsModule.forFeature([AuthEffects])
-]
+  ],
+  exports: [
+    LoginComponent
+  ]
 })
 export class AuthModule {
   static forRoot(): ModuleWithProviders<AuthModule> {

@@ -4,6 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { IconsModule } from '../shared/icons/icons.module';
 import { RouterModule } from '@angular/router';
+import { AuthModule } from '../modules/auth/auth.module';
 
 
 
@@ -15,7 +16,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     IconsModule,
-    RouterModule
+    RouterModule,
+    AuthModule
   ],
   exports: [
     HeaderComponent,

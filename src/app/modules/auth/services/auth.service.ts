@@ -1,11 +1,13 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { environment } from "src/environments/environment";
-import { Observable } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 import { User } from "../models/user.model";
 
 @Injectable()
 export class AuthService {
+
+    public loginPopUp: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
     constructor(private http: HttpClient) { }
 
@@ -22,5 +24,10 @@ export class AuthService {
     // Reset Password
     resetPassword(obj: any) {
         return this.http.post(`${environment.apiUrl}/Auth/reset-password`, obj);
+    }
+
+    // Show or hide Login form
+    showHideLoginForm(value: boolean) {
+        this.loginPopUp.next(value);
     }
 }
