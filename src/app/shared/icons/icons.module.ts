@@ -17,6 +17,9 @@ import { GoogleLogoComponent } from './google-logo/google-logo.component';
 import { LeftArrowComponent } from './left-arrow/left-arrow.component';
 import { CancelIconComponent } from './cancel-icon/cancel-icon.component';
 import { CheckCircleComponent } from './check-circle/check-circle.component';
+import { LightIconComponent } from './light-icon/light-icon.component';
+import { EnelLogoComponent } from './enel-logo/enel-logo.component';
+import { FireIconComponent } from './fire-icon/fire-icon.component';
 
 
 
@@ -38,7 +41,10 @@ import { CheckCircleComponent } from './check-circle/check-circle.component';
     GoogleLogoComponent,
     LeftArrowComponent,
     CancelIconComponent,
-    CheckCircleComponent
+    CheckCircleComponent,
+    LightIconComponent,
+    EnelLogoComponent,
+    FireIconComponent
   ],
   imports: [
     CommonModule
@@ -60,7 +66,10 @@ import { CheckCircleComponent } from './check-circle/check-circle.component';
     GoogleLogoComponent,
     LeftArrowComponent,
     CancelIconComponent,
-    CheckCircleComponent
+    CheckCircleComponent,
+    LightIconComponent,
+    EnelLogoComponent,
+    FireIconComponent
   ]
 })
 export class IconsModule { }
