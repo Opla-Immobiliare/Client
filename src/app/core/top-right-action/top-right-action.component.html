@@ -1,0 +1,27 @@
+<!-- Sign In / Log In -->
+<button data-modal-target="auth-modal" data-modal-toggle="auth-modal" class="bg-[#CCC2B2] h-16 w-full max-w-[153px] flex justify-center items-center rounded-br-[30px] ml-[113px] px-3 gap-2 lg:w-[152px] lg:h-12 lg:rounded-[25px] lg:mt-6 lg:mr-16 hover:drop-shadow-lg focus:bg-[#C2B6A3] focus:text-black cursor-pointer">
+    <p class="text-[#4D4333] text-[12px] font-semibold ml-10 lg:ml-0 lg:text-[13px]">Log In / Sign In</p>
+    <app-right-arrow-icon class="lg:hidden"></app-right-arrow-icon>
+</button>
+<!--/ Sign In / Log In -->
+
+<!-- Atuhentication Modal -->
+<div id="auth-modal" tabindex="-1" aria-hidden="true" class="hidden bg-[#EBE7E0] lg:bg-[#B8AA94] lg:bg-opacity-80 overflow-y-scroll fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%)] max-h-full">
+
+    <!-- Modal Content -->
+    <div class="w-full px-4 py-8 lg:max-w-[1010px] lg:h-[565px] lg:bg-[#EBE7E0] lg:border-none lg:rounded-[30px] lg:px-5 lg:py-[15px] lg:m-auto">
+        <!-- Modal Actions -->
+        <!-- <div class="w-full flex justify-between items-center realtive top-0 left-0">
+            <button data-modal-hide="auth-modal" class=" cursor-pointer w-12 h-12">
+                <app-left-arrow class="lg:hidden"></app-left-arrow>
+            </button>
+            <button data-modal-hide="auth-modal" class="cursor-pointer w-12 h-12">
+                <app-cancel-icon class="hidden lg:block"></app-cancel-icon>
+            </button>
+        </div> -->
+
+        <div class="w-full h-full">
+            <app-login></app-login>
+        </div>
+    </div>
+</div>

@@ -1,10 +1,40 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',
   styleUrls: ['./forgot-password.component.scss']
 })
-export class ForgotPasswordComponent {
+export class ForgotPasswordComponent implements OnInit{
 
+  forgotPasswordForm: FormGroup;
+  success: boolean = false;
+
+  constructor(private aithService: AuthService) {
+    this.forgotPasswordForm = this.generateForgotPasswordForm();
+  }
+
+  ngOnInit(): void {}
+
+  forgotPassword(): void {
+    let obj = new Object({
+      email: this.forgotPasswordForm.value.email,
+      clientUri: "https://localhost:4200/auth/reset-password"
+    });
+
+    this.aithService.forgotPassword(obj).subscribe(
+      res => {
+        this.success = true;
+      }
+    );
+  }
+
+  // Generate forgotPasswordForm
+  generateForgotPasswordForm(): FormGroup {
+    return new FormGroup({
+      email: new FormControl([Validators.required, Validators.email])
+    });
+  }
 }

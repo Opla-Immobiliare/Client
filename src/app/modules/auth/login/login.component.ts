@@ -15,6 +15,7 @@ import { noop, tap } from 'rxjs';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  type: string = 'login';
 
   constructor(
     private auth: AuthService,

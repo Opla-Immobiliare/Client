@@ -39,7 +39,7 @@ export const routes = [
     LoginComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     CommonModule,
@@ -51,7 +51,8 @@ export const routes = [
     EffectsModule.forFeature([AuthEffects])
   ],
   exports: [
-    LoginComponent
+    LoginComponent,
+    ForgotPasswordComponent
   ]
 })
 export class AuthModule {

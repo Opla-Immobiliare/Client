@@ -5,13 +5,15 @@ import { FooterComponent } from './footer/footer.component';
 import { IconsModule } from '../shared/icons/icons.module';
 import { RouterModule } from '@angular/router';
 import { AuthModule } from '../modules/auth/auth.module';
+import { TopRightActionComponent } from './top-right-action/top-right-action.component';
 
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    TopRightActionComponent
   ],
   imports: [
     CommonModule,
