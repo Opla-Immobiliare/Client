@@ -72,8 +72,10 @@
         <div class="w-full px-4 py-5 bg-[#EBE7E0] rounded-[20px] mt-5 lg:bg-[#E0DAD1] lg:mt-0">
             <p class="text-sm lg:text-[16px]">You don't have an account?</p>
             <div class="lg:flex lg:flex-col lg:justify-center lg:items-center">
-            <img src="./assets/images/Register_User.webp" class="w-full h-[173px] my-7 lg:max-w-[281px] lg:h-[157px] lg:my-4">
-            <a href="#" class="w-full py-4 bg-transparent border-2 border-[#213a29] rounded-[500px] text-sm text-[#213a29] font-semibold flex justify-center items-center hover:bg-[#213A29] hover:text-[#FBE525] active:bg-[#122017] active:text-[#FBE525] lg:w-[270px] lg:text-[16px]">Create Account</a>
+                <img src="./assets/images/Register_User.webp" class="w-full h-[173px] my-7 lg:max-w-[281px] lg:h-[157px] lg:my-4">
+                <button (click)="type = 'register'" class="w-full py-4 bg-transparent border-2 border-[#213a29] rounded-[500px] text-sm text-[#213a29] font-semibold flex justify-center items-center hover:bg-[#213A29] hover:text-[#FBE525] active:bg-[#122017] active:text-[#FBE525] lg:w-[270px] lg:text-[16px]">
+                    Create Account
+                </button>
             </div>
         </div>
         <!--/ Create Account Up Block -->
@@ -94,3 +96,6 @@
     <app-forgot-password></app-forgot-password>
 </div>
 
+<div *ngIf="type == 'register'" class="w-full h-full">
+    <app-register></app-register>
+</div>

@@ -24,11 +24,13 @@ export class ForgotPasswordComponent implements OnInit{
       clientUri: "https://localhost:4200/auth/reset-password"
     });
 
-    this.aithService.forgotPassword(obj).subscribe(
-      res => {
-        this.success = true;
-      }
-    );
+    // this.aithService.forgotPassword(obj).subscribe(
+    //   res => {
+    //     this.success = true;
+    //   }
+    // );
+    console.log('ForgotPassword', obj);
+    this.success = true;
   }
 
   // Generate forgotPasswordForm
