@@ -2,8 +2,179 @@
     
     <!-- Logo -->
     <div class="w-full flex justify-center items-center" >
-        <div class="w-[182px] h-12 rounded-full bg-[#FBE525] inline-flex justify-center items-center">
+        <div class="w-[182px] h-12 rounded-full bg-[#FBE525] inline-flex justify-center items-center cursor-pointer" [routerLink]="['/']">
             <app-opla-logo dimensions="w-[90px] h-8" color="#213A29"></app-opla-logo>
         </div>
     </div>
+
+    <!-- Header -->
+    <div class="w-full flex items-center gap-6 mt-10">
+        <app-left-arrow class="cursor-pointer" [routerLink]="['/auth/register']"></app-left-arrow>
+        <h2 class="text-[#A39175] text-[35px]">Welcome!</h2>
+    </div>
+
+    <!-- Subheader -->
+    <div class="w-full mt-4 pb-2 border-b-[1px] border-[#A39175]">
+        <p class="text-sm">We need some additional information to activate your account.</p>
+    </div>
+
+    <!-- Additional Inforamtion  Form -->
+    <form #f="ngForm" class="w-full" [formGroup]="additionalInfoForm" (ngSubmit)="submitAdditionalInfo()">
+
+        <!-- Name -->
+        <div class="relative z-0 w-full mt-10 group">
+            <input 
+                type="name"
+                id="name"
+                formControlName="name"
+                [ngClass]="[additionalInfoForm.controls['name'].invalid && (additionalInfoForm.controls['name'].touched || additionalInfoForm.controls['name'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                class="block w-full h-16 items-center px-6 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                placeholder=""
+                autocomplete="off"
+                required />
+            <label
+                for="name"
+                [ngClass]="labelControl('name')"
+                class="absolute text-base duration-300 transform -translate-y-8 scale-75 top-5 left-6 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                Name
+            </label>
+        </div>
+        <!--/ Name -->
+
+        <!-- Last Name -->
+        <div class="relative z-0 w-full mt-5 group">
+            <input 
+                type="lastname"
+                id="lastname"
+                formControlName="lastname"
+                [ngClass]="[!additionalInfoForm.controls['lastname'].valid && (additionalInfoForm.controls['lastname'].touched || additionalInfoForm.controls['lastname'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                class="block w-full h-16 items-center px-6 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                placeholder=""
+                autocomplete="off"
+                required />
+            <label
+                for="lastname"
+                [ngClass]="labelControl('lastname')"
+                class="absolute text-base duration-300 transform -translate-y-8 scale-75 top-5 left-6 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                Last Name
+            </label>
+            <div class="w-full px-5 pt-2 flex justify-strat items-center gap-2">
+                <app-warning-circle color="#A39175"></app-warning-circle>
+                <p class="text-[#A39175] text-[10px]">It will not be visible publicly</p>
+            </div>
+        </div>
+        <!--/ Last Name -->
+
+        <!-- Phone -->
+        <div class="flex mt-5">
+
+            <!-- Phone Code -->
+            <div class="flex items-center gap-4 px-6 rounded-l-[20px] border-2 border-[#CCC2B2] h-16 w-max">
+                <label for="phone" class="w-max">{{ additionalInfoForm.value.phoneCode }}</label>
+                <button id="phonecode-dropdown" data-dropdown-toggle="phonecodes">
+                    <app-arrow-icon dimension="w-4 h-4" color="#000"></app-arrow-icon>
+                </button>
+                <div id="phonecodes" class="z-10 hidden bg-[#CCC2B2] p-6 w-max h-96 overflow-y-scroll rounded-[20px] devide-y">
+                    <ul class="space-y-4 text-sm" aria-labelledby="phonecode-dropdown">
+                        <li *ngFor="let code of countryCodesList | keyvalue" (click)="additionalInfoForm.value.phoneCode = code.value">{{ code.value }}</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- / Phone Code -->
+
+            <!-- Number -->
+            <div class="relative z-0 w-full group">
+                <input 
+                    type="phone"
+                    id="phone"
+                    formControlName="phone"
+                    [ngClass]="[!additionalInfoForm.controls['phone'].valid && (additionalInfoForm.controls['phone'].touched || additionalInfoForm.controls['phone'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                    class="block w-full h-16 items-center px-6 text-sm text-black bg-transparent border-2 border-l-0 border-[#CCC2B2] rounded-r-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                    placeholder=""
+                    autocomplete="off"
+                    required />
+                <label
+                    for="phone"
+                    [ngClass]="labelControl('phone')"
+                    class="absolute text-base duration-300 transform -translate-y-8 scale-75 top-5 left-6 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                    Phone
+                </label>
+            </div>
+            <!-- / Number -->
+        </div>
+        <div class="w-full px-5 pt-2 flex justify-strat items-start gap-2">
+            <app-warning-circle color="#A80710"></app-warning-circle>
+            <p class="text-[#A80710] text-[10px]">This number will be available for contact, to those interested in your ads.</p>
+        </div>
+        <!-- / Phone -->
+
+        <!-- Date of Birth -->
+        <div class="flex gap-1 mt-5">
+            <!-- Day -->
+            <div class="relative z-0 w-[20%] group">
+                <input 
+                    type="text"
+                    id="day"
+                    formControlName="day"
+                    [ngClass]="[!additionalInfoForm.controls['day'].valid && (additionalInfoForm.controls['day'].touched || additionalInfoForm.controls['day'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                    class="block w-full h-16 items-center text-center px-4 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                    placeholder=""
+                    autocomplete="off"
+                    required />
+                <label
+                    for="day"
+                    [ngClass]="labelControl('day')"
+                    class="absolute text-base duration-300 transform -translate-y-8 scale-75 top-5 left-4 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                    Day
+                </label>
+            </div>
+            <!-- Month -->
+            <div class="relative z-0 w-[50%] group">
+                <input 
+                    type="text"
+                    id="month"
+                    formControlName="month"
+                    [ngClass]="[!additionalInfoForm.controls['month'].valid && (additionalInfoForm.controls['month'].touched || additionalInfoForm.controls['month'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                    class="block w-full h-16 items-center px-6 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                    placeholder=""
+                    autocomplete="off"
+                    required />
+                <label
+                    for="month"
+                    [ngClass]="labelControl('month')"
+                    class="absolute text-base duration-300 transform -translate-y-8 scale-75 top-5 left-6 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                    Month
+                </label>
+            </div>
+            <!-- Year -->
+            <div class="relative z-0 w-[35%] group">
+                <input 
+                    type="text"
+                    id="year"
+                    formControlName="year"
+                    [ngClass]="[!additionalInfoForm.controls['year'].valid && (additionalInfoForm.controls['year'].touched || additionalInfoForm.controls['year'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                    class="block w-full h-16 items-center px-6 text-sm text-center text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                    placeholder=""
+                    autocomplete="off"
+                    required />
+                <label
+                    for="year"
+                    [ngClass]="labelControl('year')"
+                    class="absolute text-base duration-300 transform -translate-y-8 scale-75 top-5 left-6 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                    Year
+                </label>
+            </div>
+        </div>
+        <div class="w-full px-5 pt-2 flex justify-strat items-center gap-2">
+            <app-warning-circle color="#A39175"></app-warning-circle>
+            <p class="text-[#A39175] text-[10px]">It will not be visible publicly</p>
+        </div>
+        <!-- Date of Birth -->
+        <button
+            [disabled]="additionalInfoForm.invalid"
+            type="submit" 
+            class="w-full py-4 mt-10 bg-[#FBE525] rounded-[500px] flex justify-center items-center border-none text-sm font-semibold hover:drop-shadow-[0px_0px_20px_rgba(251,229,37,1)] active:drop-shadow-none active:bg-[#E1CB04] lg:max-w-[450px] lg:text-[16px] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:drop-shadow-none">
+            Complete your profile
+        </button>
+    </form>
 </div>

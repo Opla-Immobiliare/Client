@@ -20,6 +20,7 @@ import { CheckCircleComponent } from './check-circle/check-circle.component';
 import { LightIconComponent } from './light-icon/light-icon.component';
 import { EnelLogoComponent } from './enel-logo/enel-logo.component';
 import { FireIconComponent } from './fire-icon/fire-icon.component';
+import { WarningCircleComponent } from './warning-circle/warning-circle.component';
 
 
 
@@ -44,7 +45,8 @@ import { FireIconComponent } from './fire-icon/fire-icon.component';
     CheckCircleComponent,
     LightIconComponent,
     EnelLogoComponent,
-    FireIconComponent
+    FireIconComponent,
+    WarningCircleComponent
   ],
   imports: [
     CommonModule
@@ -69,7 +71,8 @@ import { FireIconComponent } from './fire-icon/fire-icon.component';
     CheckCircleComponent,
     LightIconComponent,
     EnelLogoComponent,
-    FireIconComponent
+    FireIconComponent,
+    WarningCircleComponent
   ]
 })
 export class IconsModule { }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-arrow-icon',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./arrow-icon.component.scss']
 })
 export class ArrowIconComponent {
-
+  @Input() color: string = '';
+  @Input() dimension: string = '';
 }

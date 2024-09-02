@@ -5,6 +5,7 @@ import { ProfileComponent } from './profile.component';
 import { PersonalSettingsComponent } from './personal-settings/personal-settings.component';
 import { RouterModule, Routes } from '@angular/router';
 import { IconsModule } from 'src/app/shared/icons/icons.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -31,7 +32,9 @@ const routes: Routes = [
   imports: [
     CommonModule,
     IconsModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class ProfileModule { }
