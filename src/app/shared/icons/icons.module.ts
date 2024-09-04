@@ -21,6 +21,16 @@ import { LightIconComponent } from './light-icon/light-icon.component';
 import { EnelLogoComponent } from './enel-logo/enel-logo.component';
 import { FireIconComponent } from './fire-icon/fire-icon.component';
 import { WarningCircleComponent } from './warning-circle/warning-circle.component';
+import { PhoneComponent } from './phone/phone.component';
+import { PencilComponent } from './pencil/pencil.component';
+import { SolidHeartIconComponent } from './solid-heart-icon/solid-heart-icon.component';
+import { ImageIconComponent } from './image-icon/image-icon.component';
+import { BedIconComponent } from './bed-icon/bed-icon.component';
+import { BathtubIconComponent } from './bathtub-icon/bathtub-icon.component';
+import { WaveSquareIconComponent } from './wave-square-icon/wave-square-icon.component';
+import { TrendDownIconComponent } from './trend-down-icon/trend-down-icon.component';
+import { HouseIconComponent } from './house-icon/house-icon.component';
+import { PlusIconComponent } from './plus-icon/plus-icon.component';
 
 
 
@@ -46,7 +56,17 @@ import { WarningCircleComponent } from './warning-circle/warning-circle.componen
     LightIconComponent,
     EnelLogoComponent,
     FireIconComponent,
-    WarningCircleComponent
+    WarningCircleComponent,
+    PhoneComponent,
+    PencilComponent,
+    SolidHeartIconComponent,
+    ImageIconComponent,
+    BedIconComponent,
+    BathtubIconComponent,
+    WaveSquareIconComponent,
+    TrendDownIconComponent,
+    HouseIconComponent,
+    PlusIconComponent
   ],
   imports: [
     CommonModule
@@ -72,7 +92,17 @@ import { WarningCircleComponent } from './warning-circle/warning-circle.componen
     LightIconComponent,
     EnelLogoComponent,
     FireIconComponent,
-    WarningCircleComponent
+    WarningCircleComponent,
+    PhoneComponent,
+    PencilComponent,
+    SolidHeartIconComponent,
+    ImageIconComponent,
+    BedIconComponent,
+    BathtubIconComponent,
+    WaveSquareIconComponent,
+    TrendDownIconComponent,
+    HouseIconComponent,
+    PlusIconComponent
   ]
 })
 export class IconsModule { }

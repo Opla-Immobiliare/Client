@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-heart-icon',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./heart-icon.component.scss']
 })
 export class HeartIconComponent {
-
+  @Input() dimensions: string = '';
+  @Input() color: string = '';
 }

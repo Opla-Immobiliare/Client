@@ -6,6 +6,8 @@ import { PersonalSettingsComponent } from './personal-settings/personal-settings
 import { RouterModule, Routes } from '@angular/router';
 import { IconsModule } from 'src/app/shared/icons/icons.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SavedAdsComponent } from './profile/saved-ads/saved-ads.component';
+import { AdsComponent } from './profile/ads/ads.component';
 
 const routes: Routes = [
   {
@@ -27,6 +29,8 @@ const routes: Routes = [
     CompleteProfileComponent,
     ProfileComponent,
     PersonalSettingsComponent,
+    SavedAdsComponent,
+    AdsComponent,
 
   ],
   imports: [
