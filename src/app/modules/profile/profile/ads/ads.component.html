@@ -8,9 +8,113 @@
     <!-- / Title -->
 
     <!-- No Ads -->
-    <div class="w-full h-24 rounded-[20px] border-2 border-dashed border-[#A39175] inline-flex justify-center gap-3 items-center mt-6">
+    <!-- <div class="w-full h-24 rounded-[20px] border-2 border-dashed border-[#A39175] inline-flex justify-center gap-3 items-center mt-6">
         <app-plus-icon dimensions="w-10 h-10" color="#A39175"></app-plus-icon>
         <p class="text-sm text-center">Add Property</p>
-    </div>
+    </div> -->
     <!-- / No Ads -->
+
+    <!-- Ads Card -->
+    <div class="w-full relative bg-[#D6CEC2] rounded-[20px] mt-3">
+
+        <!-- Status Button -->
+        <div class="w-max h-6 rounded-full inline-flex justify-center items-center bg-[#FEF9CD] px-2 absolute top-4 left-4 gap-3">
+            <app-currency-circle-dollar-icon dimensions="w-4 h-4" color="#5C503D"></app-currency-circle-dollar-icon>
+            <p class="text-xs text-[#5C503D]">For Sale</p>
+        </div>
+
+        <!-- Image -->
+        <img class="w-full h-56 rounded-[20px]" src="/assets/images/house-preview.jpeg" alt="house-preview" />
+
+        <!-- Image Count -->
+        <div class="w-full inline-flex justify-center items-center gap-2 -mt-10 absolute top-[238px]">
+            <app-image-icon dimensions="w-4 h-4" color="white"></app-image-icon>
+            <p class="text-white text-xs">34</p>
+        </div>
+
+        <!-- Info -->
+        <div class="px-4 pt-4 pb-6">
+            <!-- Title -->
+            <h3 class="text-base">3-room in Via Bernardino Verro 78/a, Milano</h3>
+
+            <!-- Characteristics -->
+            <div class="w-full inline-flex items-center gap-3 mt-3">
+                <!-- Square metters -->
+                <div class="w-max h-8 bg-[#EBE7E0] rounded inline-flex justify-center items-center gap-3 px-1">
+                    <app-wave-square-icon dimensions="w-6 h-6" color="#5C503D"></app-wave-square-icon>
+                    <p class="text-xs text-[#5C503D]">72 &#13217;</p>
+                </div>
+                <!-- Bathtub -->
+                <div class="w-max h-8 bg-[#EBE7E0] rounded inline-flex justify-center items-center gap-3 px-1">
+                    <app-bathtub-icon dimensions="w-6 h-6" color="#5C503D"></app-bathtub-icon>
+                    <p class="text-xs text-[#5C503D]">2</p>
+                </div>
+                <!-- Beds -->
+                <div class="w-max h-8 bg-[#EBE7E0] rounded inline-flex justify-center items-center gap-3 px-1">
+                    <app-bed-icon dimensions="w-6 h-6" color="#5C503D"></app-bed-icon>
+                </div>
+            </div>
+
+
+            <!-- Pricing -->
+            <div class="w-full inline-flex items-center gap-3 mt-8">
+                <!-- Old Price -->
+                <div class="w-max inline-flex items-center gap-1">
+                    <app-trend-down-icon dimensions="w-4 h-4" color="#539267"></app-trend-down-icon>
+                    <p class="text-xs text-[#8A785B] line-through">€ 400,000 (-12%)</p>
+                </div>
+                <!-- Price -->
+                <p class="text-xl font-semibold">€ 352,000</p>
+            </div>
+
+            <!-- Management -->
+            <div class="w-full inline-flex justify-between items-center mt-4">
+                <!-- Emails & Views -->
+                <div class="w-max inline-flex justify-center items-center gap-2">
+                    <!-- Emails -->
+                    <div class="bg-[#FCED69] h-10 rounded shadow-[0_0_20px_0_rgba(252,237,105,0.8)] p-1 inline-flex justify-center items-center gap-3">
+                        <p class="pl-1 text-sm">&#40;2&#41; email</p>
+                        <button class="w-10 inline-flex justify-center items-center bg-[#FEF9CD] h-8">ok</button>
+                    </div>
+                    <!-- Views -->
+                    <div class="w-max h-10 bg-[#E0DAD1] px-2 inline-flex justify-center items-center gap-3 rounded">
+                        <app-heart-icon dimensions="w-4 h-4" color="#5C503D"></app-heart-icon>
+                        <p class="text-xs text-[#5C503D]">234</p>
+                    </div>
+                </div>
+
+                <!-- Publish-->
+                <form #f="ngForm" class="w-max" [formGroup]="adForm">
+                    <div class="w-max">
+                        <div>
+                            <ul class="grid grid-cols-2  p-1 gap-2 rounded-full w-max bg-[#FBE525]">
+                                <li class="w-6 h-6">
+                                    <input type="radio" id="0" name="status" formControlName="status" value="0" class="hidden peer">
+                                    <label for="0" class="flex justify-center items-center bg-transparent w-full h-full rounded-full cursor-pointer peer-checked:bg-[#5C503D] bg-opacity-50 peer-checked:opacity-100">
+                                        <app-eye-slash-icon *ngIf="adForm.value.status == '1'" dimensions="w-3 h-3" color="#5C503D"></app-eye-slash-icon>
+                                        <app-eye-slash-icon *ngIf="adForm.value.status == '0'" dimensions="w-3 h-3" color="white"></app-eye-slash-icon>
+                                    </label>
+                                </li>
+                                <li class="w-6 h-6">
+                                    <input type="radio" id="1" name="status" formControlName="status" value="1" class="hidden peer">
+                                    <label for="1" class="flex justify-center items-center bg-transparent w-full h-full rounded-full cursor-pointer peer-checked:bg-[#5C503D] opacity-50 peer-checked:opacity-100">
+                                        <app-eye-icon *ngIf="adForm.value.status == '1'" dimensions="w-3 h-3" color="white"></app-eye-icon>
+                                        <app-eye-icon *ngIf="adForm.value.status == '0'" dimensions="w-3 h-3" color="#5C503D"></app-eye-icon>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- / Ads Card -->
+
+    <!-- Basic Acc Info -->
+    <div class="w-full inline-flex gap-3 mt-6">
+        <app-info-icon dimensions="w-6 h-6" color="#4D4333"></app-info-icon>
+        <p class="text-[#4D4333] text-xs">Basic accounts can post up to 1 ad at a time. <br/> <span class="font-bold text-[#7D7102] cursor-pointer">If you are a Real Estate Agent, upgrade your account, by clicking here.</span></p>
+    </div>
+    <!-- / Basic Acc Info -->
 </div>

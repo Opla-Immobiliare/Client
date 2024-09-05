@@ -31,6 +31,10 @@ import { WaveSquareIconComponent } from './wave-square-icon/wave-square-icon.com
 import { TrendDownIconComponent } from './trend-down-icon/trend-down-icon.component';
 import { HouseIconComponent } from './house-icon/house-icon.component';
 import { PlusIconComponent } from './plus-icon/plus-icon.component';
+import { InfoIconComponent } from './info-icon/info-icon.component';
+import { CurrencyCircleDollarIconComponent } from './currency-circle-dollar-icon/currency-circle-dollar-icon.component';
+import { EyeIconComponent } from './eye-icon/eye-icon.component';
+import { EyeSlashIconComponent } from './eye-slash-icon/eye-slash-icon.component';
 
 
 
@@ -66,7 +70,11 @@ import { PlusIconComponent } from './plus-icon/plus-icon.component';
     WaveSquareIconComponent,
     TrendDownIconComponent,
     HouseIconComponent,
-    PlusIconComponent
+    PlusIconComponent,
+    InfoIconComponent,
+    CurrencyCircleDollarIconComponent,
+    EyeIconComponent,
+    EyeSlashIconComponent
   ],
   imports: [
     CommonModule
@@ -102,7 +110,11 @@ import { PlusIconComponent } from './plus-icon/plus-icon.component';
     WaveSquareIconComponent,
     TrendDownIconComponent,
     HouseIconComponent,
-    PlusIconComponent
+    PlusIconComponent,
+    InfoIconComponent,
+    CurrencyCircleDollarIconComponent,
+    EyeIconComponent,
+    EyeSlashIconComponent
   ]
 })
 export class IconsModule { }
