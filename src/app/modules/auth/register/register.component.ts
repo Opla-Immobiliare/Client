@@ -9,7 +9,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class RegisterComponent implements OnInit {
   
   registerForm: FormGroup;
-  buttonValue: string = 'Next: Add password';
+  buttonValue: string = 'Avanti: Aggiungi password';
   type: string = 'email';
 
   constructor() {
@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
   register(): void {
     if (this.type == 'email') {
       this.type = 'password';
-      this.buttonValue = 'Create Account';
+      this.buttonValue = 'Crea Account';
     }
     else {
 

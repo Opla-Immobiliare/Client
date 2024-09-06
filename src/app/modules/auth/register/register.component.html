@@ -3,10 +3,10 @@
     <div class="w-full h-full lg:flex lg:justify-between lg:items-center gap-10">
         <!-- Text -->
         <div class="w-full h-full flex flex-col justify-center items-start">
-            <p *ngIf="type == 'email'" class="text-2xl mt-5 lg:text-[31px] lg:mt-0">Create Account</p>
-            <p *ngIf="type == 'password'" class="text-2xl mt-5 lg:text-[31px] lg:mt-0">Welcome!</p>
-            <p *ngIf="type == 'email'" class="text-sm mt-3 lg:text-[16px]">Please enter your email address.</p>
-            <p *ngIf="type == 'password'" class="text-sm mt-3 lg:text-[16px] lg:max-w-[500px]">Please create a strong password.</p>
+            <p *ngIf="type == 'email'" class="text-2xl mt-5 lg:text-[31px] lg:mt-0">Crea Account</p>
+            <p *ngIf="type == 'password'" class="text-2xl mt-5 lg:text-[31px] lg:mt-0">Benvenuto!</p>
+            <p *ngIf="type == 'email'" class="text-sm mt-3 lg:text-[16px]">Per favore inserisci il tuo indirizzo email.</p>
+            <p *ngIf="type == 'password'" class="text-sm mt-3 lg:text-[16px] lg:max-w-[500px]">Per favore crea una password forte</p>
         </div>
 
         <!-- Form -->
@@ -47,7 +47,7 @@
                     class="absolute text-base duration-300 transform -translate-y-8 scale-75 top-5 left-6 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
                     Password
                 </label>
-                <p class="text-xs text-[#8A785B] px-5 pt-2">Password must contain at least 8 characters.</p>
+                <p class="text-xs text-[#8A785B] px-5 pt-2">La password deve essere composta da almeno 7 caratteri. </p>
             </div>
             <div class="self-end w-full mt-[60px] lg:mt-0">
                 <div *ngIf="type == 'password'" class="flex items-center me-4">
@@ -60,7 +60,7 @@
                     <label
                         for="terms"
                         class="ms-2 text-sm text-black">
-                        I have read and accept the terms of use and privacy policy
+                        Confermo di aver letto e accettato l'Informativa sulla Privacy
                     </label>
                 </div>
                 <button
