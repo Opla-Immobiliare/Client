@@ -1,1 +1,17 @@
-<p>personal-settings works!</p>
+<div class="w-full px-4 lg:px-[90px]">
+    
+    <!-- Header -->
+    <div class="w-full flex items-start gap-6 mt-10">
+        <app-left-arrow class="cursor-pointer mt-4" [routerLink]="['/profile']"></app-left-arrow>
+        <h2 class="text-[#A39175] text-[35px]">Personal Information & Settings</h2>
+    </div>
+    <!-- Sub header -->
+    <div class="w-full border-b border-[#A39175]">
+        <p class="text-sm">Here you can update your details and change your account password.</p>
+    </div>
+
+    <div class="w-full">
+        <app-update-user-form></app-update-user-form>
+    </div>
+
+</div>

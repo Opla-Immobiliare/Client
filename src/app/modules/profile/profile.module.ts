@@ -8,6 +8,8 @@ import { IconsModule } from 'src/app/shared/icons/icons.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SavedAdsComponent } from './profile/saved-ads/saved-ads.component';
 import { AdsComponent } from './profile/ads/ads.component';
+import { UpdateUserFormComponent } from './personal-settings/update-user-form/update-user-form.component';
+import { UpdatePasswordFormComponent } from './personal-settings/update-password-form/update-password-form.component';
 
 const routes: Routes = [
   {
@@ -31,6 +33,8 @@ const routes: Routes = [
     PersonalSettingsComponent,
     SavedAdsComponent,
     AdsComponent,
+    UpdateUserFormComponent,
+    UpdatePasswordFormComponent,
 
   ],
   imports: [

@@ -1,0 +1,148 @@
+<div class="w-full">
+    <form class="w-full" #f="ngForm" [formGroup]="updateUserForm" (ngSubmit)="updateUser()">
+
+        <!-- Name -->
+        <div class="relative z-0 w-full mt-10 group">
+            <input 
+                type="name"
+                id="name"
+                formControlName="name"
+                [ngClass]="[updateUserForm.controls['name'].invalid && (updateUserForm.controls['name'].touched || updateUserForm.controls['name'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                class="block w-full h-16 items-center px-6 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                placeholder=""
+                autocomplete="off"
+                required />
+            <label
+                for="name"
+                [ngClass]="labelControl('name')"
+                class="absolute text-base duration-300 transform -translate-y-8 scale-75 top-5 left-6 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                Name
+            </label>
+        </div>
+        <!--/ Name -->
+
+        <!-- Last Name -->
+        <div class="relative z-0 w-full mt-5 group">
+            <input 
+                type="lastname"
+                id="lastname"
+                formControlName="lastname"
+                [ngClass]="[!updateUserForm.controls['lastname'].valid && (updateUserForm.controls['lastname'].touched || updateUserForm.controls['lastname'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                class="block w-full h-16 items-center px-6 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                placeholder=""
+                autocomplete="off"
+                required />
+            <label
+                for="lastname"
+                [ngClass]="labelControl('lastname')"
+                class="absolute text-base duration-300 transform -translate-y-8 scale-75 top-5 left-6 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                Last Name
+            </label>
+        </div>
+        <!--/ Last Name -->
+
+        <!-- Phone -->
+        <div class="flex mt-5">
+
+            <!-- Phone Code -->
+            <div class="flex items-center gap-4 px-6 rounded-l-[20px] border-2 border-[#CCC2B2] h-16 w-max">
+                <label for="phone" class="w-max">{{ updateUserForm.value.phoneCode }}</label>
+                <button id="phonecode-dropdown" data-dropdown-toggle="phonecodes">
+                    <app-arrow-icon dimension="w-4 h-4" color="#000"></app-arrow-icon>
+                </button>
+                <div id="phonecodes" class="z-10 hidden bg-[#CCC2B2] p-6 w-max h-96 overflow-y-scroll rounded-[20px] devide-y">
+                    <ul class="space-y-4 text-sm" aria-labelledby="phonecode-dropdown">
+                        <li *ngFor="let code of countryCodesList | keyvalue" (click)="updateUserForm.value.phoneCode = code.value">{{ code.value }}</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- / Phone Code -->
+
+            <!-- Number -->
+            <div class="relative z-0 w-full group">
+                <input 
+                    type="phone"
+                    id="phone"
+                    formControlName="phone"
+                    [ngClass]="[!updateUserForm.controls['phone'].valid && (updateUserForm.controls['phone'].touched || updateUserForm.controls['phone'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                    class="block w-full h-16 items-center px-6 text-sm text-black bg-transparent border-2 border-l-0 border-[#CCC2B2] rounded-r-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                    placeholder=""
+                    autocomplete="off"
+                    required />
+                <label
+                    for="phone"
+                    [ngClass]="labelControl('phone')"
+                    class="absolute text-base duration-300 transform -translate-y-8 scale-75 top-5 left-6 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                    Phone
+                </label>
+            </div>
+            <!-- / Number -->
+        </div>
+        <!-- / Phone -->
+
+        <!-- Date of Birth -->
+        <div class="flex gap-1 mt-5">
+            <!-- Day -->
+            <div class="relative z-0 w-[20%] group">
+                <input 
+                    type="text"
+                    id="day"
+                    formControlName="day"
+                    [ngClass]="[!updateUserForm.controls['day'].valid && (updateUserForm.controls['day'].touched || updateUserForm.controls['day'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                    class="block w-full h-16 items-center text-center px-4 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                    placeholder=""
+                    autocomplete="off"
+                    required />
+                <label
+                    for="day"
+                    [ngClass]="labelControl('day')"
+                    class="absolute text-base duration-300 transform -translate-y-8 scale-75 top-5 left-4 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                    Day
+                </label>
+            </div>
+            <!-- Month -->
+            <div class="relative z-0 w-[50%] group">
+                <input 
+                    type="text"
+                    id="month"
+                    formControlName="month"
+                    [ngClass]="[!updateUserForm.controls['month'].valid && (updateUserForm.controls['month'].touched || updateUserForm.controls['month'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                    class="block w-full h-16 items-center px-6 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                    placeholder=""
+                    autocomplete="off"
+                    required />
+                <label
+                    for="month"
+                    [ngClass]="labelControl('month')"
+                    class="absolute text-base duration-300 transform -translate-y-8 scale-75 top-5 left-6 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                    Month
+                </label>
+            </div>
+            <!-- Year -->
+            <div class="relative z-0 w-[35%] group">
+                <input 
+                    type="text"
+                    id="year"
+                    formControlName="year"
+                    [ngClass]="[!updateUserForm.controls['year'].valid && (updateUserForm.controls['year'].touched || updateUserForm.controls['year'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                    class="block w-full h-16 items-center px-6 text-sm text-center text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                    placeholder=""
+                    autocomplete="off"
+                    required />
+                <label
+                    for="year"
+                    [ngClass]="labelControl('year')"
+                    class="absolute text-base duration-300 transform -translate-y-8 scale-75 top-5 left-6 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                    Year
+                </label>
+            </div>
+        </div>
+
+        <button
+            [disabled]="updateUserForm.invalid"
+            type="submit" 
+            class="w-full py-4 mt-10 bg-[#FBE525] rounded-[500px] flex justify-center items-center border-none text-sm font-semibold hover:drop-shadow-[0px_0px_20px_rgba(251,229,37,1)] active:drop-shadow-none active:bg-[#E1CB04] lg:max-w-[450px] lg:text-[16px] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:drop-shadow-none">
+            Save Changes
+        </button>
+    </form>
+</div>
