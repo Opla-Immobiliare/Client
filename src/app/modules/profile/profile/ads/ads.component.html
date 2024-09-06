@@ -1,21 +1,24 @@
 <div class="w-full mt-28">
 
     <!-- Title -->
-    <div class="inline-flex justify-start items-center gap-3">
-        <app-house-icon dimensions="w-6 h-6" color="#000"></app-house-icon>
-        <p class="text-base">Ads &#40;1 Slot Only&#41;</p>
+    <div class="w-full lg:flex lg:justify-between lg:items-center">
+        <div class="inline-flex justify-start items-center gap-3">
+            <app-house-icon dimensions="w-6 h-6" color="#000"></app-house-icon>
+            <p class="text-base">Ads &#40;1 Slot Only&#41;</p>
+        </div>
+        <button class="hidden lg:inline-flex bg-[#FBE525] rounded-full h-12 justify-center items-center cursor-pointer hover:shadow-[0_0_20px_0_rgba(251,229,37,1)] focus:shadow-none focus:bg-[#FBE525] px-14">Add new ad</button>
     </div>
     <!-- / Title -->
 
     <!-- No Ads -->
-    <!-- <div class="w-full h-24 rounded-[20px] border-2 border-dashed border-[#A39175] inline-flex justify-center gap-3 items-center mt-6">
+    <div class="w-full h-24 rounded-[20px] border-2 border-dashed border-[#A39175] inline-flex justify-center gap-3 items-center mt-6">
         <app-plus-icon dimensions="w-10 h-10" color="#A39175"></app-plus-icon>
         <p class="text-sm text-center">Add Property</p>
-    </div> -->
+    </div>
     <!-- / No Ads -->
 
     <!-- Ads Card -->
-    <div class="w-full relative bg-[#D6CEC2] rounded-[20px] mt-3">
+    <div class="w-full relative lg:flex lg:gap-4 bg-[#D6CEC2] rounded-[20px] mt-3 lg:p-2">
 
         <!-- Status Button -->
         <div class="w-max h-6 rounded-full inline-flex justify-center items-center bg-[#FEF9CD] px-2 absolute top-4 left-4 gap-3">
@@ -24,10 +27,10 @@
         </div>
 
         <!-- Image -->
-        <img class="w-full h-56 rounded-[20px]" src="/assets/images/house-preview.jpeg" alt="house-preview" />
+        <img class="w-full h-56 rounded-[20px] lg:max-w-[330px]" src="/assets/images/house-preview.jpeg" alt="house-preview" />
 
         <!-- Image Count -->
-        <div class="w-full inline-flex justify-center items-center gap-2 -mt-10 absolute top-[238px]">
+        <div class="w-full inline-flex justify-center items-center gap-2 -mt-10 absolute top-[238px] lg:hidden">
             <app-image-icon dimensions="w-4 h-4" color="white"></app-image-icon>
             <p class="text-white text-xs">34</p>
         </div>
@@ -52,6 +55,7 @@
                 <!-- Beds -->
                 <div class="w-max h-8 bg-[#EBE7E0] rounded inline-flex justify-center items-center gap-3 px-1">
                     <app-bed-icon dimensions="w-6 h-6" color="#5C503D"></app-bed-icon>
+                    <p class="text-xs text-[#5C503D]">2</p>
                 </div>
             </div>
 
@@ -68,7 +72,7 @@
             </div>
 
             <!-- Management -->
-            <div class="w-full inline-flex justify-between items-center mt-4">
+            <div class="w-full inline-flex justify-between  items-center mt-4">
                 <!-- Emails & Views -->
                 <div class="w-max inline-flex justify-center items-center gap-2">
                     <!-- Emails -->
