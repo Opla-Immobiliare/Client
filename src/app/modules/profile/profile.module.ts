@@ -10,6 +10,7 @@ import { SavedAdsComponent } from './profile/saved-ads/saved-ads.component';
 import { AdsComponent } from './profile/ads/ads.component';
 import { UpdateUserFormComponent } from './personal-settings/update-user-form/update-user-form.component';
 import { UpdatePasswordFormComponent } from './personal-settings/update-password-form/update-password-form.component';
+import { AdditionalSettingsComponent } from './personal-settings/additional-settings/additional-settings.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,7 @@ const routes: Routes = [
     AdsComponent,
     UpdateUserFormComponent,
     UpdatePasswordFormComponent,
+    AdditionalSettingsComponent,
 
   ],
   imports: [
