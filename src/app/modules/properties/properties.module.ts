@@ -4,8 +4,18 @@ import { PropertiesListComponent } from './properties-list/properties-list.compo
 import { FiltersComponent } from './properties-list/filters/filters.component';
 import { PropertyCardComponent } from './properties-list/property-card/property-card.component';
 import { PropertyComponent } from './property/property.component';
+import { RouterModule, Routes } from '@angular/router';
 
-
+export const routes: Routes = [
+  {
+    path: ':municipality',
+    component: PropertiesListComponent
+  },
+  {
+    path: 'property/:id',
+    component: PropertyComponent
+  }
+]
 
 @NgModule({
   declarations: [
@@ -15,7 +25,8 @@ import { PropertyComponent } from './property/property.component';
     PropertyComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule.forChild(routes)
   ]
 })
 export class PropertiesModule { }
