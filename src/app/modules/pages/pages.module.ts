@@ -7,6 +7,7 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
 import { CookiesPolicyComponent } from './cookies-policy/cookies-policy.component';
 import { IconsModule } from "../../shared/icons/icons.module";
 import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 export const routes: Routes = [
   {
@@ -28,6 +29,10 @@ export const routes: Routes = [
   {
     path: 'cookies-policy',
     component: CookiesPolicyComponent
+  },
+  {
+    path: '404',
+    component: NotFoundComponent
   }
 ]
 
@@ -37,7 +42,8 @@ export const routes: Routes = [
     TermsOfUseComponent,
     PrivacyPolicyComponent,
     CookiesPolicyComponent,
-    HomeComponent
+    HomeComponent,
+    NotFoundComponent
   ],
   imports: [
     CommonModule,
