@@ -1,1 +1,20 @@
-<p>additional-settings works!</p>
+<div class="w-full">
+
+    <div class="w-max pt-4">
+        <p class="text-base font-semibold">Additional Settings</p>
+        <p class="mt-5 text-sm">I want to receive promotional emails.</p>
+    </div>
+
+    <form class="w-full mt-4" #f="ngForm" [formGroup]="promotionForm" (change)="test()">
+        <div class="w-max">
+            <label class="inline-flex items-center cursor-pointer">
+                <input type="checkbox" formControlName="promotional" value="" class="sr-only peer">
+                <div class="relative w-[60px] h-8 bg-transparent top-1 border-2 border-[#5C503D] peer-checked:border-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-none  after:absolute after:top-1 after:left-1 after:bg-[#C2B6A3] after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-[#FBE525]"></div>
+            </label>
+        </div>
+    </form>
+
+    <div class="w-full">
+        <app-delete-account></app-delete-account>
+    </div>
+</div>

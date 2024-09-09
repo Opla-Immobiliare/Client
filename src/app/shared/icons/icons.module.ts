@@ -35,6 +35,7 @@ import { InfoIconComponent } from './info-icon/info-icon.component';
 import { CurrencyCircleDollarIconComponent } from './currency-circle-dollar-icon/currency-circle-dollar-icon.component';
 import { EyeIconComponent } from './eye-icon/eye-icon.component';
 import { EyeSlashIconComponent } from './eye-slash-icon/eye-slash-icon.component';
+import { WarningDiamondIconComponent } from './warning-diamond-icon/warning-diamond-icon.component';
 
 
 
@@ -74,7 +75,8 @@ import { EyeSlashIconComponent } from './eye-slash-icon/eye-slash-icon.component
     InfoIconComponent,
     CurrencyCircleDollarIconComponent,
     EyeIconComponent,
-    EyeSlashIconComponent
+    EyeSlashIconComponent,
+    WarningDiamondIconComponent
   ],
   imports: [
     CommonModule
@@ -114,7 +116,8 @@ import { EyeSlashIconComponent } from './eye-slash-icon/eye-slash-icon.component
     InfoIconComponent,
     CurrencyCircleDollarIconComponent,
     EyeIconComponent,
-    EyeSlashIconComponent
+    EyeSlashIconComponent,
+    WarningDiamondIconComponent
   ]
 })
 export class IconsModule { }

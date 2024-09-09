@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-x-icon',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./x-icon.component.scss']
 })
 export class XIconComponent {
-
+  @Input() dimensions: string = '';
+  @Input() color: string = '';
 }

@@ -10,13 +10,17 @@
         <p class="text-sm">Here you can update your details and change your account password.</p>
     </div>
 
-    <div class="w-full">
-        <div class="w-full pb-8 border-b border-[#CCC2B2]">
+    <div class="w-full lg:grid lg:grid-cols-2 lg:mt-10">
+        <div class="w-full pb-8 border-b lg:border-r lg:border-b-0 border-[#CCC2B2] lg:pr-6">
             <app-update-user-form></app-update-user-form>
         </div>
-        <div class="w-full pt-8">
+        <div class="w-full pt-8 lg:pt-0 lg:pl-6">
             <app-update-password-form></app-update-password-form>
         </div>
+    </div>
+
+    <div class="w-full mt-10 border-t border-[#A39175] lg:mt-10">
+        <app-additional-settings></app-additional-settings>
     </div>
 
 </div>

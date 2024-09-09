@@ -11,6 +11,7 @@ import { AdsComponent } from './profile/ads/ads.component';
 import { UpdateUserFormComponent } from './personal-settings/update-user-form/update-user-form.component';
 import { UpdatePasswordFormComponent } from './personal-settings/update-password-form/update-password-form.component';
 import { AdditionalSettingsComponent } from './personal-settings/additional-settings/additional-settings.component';
+import { DeleteAccountComponent } from './personal-settings/additional-settings/delete-account/delete-account.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,7 @@ const routes: Routes = [
     UpdateUserFormComponent,
     UpdatePasswordFormComponent,
     AdditionalSettingsComponent,
+    DeleteAccountComponent,
 
   ],
   imports: [
