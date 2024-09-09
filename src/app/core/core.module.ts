@@ -6,6 +6,7 @@ import { IconsModule } from '../shared/icons/icons.module';
 import { RouterModule } from '@angular/router';
 import { AuthModule } from '../modules/auth/auth.module';
 import { TopRightActionComponent } from './top-right-action/top-right-action.component';
+import { CookiesComponent } from './cookies/cookies.component';
 
 
 
@@ -13,7 +14,8 @@ import { TopRightActionComponent } from './top-right-action/top-right-action.com
   declarations: [
     HeaderComponent,
     FooterComponent,
-    TopRightActionComponent
+    TopRightActionComponent,
+    CookiesComponent
   ],
   imports: [
     CommonModule,

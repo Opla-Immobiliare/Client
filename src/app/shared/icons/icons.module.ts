@@ -38,6 +38,7 @@ import { EyeSlashIconComponent } from './eye-slash-icon/eye-slash-icon.component
 import { WarningDiamondIconComponent } from './warning-diamond-icon/warning-diamond-icon.component';
 import { CaretLeftIconComponent } from './caret-left-icon/caret-left-icon.component';
 import { CaretRightComponent } from './caret-right/caret-right.component';
+import { ArrowRightComponent } from './arrow-right/arrow-right.component';
 
 
 
@@ -80,7 +81,8 @@ import { CaretRightComponent } from './caret-right/caret-right.component';
     EyeSlashIconComponent,
     WarningDiamondIconComponent,
     CaretLeftIconComponent,
-    CaretRightComponent
+    CaretRightComponent,
+    ArrowRightComponent
   ],
   imports: [
     CommonModule
@@ -123,7 +125,8 @@ import { CaretRightComponent } from './caret-right/caret-right.component';
     EyeSlashIconComponent,
     WarningDiamondIconComponent,
     CaretLeftIconComponent,
-    CaretRightComponent
+    CaretRightComponent,
+    ArrowRightComponent
   ]
 })
 export class IconsModule { }
