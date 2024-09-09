@@ -39,6 +39,8 @@ import { WarningDiamondIconComponent } from './warning-diamond-icon/warning-diam
 import { CaretLeftIconComponent } from './caret-left-icon/caret-left-icon.component';
 import { CaretRightComponent } from './caret-right/caret-right.component';
 import { ArrowRightComponent } from './arrow-right/arrow-right.component';
+import { SlidersHorizontalIconComponent } from './sliders-horizontal-icon/sliders-horizontal-icon.component';
+import { CloseIconComponent } from './close-icon/close-icon.component';
 
 
 
@@ -82,7 +84,9 @@ import { ArrowRightComponent } from './arrow-right/arrow-right.component';
     WarningDiamondIconComponent,
     CaretLeftIconComponent,
     CaretRightComponent,
-    ArrowRightComponent
+    ArrowRightComponent,
+    SlidersHorizontalIconComponent,
+    CloseIconComponent,
   ],
   imports: [
     CommonModule
@@ -126,7 +130,10 @@ import { ArrowRightComponent } from './arrow-right/arrow-right.component';
     WarningDiamondIconComponent,
     CaretLeftIconComponent,
     CaretRightComponent,
-    ArrowRightComponent
+    ArrowRightComponent,
+    CaretDownComponent,
+    SlidersHorizontalIconComponent,
+    CloseIconComponent
   ]
 })
 export class IconsModule { }

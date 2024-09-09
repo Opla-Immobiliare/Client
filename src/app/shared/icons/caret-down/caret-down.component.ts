@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-caret-down',
@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./caret-down.component.scss']
 })
 export class CaretDownComponent {
+  @Input() dimensions: string = '';
+  @Input() color: string = '';
 
 }
