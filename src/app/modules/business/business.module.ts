@@ -7,6 +7,9 @@ import { CartComponent } from './plans/cart/cart.component';
 import { CheckoutComponent } from './plans/checkout/checkout.component';
 import { OrderOverviewComponent } from './plans/order-overview/order-overview.component';
 import { RouterModule, Routes } from '@angular/router';
+import { IconsModule } from "../../shared/icons/icons.module";
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 export const routes: Routes = [
   {
@@ -26,7 +29,10 @@ export const routes: Routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
-  ]
+    RouterModule.forChild(routes),
+    IconsModule,
+    FormsModule,
+    ReactiveFormsModule
+]
 })
 export class BusinessModule { }
