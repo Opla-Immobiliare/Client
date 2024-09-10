@@ -14,6 +14,7 @@ import { EffectsModule, EffectSources } from '@ngrx/effects';
 import { AuthEffects } from './services/auth.effects';
 import { AuthGuard } from './services/auth.guard';
 import { AuthService } from './services/auth.service';
+import { BusinessRegistrationComponent } from './register/business-registration/business-registration.component';
 
 export const routes = [
   {
@@ -40,6 +41,7 @@ export const routes = [
     ForgotPasswordComponent,
     ResetPasswordComponent,
     RegisterComponent,
+    BusinessRegistrationComponent,
   ],
   imports: [
     CommonModule,

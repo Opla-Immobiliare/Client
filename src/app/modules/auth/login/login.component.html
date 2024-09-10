@@ -84,7 +84,9 @@
             <p class="text-sm lg:text-[16px]">Sei un'agenzia/agente immobiliare? </p>
             <div class="lg:flex lg:flex-col lg:justify-center lg:items-center">
             <img src="./assets/images/Business_Account.webp" class="w-full h-[90px] my-7 lg:max-w-[258px] lg:h-[76px] lg:my-4">
-            <a href="#" class="w-full py-4 bg-[#CCC2B2] rounded-[500px] text-sm font-semibold flex justify-center items-center hover:drop-shadow-[0px_0px_20px_rgba(204,194,178,1)] active:drop-shadow-none active:bg-[#C2B6A3] lg:w-[270px] lg:text-[16px]">Crea un account business</a>
+            <button (click)="type = 'business-register'" class="w-full py-4 bg-[#CCC2B2] rounded-[500px] text-sm font-semibold flex justify-center items-center hover:drop-shadow-[0px_0px_20px_rgba(204,194,178,1)] active:drop-shadow-none active:bg-[#C2B6A3] lg:w-[270px] lg:text-[16px]">
+                Crea un account business
+            </button>
             </div>
         </div>
         <!--/ Create Business Account Block -->
@@ -97,4 +99,8 @@
 
 <div *ngIf="type == 'register'" class="w-full h-full">
     <app-register></app-register>
+</div>
+
+<div *ngIf="type == 'business-register'" class="w-full h-full">
+    <app-business-registration></app-business-registration>
 </div>
