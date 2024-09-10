@@ -6,7 +6,7 @@
             <app-caret-down dimensions="w-4 h-4" color="#000"></app-caret-down>
         </button>
         <!-- filters -->
-        <button class="w-max inline-flex justify-center items-center pl-4 gap-3" data-modal-target="filters-modal" data-modal-toggle="filters-modal">
+        <button class="w-max inline-flex justify-center items-center pl-4 gap-3" data-modal-target="filters-modal" data-modal-show="filters-modal">
             <app-sliders-horizontal-icon dimensions="w-4 h-4" color="#000"></app-sliders-horizontal-icon>
             <p class="text-[10px]">Filters &#40;2&#41;</p>
         </button>
@@ -16,21 +16,21 @@
 <div id="filters-modal" tabindex="-1" aria-hidden="true" class="hidden bg-[#EBE7E0] lg:bg-[#B8AA94] lg:bg-opacity-80 overflow-y-scroll fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%)] max-h-full">
 
     <!-- Modal Content -->
-    <div class="w-full px-4 py-8 lg:max-w-[1010px] lg:h-[565px] lg:bg-[#EBE7E0] lg:border-none lg:rounded-[30px] lg:px-5 lg:py-[15px] lg:m-auto">
+    <div class="w-full h-full lg:overflow-y-none px-4 py-8 lg:max-w-[1010px] lg:h-max lg:bg-[#EBE7E0] lg:border-none lg:rounded-[30px] lg:px-5 lg:py-[15px] lg:m-auto">
         <!-- Header -->
         <div class="w-full inline-flex justify-between items-center  pb-6 border-b border-[#D6CEC2]">
             <div class="w-full inline-flex justify-start gap-5 items-center">
                 <p class="text-base w-max">Filters</p>
                 <button type="button" class="bg-none border-none text-[#7D7102] text-sm underline cursor-pointer w-max">Remove all</button>
             </div>
-            <div class="w-12 h-12 inline-flex justify-center items-center">
+            <div data-modal-hide="filters-modal" class="w-12 h-12 inline-flex justify-center items-center">
                 <app-close-icon dimensions="w-6 h-6" color="#000"></app-close-icon>
             </div>
         </div>
 
-        <form class="w-full mt-8" #f="ngForm" [formGroup]="filtersForm">
+        <form class="w-full mt-6" #f="ngForm" [formGroup]="filtersForm">
             <!-- Type Rental -->
-            <div class="w-full rounded-full bg-[#CCC2B2] p-[2px]">
+            <div class="w-full rounded-full bg-[#CCC2B2] p-[2px] lg:hidden">
                 <ul class="grid w-full gap-[2px] grid-cols-2">
                     <!-- Rent -->
                     <li>
@@ -48,6 +48,207 @@
                     </li>
                 </ul>
             </div>
+            <!-- / Type Rental -->
+
+            <!-- Category -->
+            <div class="w-full rounded-full bg-[#CCC2B2] h-12 inline-flex justify-center items-center mt-6 lg:hidden">
+                <button type="button" class="w-full inline-flex justify-between items-center px-6">
+                    <p class="">Category: all</p>
+                    <app-caret-down dimensions="w-4 h-4" color="#000"></app-caret-down>
+                </button>
+            </div>
+            <!-- / Category -->
+
+            <!-- Floor -->
+            <div class="w-full mt-12">
+                <!-- Header -->
+                <div class="w-full inline-flex justify-between items-center">
+                    <div class="w-max inline-flex items-center gap-3">
+                        <app-stairs-icon dimensions="w-6 h-6" color="#000"></app-stairs-icon>
+                        <p class="text-sm font-semibold">Floor</p>
+                    </div>
+                    <div class="w-max">
+                        <button type="button" class="bg-none border-none text-[#7D7102] text-sm underline cursor-pointer w-max">Remove</button>
+                    </div>
+                </div>
+
+                <!-- From - To -->
+                <div class="w-full mt-4">
+                    <div class="w-max inline-flex items-center gap-3">
+                        <!-- from button -->
+                        <div class="w-max">
+                            <button id="floor-from-dropdown" data-dropdown-toggle="floor-from" class="inline-flex items-center gap-8 bg-[#CCC2B2] rounded-full px-4 h-12">
+                                <p class="text-sm">From: Ground</p>
+                                <app-caret-down class="w-4 h-4" color="#000"></app-caret-down>
+                            </button>
+                            <div id="floor-from" class="z-10 hidden bg-[#CCC2B2] p-6 w-max h-11 overflow-y-scroll rounded-[20px] devide-y">
+                                <ul class="space-y-4 text-sm" aria-labelledby="floor-from-dropdown">
+                                    <li>1 st</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- to button -->
+                        <div class="w-max">
+                            <button id="floor-to-dropdown" data-dropdown-toggle="floor-to" class="inline-flex items-center gap-8 bg-[#CCC2B2] rounded-full px-4 h-12">
+                                <p class="text-sm">To: 2nd</p>
+                                <app-caret-down class="w-4 h-4" color="#000"></app-caret-down>
+                            </button>
+                            <div id="floor-to" class="z-10 hidden bg-[#CCC2B2] p-6 w-max h-11 overflow-y-scroll rounded-[20px] devide-y">
+                                <ul class="space-y-4 text-sm" aria-labelledby="floor-to-dropdown">
+                                    <li>1 st</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- / Floor -->
+
+            <!-- Price -->
+            <div class="w-full mt-8">
+                <div class="w-max inline-flex items-center gap-3">
+                    <app-currency-euro-icon dimensions="w-6 h-6" color="#5C503D"></app-currency-euro-icon>
+                    <p class="text-sm font-semibold">Price</p>
+                </div>
+                <!-- Inputs -->
+                <div class="w-full inline-flex justify-center items-center gap-2">
+                    <input type="number" formControlName="minPrice" class="rounded-[20px] w-full h-16 border-2 bg-transparent border-[#CCC2B2] hover:bg-[#F5F3F0] focus:border-[3px] focus:ring-0 focus:border-[#CCC2B2] text-base" placeholder="Min. Price"/>
+                    <input type="number" formControlName="maxPrice" class="rounded-[20px] w-full h-16 border-2 bg-transparent border-[#CCC2B2] hover:bg-[#F5F3F0] focus:border-[3px] focus:ring-0 focus:border-[#CCC2B2] text-base" placeholder="Max. Price"/>
+                </div>
+            </div>
+            <!-- / Price -->
+
+            <!-- Square Metters -->
+            <div class="w-full mt-8">
+                <div class="w-max inline-flex items-center gap-3">
+                    <app-map-pin-area-icon dimensions="w-6 h-6" color="#5C503D"></app-map-pin-area-icon>
+                    <p class="text-sm font-semibold">Square Metters</p>
+                </div>
+                <div class="w-full">
+                    <input type="number" formControlName="squareMeters" class="rounded-[20px] w-full h-16 border-2 bg-transparent border-[#CCC2B2] hover:bg-[#F5F3F0] focus:border-[3px] focus:ring-0 focus:border-[#CCC2B2] text-base" placeholder="Square Meters"/>
+                </div>
+            </div>
+            <!-- / Square Metters -->
+
+            <!-- Rooms (Min / Max) -->
+            <div class="w-full mt-8 grid">
+                <div class="w-max inline-flex items-center gap-3">
+                    <app-bed-icon dimensions="w-6 h-6" color="#5C503D"></app-bed-icon>
+                    <p class="text-sm font-semibold">Rooms &#40;Min / Max&#41;</p>
+                </div>
+                <div class="inline-flex items-center gap-2 pt-2">
+                    <!-- min -->
+                    <div class="bg-transparent p-[1px] inline-flex justify-center items-center border-2 border-[#CCC2B2] gap-3 rounded-full ">
+                        <button [disabled]="filtersForm.value.minRooms == 0" type="button" (click)="filtersForm.value.minRooms = filtersForm.value.minRooms - 1" class="rounded-full w-10 h-10 inline-flex items-center justify-center bg-[#CCC2B2] cursor-pointer disabled:bg-opacity-50 disabled:cursor-not-allowed">
+                            <app-minus-icon dimensions="w-4 h-4" color="#000"></app-minus-icon>
+                        </button>
+                        <p class="text-base w-10 text-center">{{ filtersForm.value.minRooms }}</p>
+                        <button type="button" (click)="filtersForm.value.minRooms = filtersForm.value.minRooms + 1" class="rounded-full w-10 h-10 inline-flex items-center justify-center bg-[#CCC2B2] cursor-pointer disabled:bg-opacity-50 disabled:cursor-not-allowed">
+                            <app-plus-icon dimensions="w-4 h-4" color="#000"></app-plus-icon>
+                        </button>
+                    </div>
+                    <p class="text-base">/</p>
+                    <!-- max -->
+                    <div class="bg-transparent p-[1px] inline-flex justify-center items-center border-2 border-[#CCC2B2] gap-3 rounded-full ">
+                        <button [disabled]="filtersForm.value.maxRooms == 0" type="button" (click)="filtersForm.value.maxRooms = filtersForm.value.maxRooms - 1" class="rounded-full w-10 h-10 inline-flex items-center justify-center bg-[#CCC2B2] cursor-pointer disabled:bg-opacity-50 disabled:cursor-not-allowed">
+                            <app-minus-icon dimensions="w-4 h-4" color="#000"></app-minus-icon>
+                        </button>
+                        <p class="text-base w-10 text-center">{{ filtersForm.value.maxRooms }}</p>
+                        <button type="button" (click)="filtersForm.value.maxRooms = filtersForm.value.maxRooms + 1" class="rounded-full w-10 h-10 inline-flex items-center justify-center bg-[#CCC2B2] cursor-pointer disabled:bg-opacity-50 disabled:cursor-not-allowed">
+                            <app-plus-icon dimensions="w-4 h-4" color="#000"></app-plus-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- / Rooms (Min / Max) -->
+
+            <!-- Year -->
+            <div class="w-full mt-8">
+                <div class="w-max inline-flex items-center gap-3">
+                    <app-calendar-dots-icon dimensions="w-6 h-6" color="#5C503D"></app-calendar-dots-icon>
+                    <p class="text-sm font-semibold">Construction Year</p>
+                </div>
+                <!-- Inputs -->
+                <div class="w-full inline-flex justify-center items-center gap-2">
+                    <input type="number" formControlName="minYear" class="rounded-[20px] w-full h-16 border-2 bg-transparent border-[#CCC2B2] hover:bg-[#F5F3F0] focus:border-[3px] focus:ring-0 focus:border-[#CCC2B2] text-base" placeholder="Min. Year"/>
+                    <input type="number" formControlName="maxYear" class="rounded-[20px] w-full h-16 border-2 bg-transparent border-[#CCC2B2] hover:bg-[#F5F3F0] focus:border-[3px] focus:ring-0 focus:border-[#CCC2B2] text-base" placeholder="Max. Year"/>
+                </div>
+            </div>
+            <!-- / Year -->
+            
+            <!-- Energy Class -->
+            <div class="w-full mt-8">
+                <div class="w-max inline-flex items-center gap-3">
+                    <app-light-bulb-filament-icon dimensions="w-6 h-6" color="#5C503D"></app-light-bulb-filament-icon>
+                    <p class="text-sm font-semibold">Energy Class</p>
+                </div>
+                <div class="w-full rounded-full bg-[#CCC2B2] mt-8">
+                    <ul class="grid w-full gap-[2px] grid-cols-3">
+                        <!-- low -->
+                        <li>
+                            <input type="radio" id="low" name="energyClass" formControlName="energyClass" value="low" class="hidden peer"/>
+                            <label for="low" class="w-full inline-flex justify-center items-center h-12 rounded-l-full bg-transparent peer-checked:bg-[#A39175] peer-checked:text-white text-sm text-center border-r border-[#A39175]">
+                                Low<br/>&#40;None - E&#41;
+                            </label>
+                        </li>
+                        <!-- Medium -->
+                        <li>
+                            <input type="radio" id="medium" name="energyClass" formControlName="energyClass" value="medium" class="hidden peer"/>
+                            <label for="medium" class="w-full inline-flex justify-center items-center h-12 bg-transparent peer-checked:bg-[#A39175] peer-checked:text-white text-sm text-center">
+                                Medium<br/>&#40;D - B+&#41;
+                            </label>
+                        </li>
+                        <!-- High -->
+                        <li>
+                            <input type="radio" id="high" name="energyClass" formControlName="energyClass" value="high" class="hidden peer"/>
+                            <label for="high" class="w-full inline-flex justify-center items-center h-12 rounded-r-full bg-transparent peer-checked:bg-[#A39175] peer-checked:text-white text-sm text-center border-l border-[#A39175]">
+                                High<br/>&#40;A - A+++&#41;
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- / Energy Class -->
+
+            <!-- Additional Characteristics -->
+            <div class="w-full mt-8">
+                <div class="w-max inline-flex items-center gap-3">
+                    <p class="text-sm font-semibold">Additional Characteristics</p>
+                </div>
+                <div class="w-full flex gap-4 flex-wrap mt-3">
+                    <div>
+                        <input type="checkbox" id="furnished" name="furnished" formControlName="furnished" value="" class="hidden peer" />
+                        <label class="w-max px-6 py-[10px] bg-[#D6CEC2] peer-checked:bg-[#A39175] rounded-full inline-flex justify-center items-center gap-4 peer-checked:text-white text-base">
+                            <app-chair-icon dimensions="w-6 h-6" [color]="filtersForm.value.furnished ? 'white' : 'black'"></app-chair-icon>
+                            <p class="text-base">Furnished</p>
+                            <app-check-icon dimensions="w-4 h-4" [color]="filtersForm.value.furnished ? 'white' : 'black'"></app-check-icon>
+                        </label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="furnished" name="furnished" formControlName="furnished" value="" class="hidden peer" />
+                        <label class="w-max px-6 py-[10px] bg-[#D6CEC2] peer-checked:bg-[#A39175] rounded-full inline-flex justify-center items-center gap-4 peer-checked:text-white text-base">
+                            <app-chair-icon dimensions="w-6 h-6" [color]="filtersForm.value.furnished ? 'white' : 'black'"></app-chair-icon>
+                            <p class="text-base">12</p>
+                            <app-check-icon dimensions="w-4 h-4" [color]="filtersForm.value.furnished ? 'white' : 'black'"></app-check-icon>
+                        </label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="furnished" name="furnished" formControlName="furnished" value="" class="hidden peer" />
+                        <label class="w-max px-6 py-[10px] bg-[#D6CEC2] peer-checked:bg-[#A39175] rounded-full inline-flex justify-center items-center gap-4 peer-checked:text-white text-base">
+                            <app-chair-icon dimensions="w-6 h-6" [color]="filtersForm.value.furnished ? 'white' : 'black'"></app-chair-icon>
+                            <p class="text-base">Furnished</p>
+                            <app-check-icon dimensions="w-4 h-4" [color]="filtersForm.value.furnished ? 'white' : 'black'"></app-check-icon>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <!-- / Additional Characteristics -->
+
+            <button
+                type="submit" 
+                class="w-full py-4 mt-10 mb-6 bg-[#FBE525] rounded-[500px] flex justify-center items-center border-none text-sm font-semibold hover:drop-shadow-[0px_0px_20px_rgba(251,229,37,1)] active:drop-shadow-none active:bg-[#E1CB04] lg:max-w-[450px] lg:text-[16px] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:drop-shadow-none">
+                Search
+            </button>
         </form>
     </div>
 </div>

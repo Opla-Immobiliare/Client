@@ -41,6 +41,14 @@ import { CaretRightComponent } from './caret-right/caret-right.component';
 import { ArrowRightComponent } from './arrow-right/arrow-right.component';
 import { SlidersHorizontalIconComponent } from './sliders-horizontal-icon/sliders-horizontal-icon.component';
 import { CloseIconComponent } from './close-icon/close-icon.component';
+import { StairsIconComponent } from './stairs-icon/stairs-icon.component';
+import { CurrencyEuroIconComponent } from './currency-euro-icon/currency-euro-icon.component';
+import { MapPinAreaIconComponent } from './map-pin-area-icon/map-pin-area-icon.component';
+import { MinusIconComponent } from './minus-icon/minus-icon.component';
+import { CalendarDotsIconComponent } from './calendar-dots-icon/calendar-dots-icon.component';
+import { LightBulbFilamentIconComponent } from './light-bulb-filament-icon/light-bulb-filament-icon.component';
+import { ChairIconComponent } from './chair-icon/chair-icon.component';
+import { CheckIconComponent } from './check-icon/check-icon.component';
 
 
 
@@ -87,6 +95,14 @@ import { CloseIconComponent } from './close-icon/close-icon.component';
     ArrowRightComponent,
     SlidersHorizontalIconComponent,
     CloseIconComponent,
+    StairsIconComponent,
+    CurrencyEuroIconComponent,
+    MapPinAreaIconComponent,
+    MinusIconComponent,
+    CalendarDotsIconComponent,
+    LightBulbFilamentIconComponent,
+    ChairIconComponent,
+    CheckIconComponent,
   ],
   imports: [
     CommonModule
@@ -133,7 +149,15 @@ import { CloseIconComponent } from './close-icon/close-icon.component';
     ArrowRightComponent,
     CaretDownComponent,
     SlidersHorizontalIconComponent,
-    CloseIconComponent
+    CloseIconComponent,
+    StairsIconComponent,
+    CurrencyEuroIconComponent,
+    MapPinAreaIconComponent,
+    MinusIconComponent,
+    CalendarDotsIconComponent,
+    LightBulbFilamentIconComponent,
+    ChairIconComponent,
+    CheckIconComponent
   ]
 })
 export class IconsModule { }
