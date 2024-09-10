@@ -9,15 +9,24 @@ import { CarouselComponent } from './properties-list/property-card/carousel/caro
 import { IconsModule } from 'src/app/shared/icons/icons.module';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddPropertyComponent } from './add-property/add-property.component';
+import { TypeComponent } from './add-property/type/type.component';
+import { CharacteristicsComponent } from './add-property/characteristics/characteristics.component';
+import { GeneralInfoComponent } from './add-property/general-info/general-info.component';
+import { ReviewComponent } from './add-property/review/review.component';
 
 export const routes: Routes = [
   {
-    path: ':municipality',
+    path: 'comune/:municipality',
     component: PropertiesListComponent
   },
   {
     path: 'property/:id',
     component: PropertyComponent
+  },
+  {
+    path: 'add',
+    component: AddPropertyComponent
   }
 ]
 
@@ -28,7 +37,12 @@ export const routes: Routes = [
     PropertyCardComponent,
     PropertyComponent,
     CarouselComponent,
-    FavouritesComponent
+    FavouritesComponent,
+    AddPropertyComponent,
+    TypeComponent,
+    CharacteristicsComponent,
+    GeneralInfoComponent,
+    ReviewComponent
   ],
   imports: [
     CommonModule,
