@@ -8,6 +8,7 @@ import { CookiesPolicyComponent } from './cookies-policy/cookies-policy.componen
 import { IconsModule } from "../../shared/icons/icons.module";
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 export const routes: Routes = [
   {
@@ -48,7 +49,9 @@ export const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    IconsModule
+    IconsModule,
+    FormsModule,
+    ReactiveFormsModule
 ]
 })
 export class PagesModule { }

@@ -49,6 +49,7 @@ import { CalendarDotsIconComponent } from './calendar-dots-icon/calendar-dots-ic
 import { LightBulbFilamentIconComponent } from './light-bulb-filament-icon/light-bulb-filament-icon.component';
 import { ChairIconComponent } from './chair-icon/chair-icon.component';
 import { CheckIconComponent } from './check-icon/check-icon.component';
+import { MagnifyingGlassIconComponent } from './magnifying-glass-icon/magnifying-glass-icon.component';
 
 
 
@@ -103,6 +104,7 @@ import { CheckIconComponent } from './check-icon/check-icon.component';
     LightBulbFilamentIconComponent,
     ChairIconComponent,
     CheckIconComponent,
+    MagnifyingGlassIconComponent,
   ],
   imports: [
     CommonModule
@@ -157,7 +159,8 @@ import { CheckIconComponent } from './check-icon/check-icon.component';
     CalendarDotsIconComponent,
     LightBulbFilamentIconComponent,
     ChairIconComponent,
-    CheckIconComponent
+    CheckIconComponent,
+    MagnifyingGlassIconComponent
   ]
 })
 export class IconsModule { }
