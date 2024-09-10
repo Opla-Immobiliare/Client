@@ -6,8 +6,14 @@ import { PlansComponent } from './plans/plans.component';
 import { CartComponent } from './plans/cart/cart.component';
 import { CheckoutComponent } from './plans/checkout/checkout.component';
 import { OrderOverviewComponent } from './plans/order-overview/order-overview.component';
+import { RouterModule, Routes } from '@angular/router';
 
-
+export const routes: Routes = [
+  {
+    path: 'complete-profile',
+    component: CompleteBusinessProfileComponent
+  }
+]
 
 @NgModule({
   declarations: [
@@ -19,7 +25,8 @@ import { OrderOverviewComponent } from './plans/order-overview/order-overview.co
     OrderOverviewComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule.forChild(routes)
   ]
 })
 export class BusinessModule { }
