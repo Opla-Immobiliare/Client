@@ -1,1 +1,80 @@
-<p>business-registration works!</p>
+<form #f="ngForm" class="w-full h-full p-4 bg-[#FEFCE6] border-none rounded-[30px] lg:p-0 lg:bg-transparent" [formGroup]="registerForm" (ngSubmit)="register()">
+
+    <div class="w-full h-full lg:flex lg:justify-between lg:items-center gap-10">
+        <!-- Text -->
+        <div class="w-full h-full flex flex-col justify-center items-start">
+            <p *ngIf="type == 'email'" class="text-2xl mt-5 lg:text-[31px] lg:mt-0">Crea un account business</p>
+            <p *ngIf="type == 'email'" class="text-sm mt-3 lg:text-[16px]">Inserisci la tua email (personale o aziendale), che sarà utilizzata per il tuo profilo aziendale.</p>
+            <p *ngIf="type == 'password'" class="text-2xl mt-3 lg:text-[16px] lg:max-w-[500px]">Inserisci la tua password e siamo pronti a partire!</p>
+            <p *ngIf="type == 'password'" class="text-sm mt-3 lg:text-[16px] lg:max-w-[500px]">Crea una password forte per completare la configurazione del tuo account.</p>
+        </div>
+
+        <!-- Form -->
+        <div class="w-full h-full flex flex-col justify-between items-center">
+            <div class="h-16"></div>
+            <!-- Email -->
+            <div *ngIf="type == 'email'" class="relative z-0 w-full group">
+                <input 
+                    type="email"
+                    id="email"
+                    formControlName="email"
+                    [ngClass]="[registerForm.controls['email'].invalid && (registerForm.controls['email'].touched || registerForm.controls['email'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                    class="block w-full h-16 items-center px-6 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                    placeholder=""
+                    autocomplete="off"
+                    required />
+                <label
+                    for="email"
+                    [ngClass]="labelControl('email')"
+                    class="absolute text-base duration-300 transform -translate-y-8 scale-75 top-5 left-6 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                    Email
+                </label>
+            </div>
+            <!-- Password -->
+            <div *ngIf="type == 'password'" class="relative z-0 w-full group">
+                <input 
+                    type="password"
+                    id="password"
+                    formControlName="password"
+                    [ngClass]="[registerForm.controls['password'].invalid && (registerForm.controls['password'].touched || registerForm.controls['password'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                    class="block w-full h-16 items-center px-6 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                    placeholder=""
+                    required />
+                <label
+                    for="password"
+                    [ngClass]="labelControl('password')"
+                    class="absolute text-base duration-300 transform -translate-y-8 scale-75 top-5 left-6 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                    Password
+                </label>
+                <p class="text-xs text-[#8A785B] px-5 pt-2">La tua password deve:</p>
+                <ul class="text-[10px] text-[#8A785B] px-10 pt-1 list-disc">
+                    <li>Essere lunga almeno 7 caratteri</li>
+                    <li>Includere almeno 1 simbolo speciale (!#$%)</li>
+                    <li>Contenere almeno 1 numero (0123456789)</li>
+                </ul>
+            </div>
+            <div class="self-end w-full mt-[60px] lg:mt-0">
+                <div *ngIf="type == 'password'" class="flex items-center me-4">
+                    <input
+                        id="terms"
+                        type="checkbox"
+                        formControlName="terms"
+                        value=""
+                        class="w-6 h-6 text-[#CCC2B2] bg-[#CCC2B2] border-[#CCC2B2] rounded cursor-pointer focus:ring-0">
+                    <label
+                        for="terms"
+                        class="ms-2 text-sm text-black">
+                        Confermo di aver letto e accettato l'Informativa sulla Privacy
+                    </label>
+                </div>
+                <button
+                    [disabled]="(type == 'email' && registerForm.controls['email'].invalid) || (type == 'password' && registerForm.controls['password'].invalid)"
+                    type="submit" 
+                    class="w-full py-4 mt-4 bg-[#FBE525] rounded-[500px] border-none text-sm font-semibold hover:drop-shadow-[0px_0px_20px_rgba(251,229,37,1)] active:drop-shadow-none active:bg-[#E1CB04] lg:max-w-[450px] lg:text-[16px] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:drop-shadow-none">
+                    {{ buttonValue }}
+                </button>
+            </div>
+        </div>
+    </div>
+        
+</form>
