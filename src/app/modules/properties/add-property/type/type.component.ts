@@ -22,7 +22,8 @@ export class TypeComponent implements OnInit {
       propertyType: new FormControl("1", [Validators.required]),
       propertyCategory: new FormControl(undefined, [Validators.required]),
       category: new FormControl("Choose category", [Validators.required]),
-      comune: new FormControl("Choose comune", [Validators.required])
+      comune: new FormControl("Choose comune", [Validators.required]),
+      area: new FormControl("Choose area", [Validators.required])
     });
   }
 

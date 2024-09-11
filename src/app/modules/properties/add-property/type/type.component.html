@@ -59,8 +59,8 @@
             </div>
             <!-- / Property Category -->
 
-            <!-- Area zone -->
-            <div *ngIf="typeForm.value.category != 'Choose category'" class="w-full mt-10">
+            <!-- Comune zone -->
+            <div class="w-full mt-10">
                 <p class="text-base font-semibold">In which area is the property located?</p>
                 <div class="w-full mt-6 relative">
                     <button data-modal-target="comune" data-modal-toggle="comune" type="button" class="h-12 w-[300px] inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full">
@@ -69,12 +69,28 @@
                     </button>
                     <div id="comune" class="hidden w-[300px] h-[288px] rounded-[20px] bg-[#CCC2B2] p-2 mt-1">
                         <ul class="w-full">
-                            <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="typeForm.value.comune = 'Lombardia'" data-modal-hide="categories">Lombardia</li>
+                            <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="typeForm.value.comune = 'Lombardia'" data-modal-hide="comune">Lombardia</li>
                         </ul>
                     </div>
                 </div>
             </div>
+            <!-- Comune zone -->
+
             <!-- Area zone -->
+            <div class="w-full mt-10">
+                <div class="w-full relative">
+                    <button data-modal-target="area" data-modal-toggle="area" type="button" class="h-12 w-[300px] inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full">
+                        <p class="text-base">{{ typeForm.value.area }}</p>
+                        <app-caret-down class="w-4 h-4" color="#000"></app-caret-down>
+                    </button>
+                    <div id="area" class="hidden w-[300px] h-[288px] rounded-[20px] bg-[#CCC2B2] p-2 mt-1">
+                        <ul class="w-full">
+                            <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="typeForm.value.area = 'Lombardia'" data-modal-hide="area">Lombardia</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- / Area zone -->
         </div>
     </form>
 </div>
