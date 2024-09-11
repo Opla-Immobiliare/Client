@@ -51,6 +51,7 @@ import { ChairIconComponent } from './chair-icon/chair-icon.component';
 import { CheckIconComponent } from './check-icon/check-icon.component';
 import { MagnifyingGlassIconComponent } from './magnifying-glass-icon/magnifying-glass-icon.component';
 import { HomeIconComponent } from './home-icon/home-icon.component';
+import { HammerIconComponent } from './hammer-icon/hammer-icon.component';
 
 
 
@@ -107,6 +108,7 @@ import { HomeIconComponent } from './home-icon/home-icon.component';
     CheckIconComponent,
     MagnifyingGlassIconComponent,
     HomeIconComponent,
+    HammerIconComponent,
   ],
   imports: [
     CommonModule
@@ -163,7 +165,8 @@ import { HomeIconComponent } from './home-icon/home-icon.component';
     ChairIconComponent,
     CheckIconComponent,
     MagnifyingGlassIconComponent,
-    HomeIconComponent
+    HomeIconComponent,
+    HammerIconComponent
   ]
 })
 export class IconsModule { }

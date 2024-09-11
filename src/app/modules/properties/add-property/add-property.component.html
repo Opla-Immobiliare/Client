@@ -1,6 +1,6 @@
 <div class="bg-[rgb(224,218,209)] overflow-y-scroll fixed top-0 right-0 left-0 z-50 flex justify-center lg:items-start items-center w-full md:inset-0 h-[calc(100%)] max-h-full pt-2 pb-8 px-4">
 
-    <div class="w-full max-w-[1000px]">
+    <div class="w-full max-w-[1000px] relative">
         
         <!-- Header -->
         <div class="w-full rounded-full inline-flex justify-between items-center h-16 bg-[#D6CEC2] pr-2">
@@ -25,21 +25,30 @@
                     <app-back-arrow dimensions="w-6 h-6" color="#000"></app-back-arrow>
                 </button>
                 <div class="w-full space-y-1">
-                    <h1 class="text-[49px] text-[#A39175]">1/4. Ad Type</h1>
-                    <p class="text-base">Fill in the following information to post your ad</p>
+                    <h1 class="text-[49px] text-[#A39175]">{{ title }}</h1>
+                    <p class="text-base">{{ subTitle }}</p>
                 </div>
             </div>
         </div>
-        <div class="w-1/4 border-b-4 border-[#FBE525]"></div>
+        <div ngClass="{{barWidth}}" class="border-b-4 border-[#FBE525]"></div>
         <!-- / Title -->
 
-        <!-- Stage 1 -->
-        <div class="w-full mt-8">
+        <!-- Step 1 -->
+        <div *ngIf="step == 1" class="w-full mt-8">
             <app-type></app-type>
         </div>
 
-        <!-- Stage 2 -->
+        <!-- Step 2 -->
+        <div *ngIf="step == 2" class="w-full mt-8">
+            <app-characteristics></app-characteristics>
+        </div>
 
     </div>
-
+    
+    <div class="w-max absolute top-1/2 right-6">
+        <button type="button" (click)="nextStep()" class="w-max py-4 mt-10 bg-[#FBE525] rounded-full px-4 flex justify-between items-center border-none text-sm gap-4 font-semibold hover:drop-shadow-[0px_0px_20px_rgba(251,229,37,1)] active:drop-shadow-none active:bg-[#E1CB04] lg:max-w-[450px] lg:text-[16px] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:drop-shadow-none">
+            Next: Characteristics
+            <app-arrow-right dimensions="w-6 h-6" color="#000"></app-arrow-right>
+        </button>
+    </div>
 </div>
