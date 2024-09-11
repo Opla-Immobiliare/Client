@@ -15,6 +15,10 @@ export const routes: Routes = [
   {
     path: 'complete-profile',
     component: CompleteBusinessProfileComponent
+  },
+  {
+    path: 'plans',
+    component: PlansComponent
   }
 ]
 
