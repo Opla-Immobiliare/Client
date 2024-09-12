@@ -100,8 +100,84 @@
                     </div>
                 </td>
                 <td class="w-3/4 pl-6">
-                    <div class="w-full bg-[#EBE7E0] p-2">
-                        <!-- <input type="checkbox" class="hidden peer"> -->
+                    <div [ngClass]="characteristisForm.value.renovated == 'yes' ? 'w-full' : 'w-max'" class="w-full bg-[#EBE7E0] p-1 rounded-full inline-flex justify-between items-center">
+                        <!-- Yes / No -->
+                        <div class="w-[92px] p-[2px] bg-[#FBE525] rounded-full">
+                            <ul class="grid w-full gap-[2px] grid-cols-2">
+                                <!-- Rent -->
+                                <li class="cursor-pointer">
+                                    <input type="radio" id="no" name="renovated" formControlName="renovated" value="no" class="hidden peer" checked/>
+                                    <label for="no" class="w-10 inline-flex justify-center items-center h-10 rounded-full bg-transparent peer-checked:bg-[#5C503D] peer-checked:text-white text-xs">
+                                        No
+                                    </label>
+                                </li>
+                                <!-- Buy -->
+                                <li class="cursor-pointer">
+                                    <input type="radio" id="yes" name="renovated" formControlName="renovated" value="yes" class="hidden peer"/>
+                                    <label for="yes" class="w-10 inline-flex justify-center items-center h-10 rounded-full bg-transparent peer-checked:bg-[#5C503D] peer-checked:text-white text-xs">
+                                        Yes
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Input -->
+                        <div *ngIf="characteristisForm.value.renovated == 'yes'" class="w-max inline-flex items-center gap-3">
+                            <div class="relative z-0 w-[220px] group">
+                                <input 
+                                    type="number"
+                                    id="renovationYear"
+                                    formControlName="renovationYear"
+                                    [ngClass]="[!characteristisForm.controls['renovationYear'].valid && (characteristisForm.controls['renovationYear'].touched || characteristisForm.controls['renovationYear'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                                    class="block w-full max-w-[220px] h-12 items-center text-center px-4 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                                    placeholder=""
+                                    autocomplete="off"
+                                    required />
+                                <label
+                                    for="renovationYear"
+                                    [ngClass]="labelControl('renovationYear')"
+                                    class="absolute text-base text-[#5C503D] duration-300 transform -translate-y-8 scale-75 top-3 left-4 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                                    Renovation Year*
+                                </label>
+                            </div>
+                        
+                        </div>
+                        <!-- Fully -->
+                        <div *ngIf="characteristisForm.value.renovated == 'yes'" class="w-max inline-flex justify-start items-center gap-4 rounded-full h-12 bg-[#D6CEC2] pl-3 pr-6">
+                            <input id="fully" type="radio" value="fully" name="renovationType" formControlName="renovationType" class="w-6 h-6 text-[#5C503D] bg-transparent border-[#5C503D] focus:ring-none focus:ring-0" />
+                            <label for="fully" class="text-base">Fully</label>
+                        </div>
+                        <!-- Partially -->
+                        <div *ngIf="characteristisForm.value.renovated == 'yes'" class="w-max inline-flex justify-start items-center gap-4 rounded-full h-12 bg-[#D6CEC2] pl-3 pr-6">
+                            <input id="partially" type="radio" value="partially" name="renovationType" formControlName="renovationType" class="w-6 h-6 text-[#5C503D] bg-transparent border-[#5C503D] focus:ring-none focus:ring-0" />
+                            <label for="partially" class="text-base">Partially</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Floor -->
+            <tr class="w-full">
+                <td class="w-1/4 border-r border-[#BAAC98] py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <app-steps-icon dimensions="w-6 h-6" color="#5C503D"></app-steps-icon>
+                        <p class="text-base font-semibold">Floor</p>
+                    </div>
+                    <p class="pt-1 text-xs text-[#5C503D] max-w-[235px]">Eισάγετε πώτα το σύνολο των ορόφων της πολυκατοικίας.</p>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-max inline-flex items-center gap-4">
+                        <!-- BuildingFloors -->
+                        <div class="bg-transparent p-[1px] inline-flex justify-center items-center border-2 border-[#CCC2B2] gap-3 rounded-full ">
+                            <button [disabled]="characteristisForm.value.buildingFloors == 0" type="button" (click)="characteristisForm.value.buildingFloors = characteristisForm.value.buildingFloors - 1" class="rounded-full w-10 h-10 inline-flex items-center justify-center bg-[#CCC2B2] cursor-pointer disabled:bg-opacity-50 disabled:cursor-not-allowed">
+                                <app-minus-icon dimensions="w-4 h-4" color="#000"></app-minus-icon>
+                            </button>
+                            <p class="text-base w-10 text-center">{{ characteristisForm.value.buildingFloors }}</p>
+                            <button type="button" (click)="characteristisForm.value.buildingFloors = characteristisForm.value.buildingFloors + 1" class="rounded-full w-10 h-10 inline-flex items-center justify-center bg-[#CCC2B2] cursor-pointer disabled:bg-opacity-50 disabled:cursor-not-allowed">
+                                <app-plus-icon dimensions="w-4 h-4" color="#000"></app-plus-icon>
+                            </button>
+                        </div>
+                        <!-- House Floor -->
+                        
                     </div>
                 </td>
             </tr>

@@ -18,7 +18,7 @@ export class AddPropertyComponent implements OnInit {
     switch (this.step) {
       case 1: 
         this.step = 2;
-        this.barWidth = '2/4';
+        this.barWidth = 'w-2/4';
         this.title = '2/4. Characteristics';
         this.subTitle = 'Fill in the characteristics of your property.';
         break;

@@ -18,7 +18,11 @@ export class CharacteristicsComponent implements OnInit {
     return new FormGroup({
       squareMetters: new FormControl<number | undefined>(undefined, [Validators.required]),
       price: new FormControl<number | undefined>(undefined, [Validators.required]),
-      constructionYear: new FormControl<number | undefined>(undefined, [Validators.required])
+      constructionYear: new FormControl<number | undefined>(undefined, [Validators.required]),
+      renovated: new FormControl<string>('no', [Validators.required]),
+      renovationYear: new FormControl<number | undefined>(undefined, [Validators.required]),
+      renovationType: new FormControl<string>('fully', [Validators.required]),
+      buildingFloors: new FormControl<number>(0, [Validators.required])
     });
   }
 
