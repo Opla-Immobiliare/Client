@@ -53,6 +53,11 @@ import { MagnifyingGlassIconComponent } from './magnifying-glass-icon/magnifying
 import { HomeIconComponent } from './home-icon/home-icon.component';
 import { HammerIconComponent } from './hammer-icon/hammer-icon.component';
 import { StepsIconComponent } from './steps-icon/steps-icon.component';
+import { CookingPotIconComponent } from './cooking-pot-icon/cooking-pot-icon.component';
+import { ArmChairIconComponent } from './arm-chair-icon/arm-chair-icon.component';
+import { ParkingIconComponent } from './parking-icon/parking-icon.component';
+import { OvenIconComponent } from './oven-icon/oven-icon.component';
+import { CoinsIconComponent } from './coins-icon/coins-icon.component';
 
 
 
@@ -111,6 +116,11 @@ import { StepsIconComponent } from './steps-icon/steps-icon.component';
     HomeIconComponent,
     HammerIconComponent,
     StepsIconComponent,
+    CookingPotIconComponent,
+    ArmChairIconComponent,
+    ParkingIconComponent,
+    OvenIconComponent,
+    CoinsIconComponent,
   ],
   imports: [
     CommonModule
@@ -169,7 +179,12 @@ import { StepsIconComponent } from './steps-icon/steps-icon.component';
     MagnifyingGlassIconComponent,
     HomeIconComponent,
     HammerIconComponent,
-    StepsIconComponent
+    StepsIconComponent,
+    CookingPotIconComponent,
+    ArmChairIconComponent,
+    ParkingIconComponent,
+    OvenIconComponent,
+    CoinsIconComponent
   ]
 })
 export class IconsModule { }

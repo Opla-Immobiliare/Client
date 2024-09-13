@@ -155,7 +155,7 @@
                 </td>
             </tr>
 
-            <!-- Floor -->
+            <!-- Floor --> <!-- TODO: -->
             <tr class="w-full">
                 <td class="w-1/4 border-r border-[#BAAC98] py-6">
                     <div class="inline-flex items-center gap-4">
@@ -177,10 +177,241 @@
                             </button>
                         </div>
                         <!-- House Floor -->
-                        
+                        <div class="w-full relative">
+                            <button data-dropdown-toggle="apartmentFloor" type="button" class="h-12 w-[300px] inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full">
+                                <p class="text-base">{{ characteristisForm.value.apartmentFloor }}</p>
+                                <app-caret-down class="w-4 h-4" color="#000"></app-caret-down>
+                            </button>
+                            <div id="apartmentFloor" class="hidden w-[300px] h-[288px] rounded-[20px] bg-[#CCC2B2] p-2">
+                                <ul class="w-full">
+                                    <li *ngFor="let item of [].constructor(characteristisForm.value.apartmentFloor); index as i" class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.apartmentFloor = 1">{{i + 1}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Energy Efficiency Class -->
+            <tr class="w-full">
+                <td class="w-1/4 border-r border-[#BAAC98] py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <app-light-bulb-filament-icon dimensions="w-6 h-6" color="#5C503D"></app-light-bulb-filament-icon>
+                        <p class="text-base font-semibold">Energy efficiency class</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="rounded-full border border-[#CCC2B2] bg-[#D6CEC2] w-full">
+                        <table class="w-full">
+                            <tr class="w-full text-center">
+                                <td (click)="characteristisForm.value.energyClass = 'None'" [ngClass]="characteristisForm.value.energyClass == 'None' ? 'bg-[#A39175] text-white' : 'bg-transparent text-black'" class="border-r border-[#CCC2B2] cursor-pointer text-base rounded-l-full h-10">None</td>
+                                <td (click)="characteristisForm.value.energyClass = 'H'" [ngClass]="characteristisForm.value.energyClass == 'H' ? 'bg-[#A39175] text-white' : 'bg-transparent text-black'" class="border-r border-[#CCC2B2] cursor-pointer text-base h-10">H</td>
+                                <td (click)="characteristisForm.value.energyClass = 'Z'" [ngClass]="characteristisForm.value.energyClass == 'Z' ? 'bg-[#A39175] text-white' : 'bg-transparent text-black'" class="border-r border-[#CCC2B2] cursor-pointer text-base h-10">Z</td>
+                                <td (click)="characteristisForm.value.energyClass = 'C'" [ngClass]="characteristisForm.value.energyClass == 'C' ? 'bg-[#A39175] text-white' : 'bg-transparent text-black'" class="border-r border-[#CCC2B2] cursor-pointer text-base h-10">C</td>
+                                <td (click)="characteristisForm.value.energyClass = 'D'" [ngClass]="characteristisForm.value.energyClass == 'D' ? 'bg-[#A39175] text-white' : 'bg-transparent text-black'" class="border-r border-[#CCC2B2] cursor-pointer text-base h-10">E</td>
+                                <td (click)="characteristisForm.value.energyClass = 'E'" [ngClass]="characteristisForm.value.energyClass == 'E' ? 'bg-[#A39175] text-white' : 'bg-transparent text-black'" class="border-r border-[#CCC2B2] cursor-pointer text-base h-10">D</td>
+                                <td (click)="characteristisForm.value.energyClass = 'G'" [ngClass]="characteristisForm.value.energyClass == 'G' ? 'bg-[#A39175] text-white' : 'bg-transparent text-black'" class="border-r border-[#CCC2B2] cursor-pointer text-base h-10">G</td>
+                                <td (click)="characteristisForm.value.energyClass = 'B'" [ngClass]="characteristisForm.value.energyClass == 'B' ? 'bg-[#A39175] text-white' : 'bg-transparent text-black'" class="border-r border-[#CCC2B2] cursor-pointer text-base h-10">B</td>
+                                <td (click)="characteristisForm.value.energyClass = 'B+'" [ngClass]="characteristisForm.value.energyClass == 'B+' ? 'bg-[#A39175] text-white' : 'bg-transparent text-black'" class="border-r border-[#CCC2B2] cursor-pointer text-base h-10">B+</td>
+                                <td (click)="characteristisForm.value.energyClass = 'A'" [ngClass]="characteristisForm.value.energyClass == 'A' ? 'bg-[#A39175] text-white' : 'bg-transparent text-black'" class="border-r border-[#CCC2B2] cursor-pointer text-base h-10">A</td>
+                                <td (click)="characteristisForm.value.energyClass = 'A+'" [ngClass]="characteristisForm.value.energyClass == 'A+' ? 'bg-[#A39175] text-white' : 'bg-transparent text-black'" class="border-r border-[#CCC2B2] cursor-pointer text-base h-10">A+</td>
+                                <td (click)="characteristisForm.value.energyClass = 'A++'" [ngClass]="characteristisForm.value.energyClass == 'A++' ? 'bg-[#A39175] text-white' : 'bg-transparent text-black'" class="border-r border-[#CCC2B2] cursor-pointer text-base h-10">A++</td>
+                                <td (click)="characteristisForm.value.energyClass = 'A+++'" [ngClass]="characteristisForm.value.energyClass == 'A+++' ? 'bg-[#A39175] text-white' : 'bg-transparent text-black'" class="cursor-pointer text-base rounded-r-full h-10">A+++</td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Heating  --> <!-- TODO: -->
+            <tr class="w-full">
+                <td class="w-1/4 border-r border-[#BAAC98] py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <app-fire-icon dimensions="w-6 h-6" color="#5C503D"></app-fire-icon>
+                        <p class="text-base font-semibold">Heating</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6"></td>
+            </tr>
+
+            <!-- Rooms -->
+            <tr class="w-full">
+                <td class="w-1/4 border-r border-[#BAAC98] py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <app-bed-icon dimensions="w-6 h-6" color="#5C503D"></app-bed-icon>
+                        <p class="text-base font-semibold">Number of Rooms</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="bg-transparent p-[1px] inline-flex justify-center items-center border-2 border-[#CCC2B2] gap-3 rounded-full ">
+                        <button [disabled]="characteristisForm.value.rooms == 0" type="button" (click)="characteristisForm.value.rooms = characteristisForm.value.rooms - 1" class="rounded-full w-10 h-10 inline-flex items-center justify-center bg-[#CCC2B2] cursor-pointer disabled:bg-opacity-50 disabled:cursor-not-allowed">
+                            <app-minus-icon dimensions="w-4 h-4" color="#000"></app-minus-icon>
+                        </button>
+                        <p class="text-base w-10 text-center">{{ characteristisForm.value.rooms }}</p>
+                        <button type="button" (click)="characteristisForm.value.rooms = characteristisForm.value.rooms + 1" class="rounded-full w-10 h-10 inline-flex items-center justify-center bg-[#CCC2B2] cursor-pointer disabled:bg-opacity-50 disabled:cursor-not-allowed">
+                            <app-plus-icon dimensions="w-4 h-4" color="#000"></app-plus-icon>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Bathrooms -->
+            <tr class="w-full">
+                <td class="w-1/4 border-r border-[#BAAC98] py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <app-bathtub-icon dimensions="w-6 h-6" color="#5C503D"></app-bathtub-icon>
+                        <p class="text-base font-semibold">Bathrooms</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="bg-transparent p-[1px] inline-flex justify-center items-center border-2 border-[#CCC2B2] gap-3 rounded-full ">
+                        <button [disabled]="characteristisForm.value.bathrooms == 0" type="button" (click)="characteristisForm.value.bathrooms = characteristisForm.value.bathrooms - 1" class="rounded-full w-10 h-10 inline-flex items-center justify-center bg-[#CCC2B2] cursor-pointer disabled:bg-opacity-50 disabled:cursor-not-allowed">
+                            <app-minus-icon dimensions="w-4 h-4" color="#000"></app-minus-icon>
+                        </button>
+                        <p class="text-base w-10 text-center">{{ characteristisForm.value.bathrooms }}</p>
+                        <button type="button" (click)="characteristisForm.value.bathrooms = characteristisForm.value.bathrooms + 1" class="rounded-full w-10 h-10 inline-flex items-center justify-center bg-[#CCC2B2] cursor-pointer disabled:bg-opacity-50 disabled:cursor-not-allowed">
+                            <app-plus-icon dimensions="w-4 h-4" color="#000"></app-plus-icon>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Kitchen -->
+            <tr class="w-full">
+                <td class="w-1/4 border-r border-[#BAAC98] py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <app-cooking-pot-icon dimensions="w-6 h-6" color="#5C503D"></app-cooking-pot-icon>
+                        <p class="text-base font-semibold">How Many Kitchens?</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="bg-transparent p-[1px] inline-flex justify-center items-center border-2 border-[#CCC2B2] gap-3 rounded-full ">
+                        <button [disabled]="characteristisForm.value.kitchens == 0" type="button" (click)="characteristisForm.value.kitchens = characteristisForm.value.kitchens - 1" class="rounded-full w-10 h-10 inline-flex items-center justify-center bg-[#CCC2B2] cursor-pointer disabled:bg-opacity-50 disabled:cursor-not-allowed">
+                            <app-minus-icon dimensions="w-4 h-4" color="#000"></app-minus-icon>
+                        </button>
+                        <p class="text-base w-10 text-center">{{ characteristisForm.value.kitchens }}</p>
+                        <button type="button" (click)="characteristisForm.value.kitchens = characteristisForm.value.kitchens + 1" class="rounded-full w-10 h-10 inline-flex items-center justify-center bg-[#CCC2B2] cursor-pointer disabled:bg-opacity-50 disabled:cursor-not-allowed">
+                            <app-plus-icon dimensions="w-4 h-4" color="#000"></app-plus-icon>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Living Rooms -->
+            <tr class="w-full">
+                <td class="w-1/4 border-r border-[#BAAC98] py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <app-arm-chair-icon dimensions="w-6 h-6" color="#5C503D"></app-arm-chair-icon>
+                        <p class="text-base font-semibold">How many living rooms?</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="bg-transparent p-[1px] inline-flex justify-center items-center border-2 border-[#CCC2B2] gap-3 rounded-full ">
+                        <button [disabled]="characteristisForm.value.livingRooms == 0" type="button" (click)="characteristisForm.value.livingRooms = characteristisForm.value.livingRooms - 1" class="rounded-full w-10 h-10 inline-flex items-center justify-center bg-[#CCC2B2] cursor-pointer disabled:bg-opacity-50 disabled:cursor-not-allowed">
+                            <app-minus-icon dimensions="w-4 h-4" color="#000"></app-minus-icon>
+                        </button>
+                        <p class="text-base w-10 text-center">{{ characteristisForm.value.livingRooms }}</p>
+                        <button type="button" (click)="characteristisForm.value.livingRooms = characteristisForm.value.livingRooms + 1" class="rounded-full w-10 h-10 inline-flex items-center justify-center bg-[#CCC2B2] cursor-pointer disabled:bg-opacity-50 disabled:cursor-not-allowed">
+                            <app-plus-icon dimensions="w-4 h-4" color="#000"></app-plus-icon>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Parking -->
+            <tr class="w-full">
+                <td class="w-1/4 border-r border-[#BAAC98] py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <app-parking-icon dimensions="w-6 h-6" color="#5C503D"></app-parking-icon>
+                        <p class="text-base font-semibold">Parking?</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div [ngClass]="characteristisForm.value.parking == 'yes' ? 'w-full' : 'w-max'" class="w-full bg-[#EBE7E0] p-1 rounded-full inline-flex justify-between items-center">
+                        <!-- Yes / No -->
+                        <div class="w-[92px] p-[2px] bg-[#FBE525] rounded-full">
+                            <ul class="grid w-full gap-[2px] grid-cols-2">
+                                <!-- Yes -->
+                                <li class="cursor-pointer">
+                                    <input type="radio" id="noParking" name="parking" formControlName="parking" value="no" class="hidden peer"/>
+                                    <label for="noParking" class="w-10 inline-flex justify-center items-center h-10 rounded-full bg-transparent peer-checked:bg-[#5C503D] peer-checked:text-white text-xs">
+                                        No
+                                    </label>
+                                </li>
+                                <!-- No -->
+                                <li class="cursor-pointer">
+                                    <input type="radio" id="yesParking" name="parking" formControlName="parking" value="yes" class="hidden peer"/>
+                                    <label for="yesParking" class="w-10 inline-flex justify-center items-center h-10 rounded-full bg-transparent peer-checked:bg-[#5C503D] peer-checked:text-white text-xs">
+                                        Yes
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Input -->
+                        <div *ngIf="characteristisForm.value.parking == 'yes'" class="w-max inline-flex items-center gap-3">
+                            <div class="bg-transparent p-[1px] inline-flex justify-center items-center border-2 border-[#CCC2B2] gap-3 rounded-full ">
+                                <button [disabled]="characteristisForm.value.parkingSpace == 0" type="button" (click)="characteristisForm.value.parkingSpace = characteristisForm.value.parkingSpace - 1" class="rounded-full w-10 h-10 inline-flex items-center justify-center bg-[#CCC2B2] cursor-pointer disabled:bg-opacity-50 disabled:cursor-not-allowed">
+                                    <app-minus-icon dimensions="w-4 h-4" color="#000"></app-minus-icon>
+                                </button>
+                                <p class="text-base w-10 text-center">{{ characteristisForm.value.parkingSpace }}</p>
+                                <button type="button" (click)="characteristisForm.value.parkingSpace = characteristisForm.value.parkingSpace + 1" class="rounded-full w-10 h-10 inline-flex items-center justify-center bg-[#CCC2B2] cursor-pointer disabled:bg-opacity-50 disabled:cursor-not-allowed">
+                                    <app-plus-icon dimensions="w-4 h-4" color="#000"></app-plus-icon>
+                                </button>
+                            </div>
+                        </div>
+                        <div *ngIf="characteristisForm.value.parking == 'yes'" class="w-full">
+                            <div class="w-full mt-6 relative">
+                                <button data-modal-target="parkingType" data-modal-toggle="parkingType" type="button" class="h-12 w-[300px] inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full">
+                                    <p class="text-base">{{ characteristisForm.value.parkingType }}</p>
+                                    <app-caret-down class="w-4 h-4" color="#000"></app-caret-down>
+                                </button>
+                                <div id="parkingType" class="hidden w-[300px] h-[288px] rounded-[20px] bg-[#CCC2B2] p-2 mt-1">
+                                    <ul class="w-full">
+                                        <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.parkingType = 'Outdoor'" data-modal-hide="parkingType">Outdoor</li>
+                                        <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.parkingType = 'Indoor'" data-modal-hide="parkingType">Indoor</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </td>
             </tr>
         </table>
+
+        <div class="w-full mt-16 pt-6 border-t border-[#C2B6A3]">
+            <div class="w-max">
+                <p class="text-[25px] font-semibold">Additional features</p>
+                <p class="text-base pt-2">Choose the features available in your apartment</p>
+            </div>
+            <div class="w-full flex gap-4 flex-wrap mt-8">
+                <!-- Furnished -->
+                <div>
+                    <input type="checkbox" id="furnished" name="furnished" formControlName="furnished" value="" class="hidden peer" />
+                    <label for="furnished" class="w-max px-6 py-[10px] bg-[#D6CEC2] peer-checked:bg-[#A39175] rounded-full inline-flex justify-center items-center gap-4 peer-checked:text-white text-base cursor-pointer">
+                        <app-chair-icon dimensions="w-6 h-6" [color]="characteristisForm.value.furnished ? 'white' : 'black'"></app-chair-icon>
+                        <p class="text-base">Furnished</p>
+                        <app-check-icon dimensions="w-4 h-4" [color]="characteristisForm.value.furnished ? 'white' : 'black'" *ngIf="characteristisForm.value.furnished"></app-check-icon>
+                    </label>
+                </div>
+                <!-- Electrical Devices -->
+                <div>
+                    <input type="checkbox" id="electricalDevices" name="electricalDevices" formControlName="electricalDevices" value="" class="hidden peer" />
+                    <label for="electricalDevices" class="w-max px-6 py-[10px] bg-[#D6CEC2] peer-checked:bg-[#A39175] rounded-full inline-flex justify-center items-center gap-4 peer-checked:text-white text-base cursor-pointer">
+                        <app-oven-icon dimensions="w-6 h-6" [color]="characteristisForm.value.electricalDevices ? 'white' : 'black'"></app-oven-icon>
+                        <p class="text-base">Electrical Devices</p>
+                        <app-check-icon dimensions="w-4 h-4" [color]="characteristisForm.value.electricalDevices ? 'white' : 'black'" *ngIf="characteristisForm.value.electricalDevices"></app-check-icon>
+                    </label>
+                </div>
+                <!-- Maintenance Fees -->
+                <div>
+                    <input type="checkbox" id="maintenanceFees" name="maintenanceFees" formControlName="maintenanceFees" value="" class="hidden peer" />
+                    <label for="electricalDevices" class="w-max px-6 py-[10px] bg-[#D6CEC2] peer-checked:bg-[#A39175] rounded-full inline-flex justify-center items-center gap-4 peer-checked:text-white text-base cursor-pointer">
+                        <app-coins-icon dimensions="w-6 h-6" [color]="characteristisForm.value.maintenanceFees ? 'white' : 'black'"></app-coins-icon>
+                        <p class="text-base">Maintenance Fees</p>
+                        <app-check-icon dimensions="w-4 h-4" [color]="characteristisForm.value.maintenanceFees ? 'white' : 'black'" *ngIf="characteristisForm.value.maintenanceFees"></app-check-icon>
+                    </label>
+                </div>
+            </div>
+        </div>
     </form>
 </div> 

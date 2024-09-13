@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-fire-icon',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./fire-icon.component.scss']
 })
 export class FireIconComponent {
-
+  @Input() dimensions: string = '';
+  @Input() color: string = '';
 }

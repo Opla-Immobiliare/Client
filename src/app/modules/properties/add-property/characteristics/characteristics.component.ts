@@ -22,7 +22,19 @@ export class CharacteristicsComponent implements OnInit {
       renovated: new FormControl<string>('no', [Validators.required]),
       renovationYear: new FormControl<number | undefined>(undefined, [Validators.required]),
       renovationType: new FormControl<string>('fully', [Validators.required]),
-      buildingFloors: new FormControl<number>(0, [Validators.required])
+      buildingFloors: new FormControl<number>(0, [Validators.required]),
+      apartmentFloor: new FormControl('Choose the floor of the apartment', [Validators.required]),
+      energyClass: new FormControl<string>("None", [Validators.required]),
+      rooms: new FormControl<number>(0, [Validators.required]),
+      bathrooms: new FormControl<number>(0, [Validators.required]),
+      kitchens: new FormControl<number>(0, [Validators.required]),
+      livingRooms: new FormControl<number>(0, [Validators.required]),
+      parking: new FormControl<string>('no', [Validators.required]),
+      parkingSpace: new FormControl<number>(1, [Validators.required]),
+      parkingType: new FormControl('Indoor', [Validators.required]),
+      furnished: new FormControl<boolean>(false),
+      electricalDevices: new FormControl<boolean>(false),
+      maintenanceFees: new FormControl<boolean>(false),
     });
   }
 
