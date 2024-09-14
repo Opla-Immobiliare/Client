@@ -58,6 +58,17 @@ import { ArmChairIconComponent } from './arm-chair-icon/arm-chair-icon.component
 import { ParkingIconComponent } from './parking-icon/parking-icon.component';
 import { OvenIconComponent } from './oven-icon/oven-icon.component';
 import { CoinsIconComponent } from './coins-icon/coins-icon.component';
+import { DoorIconComponent } from './door-icon/door-icon.component';
+import { WarehouseIconComponent } from './warehouse-icon/warehouse-icon.component';
+import { PawPrintIconComponent } from './paw-print-icon/paw-print-icon.component';
+import { SecurityCameraIconComponent } from './security-camera-icon/security-camera-icon.component';
+import { SquareIconComponent } from './square-icon/square-icon.component';
+import { TelevisionSimpleIconComponent } from './television-simple-icon/television-simple-icon.component';
+import { ThermometerHotIconComponent } from './thermometer-hot-icon/thermometer-hot-icon.component';
+import { GameControllerIconComponent } from './game-controller-icon/game-controller-icon.component';
+import { ElevatorIconComponent } from './elevator-icon/elevator-icon.component';
+import { SolarPanelIconComponent } from './solar-panel-icon/solar-panel-icon.component';
+import { PlantIconComponent } from './plant-icon/plant-icon.component';
 
 
 
@@ -121,6 +132,17 @@ import { CoinsIconComponent } from './coins-icon/coins-icon.component';
     ParkingIconComponent,
     OvenIconComponent,
     CoinsIconComponent,
+    DoorIconComponent,
+    WarehouseIconComponent,
+    PawPrintIconComponent,
+    SecurityCameraIconComponent,
+    SquareIconComponent,
+    TelevisionSimpleIconComponent,
+    ThermometerHotIconComponent,
+    GameControllerIconComponent,
+    ElevatorIconComponent,
+    SolarPanelIconComponent,
+    PlantIconComponent,
   ],
   imports: [
     CommonModule
@@ -184,7 +206,18 @@ import { CoinsIconComponent } from './coins-icon/coins-icon.component';
     ArmChairIconComponent,
     ParkingIconComponent,
     OvenIconComponent,
-    CoinsIconComponent
+    CoinsIconComponent,
+    DoorIconComponent,
+    WarehouseIconComponent,
+    PawPrintIconComponent,
+    SecurityCameraIconComponent,
+    SquareIconComponent,
+    TelevisionSimpleIconComponent,
+    ThermometerHotIconComponent,
+    GameControllerIconComponent,
+    ElevatorIconComponent,
+    SolarPanelIconComponent,
+    PlantIconComponent
   ]
 })
 export class IconsModule { }
