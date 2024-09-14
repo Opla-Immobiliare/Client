@@ -27,6 +27,10 @@ export const routes: Routes = [
   {
     path: 'checkout',
     component: CheckoutComponent
+  },
+  {
+    path: 'order-overview',
+    component: OrderOverviewComponent
   }
 ]
 

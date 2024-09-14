@@ -69,6 +69,7 @@ import { GameControllerIconComponent } from './game-controller-icon/game-control
 import { ElevatorIconComponent } from './elevator-icon/elevator-icon.component';
 import { SolarPanelIconComponent } from './solar-panel-icon/solar-panel-icon.component';
 import { PlantIconComponent } from './plant-icon/plant-icon.component';
+import { PencilIconComponent } from './pencil-icon/pencil-icon.component';
 
 
 
@@ -143,6 +144,7 @@ import { PlantIconComponent } from './plant-icon/plant-icon.component';
     ElevatorIconComponent,
     SolarPanelIconComponent,
     PlantIconComponent,
+    PencilIconComponent,
   ],
   imports: [
     CommonModule
@@ -217,7 +219,8 @@ import { PlantIconComponent } from './plant-icon/plant-icon.component';
     GameControllerIconComponent,
     ElevatorIconComponent,
     SolarPanelIconComponent,
-    PlantIconComponent
+    PlantIconComponent,
+    PencilIconComponent
   ]
 })
 export class IconsModule { }
