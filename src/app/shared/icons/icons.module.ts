@@ -77,6 +77,7 @@ import { WindowIconComponent } from './window-icon/window-icon.component';
 import { WindowsLogoIconComponent } from './windows-logo-icon/windows-logo-icon.component';
 import { SirenIconComponent } from './siren-icon/siren-icon.component';
 import { SwimmingPoolIconComponent } from './swimming-pool-icon/swimming-pool-icon.component';
+import { CampFireIconComponent } from './camp-fire-icon/camp-fire-icon.component';
 
 
 
@@ -159,6 +160,7 @@ import { SwimmingPoolIconComponent } from './swimming-pool-icon/swimming-pool-ic
     WindowsLogoIconComponent,
     SirenIconComponent,
     SwimmingPoolIconComponent,
+    CampFireIconComponent
   ],
   imports: [
     CommonModule
@@ -238,7 +240,10 @@ import { SwimmingPoolIconComponent } from './swimming-pool-icon/swimming-pool-ic
     CircleHalfTiltIconComponent,
     ChampagneIconComponent,
     AntennaIconComponent,
-    WindowIconComponent
+    WindowIconComponent,
+    SirenIconComponent,
+    SwimmingPoolIconComponent,
+    CampFireIconComponent
   ]
 })
 export class IconsModule { }

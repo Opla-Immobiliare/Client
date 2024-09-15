@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddPropertyComponent implements OnInit {
 
-  step: number = 2;
+  step: number = 1;
   barWidth: string = 'w-1/4';
   title: string = '1/4. Ad Type';
   subTitle: string = 'Fill in the following information to post your ad.';
