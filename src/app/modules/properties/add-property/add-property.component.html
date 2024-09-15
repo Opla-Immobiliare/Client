@@ -12,7 +12,7 @@
             <div></div>
             <!-- Profile -->
             <div class="w-[137px] h-12 bg-[#8A785B] rounded-full inline-flex items-center gap-4">
-                <img class="rounded-full w-10 h-10" src="./assets/iamges/real-estate-agent.jpg" alt="RealEstateAgent">
+                <!-- <img class="rounded-full w-10 h-10" src="./assets/iamges/real-estate-agent.jpg" alt="RealEstateAgent"> -->
                 <p class="text-white text-base">Profile</p>
             </div>
         </div>
@@ -41,6 +41,11 @@
         <!-- Step 2 -->
         <div [ngClass]="step == 2 ? 'block' : 'hidden'" class="w-full mt-8">
             <app-characteristics></app-characteristics>
+        </div>
+
+        <!-- Step 3 -->
+        <div [ngClass]="step == 3 ? 'block' : 'hidden'" class="w-full mt-8">
+            <app-general-info></app-general-info>
         </div>
 
     </div>

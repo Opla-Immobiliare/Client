@@ -9,7 +9,7 @@ import { AddPropertyDataService } from './sevices/add-property.data.service';
 })
 export class AddPropertyComponent implements OnInit {
 
-  step: number = 1;
+  step: number = 2;
   barWidth: string = 'w-1/4';
   title: string = '1/4. Ad Type';
   subTitle: string = 'Fill in the following information to post your ad.';
@@ -17,10 +17,12 @@ export class AddPropertyComponent implements OnInit {
 
   typeForm: FormGroup; // TypeForm
   characteristicsForm: FormGroup; // CharacteristicsForm
+  generalInfoForm: FormGroup; // GeneralInfoForm
 
   constructor(private data: AddPropertyDataService) {
     this.typeForm = new FormGroup({});
     this.characteristicsForm = new FormGroup({});
+    this.generalInfoForm = new FormGroup({});
   }
 
   nextStep(): void {
@@ -32,11 +34,20 @@ export class AddPropertyComponent implements OnInit {
         this.subTitle = 'Fill in the characteristics of your property.';
         this.next = 'General Info';
         break;
+      case 2: 
+        this.step = 3;
+        this.barWidth = 'w-3/4';
+        this.title = '3/4. General Info';
+        this.subTitle = 'Fill in the characteristics of your property';
+        this.next = 'Review & Post';
+        break;
     }
   }
 
   ngOnInit(): void {
     this.data.typeFormSource.subscribe(typeForm => this.typeForm = typeForm);
     this.data.typeFormSource.subscribe(charForm => this.characteristicsForm = charForm);
+    this.data.generalInfoFormSource.subscribe(generalInfoForm => this.generalInfoForm = generalInfoForm);
+    this.nextStep();
   }
 }

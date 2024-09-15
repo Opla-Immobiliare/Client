@@ -1,1 +1,168 @@
-<p>general-info works!</p>
+<div class="w-full">
+    <form class="w-full" #f="ngForm" [formGroup]="generalInfoForm">
+        <table class="w-full border-none">
+
+            <!-- Access From -->
+            <tr class="w-full">
+                <td class="w-1/4 py-4">
+                    <div class="inline-flex items-center gap-4">
+                        <p class="text-base font-semibold">Access From</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-full relative">
+                        <button data-dropdown-toggle="acceessFrom" type="button" class="h-12 w-[300px] inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full">
+                            <p class="text-base">{{ generalInfoForm.value.acceessFrom }}</p>
+                            <app-caret-down class="w-4 h-4" color="#000"></app-caret-down>
+                        </button>
+                        <div id="acceessFrom" class="hidden w-[300px] h-[max] rounded-[20px] bg-[#CCC2B2] p-2 z-50">
+                            <ul class="w-full">
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.acceessFrom = 'Street'">Street</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.acceessFrom = 'Sidewak'">Sidewak</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.acceessFrom = 'Paved'">Paved</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.acceessFrom = 'Dirt Road'">Dirt Road</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.acceessFrom = 'Sea'">Sea</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.acceessFrom = 'Without Access'">Without Access</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.acceessFrom = 'Other'">Other</li>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Accessibility -->
+            <tr class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <app-wheelchair-icon dimensions="w-6 h-6" color="#5C503D"></app-wheelchair-icon>
+                        <p class="text-base font-semibold">Accessible for people with disabilities?</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div [ngClass]="generalInfoForm.value.accessibillity == 'yes' ? 'bg-[#FBE525]' : 'bg-[#EBE7E0]'" class="w-max p-[2px] rounded-full">
+                        <ul class="w-full grid grid-cols-2 gap-[2px]">
+                            <li class="cursor-pointer">
+                                <input type="radio" id="noAccess" value="no" name="accessibillity" formControlName="accessibillity" class="peer hidden">
+                                <label for="noAccess" class="w-10 inline-flex justify-center items-center h-10 rounded-full bg-transparent peer-checked:bg-[#5C503D] peer-checked:text-white text-xs">
+                                    No
+                                </label>
+                            </li>
+                            <li class="cursor-pointer">
+                                <input type="radio" id="yesAccess" name="accessibillity" formControlName="accessibillity" value="yes" class="peer hidden">
+                                <label for="yesAccess" class="w-10 inline-flex justify-center items-center h-10 rounded-full bg-transparent peer-checked:bg-[#5C503D] peer-checked:text-white text-xs">
+                                    Yes
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- View -->
+            <tr class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <p class="text-base font-semibold">View</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div [ngClass]="generalInfoForm.value.view == 'yes' ? 'w-[400px]' : 'w-max'" class="bg-[#EBE7E0] p-1 rounded-full inline-flex justify-between items-center">
+                        <ul [ngClass]="generalInfoForm.value.view == 'yes' ? 'bg-[#FBE525]' : 'bg-transparent'" class="grid w-max grid-cols-2 rounded-full">
+                            <!-- Rent -->
+                            <li class="cursor-pointer">
+                                <input type="radio" id="noView" name="view" formControlName="view" value="no" class="hidden peer"/>
+                                <label for="noView" class="w-10 inline-flex justify-center items-center h-10 rounded-full bg-transparent peer-checked:bg-[#5C503D] peer-checked:text-white text-xs">
+                                    No
+                                </label>
+                            </li>
+                            <!-- Buy -->
+                            <li class="cursor-pointer">
+                                <input type="radio" id="yesView" name="view" formControlName="view" value="yes" class="hidden peer"/>
+                                <label for="yesView" class="w-10 inline-flex justify-center items-center h-10 rounded-full bg-transparent peer-checked:bg-[#5C503D] peer-checked:text-white text-xs">
+                                    Yes
+                                </label>
+                            </li>
+                        </ul>
+                        <div [ngClass]="generalInfoForm.value.view == 'yes' ? 'block' : 'hidden'" class="w-max relative">
+                            <button data-dropdown-toggle="viewType" type="button" class="h-12 w-[244px] inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full">
+                                <p class="text-base">{{ generalInfoForm.value.viewType }}</p>
+                                <app-caret-down class="w-4 h-4" color="#000"></app-caret-down>
+                            </button>
+                            <div id="viewType" class="hidden w-[300px] h-[max] rounded-[20px] bg-[#CCC2B2] p-2 z-50">
+                                <ul class="w-full">
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.viewType = 'Sea'">Sea</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.viewType = 'Mountain'">Mountain</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.viewType = 'Opening View'">Opening View</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.viewType = 'City'">City</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.viewType = 'Plain'">Plain</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.viewType = 'Forest'">Forest</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.viewType = 'Park'">Park</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.viewType = 'Square'">Square</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Positioning -->
+            <tr class="w-full">
+                <td class="w-1/4 py-4">
+                    <div class="inline-flex items-center gap-4">
+                        <p class="text-base font-semibold">Positioning</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-full relative">
+                        <button data-dropdown-toggle="positioning" type="button" class="h-12 w-[300px] inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full">
+                            <p class="text-base">{{ generalInfoForm.value.positioning }}</p>
+                            <app-caret-down class="w-4 h-4" color="#000"></app-caret-down>
+                        </button>
+                        <div id="positioning" class="hidden w-[300px] h-[max] rounded-[20px] bg-[#CCC2B2] p-2 z-50">
+                            <ul class="w-full">
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.positioning = 'Corner'">Corner</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.positioning = 'Facade'">Facade</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.positioning = 'Interior'">Interion</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.positioning = 'Side'">Side</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.positioning = 'Transparent'">Transaprent</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.positioning = 'Bright'">Bright</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.positioning = 'Three-Sided'">Three-Sided</li>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Zone -->
+            <tr class="w-full">
+                <td class="w-1/4 py-4">
+                    <div class="inline-flex items-center gap-4">
+                        <p class="text-base font-semibold">Zone</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-full relative">
+                        <button data-dropdown-toggle="zone" type="button" class="h-12 w-[300px] inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full">
+                            <p class="text-base">{{ generalInfoForm.value.zone }}</p>
+                            <app-caret-down class="w-4 h-4" color="#000"></app-caret-down>
+                        </button>
+                        <div id="zone" class="hidden w-[300px] h-[max] rounded-[20px] bg-[#CCC2B2] p-2 z-50">
+                            <ul class="w-full">
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.zone = 'Residential'">Residential</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.zone = 'Commercial'">Commercial</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.zone = 'Agricultural'">Agricultural</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.zone = 'Industrial'">Industrial</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.zone = 'Regeneration'">Regeneration</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.zone = 'Out of plan'">Out of plan</li>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Square metters -->
+            
+        </table>
+
+    </form>
+</div>
