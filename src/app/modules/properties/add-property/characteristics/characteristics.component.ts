@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AddPropertyDataService } from '../sevices/add-property.data.service';
 
 @Component({
   selector: 'app-characteristics',
@@ -9,9 +10,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class CharacteristicsComponent implements OnInit {
 
   characteristisForm: FormGroup;
-  apartmentsArray = new Array(99).map((x,i) => i + 1);
 
-  constructor() {
+  constructor(private data: AddPropertyDataService) {
     this.characteristisForm = this.generateCharacteristicsForm();
   }
 
@@ -54,10 +54,13 @@ export class CharacteristicsComponent implements OnInit {
       maintainable: new FormControl<boolean>(false),
       awnings: new FormControl<boolean>(false),
       alarmSystem: new FormControl<boolean>(false),
-      pool: new FormControl<string>('None'),
+      pool: new FormControl<string>('none'),
       garden: new FormControl<boolean>(false),
       heating: new FormControl<string>('Autonomous', [Validators.required]),
-      heatingType: new FormControl<string>('Choose heating type', [Validators.required])
+      heatingType: new FormControl<string>('Choose heating type', [Validators.required]),
+      doorType: new FormControl<string>('Door type', [Validators.required]),
+      floorType: new FormControl<string>('Floor type', [Validators.required]),
+      warehouse: new FormControl<string>('none', [Validators.required]),
     });
   }
 
@@ -71,7 +74,12 @@ export class CharacteristicsComponent implements OnInit {
     return Array(n);
   }
 
+  // Update Characteristics Form
+  updateCharacteristicsForm(): void {
+    this.data.changeCharacteristicsForm(this.characteristisForm);
+  }
+
   ngOnInit(): void {
-    console.log(this.apartmentsArray);
+    
   }
 }
