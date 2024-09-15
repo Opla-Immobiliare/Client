@@ -70,6 +70,13 @@ import { ElevatorIconComponent } from './elevator-icon/elevator-icon.component';
 import { SolarPanelIconComponent } from './solar-panel-icon/solar-panel-icon.component';
 import { PlantIconComponent } from './plant-icon/plant-icon.component';
 import { PencilIconComponent } from './pencil-icon/pencil-icon.component';
+import { CircleHalfTiltIconComponent } from './circle-half-tilt-icon/circle-half-tilt-icon.component';
+import { ChampagneIconComponent } from './champagne-icon/champagne-icon.component';
+import { AntennaIconComponent } from './antenna-icon/antenna-icon.component';
+import { WindowIconComponent } from './window-icon/window-icon.component';
+import { WindowsLogoIconComponent } from './windows-logo-icon/windows-logo-icon.component';
+import { SirenIconComponent } from './siren-icon/siren-icon.component';
+import { SwimmingPoolIconComponent } from './swimming-pool-icon/swimming-pool-icon.component';
 
 
 
@@ -145,6 +152,13 @@ import { PencilIconComponent } from './pencil-icon/pencil-icon.component';
     SolarPanelIconComponent,
     PlantIconComponent,
     PencilIconComponent,
+    CircleHalfTiltIconComponent,
+    ChampagneIconComponent,
+    AntennaIconComponent,
+    WindowIconComponent,
+    WindowsLogoIconComponent,
+    SirenIconComponent,
+    SwimmingPoolIconComponent,
   ],
   imports: [
     CommonModule
@@ -220,7 +234,11 @@ import { PencilIconComponent } from './pencil-icon/pencil-icon.component';
     ElevatorIconComponent,
     SolarPanelIconComponent,
     PlantIconComponent,
-    PencilIconComponent
+    PencilIconComponent,
+    CircleHalfTiltIconComponent,
+    ChampagneIconComponent,
+    AntennaIconComponent,
+    WindowIconComponent
   ]
 })
 export class IconsModule { }
