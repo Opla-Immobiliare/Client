@@ -9,7 +9,7 @@ import { AddPropertyDataService } from './sevices/add-property.data.service';
 })
 export class AddPropertyComponent implements OnInit {
 
-  step: number = 2;
+  step: number = 1;
   barWidth: string = 'w-1/4';
   title: string = '1/4. Ad Type';
   subTitle: string = 'Fill in the following information to post your ad.';
@@ -41,6 +41,12 @@ export class AddPropertyComponent implements OnInit {
         this.subTitle = 'Fill in the characteristics of your property';
         this.next = 'Review & Post';
         break;
+      case 3:
+        this.step = 4;
+        this.barWidth = 'w-4/4';
+        this.title = '4/4. Review';
+        this.subTitle = 'Check if everything is correct and let\'s proceed with publishing!';
+        break;
     }
   }
 
@@ -48,6 +54,5 @@ export class AddPropertyComponent implements OnInit {
     this.data.typeFormSource.subscribe(typeForm => this.typeForm = typeForm);
     this.data.typeFormSource.subscribe(charForm => this.characteristicsForm = charForm);
     this.data.generalInfoFormSource.subscribe(generalInfoForm => this.generalInfoForm = generalInfoForm);
-    this.nextStep();
   }
 }

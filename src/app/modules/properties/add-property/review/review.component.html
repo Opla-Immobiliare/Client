@@ -1,1 +1,484 @@
-<p>review works!</p>
+<div class="w-full">
+
+    <!-- 1st Step -->
+    <div class="w-full mt-8 pb-8 border-b border-[#A39175]">
+        <div class="w-full inline-flex justify-between items-center">
+            <p class="text-base font-semibold">1st step</p>
+            <div class="inline-flex gap-3 items-center cursor-pointer">
+                <app-pencil dimensions="w-6 h-6" color="#7D7102"></app-pencil>
+                <p class="text-base text-[#7D7102]">Edit</p>
+            </div>
+        </div>
+
+        <table class="w-full border-none">
+            <!-- Type of ad -->
+            <tr class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <p class="text-base">Type of ad</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-[150px] h-8 text-center bg-[#D6CEC2] rounded">
+                        <p class="text-base font-semibold text=[#5C503D]">{{ typeFormGroup.value.rentOrSale }}</p>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Type of property -->
+            <tr class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <p class="text-base">Type of property</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-[150px] h-8 text-center bg-[#D6CEC2] rounded">
+                        <p class="text-base font-semibold text=[#5C503D]">{{ typeFormGroup.value.propertyType }}</p>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Type of Category -->
+            <tr class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <p class="text-base">Type of property</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-[150px] h-8 text-center bg-[#D6CEC2] rounded">
+                        <p class="text-base font-semibold text=[#5C503D]">{{ typeFormGroup.value.propertyCategory }}</p>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Area -->
+            <tr class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <p class="text-base">Area</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-full h-8 text-center bg-[#D6CEC2] rounded">
+                        <p class="text-base font-semibold text=[#5C503D]">{{ typeFormGroup.value.comune }} > {{ typeFormGroup.value.area }}</p>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Address -->
+            <tr class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <p class="text-base">Address</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-full h-8 text-center bg-[#D6CEC2] rounded">
+                        <p class="text-base font-semibold text=[#5C503D]">{{ typeFormGroup.value.address }}</p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 2nd Step -->
+    <div class="w-full mt-8 pb-8 border-b border-[#A39175]">
+        <div class="w-full inline-flex justify-between items-center">
+            <p class="text-base font-semibold">2nd step</p>
+            <div class="inline-flex gap-3 items-center cursor-pointer">
+                <app-pencil dimensions="w-6 h-6" color="#7D7102"></app-pencil>
+                <p class="text-base text-[#7D7102]">Edit</p>
+            </div>
+        </div>
+
+        <table class="w-full border-none">
+            <!-- Square Area -->
+            <tr class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <app-map-pin-area-icon dimensions="w-6 h-6" color="#5C503D"></app-map-pin-area-icon>
+                        <p class="text-base">Square Area</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-[150px] h-8 text-center bg-[#D6CEC2] rounded">
+                        <p class="text-base font-semibold text=[#5C503D]">{{ charFormGroup.value.squareMetters }}</p>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Price -->
+            <tr class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <app-currency-euro-icon dimensions="w-6 h-6" color="#5C503D"></app-currency-euro-icon>
+                        <p class="text-base">Price</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-max h-8 text-center bg-[#D6CEC2] rounded px-6">
+                        <p class="text-base font-semibold text=[#5C503D]">{{ charFormGroup.value.price }}</p>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Rooms -->
+            <tr class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <app-bed-icon dimensions="w-6 h-6" color="#5C503D"></app-bed-icon>
+                        <p class="text-base">Number Of Rooms</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-max h-8 text-center bg-[#D6CEC2] rounded px-6">
+                        <p class="text-base font-semibold text=[#5C503D]">{{ charFormGroup.value.price }}</p>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Bathrooms -->
+            <tr class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <app-bathtub-icon dimensions="w-6 h-6" color="#5C503D"></app-bathtub-icon>
+                        <p class="text-base">Number of Bathrooms</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-max h-8 text-center bg-[#D6CEC2] rounded px-6">
+                        <p class="text-base font-semibold text=[#5C503D]">{{ charFormGroup.value.bathrooms }}</p>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Kitchens -->
+            <tr class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <app-cooking-pot-icon dimensions="w-6 h-6" color="#5C503D"></app-cooking-pot-icon>
+                        <p class="text-base">Number of Kitchens</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-max h-8 text-center bg-[#D6CEC2] rounded px-6">
+                        <p class="text-base font-semibold text=[#5C503D]">{{ charFormGroup.value.kitchens }}</p>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Kitchens -->
+            <tr class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <app-arm-chair-icon dimensions="w-6 h-6" color="#5C503D"></app-arm-chair-icon>
+                        <p class="text-base">Number of living rooms</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-max h-8 text-center bg-[#D6CEC2] rounded px-6">
+                        <p class="text-base font-semibold text=[#5C503D]">{{ charFormGroup.value.livingRooms }}</p>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- livingRooms -->
+            <tr class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <app-arm-chair-icon dimensions="w-6 h-6" color="#5C503D"></app-arm-chair-icon>
+                        <p class="text-base">Number of living rooms</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-max h-8 text-center bg-[#D6CEC2] rounded px-6">
+                        <p class="text-base font-semibold text=[#5C503D]">{{ charFormGroup.value.livingRooms }}</p>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- energyClass -->
+            <tr class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <app-light-bulb-filament-icon dimensions="w-6 h-6" color="#5C503D"></app-light-bulb-filament-icon>
+                        <p class="text-base">Energy efficiency class</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-max h-8 text-center bg-[#D6CEC2] rounded px-6">
+                        <p class="text-base font-semibold text=[#5C503D]">{{ charFormGroup.value.energyClass }}</p>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- energyClass -->
+            <tr class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <app-steps-icon dimensions="w-6 h-6" color="#5C503D"></app-steps-icon>
+                        <p class="text-base">Floor</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-max h-8 text-center bg-[#D6CEC2] rounded px-6">
+                        <p class="text-base font-semibold text=[#5C503D]">{{ charFormGroup.value.apartmentFloor }} &#40;Total {{ charFormGroup.value.buildingFloors }}&#41;</p>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Renovated -->
+            <tr class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <app-hammer-icon dimensions="w-6 h-6" color="#5C503D"></app-hammer-icon>
+                        <p class="text-base">Renovated?</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-max h-8 text-center bg-[#D6CEC2] rounded px-6">
+                        <p class="text-base font-semibold text=[#5C503D]">{{ charFormGroup.value.renovated }} &#124; {{ charFormGroup.value.renovationType }} &#124; {{ charFormGroup.value.renovationYear }}</p>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Heating -->
+            <tr class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <app-fire-icon dimensions="w-6 h-6" color="#5C503D"></app-fire-icon>
+                        <p class="text-base">Heating</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-max h-8 text-center bg-[#D6CEC2] rounded px-6">
+                        <p class="text-base font-semibold text=[#5C503D]">{{ charFormGroup.value.heating }} &#124; {{ charFormGroup.value.heatingType }}</p>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Parking -->
+            <tr class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <app-parking-icon dimensions="w-6 h-6" color="#5C503D"></app-parking-icon>
+                        <p class="text-base">Parking</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-max h-8 text-center bg-[#D6CEC2] rounded px-6">
+                        <p class="text-base font-semibold text=[#5C503D]">{{ charFormGroup.value.parking }} &#124; {{ charFormGroup.value.parkingType }} with {{ charFormGroup.value.parkingSpace }} position</p>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Accessibility -->
+            <tr class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <app-parking-icon dimensions="w-6 h-6" color="#5C503D"></app-parking-icon>
+                        <p class="text-base">Accessible for people with disabilities</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-max h-8 text-center bg-[#D6CEC2] rounded px-6">
+                        <p class="text-base font-semibold text=[#5C503D]">{{ generalFormGroup.value.accessibillity }}</p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 3rd Step -->
+    <div class="w-full mt-8 ">
+        <div class="w-full inline-flex justify-between items-center">
+            <p class="text-base font-semibold">3rd step</p>
+            <div class="inline-flex gap-3 items-center cursor-pointer">
+                <app-pencil dimensions="w-6 h-6" color="#7D7102"></app-pencil>
+                <p class="text-base text-[#7D7102]">Edit</p>
+            </div>
+        </div>
+
+        <table class="w-full border-none">
+            <!-- Access -->
+            <tr class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <p class="text-base">Access from</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-max h-8 text-center bg-[#D6CEC2] rounded px-6">
+                        <p class="text-base font-semibold text=[#5C503D]">{{ generalFormGroup.value.acceessFrom }}</p>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- View -->
+            <tr class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <p class="text-base">View</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-max h-8 text-center bg-[#D6CEC2] rounded px-6">
+                        <p class="text-base font-semibold text=[#5C503D]">{{ generalFormGroup.value.view }} &#124; {{ generalFormGroup.value.viewType }}</p>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Positioning -->
+            <tr class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <p class="text-base">Positioning</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-max h-8 text-center bg-[#D6CEC2] rounded px-6">
+                        <p class="text-base font-semibold text=[#5C503D]">{{ generalFormGroup.value.positioning }}</p>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Zone -->
+            <tr class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <p class="text-base">Zone</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-max h-8 text-center bg-[#D6CEC2] rounded px-6">
+                        <p class="text-base font-semibold text=[#5C503D]">{{ generalFormGroup.value.zone }}</p>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Distance from Sea -->
+            <tr class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <p class="text-base">Distance from Sea</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-max h-8 text-center bg-[#D6CEC2] rounded px-6">
+                        <p class="text-base font-semibold text=[#5C503D]">{{ generalFormGroup.value.distanceFromSea }} m.</p>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Distance from City -->
+            <tr class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <p class="text-base">Distance from City</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-max h-8 text-center bg-[#D6CEC2] rounded px-6">
+                        <p class="text-base font-semibold text=[#5C503D]">{{ generalFormGroup.value.distanceFromCity }} m.</p>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Distance from Center -->
+            <tr class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <p class="text-base">Distance from Center</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-max h-8 text-center bg-[#D6CEC2] rounded px-6">
+                        <p class="text-base font-semibold text=[#5C503D]">{{ generalFormGroup.value.distanceFromCenter }} m.</p>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Distance from Center -->
+            <tr class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <p class="text-base">Distance from Airport</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-max h-8 text-center bg-[#D6CEC2] rounded px-6">
+                        <p class="text-base font-semibold text=[#5C503D]">{{ generalFormGroup.value.distanceFromAirport }} m.</p>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Near to -->
+            <tr class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <p class="text-base">Near to</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-max h-8 text-center bg-[#D6CEC2] rounded px-6">
+                        <p class="text-base font-semibold text=[#5C503D]">{{ generalFormGroup.value.nearTo }}</p>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Near to -->
+            <tr class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <p class="text-base">Photos</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-full inline-flex flex-wrap gap-3 mt-8">
+                        <div class="w-max relative border-[4px] rounded-[15px] border-[#CCC2B2] bg-[#CCC2B2]">
+                            <img class="w-[96px] h-[96px] rounded-[15px]" [src]="'http://localhost:5270/'" alt="House" />
+                            <div class="w-[88px] h-[18px] rounded-full inline-flex justify-center items-center absolute bottom-1 bg-black bg-opacity-40">
+                                <p class="text-[11px]  text-white">Cover</p>
+                            </div>
+                        </div>
+                        <div class="w-max relative border-[4px] rounded-[15px] border-[#CCC2B2] bg-[#CCC2B2]">
+                            <div class="w-[96px] h-[96px] rounded-[15px] inline-flex justify-center items-center">
+                                <app-image-icon dimensions="w-6 h-6" color="#000"></app-image-icon>
+                                <p class="text-base font-semibold">+9</p>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Description -->
+            <tr class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <p class="text-base">Description</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-max h-8">
+                        <p class="text-base text=[#5C503D]">{{ generalFormGroup.value.description }}</p>
+                        <p class="text-base font-semibold hover:underline text-[#7D7102]">Read more</p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <form class="w-full mt-6">
+        <div class="w-full inline-flex justify-center items-center gap-3">
+            <input type="checkbox" id="terms" name="terms" value="" checked/>
+            <label for="terms">I have read and accept the terms of use.</label>
+        </div>
+        <div class="w-full mt-8 inline-flex justify-center items-center">
+            <button type="button" (click)="publishAd()" class="w-max py-4 mt-10 bg-[#FBE525] rounded-full px-4 flex justify-center items-center border-none text-sm gap-4 font-semibold hover:drop-shadow-[0px_0px_20px_rgba(251,229,37,1)] active:drop-shadow-none active:bg-[#E1CB04] lg:max-w-[450px] lg:text-[16px] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:drop-shadow-none">
+                Save & Publish
+            </button>
+        </div>
+    </form>
+</div>
