@@ -1,5 +1,5 @@
-<div class="w-full">
-    <form class="w-full" #f="ngForm" [formGroup]="generalInfoForm">
+<div class="w-full pb-16">
+    <form class="w-full" #f="ngForm" [formGroup]="generalInfoForm" (change)="updateGeneralInfoForm()">
         <table class="w-full border-none">
 
             <!-- Access From -->
@@ -107,7 +107,7 @@
 
             <!-- Positioning -->
             <tr class="w-full">
-                <td class="w-1/4 py-4">
+                <td class="w-1/4 py-6">
                     <div class="inline-flex items-center gap-4">
                         <p class="text-base font-semibold">Positioning</p>
                     </div>
@@ -135,7 +135,7 @@
 
             <!-- Zone -->
             <tr class="w-full">
-                <td class="w-1/4 py-4">
+                <td class="w-1/4 py-6">
                     <div class="inline-flex items-center gap-4">
                         <p class="text-base font-semibold">Zone</p>
                     </div>
@@ -160,9 +160,215 @@
                 </td>
             </tr>
 
-            <!-- Square metters -->
-            
+            <tr class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <p class="text-base font-semibold">Available from</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="relative z-0 w-[220px] group">
+                        <input 
+                            type="text"
+                            id="availableFrom"
+                            formControlName="availableFrom"
+                            [ngClass]="[!generalInfoForm.controls['availableFrom'].valid && (generalInfoForm.controls['availableFrom'].touched || generalInfoForm.controls['availableFrom'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                            class="block w-full max-w-[220px] h-16 items-center text-center px-4 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                            placeholder=""
+                            autocomplete="off"
+                            required />
+                        <label
+                            for="availableFrom"
+                            [ngClass]="labelControl('availableFrom')"
+                            class="absolute text-base text-[#5C503D] duration-300 transform -translate-y-8 scale-75 top-5 left-4 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                            Day/Month/Year
+                        </label>
+                    </div>
+                </td>
+            </tr>            
         </table>
 
+        <div class="w-full mt-10">
+            <div class="w-full inline-flex items-center gap-3">
+                <p class="text-base font-semibold w-[200px]">Points of interest</p>
+                <div class="w-full border-b border-[#C2B6A3]"></div>
+            </div>
+
+            <table class="w-full border-none pt-8">
+                <!-- distanceFromSea -->
+                <tr class="w-full">
+                    <td class="w-1/4 py-6">
+                        <div class="inline-flex items-center gap-4">
+                            <p class="text-base font-semibold">Distance from sea</p>
+                        </div>
+                    </td>
+                    <td class="w-3/4 pl-6">
+                        <div class="relative z-0 w-[220px] group">
+                            <input 
+                                type="text"
+                                id="distanceFromSea"
+                                formControlName="distanceFromSea"
+                                [ngClass]="[!generalInfoForm.controls['distanceFromSea'].valid && (generalInfoForm.controls['distanceFromSea'].touched || generalInfoForm.controls['distanceFromSea'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                                class="block w-full max-w-[220px] h-16 items-center text-center px-4 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                                placeholder=""
+                                autocomplete="off"
+                                required />
+                            <label
+                                for="distanceFromSea"
+                                [ngClass]="labelControl('distanceFromSea')"
+                                class="absolute text-base text-[#5C503D] duration-300 transform -translate-y-8 scale-75 top-5 left-4 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                                Meters
+                            </label>
+                            <label class="absolute right-5 top-5 text-[#5C503D] text-base">m</label>
+                        </div>
+                    </td>
+                </tr>     
+
+                <!-- distanceFromCity -->
+                <tr class="w-full">
+                    <td class="w-1/4 py-6">
+                        <div class="inline-flex items-center gap-4">
+                            <p class="text-base font-semibold">Distance from city</p>
+                        </div>
+                    </td>
+                    <td class="w-3/4 pl-6">
+                        <div class="relative z-0 w-[220px] group">
+                            <input 
+                                type="text"
+                                id="distanceFromCity"
+                                formControlName="distanceFromCity"
+                                [ngClass]="[!generalInfoForm.controls['distanceFromCity'].valid && (generalInfoForm.controls['distanceFromCity'].touched || generalInfoForm.controls['distanceFromCity'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                                class="block w-full max-w-[220px] h-16 items-center text-center px-4 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                                placeholder=""
+                                autocomplete="off"
+                                required />
+                            <label
+                                for="distanceFromCity"
+                                [ngClass]="labelControl('distanceFromCity')"
+                                class="absolute text-base text-[#5C503D] duration-300 transform -translate-y-8 scale-75 top-5 left-4 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                                Meters
+                            </label>
+                            <label class="absolute right-5 top-5 text-[#5C503D] text-base">m</label>
+                        </div>
+                    </td>
+                </tr>
+                
+                <!-- distanceFromCenter -->
+                <tr class="w-full">
+                    <td class="w-1/4 py-6">
+                        <div class="inline-flex items-center gap-4">
+                            <p class="text-base font-semibold">Distance from center</p>
+                        </div>
+                    </td>
+                    <td class="w-3/4 pl-6">
+                        <div class="relative z-0 w-[220px] group">
+                            <input 
+                                type="text"
+                                id="distanceFromCenter"
+                                formControlName="distanceFromCenter"
+                                [ngClass]="[!generalInfoForm.controls['distanceFromCenter'].valid && (generalInfoForm.controls['distanceFromCenter'].touched || generalInfoForm.controls['distanceFromCenter'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                                class="block w-full max-w-[220px] h-16 items-center text-center px-4 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                                placeholder=""
+                                autocomplete="off"
+                                required />
+                            <label
+                                for="distanceFromCenter"
+                                [ngClass]="labelControl('distanceFromCenter')"
+                                class="absolute text-base text-[#5C503D] duration-300 transform -translate-y-8 scale-75 top-5 left-4 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                                Meters
+                            </label>
+                            <label class="absolute right-5 top-5 text-[#5C503D] text-base">m</label>
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- distanceFromAirport -->
+                <tr class="w-full">
+                    <td class="w-1/4 py-6">
+                        <div class="inline-flex items-center gap-4">
+                            <p class="text-base font-semibold">Distance from Airport</p>
+                        </div>
+                    </td>
+                    <td class="w-3/4 pl-6">
+                        <div class="relative z-0 w-[220px] group">
+                            <input 
+                                type="text"
+                                id="distanceFromAirport"
+                                formControlName="distanceFromAirport"
+                                [ngClass]="[!generalInfoForm.controls['distanceFromAirport'].valid && (generalInfoForm.controls['distanceFromAirport'].touched || generalInfoForm.controls['distanceFromAirport'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                                class="block w-full max-w-[220px] h-16 items-center text-center px-4 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                                placeholder=""
+                                autocomplete="off"
+                                required />
+                            <label
+                                for="distanceFromAirport"
+                                [ngClass]="labelControl('distanceFromAirport')"
+                                class="absolute text-base text-[#5C503D] duration-300 transform -translate-y-8 scale-75 top-5 left-4 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                                Meters
+                            </label>
+                            <label class="absolute right-5 top-5 text-[#5C503D] text-base">m</label>
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- near to -->
+                <tr class="w-full">
+                    <td class="w-1/4 py-6">
+                        <div class="inline-flex items-center gap-4">
+                            <p class="text-base font-semibold">Near to:</p>
+                        </div>
+                    </td>
+                    <td class="w-3/4 pl-6">
+                        <div class="relative z-0 w-[220px] group">
+                            <input 
+                                type="text"
+                                id="nearTo"
+                                formControlName="nearTo"
+                                [ngClass]="[!generalInfoForm.controls['nearTo'].valid && (generalInfoForm.controls['nearTo'].touched || generalInfoForm.controls['nearTo'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                                class="block w-full max-w-[500px] h-16 items-center text-center px-4 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                                placeholder=""
+                                autocomplete="off"
+                                required />
+                            <label
+                                for="nearTo"
+                                [ngClass]="labelControl('nearTo')"
+                                class="absolute text-base text-[#5C503D] duration-300 transform -translate-y-8 scale-75 top-5 left-4 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                                Write a sightseeing
+                            </label>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="w-full mt-10 pt-8 border-t border-[#C2B6A3]">
+            <p class="text-base font-semibold">Property photos</p>
+            <p class="text-sm pt-4">Upload at least 5 photos of the property. Note: The first photo will also be the cover image of the house.</p>
+
+            <input type="file" accept="image/*" class="hidden" (change)="selectedFiles($event)" multiple #fileUpload>
+
+            <div (click)="fileUpload.click()" class="w-full border-dotted border-[4px] border-[#CCC2B2] h-[130px] inline-flex justify-center items-center gap-4 cursor-pointer mt-8 rounded-[20px]">
+                <app-upload-simple-icon dimensions="w-6 h-6" color="black"></app-upload-simple-icon>
+                <p class="text-base">Upload the house photos here.</p>
+            </div>
+
+            <div *ngIf="imagesPaths.length > 0" class="w-full inline-flex flex-wrap gap-3 mt-8 bg-[#CCC2B2]">
+                <div *ngFor="let item of imagesPaths; let i = index" class="w-max relative border-[4px] rounded-[15px] border-[#CCC2B2]">
+                    <img class="w-[96px] h-[96px] rounded-[15px]" [src]="'http://localhost:5270/' + item" alt="House" />
+                    <div (click)="removeImage(item)" class="w-6 h-6 bg-[#000] bg-opacity-20 hover:bg-opacity-100 inline-flex items-center justify-center absolute top-[2px] right-[2px] rounded-full">
+                        <app-close-icon dimensions="w-3 h-3" color="white"></app-close-icon>
+                    </div>
+                    <div *ngIf="i == 0" class="w-[88px] h-[18px] rounded-full inline-flex justify-center items-center absolute bottom-1 bg-black bg-opacity-40">
+                        <p class="text-[11px]  text-white">Cover</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Description -->
+        <div class="w-full inline-flex gap-6 mt-10">
+            <p class="text-base font-semibold">Description</p>
+            <textarea name="description" formControlName="description"  placeholder="Wirte a description" class="border-[#CCC2B2] border-[2px] rounded-[20px] px-3 py-3 text-base text-[#5C503D] w-full h-[300px] focus:ring-none focus:ring-0 focus:border-[#CCC2B2] bg-transparent"></textarea>
+        </div>
     </form>
 </div>

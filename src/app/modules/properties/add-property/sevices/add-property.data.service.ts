@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
@@ -19,7 +20,7 @@ export class AddPropertyDataService {
   private generalInfoForm = new BehaviorSubject<FormGroup>(new FormGroup({}));
   generalInfoFormSource = this.generalInfoForm.asObservable();
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   // Type form
   changeTypeForm(form: FormGroup): void {
@@ -36,7 +37,16 @@ export class AddPropertyDataService {
   // GeneralInfo form
   changeGeneralInfoForm(form: FormGroup): void {
     this.generalInfoForm.next(form);
-    console.log('Service Form', form.value)
+    // console.log('Service Form', form.value)
   }
 
+  // UploadFiles
+  uploadFiles(files: any) {
+    const formData = new FormData();
+    for (let i = 0; i < files.length; i++) {
+      formData.append('files', files[i])
+    }
+    console.log(formData)
+    return this.http.post<string[]>("http://localhost:5270/api/v1/Images", formData);
+  }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AddPropertyDataService } from '../sevices/add-property.data.service';
 
 @Component({
   selector: 'app-general-info',
@@ -9,8 +10,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class GeneralInfoComponent implements OnInit {
 
   generalInfoForm: FormGroup;
+  url: any;
+  imagesPaths: string[] = [];
 
-  constructor() {
+  constructor(private data: AddPropertyDataService) {
     this.generalInfoForm = this.generateGeneralInfoForm();
   }
 
@@ -22,7 +25,13 @@ export class GeneralInfoComponent implements OnInit {
       viewType: new FormControl<string>('Sea'),
       positioning: new FormControl<string>('Corner'),
       zone: new FormControl<string>('Residential'),
-      
+      availableFrom: new FormControl<string | undefined>(undefined),
+      distanceFromSea: new FormControl<number | undefined>(undefined),
+      distanceFromCenter: new FormControl<number | undefined>(undefined),
+      distanceFromCity: new FormControl<number | undefined>(undefined),
+      distanceFromAirport: new FormControl<number | undefined>(undefined),
+      nearTo: new FormControl<string | undefined>(undefined),
+      description: new FormControl<string | undefined>(undefined, [Validators.required])
     });
   }
 
@@ -33,6 +42,16 @@ export class GeneralInfoComponent implements OnInit {
   }
 
   updateGeneralInfoForm(): void {
+    this.data.changeGeneralInfoForm(this.generalInfoForm)
+  }
+
+  selectedFiles(event: any): void {
+    const files: File = event.target.files;
+    console.log(files);
+    this.data.uploadFiles(files).subscribe(res => this.imagesPaths = res);
+  }
+
+  removeImage(item: string) {
 
   }
 
