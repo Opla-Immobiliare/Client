@@ -42,14 +42,14 @@ export const routes: Routes = [
     TypeComponent,
     CharacteristicsComponent,
     GeneralInfoComponent,
-    ReviewComponent
+    ReviewComponent,
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     IconsModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ]
 })
 export class PropertiesModule { }

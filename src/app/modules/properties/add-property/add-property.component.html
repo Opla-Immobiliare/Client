@@ -34,20 +34,20 @@
         <!-- / Title -->
 
         <!-- Step 1 -->
-        <div *ngIf="step == 1" class="w-full mt-8">
+        <div [ngClass]="step == 1 ? 'block' : 'hidden'" class="w-full mt-8">
             <app-type></app-type>
         </div>
 
         <!-- Step 2 -->
-        <div *ngIf="step == 2" class="w-full mt-8">
+        <div [ngClass]="step == 2 ? 'block' : 'hidden'" class="w-full mt-8">
             <app-characteristics></app-characteristics>
         </div>
 
     </div>
     
     <div class="w-max absolute top-1/2 right-6">
-        <button type="button" (click)="nextStep()" class="w-max py-4 mt-10 bg-[#FBE525] rounded-full px-4 flex justify-between items-center border-none text-sm gap-4 font-semibold hover:drop-shadow-[0px_0px_20px_rgba(251,229,37,1)] active:drop-shadow-none active:bg-[#E1CB04] lg:max-w-[450px] lg:text-[16px] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:drop-shadow-none">
-            Next: Characteristics
+        <button  type="button" (click)="nextStep()" class="w-max py-4 mt-10 bg-[#FBE525] rounded-full px-4 flex justify-between items-center border-none text-sm gap-4 font-semibold hover:drop-shadow-[0px_0px_20px_rgba(251,229,37,1)] active:drop-shadow-none active:bg-[#E1CB04] lg:max-w-[450px] lg:text-[16px] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:drop-shadow-none">
+            Next: {{ next }}
             <app-arrow-right dimensions="w-6 h-6" color="#000"></app-arrow-right>
         </button>
     </div>

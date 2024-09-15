@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AddPropertyDataService } from '../sevices/add-property.data.service';
 
 @Component({
   selector: 'app-type',
@@ -11,7 +12,7 @@ export class TypeComponent implements OnInit {
 
   typeForm: FormGroup;
 
-  constructor() {
+  constructor(private data: AddPropertyDataService) {
     this.typeForm = this.generateFormType();
   }
 
@@ -28,4 +29,8 @@ export class TypeComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  updateTypeForm(): void {
+    this.data.changeTypeForm(this.typeForm);
+  }
 }
