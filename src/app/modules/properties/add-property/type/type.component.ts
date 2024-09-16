@@ -18,12 +18,12 @@ export class TypeComponent implements OnInit {
   // GenerateTypeForm
   generateFormType(): FormGroup {
     return new FormGroup({
-      rentOrSale: new FormControl("buy", [Validators.required]),
+      rentOrSale: new FormControl("vendita", [Validators.required]),
       propertyType: new FormControl("1", [Validators.required]),
       propertyCategory: new FormControl(undefined, [Validators.required]),
-      category: new FormControl("Choose category", [Validators.required]),
-      comune: new FormControl("Choose comune", [Validators.required]),
-      area: new FormControl("Choose area", [Validators.required])
+      category: new FormControl("scegli la categoria", [Validators.required]),
+      comune: new FormControl("scegli comune", [Validators.required]),
+      area: new FormControl("scegli area", [Validators.required])
     });
   }
 

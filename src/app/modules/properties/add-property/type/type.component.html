@@ -4,21 +4,21 @@
 
             <!-- Type -->
             <div class="w-full">
-                <p class="text-base font-semibold">Is it for rent or for sale?</p>
+                <p class="text-base font-semibold">È in affitto o in vendita?</p>
                 <div class="w-full max-w-[260px] rounded-full bg-[#CCC2B2] p-1 mt-6">
                     <ul class="grid w-full gap-[2px] grid-cols-2">
                         <!-- Rent -->
                         <li class="cursor-pointer">
                             <input type="radio" id="rent" name="rentOrSale" formControlName="rentOrSale" value="rent" class="hidden peer"/>
                             <label for="rent" class="w-full inline-flex justify-center items-center h-10 rounded-full bg-transparent peer-checked:bg-[#FCED69] text-sm">
-                                Rent
+                                Affitto
                             </label>
                         </li>
                         <!-- Buy -->
                         <li class="cursor-pointer">
                             <input type="radio" id="buy" name="rentOrSale" formControlName="rentOrSale" value="buy" class="hidden peer"/>
                             <label for="buy" class="w-full inline-flex justify-center items-center h-10 rounded-full bg-transparent peer-checked:bg-[#FCED69] text-sm">
-                                Buy
+                                Vendita
                             </label>
                         </li>
                     </ul>
@@ -28,15 +28,15 @@
 
             <!-- Property Type -->
             <div class="w-full mt-10">
-                <p class="text-base font-semibold">Select the property type</p>
+                <p class="text-base font-semibold">Seleziona la tipa dell'immobile</p>
                 <div class="w-full mt-6 grid space-y-4">
                     <div class="w-max inline-flex justify-start items-center gap-4">
                         <input id="1" type="radio" value="1" name="propertyType" formControlName="propertyType" class="w-6 h-6 text-[#5C503D] bg-transparent border-[#5C503D] focus:ring-none focus:ring-0" />
-                        <label for="1" class="text-base">House</label>
+                        <label for="1" class="text-base">Casa</label>
                     </div>
                     <div class="w-max inline-flex justify-start items-center gap-4">
                         <input id="2" type="radio" value="2" name="propertyType" formControlName="propertyType" class="w-6 h-6 text-[#5C503D] bg-transparent border-[#5C503D] focus:ring-none focus:ring-0" />
-                        <label for="2" class="text-base">House</label>
+                        <label for="2" class="text-base">Casa</label>
                     </div>
                 </div>
             </div>
@@ -44,7 +44,7 @@
 
             <!-- Property Category -->
             <div class="w-full mt-10">
-                <p class="text-base font-semibold">Select the property category</p>
+                <p class="text-base font-semibold">Seleziona la categoria dell'immobile</p>
                 <div class="w-full mt-6 relative">
                     <button data-modal-target="categories" data-modal-toggle="categories" type="button" class="h-12 w-[300px] inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full">
                         <p class="text-base">{{ typeForm.value.category }}</p>
@@ -52,7 +52,7 @@
                     </button>
                     <div id="categories" class="hidden w-[300px] h-[288px] rounded-[20px] bg-[#CCC2B2] p-2 mt-1">
                         <ul class="w-full">
-                            <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="typeForm.value.category = 'Aprtment'" data-modal-hide="categories">Apartment</li>
+                            <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="typeForm.value.category = 'Aprtment'" data-modal-hide="categories">Appartamento</li>
                         </ul>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
 
             <!-- Comune zone -->
             <div class="w-full mt-10">
-                <p class="text-base font-semibold">In which area is the property located?</p>
+                <p class="text-base font-semibold">In quale zona si trova l'immobile?</p>
                 <div class="w-full mt-6 relative">
                     <button data-modal-target="comune" data-modal-toggle="comune" type="button" class="h-12 w-[300px] inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full">
                         <p class="text-base">{{ typeForm.value.comune }}</p>
