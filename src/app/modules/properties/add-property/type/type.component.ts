@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AddPropertyDataService } from '../sevices/add-property.data.service';
 
 @Component({
   selector: 'app-type',
@@ -11,7 +12,7 @@ export class TypeComponent implements OnInit {
 
   typeForm: FormGroup;
 
-  constructor() {
+  constructor(private data: AddPropertyDataService) {
     this.typeForm = this.generateFormType();
   }
 
@@ -21,11 +22,16 @@ export class TypeComponent implements OnInit {
       rentOrSale: new FormControl("vendita", [Validators.required]),
       propertyType: new FormControl("1", [Validators.required]),
       propertyCategory: new FormControl(undefined, [Validators.required]),
-      category: new FormControl("scegli la categoria", [Validators.required]),
-      comune: new FormControl("scegli comune", [Validators.required]),
-      area: new FormControl("scegli area", [Validators.required])
+      category: new FormControl("Choose category", [Validators.required]),
+      comune: new FormControl("Choose comune", [Validators.required]),
+      area: new FormControl("Choose area", [Validators.required]),
+      address: new FormControl(undefined, [Validators.required])
     });
   }
 
   ngOnInit(): void {}
+
+  updateTypeForm(): void {
+    this.data.changeTypeForm(this.typeForm);
+  }
 }

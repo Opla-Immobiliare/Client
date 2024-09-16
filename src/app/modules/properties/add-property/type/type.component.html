@@ -1,5 +1,5 @@
 <div class="w-full">
-    <form #f="ngForm" [formGroup]="typeForm" class="w-full">
+    <form #f="ngForm" [formGroup]="typeForm" class="w-full" (change)="updateTypeForm()">
         <div class="w-full">
 
             <!-- Type -->

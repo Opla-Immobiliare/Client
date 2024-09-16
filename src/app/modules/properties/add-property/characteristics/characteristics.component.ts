@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AddPropertyDataService } from '../sevices/add-property.data.service';
 
 @Component({
   selector: 'app-characteristics',
@@ -10,7 +11,7 @@ export class CharacteristicsComponent implements OnInit {
 
   characteristisForm: FormGroup;
 
-  constructor() {
+  constructor(private data: AddPropertyDataService) {
     this.characteristisForm = this.generateCharacteristicsForm();
   }
 
@@ -35,6 +36,31 @@ export class CharacteristicsComponent implements OnInit {
       furnished: new FormControl<boolean>(false),
       electricalDevices: new FormControl<boolean>(false),
       maintenanceFees: new FormControl<boolean>(false),
+      petsAllowed: new FormControl<boolean>(false),
+      cameras: new FormControl<boolean>(false),
+      cableTv: new FormControl<boolean>(false),
+      floorHeating: new FormControl<boolean>(false),
+      internalStairs: new FormControl<boolean>(false),
+      playroom: new FormControl<boolean>(false),
+      elevator: new FormControl<boolean>(false),
+      solarWaterHeater: new FormControl<boolean>(false),
+      incomplete: new FormControl<boolean>(false),
+      luxurious: new FormControl<boolean>(false),
+      jacuzzi: new FormControl<boolean>(false),
+      electricShutters: new FormControl<boolean>(false),
+      satelliteAntenna: new FormControl<boolean>(false),
+      neoclassical: new FormControl<boolean>(false),
+      veranda: new FormControl<boolean>(false),
+      maintainable: new FormControl<boolean>(false),
+      awnings: new FormControl<boolean>(false),
+      alarmSystem: new FormControl<boolean>(false),
+      pool: new FormControl<string>('none'),
+      garden: new FormControl<boolean>(false),
+      heating: new FormControl<string>('Autonomous', [Validators.required]),
+      heatingType: new FormControl<string>('Choose heating type', [Validators.required]),
+      doorType: new FormControl<string>('Door type', [Validators.required]),
+      floorType: new FormControl<string>('Floor type', [Validators.required]),
+      warehouse: new FormControl<string>('none', [Validators.required]),
     });
   }
 
@@ -44,5 +70,16 @@ export class CharacteristicsComponent implements OnInit {
     return 'bg-none';
   }
 
-  ngOnInit(): void {}
+  numSequence(n: number): Array<number> {
+    return Array(n);
+  }
+
+  // Update Characteristics Form
+  updateCharacteristicsForm(): void {
+    this.data.changeCharacteristicsForm(this.characteristisForm);
+  }
+
+  ngOnInit(): void {
+    
+  }
 }
