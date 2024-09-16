@@ -14,6 +14,7 @@ import { TypeComponent } from './add-property/type/type.component';
 import { CharacteristicsComponent } from './add-property/characteristics/characteristics.component';
 import { GeneralInfoComponent } from './add-property/general-info/general-info.component';
 import { ReviewComponent } from './add-property/review/review.component';
+import { DetailsTableComponent } from './property/details-table/details-table.component';
 
 export const routes: Routes = [
   {
@@ -43,6 +44,7 @@ export const routes: Routes = [
     CharacteristicsComponent,
     GeneralInfoComponent,
     ReviewComponent,
+    DetailsTableComponent,
   ],
   imports: [
     CommonModule,
