@@ -54,13 +54,13 @@ export class CharacteristicsComponent implements OnInit {
       maintainable: new FormControl<boolean>(false),
       awnings: new FormControl<boolean>(false),
       alarmSystem: new FormControl<boolean>(false),
-      pool: new FormControl<string>('none'),
+      pool: new FormControl<string>('nessuno'),
       garden: new FormControl<boolean>(false),
-      heating: new FormControl<string>('Autonomous', [Validators.required]),
-      heatingType: new FormControl<string>('Choose heating type', [Validators.required]),
-      doorType: new FormControl<string>('Door type', [Validators.required]),
-      floorType: new FormControl<string>('Floor type', [Validators.required]),
-      warehouse: new FormControl<string>('none', [Validators.required]),
+      heating: new FormControl<string>('Autonomo', [Validators.required]),
+      heatingType: new FormControl<string>('Scegli il tipo di riscaldamento', [Validators.required]),
+      doorType: new FormControl<string>('Tipo di porta', [Validators.required]),
+      floorType: new FormControl<string>('Tipo di pavimento', [Validators.required]),
+      warehouse: new FormControl<string>('nessuno', [Validators.required]),
     });
   }
 

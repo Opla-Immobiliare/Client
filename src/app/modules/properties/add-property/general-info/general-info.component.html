@@ -6,7 +6,7 @@
             <tr class="w-full">
                 <td class="w-1/4 py-4">
                     <div class="inline-flex items-center gap-4">
-                        <p class="text-base font-semibold">Access From</p>
+                        <p class="text-base font-semibold">Accesso da</p>
                     </div>
                 </td>
                 <td class="w-3/4 pl-6">
@@ -17,13 +17,13 @@
                         </button>
                         <div id="acceessFrom" class="hidden w-[300px] h-[max] rounded-[20px] bg-[#CCC2B2] p-2 z-50">
                             <ul class="w-full">
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.acceessFrom = 'Street'">Street</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.acceessFrom = 'Sidewak'">Sidewak</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.acceessFrom = 'Paved'">Paved</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.acceessFrom = 'Dirt Road'">Dirt Road</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.acceessFrom = 'Sea'">Sea</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.acceessFrom = 'Without Access'">Without Access</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.acceessFrom = 'Other'">Other</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.acceessFrom = 'Strada'">Strada</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.acceessFrom = 'Marciapiede'">Marciapiede</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.acceessFrom = 'Pavimentato'">Pavimentato</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.acceessFrom = 'Strada Sterrata'">Strada Sterrata</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.acceessFrom = 'Mare'">Mare</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.acceessFrom = 'Senza Accesso'">Senza Accesso</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.acceessFrom = 'Altro'">Altro</li>
                             </ul>
                         </div>
                     </div>
@@ -35,11 +35,11 @@
                 <td class="w-1/4 py-6">
                     <div class="inline-flex items-center gap-4">
                         <app-wheelchair-icon dimensions="w-6 h-6" color="#5C503D"></app-wheelchair-icon>
-                        <p class="text-base font-semibold">Accessible for people with disabilities?</p>
+                        <p class="text-base font-semibold">Privo di barriere architettoniche?</p>
                     </div>
                 </td>
                 <td class="w-3/4 pl-6">
-                    <div [ngClass]="generalInfoForm.value.accessibillity == 'yes' ? 'bg-[#FBE525]' : 'bg-[#EBE7E0]'" class="w-max p-[2px] rounded-full">
+                    <div [ngClass]="generalInfoForm.value.accessibillity == 'si' ? 'bg-[#FBE525]' : 'bg-[#EBE7E0]'" class="w-max p-[2px] rounded-full">
                         <ul class="w-full grid grid-cols-2 gap-[2px]">
                             <li class="cursor-pointer">
                                 <input type="radio" id="noAccess" value="no" name="accessibillity" formControlName="accessibillity" class="peer hidden">
@@ -48,9 +48,9 @@
                                 </label>
                             </li>
                             <li class="cursor-pointer">
-                                <input type="radio" id="yesAccess" name="accessibillity" formControlName="accessibillity" value="yes" class="peer hidden">
+                                <input type="radio" id="yesAccess" name="accessibillity" formControlName="accessibillity" value="si" class="peer hidden">
                                 <label for="yesAccess" class="w-10 inline-flex justify-center items-center h-10 rounded-full bg-transparent peer-checked:bg-[#5C503D] peer-checked:text-white text-xs">
-                                    Yes
+                                    Si
                                 </label>
                             </li>
                         </ul>
@@ -62,12 +62,12 @@
             <tr class="w-full">
                 <td class="w-1/4 py-6">
                     <div class="inline-flex items-center gap-4">
-                        <p class="text-base font-semibold">View</p>
+                        <p class="text-base font-semibold">Vista</p>
                     </div>
                 </td>
                 <td class="w-3/4 pl-6">
-                    <div [ngClass]="generalInfoForm.value.view == 'yes' ? 'w-[400px]' : 'w-max'" class="bg-[#EBE7E0] p-1 rounded-full inline-flex justify-between items-center">
-                        <ul [ngClass]="generalInfoForm.value.view == 'yes' ? 'bg-[#FBE525]' : 'bg-transparent'" class="grid w-max grid-cols-2 rounded-full">
+                    <div [ngClass]="generalInfoForm.value.view == 'si' ? 'w-[400px]' : 'w-max'" class="bg-[#EBE7E0] p-1 rounded-full inline-flex justify-between items-center">
+                        <ul [ngClass]="generalInfoForm.value.view == 'si' ? 'bg-[#FBE525]' : 'bg-transparent'" class="grid w-max grid-cols-2 rounded-full">
                             <!-- Rent -->
                             <li class="cursor-pointer">
                                 <input type="radio" id="noView" name="view" formControlName="view" value="no" class="hidden peer"/>
@@ -77,27 +77,27 @@
                             </li>
                             <!-- Buy -->
                             <li class="cursor-pointer">
-                                <input type="radio" id="yesView" name="view" formControlName="view" value="yes" class="hidden peer"/>
+                                <input type="radio" id="yesView" name="view" formControlName="view" value="si" class="hidden peer"/>
                                 <label for="yesView" class="w-10 inline-flex justify-center items-center h-10 rounded-full bg-transparent peer-checked:bg-[#5C503D] peer-checked:text-white text-xs">
-                                    Yes
+                                    si
                                 </label>
                             </li>
                         </ul>
-                        <div [ngClass]="generalInfoForm.value.view == 'yes' ? 'block' : 'hidden'" class="w-max relative">
+                        <div [ngClass]="generalInfoForm.value.view == 'si' ? 'block' : 'hidden'" class="w-max relative">
                             <button data-dropdown-toggle="viewType" type="button" class="h-12 w-[244px] inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full">
                                 <p class="text-base">{{ generalInfoForm.value.viewType }}</p>
                                 <app-caret-down class="w-4 h-4" color="#000"></app-caret-down>
                             </button>
                             <div id="viewType" class="hidden w-[300px] h-[max] rounded-[20px] bg-[#CCC2B2] p-2 z-50">
                                 <ul class="w-full">
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.viewType = 'Sea'">Sea</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.viewType = 'Mountain'">Mountain</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.viewType = 'Opening View'">Opening View</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.viewType = 'City'">City</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.viewType = 'Plain'">Plain</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.viewType = 'Forest'">Forest</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.viewType = 'Park'">Park</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.viewType = 'Square'">Square</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.viewType = 'Mare'">Mare</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.viewType = 'Montagna'">Montagna</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.viewType = 'Vista di Apertura'">Vista di Apertura</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.viewType = 'Città'">Città</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.viewType = 'Pianura'">Pianura</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.viewType = 'Foresta'">Foresta</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.viewType = 'Parco'">Parco</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.viewType = 'Piazza'">Piazza</li>
                                 </ul>
                             </div>
                         </div>
@@ -109,7 +109,7 @@
             <tr class="w-full">
                 <td class="w-1/4 py-6">
                     <div class="inline-flex items-center gap-4">
-                        <p class="text-base font-semibold">Positioning</p>
+                        <p class="text-base font-semibold">Posizionamento</p>
                     </div>
                 </td>
                 <td class="w-3/4 pl-6">
@@ -120,13 +120,13 @@
                         </button>
                         <div id="positioning" class="hidden w-[300px] h-[max] rounded-[20px] bg-[#CCC2B2] p-2 z-50">
                             <ul class="w-full">
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.positioning = 'Corner'">Corner</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.positioning = 'Facade'">Facade</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.positioning = 'Interior'">Interion</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.positioning = 'Side'">Side</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.positioning = 'Transparent'">Transaprent</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.positioning = 'Bright'">Bright</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.positioning = 'Three-Sided'">Three-Sided</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.positioning = 'Angolo'">Angolo</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.positioning = 'Facciata'">Facciata</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.positioning = 'Interione'">Interione</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.positioning = 'Lato'">Lato</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.positioning = 'Trasparente'">Trasparente</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.positioning = 'Luminoso'">Luminoso</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.positioning = 'Tre-Lati'">Tre-Lati</li>
                             </ul>
                         </div>
                     </div>
@@ -137,7 +137,7 @@
             <tr class="w-full">
                 <td class="w-1/4 py-6">
                     <div class="inline-flex items-center gap-4">
-                        <p class="text-base font-semibold">Zone</p>
+                        <p class="text-base font-semibold">Zona</p>
                     </div>
                 </td>
                 <td class="w-3/4 pl-6">
@@ -148,12 +148,12 @@
                         </button>
                         <div id="zone" class="hidden w-[300px] h-[max] rounded-[20px] bg-[#CCC2B2] p-2 z-50">
                             <ul class="w-full">
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.zone = 'Residential'">Residential</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.zone = 'Commercial'">Commercial</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.zone = 'Agricultural'">Agricultural</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.zone = 'Industrial'">Industrial</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.zone = 'Regeneration'">Regeneration</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.zone = 'Out of plan'">Out of plan</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.zone = 'Residenziale'">Residenziale</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.zone = 'Commerciale'">Commerciale</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.zone = 'Agricolo'">Agricolo</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.zone = 'Industriale'">Industriale</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.zone = 'Rigenerazione'">Rigenerazione</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.zone = 'Fuori piano'">Fuori piano</li>
                             </ul>
                         </div>
                     </div>
@@ -163,7 +163,7 @@
             <tr class="w-full">
                 <td class="w-1/4 py-6">
                     <div class="inline-flex items-center gap-4">
-                        <p class="text-base font-semibold">Available from</p>
+                        <p class="text-base font-semibold">Disponibile da</p>
                     </div>
                 </td>
                 <td class="w-3/4 pl-6">
@@ -181,7 +181,7 @@
                             for="availableFrom"
                             [ngClass]="labelControl('availableFrom')"
                             class="absolute text-base text-[#5C503D] duration-300 transform -translate-y-8 scale-75 top-5 left-4 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
-                            Day/Month/Year
+                            Giorno/Mese/Anno
                         </label>
                     </div>
                 </td>
@@ -190,7 +190,7 @@
 
         <div class="w-full mt-10">
             <div class="w-full inline-flex items-center gap-3">
-                <p class="text-base font-semibold w-[200px]">Points of interest</p>
+                <p class="text-base font-semibold w-[200px]">Punti di interesse</p>
                 <div class="w-full border-b border-[#C2B6A3]"></div>
             </div>
 
@@ -199,7 +199,7 @@
                 <tr class="w-full">
                     <td class="w-1/4 py-6">
                         <div class="inline-flex items-center gap-4">
-                            <p class="text-base font-semibold">Distance from sea</p>
+                            <p class="text-base font-semibold">Distanza da Mare</p>
                         </div>
                     </td>
                     <td class="w-3/4 pl-6">
@@ -217,7 +217,7 @@
                                 for="distanceFromSea"
                                 [ngClass]="labelControl('distanceFromSea')"
                                 class="absolute text-base text-[#5C503D] duration-300 transform -translate-y-8 scale-75 top-5 left-4 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
-                                Meters
+                                Metri
                             </label>
                             <label class="absolute right-5 top-5 text-[#5C503D] text-base">m</label>
                         </div>
@@ -228,7 +228,7 @@
                 <tr class="w-full">
                     <td class="w-1/4 py-6">
                         <div class="inline-flex items-center gap-4">
-                            <p class="text-base font-semibold">Distance from city</p>
+                            <p class="text-base font-semibold">Distanza da Città</p>
                         </div>
                     </td>
                     <td class="w-3/4 pl-6">
@@ -246,7 +246,7 @@
                                 for="distanceFromCity"
                                 [ngClass]="labelControl('distanceFromCity')"
                                 class="absolute text-base text-[#5C503D] duration-300 transform -translate-y-8 scale-75 top-5 left-4 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
-                                Meters
+                                Metri
                             </label>
                             <label class="absolute right-5 top-5 text-[#5C503D] text-base">m</label>
                         </div>
@@ -257,7 +257,7 @@
                 <tr class="w-full">
                     <td class="w-1/4 py-6">
                         <div class="inline-flex items-center gap-4">
-                            <p class="text-base font-semibold">Distance from center</p>
+                            <p class="text-base font-semibold">Distanza da Centro</p>
                         </div>
                     </td>
                     <td class="w-3/4 pl-6">
@@ -275,7 +275,7 @@
                                 for="distanceFromCenter"
                                 [ngClass]="labelControl('distanceFromCenter')"
                                 class="absolute text-base text-[#5C503D] duration-300 transform -translate-y-8 scale-75 top-5 left-4 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
-                                Meters
+                                Metri
                             </label>
                             <label class="absolute right-5 top-5 text-[#5C503D] text-base">m</label>
                         </div>
@@ -286,7 +286,7 @@
                 <tr class="w-full">
                     <td class="w-1/4 py-6">
                         <div class="inline-flex items-center gap-4">
-                            <p class="text-base font-semibold">Distance from Airport</p>
+                            <p class="text-base font-semibold">Distanza da Aeroporto</p>
                         </div>
                     </td>
                     <td class="w-3/4 pl-6">
@@ -304,7 +304,7 @@
                                 for="distanceFromAirport"
                                 [ngClass]="labelControl('distanceFromAirport')"
                                 class="absolute text-base text-[#5C503D] duration-300 transform -translate-y-8 scale-75 top-5 left-4 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
-                                Meters
+                                Metri
                             </label>
                             <label class="absolute right-5 top-5 text-[#5C503D] text-base">m</label>
                         </div>
@@ -315,7 +315,7 @@
                 <tr class="w-full">
                     <td class="w-1/4 py-6">
                         <div class="inline-flex items-center gap-4">
-                            <p class="text-base font-semibold">Near to:</p>
+                            <p class="text-base font-semibold">Vicino a:</p>
                         </div>
                     </td>
                     <td class="w-3/4 pl-6">
@@ -333,7 +333,7 @@
                                 for="nearTo"
                                 [ngClass]="labelControl('nearTo')"
                                 class="absolute text-base text-[#5C503D] duration-300 transform -translate-y-8 scale-75 top-5 left-4 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
-                                Write a sightseeing
+                                Scrivi un giro turistico
                             </label>
                         </div>
                     </td>
@@ -342,14 +342,14 @@
         </div>
 
         <div class="w-full mt-10 pt-8 border-t border-[#C2B6A3]">
-            <p class="text-base font-semibold">Property photos</p>
-            <p class="text-sm pt-4">Upload at least 5 photos of the property. Note: The first photo will also be the cover image of the house.</p>
+            <p class="text-base font-semibold">Foto dell'immobile</p>
+            <p class="text-sm pt-4">Carica almeno 5 foto dell'immobile. Nota: La prima foto sarà anche l'immagine di copertina della casa.</p>
 
             <input type="file" accept="image/*" class="hidden" (change)="selectedFiles($event)" multiple #fileUpload>
 
             <div (click)="fileUpload.click()" class="w-full border-dotted border-[4px] border-[#CCC2B2] h-[130px] inline-flex justify-center items-center gap-4 cursor-pointer mt-8 rounded-[20px]">
                 <app-upload-simple-icon dimensions="w-6 h-6" color="black"></app-upload-simple-icon>
-                <p class="text-base">Upload the house photos here.</p>
+                <p class="text-base">Carica le foto della casa qui.</p>
             </div>
 
             <div *ngIf="imagesPaths.length > 0" class="w-full inline-flex flex-wrap gap-3 mt-8 bg-[#CCC2B2]">
@@ -359,7 +359,7 @@
                         <app-close-icon dimensions="w-3 h-3" color="white"></app-close-icon>
                     </div>
                     <div *ngIf="i == 0" class="w-[88px] h-[18px] rounded-full inline-flex justify-center items-center absolute bottom-1 bg-black bg-opacity-40">
-                        <p class="text-[11px]  text-white">Cover</p>
+                        <p class="text-[11px]  text-white">Copertina</p>
                     </div>
                 </div>
             </div>
@@ -367,7 +367,7 @@
         
         <!-- Description -->
         <div class="w-full inline-flex gap-6 mt-10">
-            <p class="text-base font-semibold">Description</p>
+            <p class="text-base font-semibold">Descrizione</p>
             <textarea name="description" formControlName="description"  placeholder="Wirte a description" class="border-[#CCC2B2] border-[2px] rounded-[20px] px-3 py-3 text-base text-[#5C503D] w-full h-[300px] focus:ring-none focus:ring-0 focus:border-[#CCC2B2] bg-transparent"></textarea>
         </div>
     </form>

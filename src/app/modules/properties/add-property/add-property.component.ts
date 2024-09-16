@@ -11,14 +11,14 @@ export class AddPropertyComponent implements OnInit {
 
   step: number = 1;
   barWidth: string = 'w-1/4';
-  title: string = '1/4. Ad Type';
-  subTitle: string = 'Fill in the following information to post your ad.';
-  next: string = 'Characteristics';
+  title: string = '1/4. Tipo di Annuncio';
+  subTitle: string = 'Compila le seguenti informazioni per pubblicare il tuo annuncio.';
+  next: string = 'Caratteristiche';
 
   typeForm: FormGroup; // TypeForm
   characteristicsForm: FormGroup; // CharacteristicsForm
   generalInfoForm: FormGroup; // GeneralInfoForm
-next: any | undefined;
+  next: any | undefined = [];
 
   constructor(private data: AddPropertyDataService) {
     this.typeForm = new FormGroup({});
@@ -31,22 +31,22 @@ next: any | undefined;
       case 1: 
         this.step = 2;
         this.barWidth = 'w-2/4';
-        this.title = '2/4. Characteristics';
-        this.subTitle = 'Fill in the characteristics of your property.';
-        this.next = 'General Info';
+        this.title = '2/4. Caratteristiche';
+        this.subTitle = 'Compila le caratteristiche del tuo immobile.';
+        this.next = 'Informazioni Generali';
         break;
       case 2: 
         this.step = 3;
         this.barWidth = 'w-3/4';
-        this.title = '3/4. General Info';
-        this.subTitle = 'Fill in the characteristics of your property';
-        this.next = 'Review & Post';
+        this.title = '3/4. Informazioni Generali';
+        this.subTitle = 'Compila le caratteristiche del tuo immobile.';
+        this.next = 'Riveda & Pubblica';
         break;
       case 3:
         this.step = 4;
         this.barWidth = 'w-4/4';
-        this.title = '4/4. Review';
-        this.subTitle = 'Check if everything is correct and let\'s proceed with publishing!';
+        this.title = '4/4. Revisione';
+        this.subTitle = 'Controlli che tutto sia corretto e procediamo con la pubblicazione!';
         break;
     }
   }

@@ -102,7 +102,7 @@
                 <td class="w-3/4 pl-6">
                     <div [ngClass]="characteristisForm.value.renovated == 'si' ? 'w-full' : 'w-max'" class="w-full bg-[#EBE7E0] p-1 rounded-full inline-flex justify-between items-center">
                         <!-- Yes / No -->
-                        <div [ngClass]="characteristisForm.value.renovated == 'yes' ? 'bg-[#FBE525]' : 'bg-transparent'" class="w-[92px] p-[2px] rounded-full">
+                        <div [ngClass]="characteristisForm.value.renovated == 'si' ? 'bg-[#FBE525]' : 'bg-transparent'" class="w-[92px] p-[2px] rounded-full">
                             <ul class="grid w-full gap-[2px] grid-cols-2">
                                 <!-- Rent -->
                                 <li class="cursor-pointer">
@@ -113,7 +113,7 @@
                                 </li>
                                 <!-- Buy -->
                                 <li class="cursor-pointer">
-                                    <input type="radio" id="yes" name="renovated" formControlName="renovated" value="yes" class="hidden peer"/>
+                                    <input type="radio" id="yes" name="renovated" formControlName="renovated" value="si" class="hidden peer"/>
                                     <label for="yes" class="w-10 inline-flex justify-center items-center h-10 rounded-full bg-transparent peer-checked:bg-[#5C503D] peer-checked:text-white text-xs">
                                         Si
                                     </label>
@@ -184,8 +184,8 @@
                             </button>
                             <div id="apartmentFloor" class="hidden w-[300px] h-[288px] overflow-y-scroll rounded-[20px] bg-[#CCC2B2] p-2 z-50">
                                 <ul class="w-full">
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.apartmentFloor = -1">Υπόγειο</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.apartmentFloor = 0">Ισόγειο</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.apartmentFloor = -1">Seminterrato</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.apartmentFloor = 0">Pianterreno</li>
                                     <li *ngFor="let item of numSequence(characteristisForm.value.buildingFloors); let i = index;" class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.apartmentFloor = i + 1">{{ i + 1 }}</li>
                                     <!-- <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.apartmentFloor = 999">Last Floor / Penthouse</li> -->
                                 </ul>
@@ -207,7 +207,7 @@
                     <div class="rounded-full border border-[#CCC2B2] bg-[#D6CEC2] w-full">
                         <table class="w-full">
                             <tr class="w-full text-center">
-                                <td (click)="updateCharacteristicsForm(); characteristisForm.value.energyClass = 'None'" [ngClass]="characteristisForm.value.energyClass == 'None' ? 'bg-[#A39175] text-white' : 'bg-transparent text-black'" class="border-r border-[#CCC2B2] cursor-pointer text-base rounded-l-full h-10">None</td>
+                                <td (click)="updateCharacteristicsForm(); characteristisForm.value.energyClass = 'None'" [ngClass]="characteristisForm.value.energyClass == 'Nessuno' ? 'bg-[#A39175] text-white' : 'bg-transparent text-black'" class="border-r border-[#CCC2B2] cursor-pointer text-base rounded-l-full h-10">Nessuno</td>
                                 <td (click)="updateCharacteristicsForm(); characteristisForm.value.energyClass = 'H'" [ngClass]="characteristisForm.value.energyClass == 'H' ? 'bg-[#A39175] text-white' : 'bg-transparent text-black'" class="border-r border-[#CCC2B2] cursor-pointer text-base h-10">H</td>
                                 <td (click)="updateCharacteristicsForm(); characteristisForm.value.energyClass = 'Z'" [ngClass]="characteristisForm.value.energyClass == 'Z' ? 'bg-[#A39175] text-white' : 'bg-transparent text-black'" class="border-r border-[#CCC2B2] cursor-pointer text-base h-10">Z</td>
                                 <td (click)="updateCharacteristicsForm(); characteristisForm.value.energyClass = 'C'" [ngClass]="characteristisForm.value.energyClass == 'C' ? 'bg-[#A39175] text-white' : 'bg-transparent text-black'" class="border-r border-[#CCC2B2] cursor-pointer text-base h-10">C</td>
@@ -245,37 +245,37 @@
                             </button>
                             <div id="heating" class="hidden w-[300px] h-[max] rounded-[20px] bg-[#CCC2B2] p-2 z-50">
                                 <ul class="w-full">
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heating = 'Autonomous'">Autonomous</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heating = 'Individual'">Individual</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heating = 'Central'">Central</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heating = 'Without'">Without</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heating = 'Autonomo'">Autonomo</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heating = 'Individuale'">Individuale</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heating = 'Centrale'">Centrale</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heating = 'Senza'">Senza</li>
                                 </ul>
                             </div>
                         </div>
                         <!-- Heating Type -->
-                        <div [ngClass]="characteristisForm.value.heating == 'Without' ? 'hidden' : 'block'" class="w-full relative">
+                        <div [ngClass]="characteristisForm.value.heating == 'Senza' ? 'hidden' : 'block'" class="w-full relative">
                             <button data-dropdown-toggle="heatingType" type="button" class="h-12 w-[300px] inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full">
                                 <p class="text-base">{{ characteristisForm.value.heatingType }}</p>
                                 <app-caret-down class="w-4 h-4" color="#000"></app-caret-down>
                             </button>
                             <div id="heatingType" class="hidden w-[300px] h-[288px] overflow-y-scroll rounded-[20px] bg-[#CCC2B2] p-2 z-50">
                                 <ul class="w-full">
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heatingType = 'Oil'">Oil</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heatingType = 'Natural Gas'">Natural Gas</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heatingType = 'Olio'">Olio</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heatingType = 'Gas Naturale'">Gas Naturale</li>
                                     <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heatingType = 'LPG'">LPG</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heatingType = 'Electricity'">Electricity</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heatingType = 'Stove'">Stove</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heatingType = 'Heat accumulator'">Heat accumulator</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heatingType = 'Convector'">Convector</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heatingType = 'Pellets'">Pellets</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heatingType = 'Infrared'">Infrared</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heatingType = 'Fan coil'">Fan coil</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heatingType = 'Wood'">Wood</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heatingType = 'District heating'">District heating</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heatingType = 'Geothermal Energy'">Geotherma Energy</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heatingType = 'Heat Pump'">Heat Pump</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heatingType = 'Fire Place'">Fire Place</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heatingType = 'Energy Fire Place'">Energy Fire Place</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heatingType = 'Elettricità'">Elettricità</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heatingType = 'Stufa'">Stufa</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heatingType = 'Accumulatore di calore'">Accumulatore di calore</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heatingType = 'Termoconvettore'">Termoconvettore</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heatingType = 'Pellet'">Pellet</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heatingType = 'Infrarossi'">Infrarossi</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heatingType = 'Ventilconvettore'">Ventilconvettore</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heatingType = 'Legna'">Legna</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heatingType = 'Teleriscaldamento'">Teleriscaldamento</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heatingType = 'Energia geotermica'">Energia geotermica</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heatingType = 'Pompa di calore'">Pompa di calore</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heatingType = 'Camino'">Camino</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heatingType = 'Camino energetico'">Camino energetico</li>
                                     <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.heatingType = 'AC'">AC</li>
                                 </ul>
                             </div>
@@ -379,7 +379,7 @@
                 <td class="w-3/4 pl-6">
                     <div class="bg-[#EBE7E0] p-1 rounded-full inline-flex justify-between items-center gap-4 w-max">
                         <!-- Yes / No -->
-                        <div [ngClass]="characteristisForm.value.parking == 'yes' ? 'bg-[#FBE525]' : 'bg-transparent'" class="w-[92px] p-[2px] rounded-full">
+                        <div [ngClass]="characteristisForm.value.parking == 'si' ? 'bg-[#FBE525]' : 'bg-transparent'" class="w-[92px] p-[2px] rounded-full">
                             <ul class="grid w-full gap-[2px] grid-cols-2">
                                 <!-- Yes -->
                                 <li class="cursor-pointer">
@@ -390,7 +390,7 @@
                                 </li>
                                 <!-- No -->
                                 <li class="cursor-pointer">
-                                    <input type="radio" id="yesParking" name="parking" formControlName="parking" value="yes" class="hidden peer"/>
+                                    <input type="radio" id="yesParking" name="parking" formControlName="parking" value="si" class="hidden peer"/>
                                     <label for="yesParking" class="w-10 inline-flex justify-center items-center h-10 rounded-full bg-transparent peer-checked:bg-[#5C503D] peer-checked:text-white text-xs">
                                         Si
                                     </label>
@@ -409,7 +409,7 @@
                                 </button>
                             </div>
                         </div>
-                        <div *ngIf="characteristisForm.value.parking == 'yes'" class="w-max">
+                        <div *ngIf="characteristisForm.value.parking == 'si'" class="w-max">
                             <div class="w-full relative">
                                 <button data-dropdown-toggle="parkingType" type="button" class="h-12 w-max inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full gap-4">
                                     <p class="text-base">{{ characteristisForm.value.parkingType }}</p>
@@ -417,8 +417,8 @@
                                 </button>
                                 <div id="parkingType" class="hidden w-[300px] h-max rounded-[20px] bg-[#CCC2B2] p-2 z-50">
                                     <ul class="w-full">
-                                        <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.parkingType = 'Outdoor'">Outdoor</li>
-                                        <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.parkingType = 'Indoor'">Indoor</li>
+                                        <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.parkingType = 'Allaperto'">All'aperto</li>
+                                        <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.parkingType = 'Al coperto'">Al coperto</li>
                                     </ul>
                                 </div>
                             </div>
@@ -472,10 +472,10 @@
                         </button>
                         <div id="doorType" class="hidden w-[300px] h-max rounded-[20px] bg-[#D6CEC2] p-2 z-50">
                             <ul class="w-full">
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.doorType = 'Armored'">Armored</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.doorType = 'Secure'">Secure</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.doorType = 'Simple Wooden'">Simple Wooden</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.doorType = 'Glass'">Glass</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.doorType = 'Corazzato'">Corazzato</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.doorType = 'Sicuro'">Sicuro</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.doorType = 'Semplice in legno'">Semplice in legno</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.doorType = 'Vetro'">Vetro</li>
                             </ul>
                         </div>
                     </div>
@@ -490,13 +490,13 @@
                         </button>
                         <div id="floorType" class="hidden w-[300px] h-max rounded-[20px] bg-[#D6CEC2] p-2 z-50">
                             <ul class="w-full">
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.floorType = 'Marble'">Marble</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.floorType = 'Wood'">Wood</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.floorType = 'Stone'">Stone</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.floorType = 'Tile'">Tile</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.floorType = 'Mosaic'">Mosaic</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.floorType = 'Laminate'">Laminate</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.floorType = 'Canvas'">Canvas</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.floorType = 'Marmo'">Marmo</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.floorType = 'Legno'">Legno</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.floorType = 'Pietra'">Pietra</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.floorType = 'Piastrella'">Piastrella</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.floorType = 'Mosaico'">Mosaico</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.floorType = 'Laminato'">Laminato</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.floorType = 'Tela'">Tela</li>
                             </ul>
                         </div>
                     </div>
@@ -506,14 +506,14 @@
                     <div class="w-full relative">
                         <button data-dropdown-toggle="warehouse" type="button" class="h-12 w-max inline-flex justify-between items-center px-4 bg-[#D6CEC2] rounded-full gap-4">
                             <app-warehouse-icon dimensions="w-6 h-6" color="black"></app-warehouse-icon>
-                            <p class="text-base">Warehouse: {{ characteristisForm.value.warehouse }}</p>
+                            <p class="text-base">Magazzino: {{ characteristisForm.value.warehouse }}</p>
                             <app-caret-down class="w-4 h-4" color="#000"></app-caret-down>
                         </button>
                         <div id="warehouse" class="hidden w-[300px] h-max rounded-[20px] bg-[#D6CEC2] p-2 z-50">
                             <ul class="w-full">
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.warehouse = 'none'">none</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.warehouse = 'inside'">inside</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.warehouse = 'outside'">outside</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.warehouse = 'nessuno'">nessuno</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.warehouse = 'interno'">interno</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.warehouse = 'fuori'">fuori</li>
                             </ul>
                         </div>
                     </div>
@@ -523,7 +523,7 @@
                     <input type="checkbox" id="petsAllowed" name="petsAllowed" formControlName="petsAllowed" value="" class="hidden peer" />
                     <label for="petsAllowed" class="w-max px-6 py-[10px] bg-[#D6CEC2] peer-checked:bg-[#A39175] rounded-full inline-flex justify-center items-center gap-4 peer-checked:text-white text-base cursor-pointer">
                         <app-paw-print-icon dimensions="w-6 h-6" [color]="characteristisForm.value.petsAllowed ? 'white' : 'black'"></app-paw-print-icon>
-                        <p class="text-base">Pets Allowed</p>
+                        <p class="text-base">Animali ammessi</p>
                         <app-check-icon dimensions="w-4 h-4" [color]="characteristisForm.value.petsAllowed ? 'white' : 'black'" *ngIf="characteristisForm.value.petsAllowed"></app-check-icon>
                     </label>
                 </div>
@@ -532,7 +532,7 @@
                     <input type="checkbox" id="cameras" name="cameras" formControlName="cameras" value="" class="hidden peer" />
                     <label for="cameras" class="w-max px-6 py-[10px] bg-[#D6CEC2] peer-checked:bg-[#A39175] rounded-full inline-flex justify-center items-center gap-4 peer-checked:text-white text-base cursor-pointer">
                         <app-paw-print-icon dimensions="w-6 h-6" [color]="characteristisForm.value.cameras ? 'white' : 'black'"></app-paw-print-icon>
-                        <p class="text-base">Cameras</p>
+                        <p class="text-base">Telecamere</p>
                         <app-check-icon dimensions="w-4 h-4" [color]="characteristisForm.value.cameras ? 'white' : 'black'" *ngIf="characteristisForm.value.cameras"></app-check-icon>
                     </label>
                 </div>
@@ -541,7 +541,7 @@
                     <input type="checkbox" id="cableTv" name="cableTv" formControlName="cableTv" value="" class="hidden peer" />
                     <label for="cableTv" class="w-max px-6 py-[10px] bg-[#D6CEC2] peer-checked:bg-[#A39175] rounded-full inline-flex justify-center items-center gap-4 peer-checked:text-white text-base cursor-pointer">
                         <app-television-simple-icon dimensions="w-6 h-6" [color]="characteristisForm.value.cableTv ? 'white' : 'black'"></app-television-simple-icon>
-                        <p class="text-base">Cable TV</p>
+                        <p class="text-base">TV via Cavo</p>
                         <app-check-icon dimensions="w-4 h-4" [color]="characteristisForm.value.cableTv ? 'white' : 'black'" *ngIf="characteristisForm.value.cableTv"></app-check-icon>
                     </label>
                 </div>
@@ -550,7 +550,7 @@
                     <input type="checkbox" id="floorHeating" name="floorHeating" formControlName="floorHeating" value="" class="hidden peer" />
                     <label for="floorHeating" class="w-max px-6 py-[10px] bg-[#D6CEC2] peer-checked:bg-[#A39175] rounded-full inline-flex justify-center items-center gap-4 peer-checked:text-white text-base cursor-pointer">
                         <app-thermometer-hot-icon dimensions="w-6 h-6" [color]="characteristisForm.value.floorHeating ? 'white' : 'black'"></app-thermometer-hot-icon>
-                        <p class="text-base">Floor Heating</p>
+                        <p class="text-base">Riscaldamento a pavimento</p>
                         <app-check-icon dimensions="w-4 h-4" [color]="characteristisForm.value.floorHeating ? 'white' : 'black'" *ngIf="characteristisForm.value.floorHeating"></app-check-icon>
                     </label>
                 </div>
@@ -559,7 +559,7 @@
                     <input type="checkbox" id="internalStairs" name="internalStairs" formControlName="internalStairs" value="" class="hidden peer" />
                     <label for="internalStairs" class="w-max px-6 py-[10px] bg-[#D6CEC2] peer-checked:bg-[#A39175] rounded-full inline-flex justify-center items-center gap-4 peer-checked:text-white text-base cursor-pointer">
                         <app-thermometer-hot-icon dimensions="w-6 h-6" [color]="characteristisForm.value.internalStairs ? 'white' : 'black'"></app-thermometer-hot-icon>
-                        <p class="text-base">Internal Stairs</p>
+                        <p class="text-base">Scale interne</p>
                         <app-check-icon dimensions="w-4 h-4" [color]="characteristisForm.value.internalStairs ? 'white' : 'black'" *ngIf="characteristisForm.value.internalStairs"></app-check-icon>
                     </label>
                 </div>
@@ -568,7 +568,7 @@
                     <input type="checkbox" id="playroom" name="playroom" formControlName="playroom" value="" class="hidden peer" />
                     <label for="playroom" class="w-max px-6 py-[10px] bg-[#D6CEC2] peer-checked:bg-[#A39175] rounded-full inline-flex justify-center items-center gap-4 peer-checked:text-white text-base cursor-pointer">
                         <app-game-controller-icon dimensions="w-6 h-6" [color]="characteristisForm.value.playroom ? 'white' : 'black'"></app-game-controller-icon>
-                        <p class="text-base">Palyroom</p>
+                        <p class="text-base">Sala giochi</p>
                         <app-check-icon dimensions="w-4 h-4" [color]="characteristisForm.value.playroom ? 'white' : 'black'" *ngIf="characteristisForm.value.playroom"></app-check-icon>
                     </label>
                 </div>
@@ -581,7 +581,7 @@
                     <input type="checkbox" id="elevator" name="elevator" formControlName="elevator" value="" class="hidden peer" />
                     <label for="elevator" class="w-max px-6 py-[10px] bg-[#D6CEC2] peer-checked:bg-[#A39175] rounded-full inline-flex justify-center items-center gap-4 peer-checked:text-white text-base cursor-pointer">
                         <app-elevator-icon dimensions="w-6 h-6" [color]="characteristisForm.value.elevator ? 'white' : 'black'"></app-elevator-icon>
-                        <p class="text-base">Elevator</p>
+                        <p class="text-base">Ascensore</p>
                         <app-check-icon dimensions="w-4 h-4" [color]="characteristisForm.value.elevator ? 'white' : 'black'" *ngIf="characteristisForm.value.elevator"></app-check-icon>
                     </label>
                 </div>
@@ -590,7 +590,7 @@
                     <input type="checkbox" id="solarWaterHeater" name="solarWaterHeater" formControlName="solarWaterHeater" value="" class="hidden peer" />
                     <label for="solarWaterHeater" class="w-max px-6 py-[10px] bg-[#D6CEC2] peer-checked:bg-[#A39175] rounded-full inline-flex justify-center items-center gap-4 peer-checked:text-white text-base cursor-pointer">
                         <app-solar-panel-icon dimensions="w-6 h-6" [color]="characteristisForm.value.solarWaterHeater ? 'white' : 'black'"></app-solar-panel-icon>
-                        <p class="text-base">Solar Water Heater</p>
+                        <p class="text-base">Scaldabagno solare</p>
                         <app-check-icon dimensions="w-4 h-4" [color]="characteristisForm.value.solarWaterHeater ? 'white' : 'black'" *ngIf="characteristisForm.value.solarWaterHeater"></app-check-icon>
                     </label>
                 </div>
@@ -599,7 +599,7 @@
                     <input type="checkbox" id="garden" name="garden" formControlName="garden" value="" class="hidden peer" />
                     <label for="garden" class="w-max px-6 py-[10px] bg-[#D6CEC2] peer-checked:bg-[#A39175] rounded-full inline-flex justify-center items-center gap-4 peer-checked:text-white text-base cursor-pointer">
                         <app-plant-icon dimensions="w-6 h-6" [color]="characteristisForm.value.garden ? 'white' : 'black'"></app-plant-icon>
-                        <p class="text-base">Garden</p>
+                        <p class="text-base">Giardino</p>
                         <app-check-icon dimensions="w-4 h-4" [color]="characteristisForm.value.garden ? 'white' : 'black'" *ngIf="characteristisForm.value.garden"></app-check-icon>
                     </label>
                 </div>
@@ -608,7 +608,7 @@
                     <input type="checkbox" id="incomplete" name="incomplete" formControlName="incomplete" value="" class="hidden peer" />
                     <label for="incomplete" class="w-max px-6 py-[10px] bg-[#D6CEC2] peer-checked:bg-[#A39175] rounded-full inline-flex justify-center items-center gap-4 peer-checked:text-white text-base cursor-pointer">
                         <app-circle-half-tilt-icon dimensions="w-6 h-6" [color]="characteristisForm.value.incomplete ? 'white' : 'black'"></app-circle-half-tilt-icon>
-                        <p class="text-base">Incomplete</p>
+                        <p class="text-base">Incompleto</p>
                         <app-check-icon dimensions="w-4 h-4" [color]="characteristisForm.value.incomplete ? 'white' : 'black'" *ngIf="characteristisForm.value.incomplete"></app-check-icon>
                     </label>
                 </div>
@@ -617,7 +617,7 @@
                     <input type="checkbox" id="luxurious" name="luxurious" formControlName="luxurious" value="" class="hidden peer" />
                     <label for="luxurious" class="w-max px-6 py-[10px] bg-[#D6CEC2] peer-checked:bg-[#A39175] rounded-full inline-flex justify-center items-center gap-4 peer-checked:text-white text-base cursor-pointer">
                         <app-champagne-icon dimensions="w-6 h-6" [color]="characteristisForm.value.luxurious ? 'white' : 'black'"></app-champagne-icon>
-                        <p class="text-base">Luxurius</p>
+                        <p class="text-base">Di lusso</p>
                         <app-check-icon dimensions="w-4 h-4" [color]="characteristisForm.value.luxurious ? 'white' : 'black'" *ngIf="characteristisForm.value.luxurious"></app-check-icon>
                     </label>
                 </div>
@@ -635,7 +635,7 @@
                     <input type="checkbox" id="satelliteAntenna" name="satelliteAntenna" formControlName="satelliteAntenna" value="" class="hidden peer" />
                     <label for="satelliteAntenna" class="w-max px-6 py-[10px] bg-[#D6CEC2] peer-checked:bg-[#A39175] rounded-full inline-flex justify-center items-center gap-4 peer-checked:text-white text-base cursor-pointer">
                         <app-antenna-icon dimensions="w-6 h-6" [color]="characteristisForm.value.satelliteAntenna ? 'white' : 'black'"></app-antenna-icon>
-                        <p class="text-base">Satellite Antenna</p>
+                        <p class="text-base">Antenna satellitare</p>
                         <app-check-icon dimensions="w-4 h-4" [color]="characteristisForm.value.satelliteAntenna ? 'white' : 'black'" *ngIf="characteristisForm.value.satelliteAntenna"></app-check-icon>
                     </label>
                 </div>
@@ -644,7 +644,7 @@
                     <input type="checkbox" id="electricShutters" name="electricShutters" formControlName="electricShutters" value="" class="hidden peer" />
                     <label for="electricShutters" class="w-max px-6 py-[10px] bg-[#D6CEC2] peer-checked:bg-[#A39175] rounded-full inline-flex justify-center items-center gap-4 peer-checked:text-white text-base cursor-pointer">
                         <app-window-icon dimensions="w-6 h-6" [color]="characteristisForm.value.electricShutters ? 'white' : 'black'"></app-window-icon>
-                        <p class="text-base">Frames with Electric Shutters</p>
+                        <p class="text-base">Cornici con tapparelle elettriche</p>
                         <app-check-icon dimensions="w-4 h-4" [color]="characteristisForm.value.electricShutters ? 'white' : 'black'" *ngIf="characteristisForm.value.electricShutters"></app-check-icon>
                     </label>
                 </div>
@@ -653,7 +653,7 @@
                     <input type="checkbox" id="neoclassical" name="neoclassical" formControlName="neoclassical" value="" class="hidden peer" />
                     <label for="neoclassical" class="w-max px-6 py-[10px] bg-[#D6CEC2] peer-checked:bg-[#A39175] rounded-full inline-flex justify-center items-center gap-4 peer-checked:text-white text-base cursor-pointer">
                         <app-window-icon dimensions="w-6 h-6" [color]="characteristisForm.value.neoclassical ? 'white' : 'black'"></app-window-icon>
-                        <p class="text-base">Neoclassical</p>
+                        <p class="text-base">Neoclassico</p>
                         <app-check-icon dimensions="w-4 h-4" [color]="characteristisForm.value.neoclassical ? 'white' : 'black'" *ngIf="characteristisForm.value.neoclassical"></app-check-icon>
                     </label>
                 </div>
@@ -669,7 +669,7 @@
                 <div>
                     <input type="checkbox" id="maintainable" name="maintainable" formControlName="maintainable" value="" class="hidden peer" />
                     <label for="maintainable" class="w-max px-6 py-[10px] bg-[#D6CEC2] peer-checked:bg-[#A39175] rounded-full inline-flex justify-center items-center gap-4 peer-checked:text-white text-base cursor-pointer">
-                        <p class="text-base">Maintainable</p>
+                        <p class="text-base">Manutenibile</p>
                         <app-check-icon dimensions="w-4 h-4" [color]="characteristisForm.value.maintainable ? 'white' : 'black'" *ngIf="characteristisForm.value.maintainable"></app-check-icon>
                     </label>
                 </div>
@@ -677,7 +677,7 @@
                 <div>
                     <input type="checkbox" id="awnings" name="awnings" formControlName="awnings" value="" class="hidden peer" />
                     <label for="awnings" class="w-max px-6 py-[10px] bg-[#D6CEC2] peer-checked:bg-[#A39175] rounded-full inline-flex justify-center items-center gap-4 peer-checked:text-white text-base cursor-pointer">
-                        <p class="text-base">Awnings</p>
+                        <p class="text-base">Tende da Sole</p>
                         <app-check-icon dimensions="w-4 h-4" [color]="characteristisForm.value.awnings ? 'white' : 'black'" *ngIf="characteristisForm.value.awnings"></app-check-icon>
                     </label>
                 </div>
@@ -686,14 +686,14 @@
                     <div class="w-full relative">
                         <button data-dropdown-toggle="pool" type="button" class="h-12 w-max inline-flex justify-between items-center px-4 bg-[#D6CEC2] rounded-full gap-4">
                             <app-swimming-pool-icon dimensions="w-6 h-6" color="black"></app-swimming-pool-icon>
-                            <p class="text-base">Pool: {{ characteristisForm.value.pool }}</p>
+                            <p class="text-base">Piscina: {{ characteristisForm.value.pool }}</p>
                             <app-caret-down class="w-4 h-4" color="#000"></app-caret-down>
                         </button>
                         <div id="pool" class="hidden w-[300px] h-max rounded-[20px] bg-[#D6CEC2] p-2 z-50">
                             <ul class="w-full">
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.pool = 'none'">None</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.pool = 'inside'">Inside</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.pool = 'outside'">Outside</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.pool = 'nessuno'">nessuno</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.pool = 'interno'">Interno</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.pool = 'fuori'">Fuori</li>
                             </ul>
                         </div>
                     </div>

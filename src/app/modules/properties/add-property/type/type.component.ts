@@ -22,9 +22,9 @@ export class TypeComponent implements OnInit {
       rentOrSale: new FormControl("vendita", [Validators.required]),
       propertyType: new FormControl("1", [Validators.required]),
       propertyCategory: new FormControl(undefined, [Validators.required]),
-      category: new FormControl("Choose category", [Validators.required]),
-      comune: new FormControl("Choose comune", [Validators.required]),
-      area: new FormControl("Choose area", [Validators.required]),
+      category: new FormControl("Scegli categoria", [Validators.required]),
+      comune: new FormControl("Scegli comune", [Validators.required]),
+      area: new FormControl("Scegli zona", [Validators.required]),
       address: new FormControl(undefined, [Validators.required])
     });
   }

@@ -19,12 +19,12 @@ export class GeneralInfoComponent implements OnInit {
 
   generateGeneralInfoForm(): FormGroup {
     return new FormGroup({
-      acceessFrom: new FormControl<string>('Street', [Validators.required]),
+      acceessFrom: new FormControl<string>('Strada', [Validators.required]),
       accessibillity: new FormControl<string>('no', [Validators.required]),
       view: new FormControl<string>('no'),
-      viewType: new FormControl<string>('Sea'),
-      positioning: new FormControl<string>('Corner'),
-      zone: new FormControl<string>('Residential'),
+      viewType: new FormControl<string>('Mare'),
+      positioning: new FormControl<string>('Angolo'),
+      zone: new FormControl<string>('Residenziale'),
       availableFrom: new FormControl<string | undefined>(undefined),
       distanceFromSea: new FormControl<number | undefined>(undefined),
       distanceFromCenter: new FormControl<number | undefined>(undefined),
