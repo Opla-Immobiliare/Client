@@ -80,6 +80,9 @@ import { SwimmingPoolIconComponent } from './swimming-pool-icon/swimming-pool-ic
 import { CampFireIconComponent } from './camp-fire-icon/camp-fire-icon.component';
 import { WheelchairIconComponent } from './wheelchair-icon/wheelchair-icon.component';
 import { UploadSimpleIconComponent } from './upload-simple-icon/upload-simple-icon.component';
+import { UserCircleGearIconComponent } from './user-circle-gear-icon/user-circle-gear-icon.component';
+import { CreditCardIconComponent } from './credit-card-icon/credit-card-icon.component';
+import { SignOutIconComponent } from './sign-out-icon/sign-out-icon.component';
 
 
 
@@ -164,7 +167,10 @@ import { UploadSimpleIconComponent } from './upload-simple-icon/upload-simple-ic
     SwimmingPoolIconComponent,
     CampFireIconComponent,
     WheelchairIconComponent,
-    UploadSimpleIconComponent
+    UploadSimpleIconComponent,
+    UserCircleGearIconComponent,
+    CreditCardIconComponent,
+    SignOutIconComponent
   ],
   imports: [
     CommonModule
@@ -249,7 +255,10 @@ import { UploadSimpleIconComponent } from './upload-simple-icon/upload-simple-ic
     SwimmingPoolIconComponent,
     CampFireIconComponent,
     WheelchairIconComponent,
-    UploadSimpleIconComponent
+    UploadSimpleIconComponent,
+    UserCircleGearIconComponent,
+    CreditCardIconComponent,
+    SignOutIconComponent
   ]
 })
 export class IconsModule { }
