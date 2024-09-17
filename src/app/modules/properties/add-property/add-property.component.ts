@@ -18,7 +18,6 @@ export class AddPropertyComponent implements OnInit {
   typeForm: FormGroup; // TypeForm
   characteristicsForm: FormGroup; // CharacteristicsForm
   generalInfoForm: FormGroup; // GeneralInfoForm
-  next: any | undefined = [];
 
   constructor(private data: AddPropertyDataService) {
     this.typeForm = new FormGroup({});

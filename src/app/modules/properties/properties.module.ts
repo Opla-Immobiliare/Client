@@ -15,6 +15,9 @@ import { CharacteristicsComponent } from './add-property/characteristics/charact
 import { GeneralInfoComponent } from './add-property/general-info/general-info.component';
 import { ReviewComponent } from './add-property/review/review.component';
 import { DetailsTableComponent } from './property/details-table/details-table.component';
+import { ClipboardModule } from 'ngx-clipboard';
+import { LoanComponent } from './property/loan/loan.component';
+import { AdditionalFeaturesComponent } from './property/additional-features/additional-features.component';
 
 export const routes: Routes = [
   {
@@ -45,6 +48,8 @@ export const routes: Routes = [
     GeneralInfoComponent,
     ReviewComponent,
     DetailsTableComponent,
+    LoanComponent,
+    AdditionalFeaturesComponent,
   ],
   imports: [
     CommonModule,
@@ -52,6 +57,7 @@ export const routes: Routes = [
     IconsModule,
     ReactiveFormsModule,
     FormsModule,
+    ClipboardModule
   ]
 })
 export class PropertiesModule { }

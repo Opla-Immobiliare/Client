@@ -53,10 +53,87 @@
             <p>Dimensione Centro propone in vendita un esclusivo appartamento trilocale nel cuore di un super condominio caratterizzato da ampie parti comuni a verde e con servizi alle famiglie, recintato e custodito e con la comoda assistenza del servizio portineria super condominiale disponibile 24 h. La sua posizione privilegiata al sesto piano offre una vista unica e una luminosità senza pari, con affacci silenziosi su una rilassante corte verde.Questo immobile, con una distribuzione interna intelligente e funzionale, si sviluppa su un unico livello. La zona giorno vanta un accogliente...</p>
         </div>
 
+        <!-- Loan -->
+        <div class="w-full pt-8">
+            <app-loan></app-loan>
+        </div>
+        <!-- / Loan -->
+
         <!-- Details -->
-        <div class="w-full">
+        <div class="w-full mt-16">
+            <div class="inline-flex justify-between items-center w-full">
+                <p class="text-base font-semibold">Details</p>
+                <p (click)="copyToClipboard('8364')" class="inline-flex w-max justify-center items-center gap-2 text-sm text-[#A39175] cursor-pointer">
+                    OPLA8364
+                    <app-copy-icon class="w-4 h-4" color="#A39175"></app-copy-icon>
+                </p>
+            </div>
             <app-details-table></app-details-table>
         </div>
+        <!-- / Details -->
+
+        <!-- Additional features -->
+        <div class="w-full mt-16">
+            <div class="inline-flex justify-between items-center w-full">
+                <p class="text-base font-semibold">Additional features</p>
+            </div>
+            <app-additional-features></app-additional-features>
+        </div>
+        <!-- / Details -->
+
+        <!-- Near to -->
+        <div class="w-full mt-16">
+            <div class="inline-flex justify-between items-center w-full">
+                <p class="text-base font-semibold">Additional features</p>
+            </div>
+            
+            <div class="w-full grid gap-4 mt-4">
+                <!-- Distance from Sea -->
+                <div class="inline-flex justify-between items-center w-full">
+                    <p class="inline-flex items-center gap-4">
+                        <app-waves-icon dimensions="w-6 h-6" color="black"></app-waves-icon>
+                        <span class="text-sm">Distance from Sea</span>
+                    </p>
+                    <p class="text-sm text-[#5C503D]">670 m.</p>
+                </div>
+
+                <!-- Distance from City -->
+                <div class="inline-flex justify-between items-center w-full">
+                    <p class="inline-flex items-center gap-4">
+                        <app-city-icon dimensions="w-6 h-6" color="black"></app-city-icon>
+                        <span class="text-sm">Distance from City</span>
+                    </p>
+                    <p class="text-sm text-[#5C503D]">670 m.</p>
+                </div>
+
+                <!-- Distance from Center -->
+                <div class="inline-flex justify-between items-center w-full">
+                    <p class="inline-flex items-center gap-4">
+                        <app-map-pin-simple-area-icon dimensions="w-6 h-6" color="black"></app-map-pin-simple-area-icon>
+                        <span class="text-sm">Distance from Center</span>
+                    </p>
+                    <p class="text-sm text-[#5C503D]">670 m.</p>
+                </div>
+
+                <!-- Distance from Airport -->
+                <div class="inline-flex justify-between items-center w-full">
+                    <p class="inline-flex items-center gap-4">
+                        <app-airplane-tilt-icon dimensions="w-6 h-6" color="black"></app-airplane-tilt-icon>
+                        <span class="text-sm">Distance from Airport</span>
+                    </p>
+                    <p class="text-sm text-[#5C503D]">670 m.</p>
+                </div>
+
+                <!-- Near to -->
+                <div class="inline-flex justify-between items-center w-full">
+                    <p class="inline-flex items-center gap-4">
+                        <span class="text-sm">Near to:</span>
+                    </p>
+                    <p class="text-sm text-[#5C503D]">palazzo vecchio</p>
+                </div>
+            </div>
+        </div>
+        <!-- / Near to -->
     </div>
 
 </div>

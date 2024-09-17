@@ -1,20 +1,20 @@
-<table class="w-full mt-16">
+<table class="w-full mt-4">
     <!-- Square Area -->
-    <tr class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
-        <td class="w-1/2 py-6 pl-3">
+    <tr class="w-full border-[2px] border-[#D6CEC2] rounded-t-[20px]">
+        <td class="w-1/2 py-2 pl-3 border-[2px] border-[#D6CEC2]">
             <div class="inline-flex items-center gap-4">
                 <app-map-pin-area-icon dimensions="w-6 h-6" color="#5C503D"></app-map-pin-area-icon>
                 <p class="text-base">Square Area</p>
             </div>
         </td>
-        <td class="w-1/2 pl-3 border-[2px] border-[#D6CEC2] rounded-[20px]">
+        <td class="w-1/2 pl-3">
             <p class="text-base text-[#5C503D]">70 &#13217;</p>
         </td>
     </tr>
 
     <!-- Price -->
     <tr class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
-        <td class="w-1/2 py-6 pl-3">
+        <td class="w-1/2 py-2 pl-3">
             <div class="inline-flex items-center gap-4">
                 <app-currency-euro-icon dimensions="w-6 h-6" color="#5C503D"></app-currency-euro-icon>
                 <p class="text-base">Price</p>
@@ -27,7 +27,7 @@
 
     <!-- Rooms -->
     <tr class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
-        <td class="w-1/2 py-6 pl-3">
+        <td class="w-1/2 py-2 pl-3">
             <div class="inline-flex items-center gap-4">
                 <app-bed-icon dimensions="w-6 h-6" color="#5C503D"></app-bed-icon>
                 <p class="text-base">Rooms</p>
@@ -40,7 +40,7 @@
 
     <!-- Bathrooms -->
     <tr class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
-        <td class="w-1/2 py-6 pl-3">
+        <td class="w-1/2 py-2 pl-3">
             <div class="inline-flex items-center gap-4">
                 <app-bathtub-icon dimensions="w-6 h-6" color="#5C503D"></app-bathtub-icon>
                 <p class="text-base">Bathrooms</p>
@@ -53,7 +53,7 @@
 
     <!-- Bathrooms -->
     <tr class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
-        <td class="w-1/2 py-6 pl-3">
+        <td class="w-1/2 py-2 pl-3">
             <div class="inline-flex items-center gap-4">
                 <app-bathtub-icon dimensions="w-6 h-6" color="#5C503D"></app-bathtub-icon>
                 <p class="text-base">Bathrooms</p>
@@ -66,7 +66,7 @@
 
     <!-- Kitchens -->
     <tr class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
-        <td class="w-1/2 py-6 pl-3">
+        <td class="w-1/2 py-2 pl-3">
             <div class="inline-flex items-center gap-4">
                 <app-bathtub-icon dimensions="w-6 h-6" color="#5C503D"></app-bathtub-icon>
                 <p class="text-base">Kitchens</p>
@@ -79,7 +79,7 @@
 
     <!-- Living rooms -->
     <tr class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
-        <td class="w-1/2 py-6 pl-3">
+        <td class="w-1/2 py-2 pl-3">
             <div class="inline-flex items-center gap-4">
                 <app-arm-chair-icon dimensions="w-6 h-6" color="#5C503D"></app-arm-chair-icon>
                 <p class="text-base">Living rooms</p>
@@ -90,16 +90,68 @@
         </td>
     </tr>
 
-    <!-- Living rooms -->
+    <!-- EnergyClass -->
     <tr class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
-        <td class="w-1/2 py-6 pl-3">
+        <td class="w-1/2 py-2 pl-3">
             <div class="inline-flex items-center gap-4">
-                <app-bathtub-icon dimensions="w-6 h-6" color="#5C503D"></app-bathtub-icon>
-                <p class="text-base">Living rooms</p>
+                <app-light-bulb-filament-icon dimensions="w-6 h-6" color="#5C503D"></app-light-bulb-filament-icon>
+                <p class="text-base">Energy Class</p>
             </div>
         </td>
         <td class="w-1/2 pl-3 border-[2px] border-[#D6CEC2] rounded-[20px]">
-            <p class="text-base text-[#5C503D]">1</p>
+            <p class="text-base text-[#5C503D] bg-[#BAAC98] p-1 rounded w-max">A+</p>
+        </td>
+    </tr>
+
+    <!-- Floors -->
+    <tr class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
+        <td class="w-1/2 py-2 pl-3">
+            <div class="inline-flex items-center gap-4">
+                <app-steps-icon dimensions="w-6 h-6" color="#5C503D"></app-steps-icon>
+                <p class="text-base">Floor</p>
+            </div>
+        </td>
+        <td class="w-1/2 pl-3 border-[2px] border-[#D6CEC2] rounded-[20px]">
+            <p class="text-base text-[#5C503D]">4</p>
+        </td>
+    </tr>
+
+    <!-- Construction Year -->
+    <tr class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
+        <td class="w-1/2 py-2 pl-3">
+            <div class="inline-flex items-center gap-4">
+                <app-calendar-dots-icon dimensions="w-6 h-6" color="#5C503D"></app-calendar-dots-icon>
+                <p class="text-base">Construction Year</p>
+            </div>
+        </td>
+        <td class="w-1/2 pl-3 border-[2px] border-[#D6CEC2] rounded-[20px]">
+            <p class="text-base text-[#5C503D]">Full &#124; 2017</p>
+        </td>
+    </tr>
+
+    <!-- Parking Space -->
+    <tr class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
+        <td class="w-1/2 py-2 pl-3">
+            <div class="inline-flex items-center gap-4">
+                <app-parking-icon dimensions="w-6 h-6" color="#5C503D"></app-parking-icon>
+                <p class="text-base">Parking Space</p>
+            </div>
+        </td>
+        <td class="w-1/2 pl-3 border-[2px] border-[#D6CEC2] rounded-[20px]">
+            <p class="text-base text-[#5C503D]">1, Outside</p>
+        </td>
+    </tr>
+
+    <!-- Available From -->
+    <tr class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
+        <td class="w-1/2 py-2 pl-3">
+            <div class="inline-flex items-center gap-4">
+                <app-calendar-slash-icon dimensions="w-6 h-6" color="#5C503D"></app-calendar-slash-icon>
+                <p class="text-base">Available From</p>
+            </div>
+        </td>
+        <td class="w-1/2 pl-3 border-[2px] border-[#D6CEC2] rounded-[20px]">
+            <p class="text-base text-[#5C503D]">16/11/2024</p>
         </td>
     </tr>
 </table>

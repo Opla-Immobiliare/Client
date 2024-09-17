@@ -83,6 +83,14 @@ import { UploadSimpleIconComponent } from './upload-simple-icon/upload-simple-ic
 import { UserCircleGearIconComponent } from './user-circle-gear-icon/user-circle-gear-icon.component';
 import { CreditCardIconComponent } from './credit-card-icon/credit-card-icon.component';
 import { SignOutIconComponent } from './sign-out-icon/sign-out-icon.component';
+import { CalendarSlashIconComponent } from './calendar-slash-icon/calendar-slash-icon.component';
+import { CopyIconComponent } from './copy-icon/copy-icon.component';
+import { PercentageIconComponent } from './percentage-icon/percentage-icon.component';
+import { ArrowSquareOutIconComponent } from './arrow-square-out-icon/arrow-square-out-icon.component';
+import { WavesIconComponent } from './waves-icon/waves-icon.component';
+import { CityIconComponent } from './city-icon/city-icon.component';
+import { MapPinSimpleAreaIconComponent } from './map-pin-simple-area-icon/map-pin-simple-area-icon.component';
+import { AirplaneTiltIconComponent } from './airplane-tilt-icon/airplane-tilt-icon.component';
 
 
 
@@ -170,7 +178,15 @@ import { SignOutIconComponent } from './sign-out-icon/sign-out-icon.component';
     UploadSimpleIconComponent,
     UserCircleGearIconComponent,
     CreditCardIconComponent,
-    SignOutIconComponent
+    SignOutIconComponent,
+    CalendarSlashIconComponent,
+    CopyIconComponent,
+    PercentageIconComponent,
+    ArrowSquareOutIconComponent,
+    WavesIconComponent,
+    CityIconComponent,
+    MapPinSimpleAreaIconComponent,
+    AirplaneTiltIconComponent,
   ],
   imports: [
     CommonModule
@@ -258,7 +274,16 @@ import { SignOutIconComponent } from './sign-out-icon/sign-out-icon.component';
     UploadSimpleIconComponent,
     UserCircleGearIconComponent,
     CreditCardIconComponent,
-    SignOutIconComponent
+    SignOutIconComponent,
+    CalendarSlashIconComponent,
+    CopyIconComponent,
+    PercentageIconComponent,
+    ArrowSquareOutIconComponent,
+    WindowsLogoIconComponent,
+    WavesIconComponent,
+    CityIconComponent,
+    MapPinSimpleAreaIconComponent,
+    AirplaneTiltIconComponent
   ]
 })
 export class IconsModule { }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Property } from '../models/property.model';
+import { ClipboardService } from 'ngx-clipboard';
+
 
 @Component({
   selector: 'app-property',
@@ -8,7 +10,13 @@ import { Property } from '../models/property.model';
 })
 export class PropertyComponent implements OnInit {
 
-  constructor() {}
+  constructor(private clipboard: ClipboardService) {}
+
+
+  // Copy to clipboard
+  copyToClipboard(id: string): void {
+    this.clipboard.copy(id);
+  }
 
   ngOnInit(): void {}
 }

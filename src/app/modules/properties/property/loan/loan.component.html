@@ -1,0 +1,65 @@
+<div class="w-full pt-4 pb-6 border-y border-[#D6CEC2]">
+
+    <button type="button" data-motal-target="loanForm" data-modal-toggle="loanForm" class="inline-flex justify-between items-center w-full">
+        <p class="text-sm text-[#5C503D] w-[311px]">Interested in getting a loan? Calculate it here.</p>
+        <app-caret-down dimensions="w-4 h-4" color="#5C503D"></app-caret-down>
+    </button>
+
+    <!-- Form -->
+    <div id="loanForm" data-modal-target="loanForm" class="hidden w-full flex-col">
+        <form #f="ngForm" [formGroup]="loanForm" (change)="calculateLoan()" class="w-full p-4 rounded-[20px] bg-[#EBE7E0] mt-4">
+            <div class="grid grid-cols-2 gap-4">
+
+                <!-- Price of the Property -->
+                <div class="rounded-[10px] w-full bg-[#E0DAD1] px-4 pt-4 pb-5">
+                    <p class="text-[10px] text-[#4D4333]">Price of the property</p>
+                    <div class="inline-flex justify-between items-center w-full">
+                        <input type="text" name="propertyPrice" formControlName="propertyPrice" class="bg-transparent border-none h-12 w-full focus:ring-0 focus:ring-none focus:border-none text-xs"/>
+                        <app-currency-euro-icon dimensions="w-4 h-4" color="black"></app-currency-euro-icon>
+                    </div>
+                </div>
+                <!-- / Priece of the Property -->
+
+                <!-- Mortage amount -->
+                <div class="rounded-[10px] w-full bg-[#E0DAD1] px-4 pt-4 pb-5">
+                    <p class="text-[10px] text-[#4D4333]">Mortgage amount</p>
+                    <div class="inline-flex justify-between items-center w-full">
+                        <input type="text" name="mortageAmount" formControlName="mortageAmount" class="bg-transparent border-none h-12 w-full focus:ring-0 focus:ring-none focus:border-none text-xs"/>
+                        <app-currency-euro-icon dimensions="w-4 h-4" color="black"></app-currency-euro-icon>
+                    </div>
+                </div>
+                <!-- / Mortage amount -->
+
+                <!-- Mortage rate -->
+                <div class="rounded-[10px] w-full bg-[#E0DAD1] px-4 pt-4 pb-5">
+                    <p class="text-[10px] text-[#4D4333]">Mortgage rate</p>
+                    <div class="inline-flex justify-between items-center w-full">
+                        <input type="text" name="mortageRate" formControlName="mortageRate" class="bg-transparent border-none h-12 w-full focus:ring-0 focus:ring-none focus:border-none text-xs"/>
+                        <app-percentage-icon dimensions="w-4 h-4" color="black"></app-percentage-icon>
+                    </div>
+                </div>
+                <!-- / Mortage rate -->
+
+                <!-- Mortage duration -->
+                <div class="rounded-[10px] w-full bg-[#E0DAD1] px-4 pt-4 pb-5">
+                    <p class="text-[10px] text-[#4D4333]">Mortgage Duration</p>
+                    <div class="inline-flex justify-between items-center w-full">
+                        <input type="text" name="mortageDuration" formControlName="mortageDuration" class="bg-transparent border-none h-12 w-full focus:ring-0 focus:ring-none focus:border-none text-xs"/>
+                        <p class="text-sm">years</p>
+                    </div>
+                </div>
+                <!-- / Mortage rate -->
+            </div>
+
+            <div class="w-full bg-[#FDF6B4] text-center py-4 mt-4 rounded-b-[20px]">
+                <p class="text-xs">Installment from <span class="text-sm font-semibold">{{ loan!.monthly | currency: 'EUR':'symbol':'1.1-2':'it'}}</span> per month</p>
+                <p class="text-xs">Anticipo: <span class="font-semibold">{{ loan!.advance | currency: 'EUR':'symbol':'1.2':'it' }}</span> &#8226;&#8226; Mutuo: <span class="font-semibold">{{ loan!.mutual | currency: 'EUR':'symbol':'1.2':'it' }}</span></p>
+            </div>
+        </form>
+
+        <div class="w-full px-4 pt-4 inline-flex items-center gap-3">
+            <p class="text-[#7D7102] text-xs hover:underline cursor-pointer font-semibold">Find out what mortgage you can request.</p>
+            <app-arrow-square-out-icon dimensions="w-4 h-4" color="#7D7102"></app-arrow-square-out-icon>
+        </div>
+    </div>
+</div>
