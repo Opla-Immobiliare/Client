@@ -91,6 +91,7 @@ import { WavesIconComponent } from './waves-icon/waves-icon.component';
 import { CityIconComponent } from './city-icon/city-icon.component';
 import { MapPinSimpleAreaIconComponent } from './map-pin-simple-area-icon/map-pin-simple-area-icon.component';
 import { AirplaneTiltIconComponent } from './airplane-tilt-icon/airplane-tilt-icon.component';
+import { WarningOctagonIconComponent } from './warning-octagon-icon/warning-octagon-icon.component';
 
 
 
@@ -187,6 +188,7 @@ import { AirplaneTiltIconComponent } from './airplane-tilt-icon/airplane-tilt-ic
     CityIconComponent,
     MapPinSimpleAreaIconComponent,
     AirplaneTiltIconComponent,
+    WarningOctagonIconComponent,
   ],
   imports: [
     CommonModule
@@ -283,7 +285,8 @@ import { AirplaneTiltIconComponent } from './airplane-tilt-icon/airplane-tilt-ic
     WavesIconComponent,
     CityIconComponent,
     MapPinSimpleAreaIconComponent,
-    AirplaneTiltIconComponent
+    AirplaneTiltIconComponent,
+    WarningOctagonIconComponent
   ]
 })
 export class IconsModule { }

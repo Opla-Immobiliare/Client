@@ -18,14 +18,15 @@ import { DetailsTableComponent } from './property/details-table/details-table.co
 import { ClipboardModule } from 'ngx-clipboard';
 import { LoanComponent } from './property/loan/loan.component';
 import { AdditionalFeaturesComponent } from './property/additional-features/additional-features.component';
+import { SimilarPropertiesComponent } from './property/similar-properties/similar-properties.component';
 
 export const routes: Routes = [
   {
-    path: 'comune/:municipality',
+    path: ':municipality',
     component: PropertiesListComponent
   },
   {
-    path: 'property/:id',
+    path: ':municipality/property/:id',
     component: PropertyComponent
   },
   {
@@ -50,6 +51,7 @@ export const routes: Routes = [
     DetailsTableComponent,
     LoanComponent,
     AdditionalFeaturesComponent,
+    SimilarPropertiesComponent,
   ],
   imports: [
     CommonModule,

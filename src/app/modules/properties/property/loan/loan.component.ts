@@ -15,6 +15,7 @@ export class LoanComponent implements OnInit{
   
   loanForm: FormGroup;
   loan: LoanModel | undefined;
+  showLoan: boolean = false;
 
   constructor() {
     this.loanForm = new FormGroup({
@@ -31,6 +32,14 @@ export class LoanComponent implements OnInit{
       monthly: (this.loanForm.value.mortageAmount * rate) / (12 * this.loanForm.value.mortageDuration),
       advance: (this.loanForm.value.mortageAmount * rate) - this.loanForm.value.mortageAmount,
       mutual: this.loanForm.value.mortageAmount * rate
+    }
+  }
+
+  showHideLoan(): void {
+    if (this.showLoan) {
+      this.showLoan = false;
+    } else {
+      this.showLoan = true;
     }
   }
 

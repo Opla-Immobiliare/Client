@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { IconsModule } from '../shared/icons/icons.module';
-import { RouterModule } from '@angular/router';
+import { Router, RouterLinkActive, RouterModule } from '@angular/router';
 import { AuthModule } from '../modules/auth/auth.module';
 import { TopRightActionComponent } from './top-right-action/top-right-action.component';
 import { CookiesComponent } from './cookies/cookies.component';
@@ -21,7 +21,9 @@ import { CookiesComponent } from './cookies/cookies.component';
     CommonModule,
     IconsModule,
     RouterModule,
-    AuthModule
+    AuthModule,
+    RouterModule,
+    RouterLinkActive
   ],
   exports: [
     HeaderComponent,
