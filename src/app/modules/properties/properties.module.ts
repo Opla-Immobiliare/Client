@@ -19,6 +19,7 @@ import { ClipboardModule } from 'ngx-clipboard';
 import { LoanComponent } from './property/loan/loan.component';
 import { AdditionalFeaturesComponent } from './property/additional-features/additional-features.component';
 import { SimilarPropertiesComponent } from './property/similar-properties/similar-properties.component';
+import { InterestComponent } from './property/interest/interest.component';
 
 export const routes: Routes = [
   {
@@ -52,6 +53,7 @@ export const routes: Routes = [
     LoanComponent,
     AdditionalFeaturesComponent,
     SimilarPropertiesComponent,
+    InterestComponent,
   ],
   imports: [
     CommonModule,
