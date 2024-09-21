@@ -12,6 +12,7 @@ import { UpdateUserFormComponent } from './personal-settings/update-user-form/up
 import { UpdatePasswordFormComponent } from './personal-settings/update-password-form/update-password-form.component';
 import { AdditionalSettingsComponent } from './personal-settings/additional-settings/additional-settings.component';
 import { DeleteAccountComponent } from './personal-settings/additional-settings/delete-account/delete-account.component';
+import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: 'settings',
     component: PersonalSettingsComponent
+  },
+  {
+    path: 'subscriptions',
+    component: SubscriptionsComponent
   }
 ]
 
@@ -39,6 +44,7 @@ const routes: Routes = [
     UpdatePasswordFormComponent,
     AdditionalSettingsComponent,
     DeleteAccountComponent,
+    SubscriptionsComponent,
 
   ],
   imports: [

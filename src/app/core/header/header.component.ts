@@ -11,7 +11,17 @@ export class HeaderComponent implements OnInit {
   municipality: string | null = null;
   id: string | null = null;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    
+  }
+
+  hideHeader(): string {
+    if (this.route.url.includes('property')) {
+      return 'hidden lg:flex';
+    }
+
+    return 'flex';
+  }
 }
