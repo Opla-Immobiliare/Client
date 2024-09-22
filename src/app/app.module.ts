@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
+import { NgxStripeModule } from 'ngx-stripe';
 
 import { StoreModule } from '@ngrx/store';
 import { metaReducers, reducers } from './reducers';
@@ -14,6 +15,7 @@ import { environment } from 'src/environments/environment';
 import { EntityDataModule } from '@ngrx/data';
 import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { AuthModule } from './modules/auth/auth.module';
+import { NotFoundComponent } from './modules/pages/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -35,6 +37,13 @@ const routes: Routes = [
   {
     path: 'business',
     loadChildren: () => import('./modules/business/business.module').then(m => m.BusinessModule)
+  },
+
+  // 404
+  {
+    path: '**',
+    pathMatch: 'full',
+    component: NotFoundComponent
   }
 ];
 
@@ -66,7 +75,8 @@ const routes: Routes = [
     StoreRouterConnectingModule.forRoot({
       stateKey: 'router',
       routerState: RouterState.Minimal
-    })
+    }),
+    NgxStripeModule.forRoot('***your-stripe-publishable-key***'),
   ],
   providers: [],
   bootstrap: [AppComponent]
