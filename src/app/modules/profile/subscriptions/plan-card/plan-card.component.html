@@ -1,0 +1,19 @@
+<div class="w-full bg-[#FEFCE6] rounded-[20px] p-6 mt-6">
+
+    <div *ngIf="!isFreePlan()" class="rounded-full bg-[#213A29] px-4 py-1 inline-flex justify-center items-center text-[#FEFCE6] text-xs">Active</div>
+    <div *ngIf="!isOnHold()" class="rounded bg-[#FF5449] px-4 py-1 inline-flex justify-center items-center text-[#FEFCE6] text-xs">On Hold</div>
+
+    <h2 class="text-xl pt-2">Free</h2>
+
+    <p class="text-xs text-[#4B4401] pt-3">Αναβάθμισε το πακέτο σου για να μπορείς να ανεβάσεις περισσότερες απο 1 αγγελίες.</p>
+
+    <p *ngIf="!isFreePlan()" class="text-xs text-[#8A785B] pt-6">Next Payment on January 1st, 2025 for 588€</p>
+
+    <button [routerLink]="['manage']" type="button" class="w-full h-12 inline-flex justify-center items-center gap-3 text-xs text-[#213A29] font-semibold cursor-pointer rounded-full hover:shadow-[0_0_20px_0_rgba(251,229,37,1)] bg-[#FBE525] focus:bg-[#E1CB04] focus:shadow-none mt-16">
+        <app-arrow-up-icon *ngIf="isFreePlan()" dimensions="w-6 h-6" color="#213A29"></app-arrow-up-icon>
+        <app-arrows-down-up-icon *ngIf="!isFreePlan()" dimensions="w-6 h-6" color="#213A29"></app-arrows-down-up-icon>
+        {{ isFreePlan() ? 'Upgrade your plan' : 'Manage Subscription' }}
+    </button>
+
+</div>
+

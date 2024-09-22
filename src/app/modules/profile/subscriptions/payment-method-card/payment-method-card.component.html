@@ -1,0 +1,47 @@
+<div [ngClass]="hasPaymentMethod() ? 'bg-[#EBE7E0]' : 'bg-[#213A29]'" class="w-full rounded-[20px] p-6 mt-6">
+
+    <!-- Header -->
+    <div class="inline-flex justify-between items-center w-full">
+        <h2 [ngClass]="hasPaymentMethod() ? 'text-black' : 'text-white' " class="text-xl">How you pay</h2>
+        <div *ngIf="hasPaymentMethod()" class="w-max inline-flex justify-center items-center gap-6">
+            <p *ngIf="!isOnHold()" class="text-xs font-semibold text-[#7D7102] hover:underline cursor-pointer">Remove</p>
+            <p class="text-xs font-semibold text-[#7D7102] hover:underline cursor-pointer">Edit</p>
+        </div>
+    </div>
+
+    <!-- Add Payment Method -->
+    <div *ngIf="!hasPaymentMethod()" class="w-full grid gap-4 mt-5">
+        <div class="bg-transparent border-2 border-dashed border-[#FDF39B] h-12 w-[72px] rounded-[10px] inline-flex justify-center items-center">
+            <app-plus-icon dimensions="w-6 h-6" color="#FDF39B"></app-plus-icon>
+        </div>
+        <p class="text-white text-xs">Πρόσθεσε την κάρτα σου για να μην χάνεις χρόνο όταν χρειαστείς ενα μεγαλύτερο πακέτο.</p>
+    </div>
+
+    <!-- Has Payment Method -->
+    <div *ngIf="hasPaymentMethod()" class="inline-flex items-center gap-3 mt-5">
+        <!-- Card Icon -->
+        <div class="bg-[#FCF082] rounded-[10px] h-12 w-[72px] inline-flex justify-center items-center">
+            M
+        </div>
+        <!-- Card Details -->
+        <div class="w-full grid gap-2">
+            <p class="text-xs">Mastercard **** 0586</p>
+            <p class="text-[10px]">Expires 07/30</p>
+        </div>
+    </div>
+
+    <!-- Not processed Payment -->
+    <div *ngIf="hasPaymentMethod() && isOnHold()" class="inline-flex w-full gap-4 mt-5">
+        <app-warning-icon dimensions="w-6 h-6" color="#FF5449"></app-warning-icon>
+        <p class="text-xs">Η συνδρομή σας είναι παγωμένη. Ανανεώστε τα στοιχεία πληρωμής σας για να συνεχίσετε να λαμβάνετε τη συνδρομή σας.</p>
+    </div>
+
+    <!-- Action buttons -->
+    <div *ngIf="hasPaymentMethod() && isOnHold()" class="inline-flex justify-between items-center w-full mt-5">
+        <button type="button" class="bg-transparent border-none hover:underline text-sm font-semibold text-[#7D7102] cursor-pointer h-12 px-8 inline-flex justify-center items-center ">Try Again</button>
+        <button type="button" class="px-8 h-12 inline-flex justify-center items-center  text-sm text-[#213A29] font-semibold cursor-pointer rounded-full hover:shadow-[0_0_20px_0_rgba(251,229,37,1)] bg-[#FBE525] focus:bg-[#E1CB04] focus:shadow-none">
+            Change Card
+        </button>
+    </div>
+
+</div>

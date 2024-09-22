@@ -93,6 +93,9 @@ import { MapPinSimpleAreaIconComponent } from './map-pin-simple-area-icon/map-pi
 import { AirplaneTiltIconComponent } from './airplane-tilt-icon/airplane-tilt-icon.component';
 import { WarningOctagonIconComponent } from './warning-octagon-icon/warning-octagon-icon.component';
 import { EnvelopeIconComponent } from './envelope-icon/envelope-icon.component';
+import { ArrowUpIconComponent } from './arrow-up-icon/arrow-up-icon.component';
+import { ArrowsDownUpIconComponent } from './arrows-down-up-icon/arrows-down-up-icon.component';
+import { WarningIconComponent } from './warning-icon/warning-icon.component';
 
 
 
@@ -191,6 +194,9 @@ import { EnvelopeIconComponent } from './envelope-icon/envelope-icon.component';
     AirplaneTiltIconComponent,
     WarningOctagonIconComponent,
     EnvelopeIconComponent,
+    ArrowUpIconComponent,
+    ArrowsDownUpIconComponent,
+    WarningIconComponent,
   ],
   imports: [
     CommonModule
@@ -289,7 +295,10 @@ import { EnvelopeIconComponent } from './envelope-icon/envelope-icon.component';
     MapPinSimpleAreaIconComponent,
     AirplaneTiltIconComponent,
     WarningOctagonIconComponent,
-    EnvelopeIconComponent
+    EnvelopeIconComponent,
+    ArrowUpIconComponent,
+    ArrowsDownUpIconComponent,
+    WarningIconComponent
   ]
 })
 export class IconsModule { }

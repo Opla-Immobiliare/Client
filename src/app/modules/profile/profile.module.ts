@@ -13,6 +13,10 @@ import { UpdatePasswordFormComponent } from './personal-settings/update-password
 import { AdditionalSettingsComponent } from './personal-settings/additional-settings/additional-settings.component';
 import { DeleteAccountComponent } from './personal-settings/additional-settings/delete-account/delete-account.component';
 import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
+import { PlanCardComponent } from './subscriptions/plan-card/plan-card.component';
+import { PaymentMethodCardComponent } from './subscriptions/payment-method-card/payment-method-card.component';
+import { TransactionsCardComponent } from './subscriptions/transactions-card/transactions-card.component';
+import { ManageComponent } from './subscriptions/manage/manage.component';
 
 const routes: Routes = [
   {
@@ -30,6 +34,10 @@ const routes: Routes = [
   {
     path: 'subscriptions',
     component: SubscriptionsComponent
+  },
+  {
+    path: 'subscriptions/manage',
+    component: ManageComponent
   }
 ]
 
@@ -45,6 +53,10 @@ const routes: Routes = [
     AdditionalSettingsComponent,
     DeleteAccountComponent,
     SubscriptionsComponent,
+    PlanCardComponent,
+    PaymentMethodCardComponent,
+    TransactionsCardComponent,
+    ManageComponent,
 
   ],
   imports: [
