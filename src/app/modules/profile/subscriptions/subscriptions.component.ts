@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProfileService } from '../services/profile.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-subscriptions',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubscriptionsComponent implements OnInit {
 
-  
+  constructor(private router: Router, private profileService: ProfileService) {}
 
-  constructor() {}
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // Check if ProfileIsCompleted
+    if(!this.profileService.isCompletedProfile()) this.router.navigateByUrl('/profile/complete');
+  }
 }

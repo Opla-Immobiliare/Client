@@ -37,7 +37,10 @@ export class LoginComponent implements OnInit {
       .pipe(
         tap(user => {
           this.store.dispatch(login({ user }));
-
+          if (user.completedProfile) {
+            this.router.navigateByUrl('/');
+          }
+          this.router.navigateByUrl('/profile/complete');
           // this.router.navigateByUrl('/webadmin');
         })
       )

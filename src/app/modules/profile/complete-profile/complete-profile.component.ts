@@ -1,6 +1,9 @@
 import { keyframes } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { User } from '../../auth/models/user.model';
+import { ProfileService } from '../services/profile.service';
 
 const countryCodes = require('country-codes-list');
 
@@ -16,7 +19,7 @@ export class CompleteProfileComponent implements OnInit {
   countryCodesList = countryCodes.customList('countryCallingCode', '(+{countryCallingCode} {countryCode})');
   monthValue = "";
 
-  constructor() {
+  constructor(private router: Router, private profileService: ProfileService) {
     this.additionalInfoForm = this.generateAdditionalInfoForm();
   }
 
@@ -90,7 +93,7 @@ export class CompleteProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // console.log('CountryCodes', this.countryCodesList);
+    // Check if Profile is Completed
+    if (this.profileService.isCompletedProfile()) this.router.navigateByUrl('/profile');
   }
-
 }

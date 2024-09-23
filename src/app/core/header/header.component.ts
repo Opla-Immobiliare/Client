@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot, Route, Router } from '@angular/router';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { isLoggedIn, isLoggedOut } from 'src/app/modules/auth/services/auth.selectors';
+import { AppState } from 'src/app/reducers';
 
 @Component({
   selector: 'app-header',
@@ -8,13 +12,21 @@ import { ActivatedRoute, ActivatedRouteSnapshot, Route, Router } from '@angular/
 })
 export class HeaderComponent implements OnInit {
 
-  municipality: string | null = null;
-  id: string | null = null;
+  isLoggedIn$: Observable<boolean> | undefined;
+  isLoggedOut$: Observable<boolean> | undefined;
 
-  constructor(private route: Router) {}
+  constructor(private route: Router, private store: Store<AppState>) {}
 
   ngOnInit(): void {
-    
+    this.isLoggedIn$ = this.store
+      .pipe(
+        select(isLoggedIn)
+      );
+
+    this.isLoggedOut$ = this.store
+      .pipe(
+        select(isLoggedOut)
+      );
   }
 
   hideHeader(): string {

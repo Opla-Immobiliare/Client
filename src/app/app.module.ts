@@ -16,6 +16,7 @@ import { EntityDataModule } from '@ngrx/data';
 import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { AuthModule } from './modules/auth/auth.module';
 import { NotFoundComponent } from './modules/pages/not-found/not-found.component';
+import { AuthGuard } from './modules/auth/services/auth.guard';
 
 const routes: Routes = [
   {
@@ -28,7 +29,8 @@ const routes: Routes = [
   },
   {
     path: 'profile',
-    loadChildren: () => import('./modules/profile/profile.module').then(m => m.ProfileModule)
+    loadChildren: () => import('./modules/profile/profile.module').then(m => m.ProfileModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'properties',

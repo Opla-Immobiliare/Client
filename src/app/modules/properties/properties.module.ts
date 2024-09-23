@@ -20,6 +20,7 @@ import { LoanComponent } from './property/loan/loan.component';
 import { AdditionalFeaturesComponent } from './property/additional-features/additional-features.component';
 import { SimilarPropertiesComponent } from './property/similar-properties/similar-properties.component';
 import { InterestComponent } from './property/interest/interest.component';
+import { AuthGuard } from '../auth/services/auth.guard';
 
 export const routes: Routes = [
   {
@@ -32,7 +33,8 @@ export const routes: Routes = [
   },
   {
     path: 'add',
-    component: AddPropertyComponent
+    component: AddPropertyComponent,
+    canActivate: [AuthGuard]
   }
 ]
 

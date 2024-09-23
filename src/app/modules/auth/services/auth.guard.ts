@@ -24,7 +24,7 @@ export class AuthGuard {
                 select(isLoggedIn),
                 tap(loggedIn => {
                     if (!loggedIn) {
-                        this.router.navigateByUrl('/account/login');
+                        this.router.navigateByUrl('/auth/login');
                     }
                 })
             )
