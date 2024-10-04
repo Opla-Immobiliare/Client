@@ -1,154 +1,154 @@
-<div class="flex w-full items-center gap-4 flex-wrap mt-4">
+<div *ngIf="features != undefined" class="flex w-full items-center gap-4 flex-wrap mt-4">
     <!-- Furnished -->
-    <div class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
+    <div *ngIf="features.fournished" class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
         <app-chair-icon class="w-6 h-6" color="#000"></app-chair-icon>
         <p class="text-sm lg:text-base">Furnished</p>
     </div>
 
     <!-- Electric Devices -->
-    <div class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
+    <div *ngIf="features.electricDevices" class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
         <app-oven-icon class="w-6 h-6" color="#000"></app-oven-icon>
         <p class="text-sm lg:text-base">Electric devices</p>
     </div>
 
     <!-- Shared -->
-    <div class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
+    <div *ngIf="features.maintenanceFees != 0" class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
         <app-coins-icon class="w-6 h-6" color="#000"></app-coins-icon>
-        <p class="text-sm lg:text-base">Shared</p>
+        <p class="text-sm lg:text-base">Shared {{ features.maintenanceFees | currency: 'EUR':'symbol':'1.2':'it' }} /month</p>
     </div>
 
     <!-- Door type -->
-    <div class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
+    <div *ngIf="features.doorType != null" class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
         <app-door-icon class="w-6 h-6" color="#000"></app-door-icon>
-        <p class="text-sm lg:text-base">Wooden</p> <!-- TODO: min valeis translation -->
+        <p class="text-sm lg:text-base">{{ features.doorType }}</p>
     </div>
 
     <!-- Floor type -->
-    <div class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
+    <div *ngIf="features.floorType != null" class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
         <app-square-icon class="w-6 h-6" color="#000"></app-square-icon>
-        <p class="text-sm lg:text-base">Marble</p> <!-- TODO: min valeis translation -->
+        <p class="text-sm lg:text-base">{{ features.floorType }}</p>
     </div>
 
     <!-- Warehouse -->
-    <div class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
+    <div *ngIf="features.warehouse != null" class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
         <app-warehouse-icon class="w-6 h-6" color="#000"></app-warehouse-icon>
-        <p class="text-sm lg:text-base">Warehouse: none</p>
+        <p class="text-sm lg:text-base">Warehouse: {{ features.warehouse }}</p>
     </div>
 
     <!-- Pets allowed -->
-    <div class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
+    <div *ngIf="features.petsAllowed" class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
         <app-paw-print-icon class="w-6 h-6" color="#000"></app-paw-print-icon>
         <p class="text-sm lg:text-base">Pets Allowed</p>
     </div>
 
     <!-- Cameras -->
-    <div class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
+    <div *ngIf="features.cameras" class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
         <app-security-camera-icon class="w-6 h-6" color="#000"></app-security-camera-icon>
         <p class="text-sm lg:text-base">Cameras</p>
     </div>
 
     <!-- Cable TV -->
-    <div class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
+    <div *ngIf="features.cableTv" class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
         <app-television-simple-icon class="w-6 h-6" color="#000"></app-television-simple-icon>
         <p class="text-sm lg:text-base">Cable TV</p>
     </div>
 
     <!-- Floor Heating -->
-    <div class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
+    <div *ngIf="features.floorHeating" class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
         <app-thermometer-hot-icon class="w-6 h-6" color="#000"></app-thermometer-hot-icon>
         <p class="text-sm lg:text-base">Floor Heating</p>
     </div>
 
     <!-- Internal Stairs -->
-    <div class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
+    <div *ngIf="features.internalStairs" class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
         <app-stairs-icon class="w-6 h-6" color="#000"></app-stairs-icon>
         <p class="text-sm lg:text-base">Internal Stairs</p>
     </div>
 
     <!-- Playroom -->
-    <div class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
+    <div *ngIf="features.playroom" class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
         <app-game-controller-icon class="w-6 h-6" color="#000"></app-game-controller-icon>
         <p class="text-sm lg:text-base">Playroom</p>
     </div>
 
     <!-- Elevator -->
-    <div class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
+    <div *ngIf="features.elevator" class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
         <app-elevator-icon class="w-6 h-6" color="#000"></app-elevator-icon>
         <p class="text-sm lg:text-base">Elevator</p>
     </div>
 
     <!-- Solar Water Heater -->
-    <div class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
+    <div *ngIf="features.solarWaterHeater" class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
         <app-solar-panel-icon class="w-6 h-6" color="#000"></app-solar-panel-icon>
         <p class="text-sm lg:text-base">Solar Water Heater</p>
     </div>
 
     <!-- Garden -->
-    <div class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
+    <div *ngIf="features.garden" class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
         <app-plant-icon class="w-6 h-6" color="#000"></app-plant-icon>
         <p class="text-sm lg:text-base">Garden</p>
     </div>
 
     <!-- Incomplete -->
-    <div class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
+    <div *ngIf="features.incomplete" class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
         <app-circle-half-tilt-icon class="w-6 h-6" color="#000"></app-circle-half-tilt-icon>
         <p class="text-sm lg:text-base">Incomplete</p>
     </div>
 
     <!-- Luxurius -->
-    <div class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
+    <div *ngIf="features.luxurious" class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
         <app-champagne-icon class="w-6 h-6" color="#000"></app-champagne-icon>
         <p class="text-sm lg:text-base">Luxurious</p>
     </div>
 
     <!-- Jacuzzi -->
-    <div class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
+    <div *ngIf="features.jacuzzi" class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
         <app-bathtub-icon class="w-6 h-6" color="#000"></app-bathtub-icon>
         <p class="text-sm lg:text-base">Jacuzzi</p>
     </div>
 
     <!-- Satellite Antenna -->
-    <div class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
+    <div *ngIf="features.sateliteAntenna" class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
         <app-antenna-icon class="w-6 h-6" color="#000"></app-antenna-icon>
         <p class="text-sm lg:text-base">Satellite Antenna</p>
     </div>
 
     <!-- Shutters -->
-    <div class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
+    <div *ngIf="features.framesWithElectricShutters" class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
         <app-window-icon class="w-6 h-6" color="#000"></app-window-icon>
         <p class="text-sm lg:text-base">Frames with Electric Shutters</p>
     </div>
 
     <!-- Neoclassical -->
-    <div class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
+    <div *ngIf="features.neoclassical" class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
         <app-windows-logo-icon class="w-6 h-6" color="#000"></app-windows-logo-icon>
         <p class="text-sm lg:text-base">Neoclassical</p>
     </div>
 
     <!-- Veranda -->
-    <div class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
+    <div *ngIf="features.veranda" class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
         <p class="text-sm lg:text-base">Veranda</p>
     </div>
 
     <!-- Maintainable -->
-    <div class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
+    <div *ngIf="features.maintainable" class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
         <p class="text-sm lg:text-base">Maintainable</p>
     </div>
 
     <!-- Awnings -->
-    <div class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
+    <div *ngIf="features.awnings" class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
         <p class="text-sm lg:text-base">Awnings</p>
     </div>
 
     <!-- Neoclassical -->
-    <div class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
+    <div *ngIf="features.alarmSystem" class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
         <app-siren-icon class="w-6 h-6" color="#000"></app-siren-icon>
         <p class="text-sm lg:text-base">Alarm System</p>
     </div>
 
     <!-- Pool -->
-    <div class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
+    <div *ngIf="features.pool != null" class="rounded-full h-12 inline-flex items-center gap-4 bg-[#D6CEC2] px-4 py-2">
         <app-swimming-pool-icon class="w-6 h-6" color="#000"></app-swimming-pool-icon>
-        <p class="text-sm lg:text-base">Pool: none</p>
+        <p class="text-sm lg:text-base">Pool: {{ features.pool }}</p>
     </div>
 </div>
