@@ -1,7 +1,7 @@
-<div class="bg-[rgb(224,218,209)] pb-8">
+<div *ngIf="(property$ | async) as property" class="bg-[rgb(224,218,209)] pb-8">
 
     <!-- Image -->
-    <div class="w-full relative">
+    <div class="w-full relative lg:hidden">
         <img data-modal-target="property-gallery-image" data-modal-toggle="property-gallery-image" class="w-full h-[243px] rounded-b-[20px]" src="./assets/images/Gallery.png" alt="Property">
         <!-- back button -->
         <div class="w-full inline-flex justify-between items-center px-6 absolute top-4 left-0">
@@ -12,133 +12,175 @@
             <app-favourites></app-favourites>
         </div>
     </div>
-
-    <div class="w-full px-4">
-        <!-- Title -->
-        <div class="w-full pt-6">
-            <h1 class="text-lg">3-room in Via Bernardino Verro 78/a, Milano.</h1>
+    <!-- DE: Images -->
+    <div class="w-full lg:inline-flex justify-center items-center gap-3 hidden mt-6">
+        <div class="w-[493px] h-[343px]">
+            <img data-modal-target="property-gallery-image" data-modal-toggle="property-gallery-image" class="w-full h-full rounded-[20px] hover:shadow-[0_4px_0_0_rgba(251,229,37,1)] cursor-pointer" src="./assets/images/Gallery.png" alt="Property">
         </div>
+        <div class="w-[270px] h-[343px]">
+            <img data-modal-target="property-gallery-image" data-modal-toggle="property-gallery-image" class="w-full h-full rounded-[20px] hover:shadow-[0_4px_0_0_rgba(251,229,37,1)] cursor-pointer" src="./assets/images/Gallery.png" alt="Property">
+        </div>
+        <div class="w-[321px] h-[343px] grid gap-3">
+            <img data-modal-target="property-gallery-image" data-modal-toggle="property-gallery-image" class="w-full h-[167px] rounded-[20px] hover:shadow-[0_4px_0_0_rgba(251,229,37,1)] cursor-pointer" src="./assets/images/Gallery.png" alt="Property">
+            <img data-modal-target="property-gallery-image" data-modal-toggle="property-gallery-image" class="w-full h-[167px] rounded-[20px] hover:shadow-[0_4px_0_0_rgba(251,229,37,1)] cursor-pointer" src="./assets/images/Gallery.png" alt="Property">
+        </div>
+    </div>
 
-        <!-- Pins -->
-        <div class="w-full inline-flex flex-wrap gap-3 pt-4">
-            <div class="inline-flex gap-3 px-2 py-1 rounded bg-[#EBE7E0]">
-                <app-wave-square-icon dimensions="w-4 h-4" color="#5C503D"></app-wave-square-icon>
-                <p class="text-[#5C503D] text-xs font-semibold">70 &#13217;</p>
+    <div class="w-full px-4 lg:px-[90px]">
+        <div class="w-full lg:inline-flex gap-16">
+            <div class="w-full max-w-[706px]">
+                <!-- Title -->
+                <div class="w-full pt-6">
+                    <h1 class="text-lg lg:text-xl">3-room in Via Bernardino Verro 78/a, Milano.</h1>
+                </div>
+
+                <!-- Pins -->
+                <div class="w-full inline-flex flex-wrap gap-3 pt-4">
+                    <div class="inline-flex gap-3 px-2 py-1 rounded bg-[#EBE7E0]">
+                        <app-wave-square-icon dimensions="w-4 lg:w-6 h-4 lg:h-6" color="#5C503D"></app-wave-square-icon>
+                        <p class="text-[#5C503D] text-xs font-semibold">{{ property!.squareMetters }} &#13217;</p>
+                    </div>
+                    <div class="inline-flex gap-3">
+                        <app-bathtub-icon dimensions="w-4 h-4" color="#5C503D"></app-bathtub-icon>
+                        <p class="text-[#5C503D] text-xs font-semibold">{{ property!.propertyCharacteristics.bathrooms }} Baths</p>
+                    </div>
+                    <div class="inline-flex gap-3">
+                        <app-bed-icon dimensions="w-4 h-4" color="#5C503D"></app-bed-icon>
+                        <p class="text-[#5C503D] text-xs font-semibold">{{ property!.propertyCharacteristics.numberOfRooms }} Rooms</p>
+                    </div>
+                    <div class="inline-flex gap-3">
+                        <app-light-bulb-filament-icon dimensions="w-4 h-4" color="#5C503D"></app-light-bulb-filament-icon>
+                        <p class="text-[#5C503D] text-xs font-semibold">{{ property!.propertyCharacteristics.energyClass }} Class</p>
+                    </div>
+                </div>
+
+                <!-- Price -->
+                <div class="w-full lg:pt-6">
+                    <p class="text-xl lg:text-2xl font-semibold">{{ property!.price | currency: 'EUR':'symbol':'1.2':'it'}}<span *ngIf="property!.propertyFor == 0"> / month</span></p>
+                    <div class="w-full inline-flex items-center gap-1">
+                        <app-trend-down-icon dimensions="w-4 h-4" color="#539267"></app-trend-down-icon>
+                        <p class="text-xs text-[#8A785B] line-through">€ 400,000 (-12%)</p>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div class="w-full pt-8">
+                    <p class="text-xs">{{ property!.description }}</p>
+                </div>
             </div>
-            <div class="inline-flex gap-3">
-                <app-bathtub-icon dimensions="w-4 h-4" color="#5C503D"></app-bathtub-icon>
-                <p class="text-[#5C503D] text-xs font-semibold">2 Baths</p>
-            </div>
-            <div class="inline-flex gap-3">
-                <app-bed-icon dimensions="w-4 h-4" color="#5C503D"></app-bed-icon>
-                <p class="text-[#5C503D] text-xs font-semibold">2 Rooms</p>
-            </div>
-            <div class="inline-flex gap-3">
-                <app-light-bulb-filament-icon dimensions="w-4 h-4" color="#5C503D"></app-light-bulb-filament-icon>
-                <p class="text-[#5C503D] text-xs font-semibold">A Class</p>
+            
+            <!-- DE: Interest -->
+            <div class="w-full max-w-[330px] lg:block hidden rounded-t-[20px] bg-[#D6CEC2] p-6 h-max mt-8">
+                <p class="text-sm">Are you interested in this property?</p>
+
+                <div class="grid gap-2 mt-6 pb-10 border-b border-[#C2B6A3]">
+                    <!-- Phone -->
+                    <button type="button" class="bg-transparent rounded-full inline-flex justify-center h-10 items-center gap-3 w-full border-2 border-[#FBE525] hover:bg-[#FBE525] hover:shadow-[0_0__20px_0_rgba(251,229,37,1)] focus:shadow-none focus:border-[#E1CB04] focus:bg-[#E1CB04]">
+                        <app-phone dimensions="w-4 h-4" color="black"></app-phone>
+                        <p class="text-sm font-semibold">Phone</p>
+                    </button>
+
+                    <!-- Message -->
+                    <button type="button" (click)="propertyService.changeInterestFormSource(true)" class="bg-[#FBE525] rounded-full inline-flex justify-center h-10 items-center gap-3 w-full border-2 border-[#FBE525] hover:bg-[#FBE525] hover:shadow-[0_0__20px_0_rgba(251,229,37,1)] focus:shadow-none focus:border-[#E1CB04] focus:bg-[#E1CB04]">
+                        <app-envelope-icon dimensions="w-4 h-4" color="black"></app-envelope-icon>
+                        <p class="text-sm font-semibold">Send Email</p>
+                    </button>
+                </div>
+
+                <div class="inline-flex justify-center items-center gap-4 mt-4 pb-4">
+                    <img class="rounded-full h-16 w-16" src="./assets/images/Gallery.png" alt="Agency">
+                    <p class="text-sm text-[#4D4333]">DIMENSIONE CENTRO SRL - PARTNER UNICA - Dimensione Centro</p>
+                </div>
             </div>
         </div>
-
-        <!-- Price -->
-        <div class="w-full">
-            <p class="text-xl font-semibold">€ 35.000</p>
-            <div class="w-full inline-flex items-center gap-1">
-                <app-trend-down-icon dimensions="w-4 h-4" color="#539267"></app-trend-down-icon>
-                <p class="text-xs text-[#8A785B] line-through">€ 400,000 (-12%)</p>
-            </div>
-        </div>
-
-        <!-- Description -->
-        <div class="w-full pt-8">
-            <p>Dimensione Centro propone in vendita un esclusivo appartamento trilocale nel cuore di un super condominio caratterizzato da ampie parti comuni a verde e con servizi alle famiglie, recintato e custodito e con la comoda assistenza del servizio portineria super condominiale disponibile 24 h. La sua posizione privilegiata al sesto piano offre una vista unica e una luminosità senza pari, con affacci silenziosi su una rilassante corte verde.Questo immobile, con una distribuzione interna intelligente e funzionale, si sviluppa su un unico livello. La zona giorno vanta un accogliente...</p>
-        </div>
+        
 
         <!-- Loan -->
-        <div class="w-full pt-8">
-            <app-loan></app-loan>
-        </div>
+        <!-- <div class="w-full pt-8 lg:max-w-[706px]">
+            <app-loan [propertyPrice]="property!.price"></app-loan>
+        </div> -->
         <!-- / Loan -->
 
         <!-- Details -->
-        <div class="w-full mt-16">
+        <div class="w-full mt-16 lg:max-w-[706px]">
             <div class="inline-flex justify-between items-center w-full">
                 <p class="text-base font-semibold">Details</p>
-                <p (click)="copyToClipboard('8364')" class="inline-flex w-max justify-center items-center gap-2 text-sm text-[#A39175] cursor-pointer">
-                    OPLA8364
+                <p (click)="copyToClipboard(property!.id.toString())" class="inline-flex w-max justify-center items-center gap-2 text-sm text-[#A39175] cursor-pointer">
+                    OPLA{{ property!.id }}
                     <app-copy-icon class="w-4 h-4" color="#A39175"></app-copy-icon>
                 </p>
             </div>
-            <app-details-table></app-details-table>
+            <app-details-table [characteristics]="property.propertyCharacteristics" [squareMetters]="property.squareMetters" [price]="property.price" [propertyFor]="property.propertyFor" [availableFrom]="property.availableFrom"></app-details-table>
         </div>
         <!-- / Details -->
 
         <!-- Additional features -->
-        <div class="w-full mt-16">
+        <div class="w-full mt-16 lg:max-w-[706px]">
             <div class="inline-flex justify-between items-center w-full">
                 <p class="text-base font-semibold">Additional features</p>
             </div>
-            <app-additional-features></app-additional-features>
+            <app-additional-features [features]="property?.propertyCharacteristics?.propertyAdditionalFeatures"></app-additional-features>
         </div>
         <!-- / Details -->
 
         <!-- Near to -->
-        <div class="w-full mt-16">
+        <div class="w-full mt-16 lg:max-w-[706px]">
             <div class="inline-flex justify-between items-center w-full">
                 <p class="text-base font-semibold">Additional features</p>
             </div>
             
-            <div class="w-full grid gap-4 mt-4">
+            <div *ngIf="property.distanceFromSea != 0" class="w-full grid gap-4 mt-4">
                 <!-- Distance from Sea -->
                 <div class="inline-flex justify-between items-center w-full">
                     <p class="inline-flex items-center gap-4">
                         <app-waves-icon dimensions="w-6 h-6" color="black"></app-waves-icon>
                         <span class="text-sm">Distance from Sea</span>
                     </p>
-                    <p class="text-sm text-[#5C503D]">670 m.</p>
+                    <p class="text-sm text-[#5C503D]">{{ property.distanceFromSea }} m.</p>
                 </div>
 
                 <!-- Distance from City -->
-                <div class="inline-flex justify-between items-center w-full">
+                <div *ngIf="property.distanceFromCity != 0" class="inline-flex justify-between items-center w-full">
                     <p class="inline-flex items-center gap-4">
                         <app-city-icon dimensions="w-6 h-6" color="black"></app-city-icon>
                         <span class="text-sm">Distance from City</span>
                     </p>
-                    <p class="text-sm text-[#5C503D]">670 m.</p>
+                    <p class="text-sm text-[#5C503D]">{{ property.distanceFromCity }} m.</p>
                 </div>
 
                 <!-- Distance from Center -->
-                <div class="inline-flex justify-between items-center w-full">
+                <div *ngIf="property.distanceFromCenter != 0" class="inline-flex justify-between items-center w-full">
                     <p class="inline-flex items-center gap-4">
                         <app-map-pin-simple-area-icon dimensions="w-6 h-6" color="black"></app-map-pin-simple-area-icon>
                         <span class="text-sm">Distance from Center</span>
                     </p>
-                    <p class="text-sm text-[#5C503D]">670 m.</p>
+                    <p class="text-sm text-[#5C503D]">{{ property.distanceFromCenter }} m.</p>
                 </div>
 
                 <!-- Distance from Airport -->
-                <div class="inline-flex justify-between items-center w-full">
+                <div *ngIf="property.distanceFromAirport != 0" class="inline-flex justify-between items-center w-full">
                     <p class="inline-flex items-center gap-4">
                         <app-airplane-tilt-icon dimensions="w-6 h-6" color="black"></app-airplane-tilt-icon>
                         <span class="text-sm">Distance from Airport</span>
                     </p>
-                    <p class="text-sm text-[#5C503D]">670 m.</p>
+                    <p class="text-sm text-[#5C503D]">{{ property.distanceFromAirport }} m.</p>
                 </div>
 
                 <!-- Near to -->
-                <div class="inline-flex justify-between items-center w-full">
+                <div *ngIf="property.nearTo != null" class="inline-flex justify-between items-center w-full">
                     <p class="inline-flex items-center gap-4">
                         <span class="text-sm">Near to:</span>
                     </p>
-                    <p class="text-sm text-[#5C503D]">palazzo vecchio</p>
+                    <p class="text-sm text-[#5C503D]">{{ property.nearTo }}</p>
                 </div>
             </div>
         </div>
         <!-- / Near to -->
 
         <!-- Date of Post -->
-        <div class="w-full mt-8 py-4 border-t-2 border-[#D6CEC2] grid gap-1 text-sm text-[#8A785B]">
-            <p>Property posted: 20/06/2024</p>
-            <p>Last update: 20/06/2024</p>
+        <div class="w-full mt-8 py-4 border-t-2 border-[#D6CEC2] grid gap-1 text-sm text-[#8A785B] lg:max-w-[706px]">
+            <p>Property posted: {{ getDate(property.dateCreated) }}</p>
+            <p>Last update: {{ getDate(property.lastUpdate) }}</p>
             <p class="inline-flex items-center gap-3 text-[#7D7102] mt-6 hover:underline cursor-pointer">
                 <app-warning-octagon-icon dimensions="w-6 h-6" color="#7D7102"></app-warning-octagon-icon>
                 Let us know if there is an error or bug.
@@ -148,7 +190,7 @@
     </div>
 
     <!-- Similar Properties -->
-    <div class="w-full px-4 mt-16">
+    <div class="w-full px-4 mt-16 lg:px-[90px]">
         <app-similar-properties></app-similar-properties>
     </div>
     <!-- / Similar Properties -->
@@ -161,14 +203,15 @@
 </div>
 <!-- / Request an Interest -->
 
-<div id="property-gallery-image" tabindex="-1" aria-hidden="true" class="bg-[#122017] hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+<!-- Property Gallery Image -->
+<div id="property-gallery-image" data-modal-target="property-gallery-image" tabindex="-1" aria-hidden="true" class="bg-[#122017] hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
 
     <button data-modal-hide="property-gallery-image" class="absolute top-4 right-4 rounded-full w-12 h-12 bg-black bg-opacity-40 cursor-pointer inline-flex justify-center items-center">
         <app-close-icon dimensions="w-6 h-6" color="white"></app-close-icon>
     </button>
 
-    <div id="controls-carousel" class="relative w-full lg:max-w-[360px]" data-carousel="static">
-        <div class="relative h-[652px] lg:h-60 overflow-hidden rounded-lg md:h-96">
+    <div id="controls-carousel" class="relative w-full lg:max-w-[1100px]" data-carousel="static">
+        <div class="relative h-[652px] overflow-hidden rounded-lg">
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
                 <img src="./assets/images/Opla-TEST-House.jpg" class="absolute block w-full  h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 rounded-[20px]" alt="...">
             </div>
@@ -203,3 +246,4 @@
         </button>
     </div>
 </div>
+<!-- / Property Gallery Image -->

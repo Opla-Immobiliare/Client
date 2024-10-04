@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { PropertyService } from '../../services/property.service';
 
 @Component({
   selector: 'app-interest',
@@ -9,8 +10,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class InterestComponent implements OnInit {
 
   interestForm: FormGroup;
+  enableInterestForm: boolean = false;
 
-  constructor() {
+  constructor(public propertyService: PropertyService) {
     this.interestForm = new FormGroup({
       fullName: new FormControl<string | undefined>(undefined, [Validators.required]),
       email: new FormControl<string | undefined>(undefined, [Validators.required]),
@@ -30,5 +32,8 @@ export class InterestComponent implements OnInit {
     if (this.interestForm.controls[name].invalid && (this.interestForm.controls[name].touched || this.interestForm.controls[name].dirty)) return 'bg-[#FF5449] peer-focus:bg-[#FF5449] py-0.5 px-1';
     return 'bg-none';
   }
-  ngOnInit(): void {}
+
+  ngOnInit(): void {
+    this.propertyService.enableInterestFormSource.subscribe(val => this.enableInterestForm = val);
+  }
 }

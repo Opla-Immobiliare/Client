@@ -28,7 +28,7 @@ export class TopRightActionComponent implements OnInit {
         select(isLoggedOut)
       );
 
-    console.log("LoggedIn", this.isLoggedIn$);
+    // console.log("LoggedIn", this.isLoggedIn$);
   }
   
   // Logout

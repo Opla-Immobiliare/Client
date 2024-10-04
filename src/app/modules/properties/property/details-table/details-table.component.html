@@ -8,7 +8,7 @@
             </div>
         </td>
         <td class="w-1/2 pl-3">
-            <p class="text-base text-[#5C503D]">70 &#13217;</p>
+            <p class="text-base text-[#5C503D]">{{ squareMetters }} &#13217;</p>
         </td>
     </tr>
 
@@ -21,7 +21,7 @@
             </div>
         </td>
         <td class="w-1/2 pl-3 border-[2px] border-[#D6CEC2] rounded-[20px]">
-            <p class="text-base text-[#5C503D]">€ 900 /month</p>
+            <p class="text-base text-[#5C503D]">{{ price | currency: 'EUR':'symbol':'1.2':'it' }} <span *ngIf="propertyFor == 0">/month</span></p>
         </td>
     </tr>
 
@@ -34,7 +34,7 @@
             </div>
         </td>
         <td class="w-1/2 pl-3 border-[2px] border-[#D6CEC2] rounded-[20px]">
-            <p class="text-base text-[#5C503D]">1</p>
+            <p class="text-base text-[#5C503D]">{{ characteristics?.numberOfRooms }}</p>
         </td>
     </tr>
 
@@ -47,7 +47,7 @@
             </div>
         </td>
         <td class="w-1/2 pl-3 border-[2px] border-[#D6CEC2] rounded-[20px]">
-            <p class="text-base text-[#5C503D]">1</p>
+            <p class="text-base text-[#5C503D]">{{ characteristics?.bathrooms }}</p>
         </td>
     </tr>
 
@@ -73,7 +73,7 @@
             </div>
         </td>
         <td class="w-1/2 pl-3 border-[2px] border-[#D6CEC2] rounded-[20px]">
-            <p class="text-base text-[#5C503D]">1</p>
+            <p class="text-base text-[#5C503D]">{{ characteristics?.kitchens }}</p>
         </td>
     </tr>
 
@@ -86,7 +86,7 @@
             </div>
         </td>
         <td class="w-1/2 pl-3 border-[2px] border-[#D6CEC2] rounded-[20px]">
-            <p class="text-base text-[#5C503D]">1</p>
+            <p class="text-base text-[#5C503D]">{{ characteristics?.livingRooms }}</p>
         </td>
     </tr>
 
@@ -99,7 +99,7 @@
             </div>
         </td>
         <td class="w-1/2 pl-3 border-[2px] border-[#D6CEC2] rounded-[20px]">
-            <p class="text-base text-[#5C503D] bg-[#BAAC98] p-1 rounded w-max">A+</p>
+            <p class="text-base text-[#5C503D] bg-[#BAAC98] p-1 rounded w-max">{{ characteristics?.energyClass }}</p>
         </td>
     </tr>
 
@@ -112,7 +112,7 @@
             </div>
         </td>
         <td class="w-1/2 pl-3 border-[2px] border-[#D6CEC2] rounded-[20px]">
-            <p class="text-base text-[#5C503D]">4</p>
+            <p class="text-base text-[#5C503D]">{{ characteristics?.apartmentFloor }}</p>
         </td>
     </tr>
 
@@ -125,7 +125,7 @@
             </div>
         </td>
         <td class="w-1/2 pl-3 border-[2px] border-[#D6CEC2] rounded-[20px]">
-            <p class="text-base text-[#5C503D]">Full &#124; 2017</p>
+            <p class="text-base text-[#5C503D]">{{ characteristics?.renovationType }} &#124; {{ characteristics?.renovatedYear }}</p>
         </td>
     </tr>
 
@@ -138,12 +138,12 @@
             </div>
         </td>
         <td class="w-1/2 pl-3 border-[2px] border-[#D6CEC2] rounded-[20px]">
-            <p class="text-base text-[#5C503D]">1, Outside</p>
+            <p class="text-base text-[#5C503D]">{{ characteristics?.parkingSpaces }}, {{ characteristics?.parkingType }}</p>
         </td>
     </tr>
 
     <!-- Available From -->
-    <tr class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
+    <tr *ngIf="availableFrom != undefined" class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
         <td class="w-1/2 py-2 pl-3">
             <div class="inline-flex items-center gap-4">
                 <app-calendar-slash-icon dimensions="w-6 h-6" color="#5C503D"></app-calendar-slash-icon>
@@ -151,7 +151,7 @@
             </div>
         </td>
         <td class="w-1/2 pl-3 border-[2px] border-[#D6CEC2] rounded-[20px]">
-            <p class="text-base text-[#5C503D]">16/11/2024</p>
+            <p class="text-base text-[#5C503D]">{{ getDate(availableFrom) }}</p>
         </td>
     </tr>
 </table>

@@ -7,21 +7,21 @@
 
     <!-- Form -->
     <div id="loanForm" [ngClass]="showLoan ? 'block' : 'hidden'" class="w-full flex-col">
-        <form #f="ngForm" [formGroup]="loanForm" (change)="calculateLoan()" class="w-full p-4 rounded-[20px] bg-[#EBE7E0] mt-4">
-            <div class="grid grid-cols-2 gap-4">
+        <form #f="ngForm" [formGroup]="loanForm" (change)="calculateLoan()" class="w-full p-4 rounded-[20px] bg-[#EBE7E0] mt-4 lg:p-0">
+            <div class="grid grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-1">
 
                 <!-- Price of the Property -->
-                <div class="rounded-[10px] w-full bg-[#E0DAD1] px-4 pt-4 pb-5">
+                <div class="rounded-[10px] w-full bg-[#E0DAD1] lg:bg-[#EBE7E0] px-4 pt-4 pb-5 lg:border-r lg:border-[#D6CEC2] lg:my-4 lg:pt-0 lg:pb-0 lg:rounded-none">
                     <p class="text-[10px] text-[#4D4333]">Price of the property</p>
                     <div class="inline-flex justify-between items-center w-full">
-                        <input type="text" name="propertyPrice" formControlName="propertyPrice" class="bg-transparent border-none h-12 w-full focus:ring-0 focus:ring-none focus:border-none text-xs"/>
+                        <input type="text" name="propertyPrice" [value]="propertyPrice" formControlName="propertyPrice" class="bg-transparent border-none h-12 w-full focus:ring-0 focus:ring-none focus:border-none text-xs" disable/>
                         <app-currency-euro-icon dimensions="w-4 h-4" color="black"></app-currency-euro-icon>
                     </div>
                 </div>
                 <!-- / Priece of the Property -->
 
                 <!-- Mortage amount -->
-                <div class="rounded-[10px] w-full bg-[#E0DAD1] px-4 pt-4 pb-5">
+                <div class="rounded-[10px] w-full bg-[#E0DAD1] lg:bg-[#EBE7E0] px-4 pt-4 pb-5 lg:border-r lg:border-[#D6CEC2] lg:my-4 lg:pt-0 lg:pb-0 lg:rounded-none">
                     <p class="text-[10px] text-[#4D4333]">Mortgage amount</p>
                     <div class="inline-flex justify-between items-center w-full">
                         <input type="text" name="mortageAmount" formControlName="mortageAmount" class="bg-transparent border-none h-12 w-full focus:ring-0 focus:ring-none focus:border-none text-xs"/>
@@ -31,7 +31,7 @@
                 <!-- / Mortage amount -->
 
                 <!-- Mortage rate -->
-                <div class="rounded-[10px] w-full bg-[#E0DAD1] px-4 pt-4 pb-5">
+                <div class="rounded-[10px] w-full bg-[#E0DAD1] lg:bg-[#EBE7E0] px-4 pt-4 pb-5 lg:border-r lg:border-[#D6CEC2] lg:my-4 lg:pt-0 lg:pb-0 lg:rounded-none">
                     <p class="text-[10px] text-[#4D4333]">Mortgage rate</p>
                     <div class="inline-flex justify-between items-center w-full">
                         <input type="text" name="mortageRate" formControlName="mortageRate" class="bg-transparent border-none h-12 w-full focus:ring-0 focus:ring-none focus:border-none text-xs"/>
@@ -41,7 +41,7 @@
                 <!-- / Mortage rate -->
 
                 <!-- Mortage duration -->
-                <div class="rounded-[10px] w-full bg-[#E0DAD1] px-4 pt-4 pb-5">
+                <div class="rounded-[10px] w-full bg-[#E0DAD1] lg:bg-[#EBE7E0] px-4 pt-4 pb-5">
                     <p class="text-[10px] text-[#4D4333]">Mortgage Duration</p>
                     <div class="inline-flex justify-between items-center w-full">
                         <input type="text" name="mortageDuration" formControlName="mortageDuration" class="bg-transparent border-none h-12 w-full focus:ring-0 focus:ring-none focus:border-none text-xs"/>
@@ -49,12 +49,15 @@
                     </div>
                 </div>
                 <!-- / Mortage rate -->
+
+                <div class="w-full bg-[#FDF6B4] text-center lg:text-left pl-3 py-4 rounded-br-[20px] rounded-bl-[20px]  lg:rounded-bl-none lg:rounded-br-[10px] lg:rounded-tr-[10px] col-span-2 lg:col-span-1">
+                    <p class="text-xs">Installment from <span class="text-sm font-semibold">{{ loan!.monthly | currency: 'EUR':'symbol':'1.1-2':'it'}}</span> per month</p>
+                    <p class="text-xs lg:hidden">Anticipo: <span class="font-semibold">{{ loan!.advance | currency: 'EUR':'symbol':'1.2':'it' }}</span> &#8226;&#8226; Mutuo: <span class="font-semibold">{{ loan!.mutual | currency: 'EUR':'symbol':'1.2':'it' }}</span></p>
+                    <p class="text-xs hidden lg:block text-[#8A785B]">Anticipo: <span class="font-semibold">{{ loan!.advance | currency: 'EUR':'symbol':'1.2':'it' }}</span><br>Mutuo: <span class="font-semibold">{{ loan!.mutual | currency: 'EUR':'symbol':'1.2':'it' }}</span></p>
+                </div>
             </div>
 
-            <div class="w-full bg-[#FDF6B4] text-center py-4 mt-4 rounded-b-[20px]">
-                <p class="text-xs">Installment from <span class="text-sm font-semibold">{{ loan!.monthly | currency: 'EUR':'symbol':'1.1-2':'it'}}</span> per month</p>
-                <p class="text-xs">Anticipo: <span class="font-semibold">{{ loan!.advance | currency: 'EUR':'symbol':'1.2':'it' }}</span> &#8226;&#8226; Mutuo: <span class="font-semibold">{{ loan!.mutual | currency: 'EUR':'symbol':'1.2':'it' }}</span></p>
-            </div>
+            
         </form>
 
         <div class="w-full px-4 pt-4 inline-flex items-center gap-3">

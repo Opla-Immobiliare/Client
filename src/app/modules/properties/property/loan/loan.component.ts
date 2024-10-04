@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { LoanModel } from './models/loan.model';
 
 import localeIt  from '@angular/common/locales/it'
 import { registerLocaleData } from '@angular/common';
+import { RightArrowIconComponent } from 'src/app/shared/icons/right-arrow-icon/right-arrow-icon.component';
 registerLocaleData(localeIt, 'it');
 
 @Component({
@@ -11,19 +12,16 @@ registerLocaleData(localeIt, 'it');
   templateUrl: './loan.component.html',
   styleUrls: ['./loan.component.scss']
 })
-export class LoanComponent implements OnInit{
+export class LoanComponent{
   
   loanForm: FormGroup;
   loan: LoanModel | undefined;
-  showLoan: boolean = false;
+  showLoan: boolean = true;
+
+  @Input() propertyPrice?: number;
 
   constructor() {
-    this.loanForm = new FormGroup({
-      propertyPrice: new FormControl<number>({value: 120000, disabled: true}),
-      mortageAmount: new FormControl<number>(90000),
-      mortageRate: new FormControl<number>(3),
-      mortageDuration: new FormControl<number>(20)
-    });
+    this.loanForm = this.generateForm();
   }
 
   calculateLoan(): void {
@@ -35,15 +33,21 @@ export class LoanComponent implements OnInit{
     }
   }
 
+  generateForm(): FormGroup {
+    let mortageAm = this.propertyPrice! - (30 / 100 * this.propertyPrice!);
+    return new FormGroup({
+      propertyPrice: new FormControl(),
+      mortageAmount: new FormControl<number>(0),
+      mortageRate: new FormControl<number>(3),
+      mortageDuration: new FormControl<number>(20)
+    });
+  }
+
   showHideLoan(): void {
     if (this.showLoan) {
       this.showLoan = false;
     } else {
       this.showLoan = true;
     }
-  }
-
-  ngOnInit(): void {
-    this.calculateLoan();
   }
 }

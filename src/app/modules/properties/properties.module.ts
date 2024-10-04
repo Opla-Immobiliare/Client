@@ -21,6 +21,9 @@ import { AdditionalFeaturesComponent } from './property/additional-features/addi
 import { SimilarPropertiesComponent } from './property/similar-properties/similar-properties.component';
 import { InterestComponent } from './property/interest/interest.component';
 import { AuthGuard } from '../auth/services/auth.guard';
+import { EntityDataService, EntityDefinitionService, EntityMetadataMap } from '@ngrx/data';
+import { PropertiesDataService, } from './services/properties-data.service';
+import { PropertyEntityService } from './services/property-entity.service';
 
 export const routes: Routes = [
   {
@@ -37,6 +40,12 @@ export const routes: Routes = [
     canActivate: [AuthGuard]
   }
 ]
+
+// Entity metadata
+const entityMetadata: EntityMetadataMap = {
+  Property: {},
+  Feature: {}
+};
 
 @NgModule({
   declarations: [
@@ -64,6 +73,20 @@ export const routes: Routes = [
     ReactiveFormsModule,
     FormsModule,
     ClipboardModule
+  ],
+  providers: [
+    PropertiesDataService,
+    PropertyEntityService,
   ]
 })
-export class PropertiesModule { }
+export class PropertiesModule {
+
+  constructor(
+    private eds: EntityDefinitionService,
+    private entityDataService: EntityDataService,
+    private propertiesService: PropertiesDataService
+  ) {
+    eds.registerMetadataMap(entityMetadata);
+    entityDataService.registerService('Property', propertiesService);
+  }
+}

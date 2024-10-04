@@ -1,19 +1,24 @@
+import { PropertyCharacteristics } from "./property-characteristics.model";
+
 export interface Property {
-    title: string;
+    propertyFor: number;
     squareMetters: number;
-    bathrooms: number;
-    umberOfRooms: number;
     price: number;
-    propertyFor: string;
-    discription: string;
-    energyClass: string;
-    heating: string;
-    typeOfHeating: string;
-    buildingFloors: number;
-    apartmentFloor: number;
-    constractionYear: number;
-    renovatedYear: number;
-    renovationType: string;
-    parkingSpaces: number;
-    parkingType: string;
+    description: string;
+    disabilitiesAccess: boolean;
+    view: string;
+    positioning: string;
+    zone: string;
+    availableFrom: string;
+    nearTo: string;
+    distanceFromSea: number;
+    distanceFromCity: number;
+    distanceFromCenter: number;
+    distanceFromAirport: number;
+    userEmail: string;
+    propertyImages: string[];
+    dateCreated: string;
+    lastUpdate: string;
+    propertyCharacteristics: PropertyCharacteristics;
+    id: number;
 }
