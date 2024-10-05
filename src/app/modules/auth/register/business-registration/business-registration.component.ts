@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import { AppState } from 'src/app/reducers';
+import { Store } from '@ngrx/store';
+import { noop, tap } from 'rxjs';
+import { login } from '../../services/auth.actions';
 
 @Component({
   selector: 'app-business-registration',
@@ -13,7 +19,7 @@ export class BusinessRegistrationComponent implements OnInit {
   buttonValue: string = 'Avanti';
   type: string = 'email';
 
-  constructor() {
+  constructor(private auth: AuthService, private router: Router, private store: Store<AppState>) {
     this.registerForm = this.registerFormCreation();
   }
 
@@ -32,7 +38,30 @@ export class BusinessRegistrationComponent implements OnInit {
       this.buttonValue = 'Crea Account';
     }
     else {
-
+      if (this.type == 'email') {
+        this.type = 'password';
+        this.buttonValue = 'Crea Account';
+      }
+      else {
+        let obj = new Object({
+          email: this.registerForm.value.email,
+          password: this.registerForm.value.password,
+          clientUri: "https://localhost:4200",
+          role: "agency"
+        });
+        this.auth.register(obj).pipe(
+          tap(user => {
+            if (user.role === 'agency') this.auth.setAgency(true);
+            if (user.role === 'user') this.auth.setUser(true);
+            this.store.dispatch(login({ user }));
+            this.router.navigateByUrl('/profile/complete');
+          })
+        )
+          .subscribe(
+            noop,
+            () => alert("Registration failed, try again later")
+          )
+      }
     }
   }
 

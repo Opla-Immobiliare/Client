@@ -1,8 +1,9 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, inject, OnInit, ViewChild } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { logout } from 'src/app/modules/auth/services/auth.actions';
 import { isLoggedIn, isLoggedOut } from 'src/app/modules/auth/services/auth.selectors';
+import { AuthService } from 'src/app/modules/auth/services/auth.service';
 import { AppState } from 'src/app/reducers';
 
 @Component({
@@ -11,13 +12,16 @@ import { AppState } from 'src/app/reducers';
   styleUrls: ['./top-right-action.component.scss']
 })
 export class TopRightActionComponent implements OnInit {
+  private authService = inject(AuthService);
 
   isLoggedIn$: Observable<boolean> | undefined;
   isLoggedOut$: Observable<boolean> | undefined;
+  isAgency: boolean = false;
 
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
+    this.authService.isAgency.subscribe(val => this.isAgency = val);
     this.isLoggedIn$ = this.store
       .pipe(
         select(isLoggedIn)
@@ -28,11 +32,13 @@ export class TopRightActionComponent implements OnInit {
         select(isLoggedOut)
       );
 
-    // console.log("LoggedIn", this.isLoggedIn$);
+    
   }
   
   // Logout
   logout(): void {
     this.store.dispatch(logout());
+    this.authService.setAgency(false);
+    this.authService.setUser(false);
   }
 }

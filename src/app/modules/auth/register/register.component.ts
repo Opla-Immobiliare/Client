@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
+import { noop, tap } from 'rxjs';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/reducers';
+import { login } from '../services/auth.actions';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +18,7 @@ export class RegisterComponent implements OnInit {
   buttonValue: string = 'Avanti: Aggiungi password';
   type: string = 'email';
 
-  constructor() {
+  constructor(private auth: AuthService, private router: Router, private store: Store<AppState>) {
     this.registerForm = this.registerFormCreation();
   }
 
@@ -25,13 +31,31 @@ export class RegisterComponent implements OnInit {
     })
   }
 
+  // Register the user
   register(): void {
     if (this.type == 'email') {
       this.type = 'password';
       this.buttonValue = 'Crea Account';
     }
     else {
-
+      let obj = new Object({
+        email: this.registerForm.value.email,
+        password: this.registerForm.value.password,
+        clientUri: "https://localhost:4200",
+        role: "user"
+      });
+      this.auth.register(obj).pipe(
+        tap(user => {
+          this.store.dispatch(login({ user }));
+          if (user.role === 'agency') this.auth.setAgency(true);
+          if (user.role === 'user') this.auth.setUser(true);
+          this.router.navigateByUrl('/profile/complete');
+        })
+      )
+      .subscribe(
+        noop,
+        () => alert("Registration failed, try again later")
+      )
     }
   }
 

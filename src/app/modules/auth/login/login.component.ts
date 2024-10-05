@@ -37,11 +37,12 @@ export class LoginComponent implements OnInit {
       .pipe(
         tap(user => {
           this.store.dispatch(login({ user }));
+          if (user.role === 'agency') this.auth.setAgency(true);
+          if (user.role === 'user') this.auth.setUser(true);
           if (user.completedProfile) {
             this.router.navigateByUrl('/');
           }
           this.router.navigateByUrl('/profile/complete');
-          // this.router.navigateByUrl('/webadmin');
         })
       )
       .subscribe(

@@ -28,7 +28,7 @@
 
 <!-- LogedIn -->
 <div [ngClass]="[(isLoggedIn$ | async) ? '' : 'hidden']" class="w-max inline-flex items-center gap-6 lg:mt-6">
-    <button [routerLink]="['/profile/subscriptions']" type="button" class="w-max px-6 h-12 rounded-full bg-[#FEFCE6] cursor-pointer">
+    <button *ngIf="isAgency" [routerLink]="['/profile/subscriptions']" type="button" class="w-max px-6 h-12 rounded-full bg-[#FEFCE6] cursor-pointer">
         <p class="text-sm text-black">Free | Upgrade</p>
     </button>
     <button type="button" data-dropdown-toggle="profile-menu" class="w-[137px] h-12 bg-[#8A785B] rounded-full inline-flex items-center gap-4">
@@ -48,7 +48,7 @@
             <app-user-circle-gear-icon dimensions="w-6 h-6" color="white"></app-user-circle-gear-icon>
             <p class="text-sm text-white">Personal Info & Settings</p>
         </li>
-        <li [routerLink]="['/profile/subscriptions']" class="inline-flex items-center gap-3 hover:font-semibold cursor-pointer pb-6 border-b border-[#A39175]">
+        <li *ngIf="isAgency" [routerLink]="['/profile/subscriptions']" class="inline-flex items-center gap-3 hover:font-semibold cursor-pointer pb-6 border-b border-[#A39175]">
             <app-credit-card-icon dimensions="w-6 h-6" color="white"></app-credit-card-icon>
             <p class="text-sm text-white">Subscription</p>
         </li>
