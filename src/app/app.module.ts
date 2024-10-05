@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { NgxStripeModule } from 'ngx-stripe';
 
 import { StoreModule } from '@ngrx/store';
 import { metaReducers, reducers } from './reducers';
@@ -37,10 +36,9 @@ const routes: Routes = [
     loadChildren: () => import('./modules/properties/properties.module').then(m => m.PropertiesModule)
   },
   {
-    path: 'business',
-    loadChildren: () => import('./modules/business/business.module').then(m => m.BusinessModule)
+    path: 'shop',
+    loadChildren: () => import('./modules/shop/shop.module').then(m => m.ShopModule)
   },
-
   // 404
   {
     path: '**',
@@ -77,8 +75,7 @@ const routes: Routes = [
     StoreRouterConnectingModule.forRoot({
       stateKey: 'router',
       routerState: RouterState.Minimal
-    }),
-    NgxStripeModule.forRoot('***your-stripe-publishable-key***'),
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

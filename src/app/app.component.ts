@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { initFlowbite } from 'flowbite';
 import { AppState } from './reducers';
 import { select, Store } from '@ngrx/store';
@@ -6,6 +6,7 @@ import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Rout
 import { login } from './modules/auth/services/auth.actions';
 import { Observable } from 'rxjs';
 import { isLoggedIn, isLoggedOut } from './modules/auth/services/auth.selectors';
+import { AuthService } from './modules/auth/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,7 @@ import { isLoggedIn, isLoggedOut } from './modules/auth/services/auth.selectors'
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  private authService = inject(AuthService);
   title = 'Opla Immobilliare';
 
   loading = true;
@@ -28,7 +30,12 @@ export class AppComponent implements OnInit {
 
     const userProfile = localStorage.getItem("user");
 
-    if (userProfile) this.store.dispatch(login({user: JSON.parse(userProfile)}));
+    if (userProfile) {
+      this.store.dispatch(login({ user: JSON.parse(userProfile) }));
+      let user = JSON.parse(userProfile);
+      if (user.role == "agency") this.authService.setAgency(true);
+      if (user.role == "user") this.authService.setUser(true);
+    }
 
     // Loading
     this.router.events.subscribe(event => {
