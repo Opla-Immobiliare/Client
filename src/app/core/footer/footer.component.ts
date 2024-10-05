@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { findFlagUrlByNationality } from "node_modules/country-flags-svg/dist/index.cjs";
 
 
@@ -7,8 +8,21 @@ import { findFlagUrlByNationality } from "node_modules/country-flags-svg/dist/in
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
-export class FooterComponent { 
+export class FooterComponent implements OnInit{ 
+  private route = inject(Router);
+
   getCountryFlag(country: string): string{
     return findFlagUrlByNationality(country);
+  }
+
+  hideFooter(): string {
+    if (this.route.url.includes('/shop/cart')) {
+      return 'hidden';
+    }
+    return 'lg:flex';
+  }
+
+  ngOnInit(): void {
+    this.hideFooter();
   }
 }

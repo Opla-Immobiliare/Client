@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { loadStripe, Stripe, StripeElements, StripePaymentElement } from '@stripe/stripe-js';
+import { Observable } from 'rxjs';
+import { User } from 'src/app/modules/auth/models/user.model';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -46,6 +48,17 @@ export class StripeService {
       }
     }
     return this.paymentElement;
+  }
+
+  createCustomer(): Observable<string> {
+    const USER_PROFILE = localStorage.getItem('user');
+    if (USER_PROFILE) {
+      const USER: User = JSON.parse(USER_PROFILE);
+      const headers = { 'Authorization': `Bearer ${USER.token}` };
+      return this.http.post<string>(`${environment.apiUrl}/Stripe/create-customer`, null, {headers: headers});
+    } else {
+      throw new Error();
+    }
   }
 
   disposeElements() {

@@ -3,5 +3,6 @@ export interface Plan {
     propertiesToRegister: number
     pricePerMonth: number
     subscriptionType: number
-    colour: string
+    colour: string,
+    id: number
 }
