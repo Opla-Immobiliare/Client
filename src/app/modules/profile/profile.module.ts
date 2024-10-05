@@ -18,13 +18,6 @@ import { PaymentMethodCardComponent } from './subscriptions/payment-method-card/
 import { TransactionsCardComponent } from './subscriptions/transactions-card/transactions-card.component';
 import { ManageComponent } from './subscriptions/manage/manage.component';
 import { NewPaymentMethodComponent } from './subscriptions/new-payment-method/new-payment-method.component';
-import {
-  StripeCardElementOptions,
-  StripeElementsOptions,
-} from '@stripe/stripe-js';
-import { TestStripeComponent } from './subscriptions/test-stripe/test-stripe.component';
-import { NgxStripeModule } from 'ngx-stripe';
-import { environment } from 'src/environments/environment';
 
 const routes: Routes = [
   {
@@ -50,10 +43,6 @@ const routes: Routes = [
   {
     path: 'subscriptions/manage/add-payment-method',
     component: NewPaymentMethodComponent
-  },
-  {
-    path: 'subscriptions/test-stripe',
-    component: TestStripeComponent
   }
 ]
 
@@ -74,7 +63,6 @@ const routes: Routes = [
     TransactionsCardComponent,
     ManageComponent,
     NewPaymentMethodComponent,
-    TestStripeComponent,
 
   ],
   imports: [
@@ -83,7 +71,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     ReactiveFormsModule,
     FormsModule,
-    NgxStripeModule.forRoot(environment.stripeKey)
   ]
 })
+
 export class ProfileModule { }

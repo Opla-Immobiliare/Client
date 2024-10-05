@@ -33,7 +33,9 @@ export class HeaderComponent implements OnInit {
     if (this.route.url.includes('property')) {
       return 'hidden lg:flex';
     }
-
+    if (this.route.url.includes('shop/plans')) {
+      return 'hidden';
+    }
     return 'flex';
   }
 }

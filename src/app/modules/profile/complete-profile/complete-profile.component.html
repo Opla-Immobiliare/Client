@@ -23,7 +23,7 @@
         <form #f="ngForm" class="w-full" [formGroup]="additionalInfoForm" (ngSubmit)="submitAdditionalInfo()">
 
             <!-- Name -->
-            <div class="relative z-0 w-full mt-10 group">
+            <div *ngIf="isUser" class="relative z-0 w-full mt-10 group">
                 <input 
                     type="name"
                     id="name"
@@ -43,7 +43,7 @@
             <!--/ Name -->
 
             <!-- Last Name -->
-            <div class="relative z-0 w-full mt-5 group">
+            <div *ngIf="isUser" class="relative z-0 w-full mt-5 group">
                 <input 
                     type="lastname"
                     id="lastname"
@@ -65,6 +65,86 @@
                 </div>
             </div>
             <!--/ Last Name -->
+
+            <!-- Company Name -->
+            <div *ngIf="isAgency" class="relative z-0 w-full mt-5 group">
+                <input 
+                    type="companyName"
+                    id="companyName"
+                    formControlName="companyName"
+                    [ngClass]="[!additionalInfoForm.controls['companyName'].valid && (additionalInfoForm.controls['companyName'].touched || additionalInfoForm.controls['companyName'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                    class="block w-full h-16 items-center px-6 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                    placeholder=""
+                    autocomplete="off"
+                    required />
+                <label
+                    for="companyName"
+                    [ngClass]="labelControl('companyName')"
+                    class="absolute text-base duration-300 transform -translate-y-8 scale-75 top-5 left-6 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                    Company Name
+                </label>
+            </div>
+            <!--/ Company Name-->
+
+            <!-- Country -->
+            <div *ngIf="isAgency" class="relative z-0 w-full mt-5 group">
+                <input 
+                    type="country"
+                    id="country"
+                    formControlName="country"
+                    [ngClass]="[!additionalInfoForm.controls['country'].valid && (additionalInfoForm.controls['country'].touched || additionalInfoForm.controls['country'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                    class="block w-full h-16 items-center px-6 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                    placeholder=""
+                    autocomplete="off"
+                    required />
+                <label
+                    for="country"
+                    [ngClass]="labelControl('country')"
+                    class="absolute text-base duration-300 transform -translate-y-8 scale-75 top-5 left-6 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                    Country
+                </label>
+            </div>
+            <!--/ Country -->
+
+            <!-- Address -->
+            <div *ngIf="isAgency" class="relative z-0 w-full mt-5 group">
+                <input 
+                    type="address"
+                    id="address"
+                    formControlName="address"
+                    [ngClass]="[!additionalInfoForm.controls['address'].valid && (additionalInfoForm.controls['address'].touched || additionalInfoForm.controls['address'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                    class="block w-full h-16 items-center px-6 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                    placeholder=""
+                    autocomplete="off"
+                    required />
+                <label
+                    for="address"
+                    [ngClass]="labelControl('address')"
+                    class="absolute text-base duration-300 transform -translate-y-8 scale-75 top-5 left-6 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                    Address
+                </label>
+            </div>
+            <!--/ Address -->
+
+            <!-- TinNumber -->
+            <div *ngIf="isAgency" class="relative z-0 w-full mt-5 group">
+                <input 
+                    type="tinNumber"
+                    id="tinNumber"
+                    formControlName="tinNumber"
+                    [ngClass]="[!additionalInfoForm.controls['tinNumber'].valid && (additionalInfoForm.controls['tinNumber'].touched || additionalInfoForm.controls['tinNumber'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                    class="block w-full h-16 items-center px-6 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                    placeholder=""
+                    autocomplete="off"
+                    required />
+                <label
+                    for="tinNumber"
+                    [ngClass]="labelControl('tinNumber')"
+                    class="absolute text-base duration-300 transform -translate-y-8 scale-75 top-5 left-6 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                    TIN Number
+                </label>
+            </div>
+            <!--/ TinNumber -->
 
             <!-- Phone -->
             <div class="flex mt-5">
@@ -103,14 +183,14 @@
                 </div>
                 <!-- / Number -->
             </div>
-            <div class="w-full px-5 pt-2 flex justify-strat items-start gap-2">
+            <div *ngIf="isUser" class="w-full px-5 pt-2 flex justify-strat items-start gap-2">
                 <app-warning-circle color="#A80710"></app-warning-circle>
                 <p class="text-[#A80710] text-[10px]">Questo numero sarà disponibile per il contatto, per coloro interessati ai tuoi annunci.</p>
             </div>
             <!-- / Phone -->
 
             <!-- Date of Birth -->
-            <div class="flex gap-1 mt-5">
+            <div *ngIf="isUser" class="flex gap-1 mt-5">
                 <!-- Day -->
                 <div class="relative z-0 w-[20%] group">
                     <input 
@@ -166,11 +246,32 @@
                     </label>
                 </div>
             </div>
-            <div class="w-full px-5 pt-2 flex justify-strat items-center gap-2">
+            <div *ngIf="isUser" class="w-full px-5 pt-2 flex justify-strat items-center gap-2">
                 <app-warning-circle color="#A39175"></app-warning-circle>
                 <p class="text-[#A39175] text-[10px]">Non sarà visibile pubblicamente</p>
             </div>
             <!-- Date of Birth -->
+
+            <!-- ManagersFullName -->
+            <div *ngIf="isAgency" class="relative z-0 w-full mt-5 group">
+                <input 
+                    type="managersFullName"
+                    id="managersFullName"
+                    formControlName="managersFullName"
+                    [ngClass]="[!additionalInfoForm.controls['managersFullName'].valid && (additionalInfoForm.controls['managersFullName'].touched || additionalInfoForm.controls['managersFullName'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                    class="block w-full h-16 items-center px-6 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                    placeholder=""
+                    autocomplete="off"
+                    required />
+                <label
+                    for="managersFullName"
+                    [ngClass]="labelControl('managersFullName')"
+                    class="absolute text-base duration-300 transform -translate-y-8 scale-75 top-5 left-6 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                    Manager's Full Name
+                </label>
+            </div>
+            <!--/ ManagersFullName -->
+
             <button
                 [disabled]="additionalInfoForm.invalid"
                 type="submit" 

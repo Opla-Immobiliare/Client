@@ -8,6 +8,8 @@ import { User } from "../models/user.model";
 export class AuthService {
 
     public loginPopUp: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+    public isAgency: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+    public isUser: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
     constructor(private http: HttpClient) { }
 
@@ -29,5 +31,22 @@ export class AuthService {
     // Show or hide Login form
     showHideLoginForm(value: boolean) {
         this.loginPopUp.next(value);
+    }
+
+    // Register
+    register(obj: any) {
+        return this.http.post<User>(`${environment.apiUrl}/Auth/register`, obj);
+    }
+
+    loginPopUpSet(val: boolean): void {
+        this.loginPopUp.next(val);
+    }
+
+    setAgency(val: boolean): void {
+        this.isAgency.next(val);
+    }
+
+    setUser(val: boolean): void {
+        this.isUser.next(val);
     }
 }

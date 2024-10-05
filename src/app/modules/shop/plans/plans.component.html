@@ -1,0 +1,97 @@
+<div class="w-full px-4 lg:px-[90px] pt-6">
+
+    <div class="flex justify-between items-center">
+        <button [routerLink]="['/profile']" class="bg-transparent inline-flex justify-center items-center h-12 w-12 border-none cursor-pointer">
+            <app-back-arrow dimensions="w-6 h-6" color="#000"></app-back-arrow>
+        </button>
+        <div class="bg-[#FBE525] inline-flex justify-center items-center h-12 max-w-[182px] rounded-full w-full">
+            <app-opla-logo color="#213A29" dimensions="w-[90px] h-[30px]"></app-opla-logo>
+        </div>
+        <div class="h-12 w-12"></div>
+    </div>
+
+    <p class="text-[17px] font-semibold text-center my-5 lg:text-[20px] lg:mt-5 lg:mb-10">Seleziona il pacchetto che meglio si adatta alle tue esigenze.</p>
+
+    <div class="w-full p-1 bg-[#CCC2B2] border-none rounded-full lg:max-w-[430px]">
+        <ul class="w-full grid grid-cols-2 gap-[2px]">
+            <li [ngClass]="[planMethod == 'month' ? 'bg-[#FEFCE6]' : 'bg-transparent']" (click)="planMethod='month'" class="w-full h-[44px] inline-flex justify-center items-center rounded-full text-sm lg:text-[16px] cursor-pointer">Fatturazione mensile</li>
+            <li [ngClass]="[planMethod == 'year' ? 'bg-[#FEFCE6]' : 'bg-transparent']" (click)="planMethod='year'" class="w-full h-[44px] flex flex-col justify-center items-center rounded-full text-sm lg:text-[16px] cursor-pointer">Annuale<span class="text-[#539267] text-[12px] lg:text-[13px]">Annuale (Risparmia fino al 30%)</span></li>
+        </ul>
+    </div>
+
+    <!-- Free Plan -->
+    <div class="w-full mt-16">
+        <div class="w-full bg-[#FEFCE6] rounded-[20px] p-8">
+            <p class="text-[29px] text-[#4D4333] lg:text-[39px] lg:max-w-[30%]">Gratuito</p>
+            <div class="flex flex-row items-center gap-4 lg:max-w-[30%]">
+                <app-home-icon></app-home-icon>
+                <div class="w-full flex flex-col">
+                    <p class="text-[10px] lg:text-[11px]">Puoi registrare fino a</p>
+                    <p class="text-[13px] lg:text-[16px]">1 Proprietà</p>
+                </div>
+            </div>
+            <button class="w-full h-12 mt-5 flex justify-center items-center text-sm font-semibold border-2 border-sold border-[#CCC2B2] rounded-[500px] lg:mt-0 lg:text-[16px] lg:max-w-[30%] hover:drop-shadow-[0px_0px_30px_rgba(204,194,178,1)] hover:bg-[#CCC2B2] focus:bg-[#C2B6A3] focus:border-[#C2B6A3] focus:drop-shadow-none">Continua con il piano gratuito</button>
+        </div>
+    </div>
+    <!-- / Free Plan -->
+    
+    <!-- Plans Anual -->
+    <div [ngClass]="[planMethod == 'year'? 'grid': 'hidden']" class="gap-4 mt-4 lg:grid-cols-6">
+            <!-- Plan Card -->
+            <div *ngFor="let plan of plansAnual$ | async" class="w-full p-8 bg-[#FEF9CD] border-none rounded-[20px] flex flex-col gap-3 lg:p-6 lg:gap-5">
+                <!-- Banner -->
+                <p class="text-[10px] text-white px-4 bg-[#AF9E03] border-none rounded-[12px] lg:text-[12px]">{{ plan.planName }}</p>
+                <!--/ Banner -->
+                <!-- Price -->
+                <div>
+                    <p class="text-[29px] text-[#4D4333] lg:text-[39px]">{{ plan.pricePerMonth }}<span class="text-sm text-[#4D4333] lg:text-[16px]"></span></p>
+                    <p class="text-[12px] text-[#8A785B] lg:text-[13px]">Fatturazione annuale: €228</p>
+                </div>
+                <!--/ Price -->
+                <!-- Properties -->
+                <div class="flex flex-row items-center gap-4 lg:flex-col lg:items-start lg:gap-3">
+                    <app-home-icon></app-home-icon>
+                    <div class="w-full flex flex-col">
+                        <p class="text-[10px] lg:text-[12px]">Puoi registrare fino a</p>
+                        <p class="text-[13px] lg:text-[20px]">{{ plan.propertiesToRegister }} Proprietà</p>
+                    </div>
+                </div>
+                <!--/ Properties -->
+                <!-- Button -->
+                <button class="w-full h-12 mt-10 flex justify-center items-center text-sm font-semibold border-2 border-solid border-[#CCC2B2] rounded-[500px] lg:mt-16 lg:text-[16px] hover:drop-shadow-[0px_0px_30px_rgba(204,194,178,1)] hover:bg-[#CCC2B2] focus:bg-[#C2B6A3] focus:border-[#C2B6A3] focus:drop-shadow-none">Seleziona Piano</button>
+                <!--/ Button -->
+            </div>
+            <!-- Plan Card -->
+    </div>
+    <!-- / Plans -->
+
+    <!-- Plans Month -->
+    <div [ngClass]="[planMethod == 'month'? 'grid': 'hidden']" class="gap-4 mt-4 lg:grid-cols-6">
+            <!-- Plan Card -->
+            <div *ngFor="let plan of plans$ | async" class="w-full p-8 bg-[#FEF9CD] border-none rounded-[20px] flex flex-col gap-3 lg:p-6 lg:gap-5">
+                <!-- Banner -->
+                <p class="text-[10px] text-white px-4 bg-[#AF9E03] border-none rounded-[12px] lg:text-[12px]">{{ plan.planName }}</p>
+                <!--/ Banner -->
+                <!-- Price -->
+                <div>
+                    <p class="text-[29px] text-[#4D4333] lg:text-[39px]">{{ plan.pricePerMonth }}<span class="text-sm text-[#4D4333] lg:text-[16px]">/mese</span></p>
+                    <p class="text-[12px] text-[#8A785B] lg:text-[13px]">Fatturazione annuale: €228</p>
+                </div>
+                <!--/ Price -->
+                <!-- Properties -->
+                <div class="flex flex-row items-center gap-4 lg:flex-col lg:items-start lg:gap-3">
+                    <app-home-icon></app-home-icon>
+                    <div class="w-full flex flex-col">
+                        <p class="text-[10px] lg:text-[12px]">Puoi registrare fino a</p>
+                        <p class="text-[13px] lg:text-[20px]">{{ plan.propertiesToRegister }} Proprietà</p>
+                    </div>
+                </div>
+                <!--/ Properties -->
+                <!-- Button -->
+                <button class="w-full h-12 mt-10 flex justify-center items-center text-sm font-semibold border-2 border-solid border-[#CCC2B2] rounded-[500px] lg:mt-16 lg:text-[16px] hover:drop-shadow-[0px_0px_30px_rgba(204,194,178,1)] hover:bg-[#CCC2B2] focus:bg-[#C2B6A3] focus:border-[#C2B6A3] focus:drop-shadow-none">Seleziona Piano</button>
+                <!--/ Button -->
+            </div>
+            <!-- Plan Card -->
+    </div>
+    <!-- / Plans -->
+</div>

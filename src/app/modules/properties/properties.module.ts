@@ -43,8 +43,7 @@ export const routes: Routes = [
 
 // Entity metadata
 const entityMetadata: EntityMetadataMap = {
-  Property: {},
-  Feature: {}
+  Property: {}
 };
 
 @NgModule({
