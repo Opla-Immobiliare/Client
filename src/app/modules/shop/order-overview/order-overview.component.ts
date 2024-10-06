@@ -17,7 +17,7 @@ export class OrderOverviewComponent implements OnInit {
       this.paymentElement = await this.stripeService.createPaymentElement();
       this.paymentElement.mount('#payment-element');
     } catch (error: any) {
-      console.error(error.message);
+      console.log(error.message);
     }
   }
 }

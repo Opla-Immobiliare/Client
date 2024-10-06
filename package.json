@@ -27,6 +27,7 @@
     "@stripe/stripe-js": "^4.5.0",
     "country-codes-list": "^1.6.11",
     "country-flags-svg": "^2.0.0-beta.1",
+    "cuid": "^3.0.0",
     "flowbite": "^2.4.1",
     "ngx-clipboard": "^16.0.0",
     "ngx-cookie-service": "^16.1.0",

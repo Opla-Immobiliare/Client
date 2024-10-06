@@ -7,6 +7,8 @@ import { registerLocaleData } from '@angular/common';
 import { PlanService } from '../services/plan.service';
 import { Router } from '@angular/router';
 import { PlanCart } from '../models/plan-cart.model';
+import { BasketService } from '../services/basket.service';
+import { Basket, BasketPlan } from '../models/basket.model';
 registerLocaleData(localeIt, 'it');
 
 @Component({
@@ -18,11 +20,11 @@ export class PlansComponent implements OnInit {
   private planService = inject(PlanEntityService);
   private planCartService = inject(PlanService);
   private route = inject(Router);
+  private basketService = inject(BasketService);
 
   planMethod: string = "year";
   plans$: Observable<Plan[] | undefined> = new Observable<Plan[]>
   plansAnual$: Observable<Plan[] | undefined> = new Observable<Plan[]>;
-
 
   ngOnInit(): void {
     this.plansAnual$ = this.planService.entities$.pipe(
@@ -38,11 +40,15 @@ export class PlansComponent implements OnInit {
   }
 
   setPlan(plan: Plan): void {
-    let obj = new Object({
-      key: plan.planName,
-      type: plan.subscriptionType
-    }) as PlanCart;
-    this.planCartService.setPlanCart(obj);
+    let obj: Basket = {
+      id: "",
+      plan: {
+        planName: plan.planName,
+        id: plan.id,
+        pricePerMonth: plan.pricePerMonth
+      },
+    }
+    this.basketService.setBasket(obj);
     this.route.navigateByUrl('/shop/cart');
   }
 }

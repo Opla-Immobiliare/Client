@@ -42,6 +42,9 @@ export class HeaderComponent implements OnInit {
     if (this.route.url.includes('shop/checkout')) {
       return 'hidden';
     }
+    if (this.route.url.includes('shop/review')) {
+      return 'hidden';
+    }
     return 'flex';
   }
 }

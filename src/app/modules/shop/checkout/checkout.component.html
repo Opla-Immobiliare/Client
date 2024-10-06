@@ -47,7 +47,7 @@
                     <label
                         for="name"
                         class="absolute text-sm duration-300 transform -translate-y-8 scale-75 top-5 left-6 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
-                        Nome Del Titolare Della Carta
+                        Nome
                     </label>
                 </div>
                 <!--/ Card Holder -->
@@ -213,12 +213,13 @@
             <!--/ Billing Information -->
         </div>
         <!--/ Payment & Billing -->
+
         <!-- Cart View -->
-        <div class="w-full h-max p-6 bg-[#EBE7E0] border-none rounded-[20px] mt-10">
+        <div *ngIf="(basket$ | async) as basket" class="w-full h-max p-6 bg-[#EBE7E0] border-none rounded-[20px] mt-10">
             <!-- Billing Cycle -->
             <div class="w-full pb-8 border-b-[1px] border-b-[#C2B6A3] flex flex-col gap-4">
                 <p class="text-[20px] font-semibold">Ciclo di Fatturazione</p>
-                <div class="flex flex-row gap-10">
+                <!-- <div class="flex flex-row gap-10">
                     <div class="w-max inline-flex justify-start items-center gap-4">
                         <input id="1" type="radio" value="1" class="w-6 h-6 text-[#5C503D] bg-transparent border-[#5C503D] border-2 focus:bg-[#FBE525] focus:ring-none focus:ring-0" />
                         <label for="1" class="text-base">Annuale</label>
@@ -227,7 +228,7 @@
                         <input id="1" type="radio" value="1" class="w-6 h-6 text-[#5C503D] bg-transparent border-[#5C503D] border-2 focus:bg-[#FBE525] focus:ring-none focus:ring-0" />
                         <label for="1" class="text-base">Mensile</label>
                     </div>
-                </div>
+                </div> -->
             </div>
             <!--/ Billing Cycle -->
             <!-- Plans -->
@@ -235,20 +236,20 @@
                 <div class="w-full flex flex-row justify-between items-center">
                     <p class="text-sm lg:text-base">Chiave di Argento</p>
                     <div class="flex flex-row gap-2 items-center">
-                        <p class="text-[#5C503D] text-sm lg:text-base">324€</p>
-                        <p class="text-[17px] font-semibold lg:text-[20px]">228€</p>
+                        <p class="text-[#5C503D] text-sm lg:text-base"><!--TODO: 324€--></p>
+                        <p class="text-[17px] font-semibold lg:text-[20px]">{{basket.plan.pricePerMonth | currency: 'EUR':'symbol':'1.0':'it'}}</p>
                     </div>
                 </div> 
                 <div class="w-full flex flex-row justify-between items-center">
-                    <p class="text-sm text-[#5C503D] lg:text-base">27€, 19€ x 12 mesi</p>
-                    <p class="px-4 bg-[#417250] border-none rounded-[12px] text-[#DEECE3] text-[12px] flex justify-center items-center lg:text-[13px]">20% off</p>
+                    <p class="text-sm text-[#5C503D] lg:text-base"><!-- TODO: 27€,--> {{basket.plan.pricePerMonth / 12 | currency: 'EUR':'symbol':'1.2':'it'}} x 12 mesi</p>
+                    <p class="px-4 bg-[#417250] border-none rounded-[12px] text-[#DEECE3] text-[12px] flex justify-center items-center lg:text-[13px]">30% off</p>
                 </div>
             </div>
             <!--/ Plans -->
             <!-- Total -->
             <div class="w-full flex flex-row justify-between items-center">
                 <p class="text-sm lg:text-base">Totale</p>
-                <p class="text-sm lg:text-base">228€</p>
+                <p class="text-sm lg:text-base">{{basket.plan.pricePerMonth | currency: 'EUR':'symbol':'1.0':'it'}}</p>
             </div>
             <p class="w-full text-[#8A785B] text-[12px] lg:text-[13px]">Vedi il totale (incluse le tasse) nel Riepilogo</p>
             <!--/ Total -->
@@ -257,6 +258,7 @@
             <!--/ Submit Button -->
         </div>
         <!--/ Cart View -->
+
     </form>
     <!--/ Checkout Form -->
 </div>

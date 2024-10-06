@@ -1,10 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { PlanEntityService } from '../services/plan-entity.service';
-import { ActivatedRoute } from '@angular/router';
-import { PlanCart } from '../models/plan-cart.model';
-import { PlanService } from '../services/plan.service';
-import { filter, map, Observable } from 'rxjs';
-import { Plan } from '../models/plan.model';
+import { Observable } from 'rxjs';
+import { BasketService } from '../services/basket.service';
+import { Basket } from '../models/basket.model';
+import localeIt from '@angular/common/locales/it'
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localeIt, 'it');
 
 @Component({
   selector: 'app-cart',
@@ -13,30 +13,15 @@ import { Plan } from '../models/plan.model';
 })
 
 export class CartComponent implements OnInit {
-  private planService = inject(PlanEntityService);
-  private planCartService = inject(PlanService);
-  private planCart: Observable<PlanCart | null> = new Observable<null>();
-  plan$: Observable<Plan | undefined> = new Observable<Plan>;
+  private basketService = inject(BasketService);
+  basket$: Observable<Basket | null> = new Observable<Basket>;
 
   ngOnInit() {
-    this.planCartService.planCartSource.pipe(
-      res => this.planCart = res
-    );
+    const BASKET = localStorage.getItem('basket_id');
 
-    let selectedPlan: any;
-    this.planCart.subscribe(
-      res => {
-        selectedPlan = res;
-        console.log(selectedPlan);
-      }
-    );
-
-    this.plan$ = this.planService.entities$.pipe(
-      map(
-        plans => plans.find(
-          plan => (plan.planName == selectedPlan.planName && plan.subscriptionType == selectedPlan.subscriptionType)
-        )
-      )
-    )
+    if (BASKET) {
+      this.basketService.getBasket(BASKET);
+      this.basketService.basketSource$.pipe(res => this.basket$ = res);
+    }
   }
 }

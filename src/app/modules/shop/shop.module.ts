@@ -28,7 +28,7 @@ const routes: Routes = [
     component: CheckoutComponent
   },
   {
-    path: 'order-overview',
+    path: 'review',
     component: OrderOverviewComponent
   }
 ]

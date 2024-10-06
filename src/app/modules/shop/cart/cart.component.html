@@ -28,7 +28,7 @@
     </div>
     <!--/ Header -->
     <div class="hidden lg:block lg:border-t-[1px] lg:border-t-solid lg:border-t-[#C2B6A3] lg:mt-6"></div>
-    <div class="lg:flex lg:flex-col lg:justify-center lg:items-center">
+    <div *ngIf="(basket$ | async) as basket" class="lg:flex lg:flex-col lg:justify-center lg:items-center">
         <!-- Billing Cycle -->
         <div class="w-full py-10 my-6 border-t-[1px] border-t-solid border-t-[#C2B6A3] border-b-[1px] border-b-solid border-b-[#C2B6A3] lg:border-t-0 lg:max-w-[700px] lg:my-0 lg:mb-6">
             <!-- Text -->
@@ -38,7 +38,7 @@
             <div class="flex flex-row gap-16">
                 <!-- Annual -->
                 <div class="w-max inline-flex justify-start items-center gap-4">
-                    <input id="1" type="radio" value="1" class="w-6 h-6 text-[#5C503D] bg-transparent border-[#5C503D] border-2 focus:bg-[#FBE525] focus:ring-none focus:ring-0" />
+                    <input id="1" type="radio" value="1" class="w-6 h-6 text-[#5C503D] bg-transparent border-[#5C503D] border-2 focus:bg-[#FBE525] focus:ring-none focus:ring-0"/>
                     <label for="1" class="text-base">Annuale</label>
                 </div>
                 <!--/ Annual -->
@@ -55,23 +55,22 @@
         <!-- Plans -->
         <div class="w-full flex flex-col gap-3 my-10 lg:max-w-[700px]">
             <div class="w-full flex flex-row justify-between items-center">
-                <p class="text-sm lg:text-base">xxxx</p>
+                <p class="text-sm lg:text-base">{{basket.plan.planName}}</p>
                 <div class="flex flex-row gap-2 items-center">
                     <p class="text-[#5C503D] text-sm lg:text-base">324€</p>
-                    <p class="text-[17px] font-semibold lg:text-[20px]">228€</p>
+                    <p class="text-[17px] font-semibold lg:text-[20px]">{{basket.plan.pricePerMonth |  currency: 'EUR':'symbol':'1.0':'it'}}</p>
                 </div>
             </div>
             <div class="w-full flex flex-row justify-between items-center">
-                <p class="text-sm text-[#5C503D] lg:text-base">27€, 19€ x 12 mesi</p>
-                <p class="px-4 bg-[#417250] border-none rounded-[12px] text-[#DEECE3] text-[12px] flex justify-center items-center lg:text-[13px]">20% off</p>
+                <p class="text-sm text-[#5C503D] lg:text-base">27€, {{basket.plan.pricePerMonth / 12 | currency: 'EUR':'symbol':'1.2':'it'}} x 12 mesi</p>
+                <p class="px-4 bg-[#417250] border-none rounded-[12px] text-[#DEECE3] text-[12px] flex justify-center items-center lg:text-[13px]">30% off</p>
             </div>
         </div>
         <!--/ Plans -->
         <!-- Total -->
         <div class="w-full flex flex-row justify-between items-center lg:max-w-[700px]">
- 
             <p class="text-sm lg:text-base">Totale</p>
-            <p class="text-sm lg:text-base">228€</p>
+            <p class="text-sm lg:text-base">{{ basket.plan.pricePerMonth |  currency: 'EUR':'symbol':'1.0':'it'}}</p>
         </div>
         <p class="w-full text-[#8A785B] text-[12px] mt-2 lg:max-w-[700px] lg:text-[13px]">Vedi il totale (incluse le tasse) nel Riepilogo</p>
         <!--/ Total-->
