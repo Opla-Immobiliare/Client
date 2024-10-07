@@ -10,6 +10,7 @@ import { EntityDataService, EntityDefinitionService, EntityMetadataMap } from '@
 import { PlanEntityService } from './services/plan-entity.service';
 import { PlansDataService } from './services/plans-data.service';
 import { PlansResolver } from './services/plans.resolver';
+import { ThankYouComponent } from './thank-you/thank-you.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path: 'review',
     component: OrderOverviewComponent
+  },
+  {
+    path: 'thank-you',
+    component: ThankYouComponent
   }
 ]
 
@@ -44,6 +49,7 @@ const entityMetadata: EntityMetadataMap = {
     CartComponent,
     CheckoutComponent,
     OrderOverviewComponent,
+    ThankYouComponent,
   ],
   imports: [
     CommonModule,

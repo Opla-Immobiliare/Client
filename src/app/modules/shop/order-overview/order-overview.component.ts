@@ -1,6 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { StripePaymentElement } from '@stripe/stripe-js';
 import { StripeService } from 'src/app/core/services/stripe.service';
+import { BasketService } from '../services/basket.service';
+import { Basket } from '../models/basket.model';
+import { Observable } from 'rxjs';
+import localeIt from '@angular/common/locales/it'
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localeIt, 'it');
 
 @Component({
   selector: 'app-order-overview',
@@ -11,6 +17,8 @@ import { StripeService } from 'src/app/core/services/stripe.service';
 export class OrderOverviewComponent implements OnInit {
   private stripeService = inject(StripeService);
   paymentElement?: StripePaymentElement;
+  private basketService = inject(BasketService);
+  basket$: Observable<Basket | null> = new Observable<Basket>;
 
   async ngOnInit() {
     try {
@@ -19,5 +27,16 @@ export class OrderOverviewComponent implements OnInit {
     } catch (error: any) {
       console.log(error.message);
     }
+
+    const BASKET = localStorage.getItem('basket_id');
+
+    if (BASKET) {
+      this.basketService.getBasket(BASKET);
+      this.basketService.basketSource$.pipe(res => this.basket$ = res);
+    }
+  }
+
+  async confirmPayment() {
+    await this.stripeService.confirmPayment();
   }
 }

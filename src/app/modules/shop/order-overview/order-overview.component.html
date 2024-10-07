@@ -1,7 +1,7 @@
 <div class="w-full px-4 lg:px-[90px] pt-6">
     <!-- Header -->
     <div class="w-full flex flex-row justify-between items-center border-b-[1px] border-b-[#C2B6A3] pb-6">
-        <app-left-arrow></app-left-arrow>
+        <app-left-arrow class="cursor-pointer" [routerLink]="['/shop/cart']"></app-left-arrow>
         <!-- Logo -->
         <div class="flex justify-center items-center lg:hidden" >
             <div class="w-[182px] h-12 rounded-full bg-[#FBE525] inline-flex justify-center items-center cursor-pointer" [routerLink]="['/']">
@@ -28,22 +28,22 @@
     </div>
     <!--/ Header -->
     <!-- Order Overview -->
-    <div class="w-full py-6 flex flex-col gap-8 lg:max-w-[700px] lg:m-auto lg:justify-center lg:items-center">
+    <div *ngIf="(basket$ | async) as basket" class="w-full py-6 flex flex-col gap-8 lg:max-w-[700px] lg:m-auto lg:justify-center lg:items-center">
         <!-- Plan -->
         <div class="w-full px-4 py-6 bg-[#EBE7E0] border-none rounded-[20px] flex flex-col gap-4">
             <!-- Plan Key -->
             <div class="w-full flex flex-col gap-1">
                 <div class="w-full flex flex-row justify-between items-center">
-                    <p class="text-sm lg:text-base">Chiave di Argento</p>
-                    <p class="text-sm lg:text-base">228€</p>
+                    <p class="text-sm lg:text-base">{{ basket.plan.planName }}</p>
+                    <p class="text-sm lg:text-base">{{ (basket.plan.pricePerMonth - (basket.plan.pricePerMonth * 0.24)) | currency: 'EUR':'symbol':'1.2':'it' }}</p>
                 </div>
-                <p class="text-sm text-[#5C503D] lg:text-base">19€ x 12 mesi</p>
+                <p class="text-sm text-[#5C503D] lg:text-base">{{ basket.plan.pricePerMonth| currency: 'EUR':'symbol':'1.2':'it' }} x 12 mesi</p>
             </div>
             <!--/ Plan Key -->
             <!-- Tax -->
             <div class="w-full flex flex-row justify-between items-center">
                 <p class="text-sm lg:text-base">Tassa + 24%</p>
-                <p class="text-sm lg:text-base">54,72€</p>
+                <p class="text-sm lg:text-base">{{ (basket.plan.pricePerMonth * 0.24) | currency: 'EUR':'symbol':'1.2':'it' }}</p>
             </div>
             <!--/ Tax -->
             <div class="w-full border-b-2 border-b-[#D6CEC2]"></div>
@@ -51,7 +51,7 @@
             <!-- Total -->
             <div class="w-full flex flex-row justify-between items-center">
                 <p class="text-sm font-semibold lg:text-base">Totale</p>
-                <p class="text-sm font-semibold lg:text-base">282,72€</p>
+                <p class="text-sm font-semibold lg:text-base">{{ basket.plan.pricePerMonth | currency: 'EUR':'symbol':'1.2':'it' }}</p>
             </div>
             <!--/ Total -->
             <!-- Text -->
@@ -70,7 +70,7 @@
     <div class="w-full inline-flex justify-center items-center flex-col">
         <div id="payment-element" class="w-full max-w-[700px]"></div>
         <!-- Button -->
-        <button class="w-full py-3 mt-16 bg-[#FBE525] border-none rounded-[500px] text-base font-semibold hover:drop-shadow-[0px_0px_20px_#FBE525] focus:drop-shadow-none focus:bg-[#E1CB04] lg:max-w-[350px]">Completa l'acquisto</button>
+        <button (click)="confirmPayment()" class="w-full py-3 mt-16 bg-[#FBE525] border-none rounded-[500px] text-base font-semibold hover:drop-shadow-[0px_0px_20px_#FBE525] focus:drop-shadow-none focus:bg-[#E1CB04] lg:max-w-[350px]">Completa l'acquisto</button>
         <!--/ Button -->
     </div>
 </div>
