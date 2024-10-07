@@ -1,27 +1,11 @@
-<div class="bg-[rgb(224,218,209)] overflow-y-scroll fixed top-0 right-0 left-0 z-50 flex justify-center lg:items-start items-center w-full md:inset-0 h-[calc(100%)] max-h-full pt-2 pb-8 px-4">
+<div class="w-full px-4 lg:px-[90px] pt-6">
 
-    <div class="w-full max-w-[1000px] relative">
-        
-        <!-- Header -->
-        <div class="w-full rounded-full inline-flex justify-between items-center h-16 bg-[#D6CEC2] pr-2">
-            <!-- Logo -->
-            <div class="rounded-full h-16 bg-[#FBE525] w-48 inline-flex justify-center items-center">
-                <app-opla-logo dimensions="w-[110px] h-10" color="#213A29"></app-opla-logo>
-            </div>
-            <!-- TODO: STEPS -->
-            <div></div>
-            <!-- Profile -->
-            <div class="w-[137px] h-12 bg-[#8A785B] rounded-full inline-flex items-center gap-4">
-                <!-- <img class="rounded-full w-10 h-10" src="./assets/iamges/real-estate-agent.jpg" alt="RealEstateAgent"> -->
-                <p class="text-white text-base">Profilo</p>
-            </div>
-        </div>
-        <!-- / Header -->
+    <div class="w-full relative">
 
         <!-- Title -->
         <div class="w-full border-b border-[#A39175] pb-6 pt-8">
             <div class="inline-flex gap-4">
-                <button type="button" class="w-12 h-12 inline-flex justify-center items-center">
+                <button type="button" class="w-12 h-12 inline-flex justify-center items-center mt-6 cursor-pointer" (click)="(step == 1) ? router.navigateByUrl('/profile') : backStep()">
                     <app-back-arrow dimensions="w-6 h-6" color="#000"></app-back-arrow>
                 </button>
                 <div class="w-full space-y-1">

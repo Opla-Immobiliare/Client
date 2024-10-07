@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AddPropertyDataService } from '../sevices/add-property.data.service';
+import { AddPropertyDataService } from '../services/add-property.data.service';
 
 @Component({
   selector: 'app-general-info',
@@ -31,7 +31,8 @@ export class GeneralInfoComponent implements OnInit {
       distanceFromCity: new FormControl<number | undefined>(undefined),
       distanceFromAirport: new FormControl<number | undefined>(undefined),
       nearTo: new FormControl<string | undefined>(undefined),
-      description: new FormControl<string | undefined>(undefined, [Validators.required])
+      description: new FormControl<string | undefined>(undefined, [Validators.required]),
+      alias: new FormControl<string | null>(null, [Validators.required,])
     });
   }
 
@@ -48,7 +49,10 @@ export class GeneralInfoComponent implements OnInit {
   selectedFiles(event: any): void {
     const files: File = event.target.files;
     console.log(files);
-    this.data.uploadFiles(files).subscribe(res => this.imagesPaths = res);
+    this.data.uploadFiles(files).subscribe(res => {
+      res.forEach(file => this.imagesPaths.push(file));
+      this.data.setImages(this.imagesPaths);
+    });
   }
 
   removeImage(item: string) {

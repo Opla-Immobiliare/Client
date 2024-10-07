@@ -44,4 +44,16 @@ export class ProfileService {
       throw new Error('Unauthorized');
     }
   }
+
+  getUser() {
+    const USER_PROFILE = localStorage.getItem('user');
+    if (USER_PROFILE) {
+      const USER: User = JSON.parse(USER_PROFILE);
+      const headers = { 'Authorization': `Bearer ${USER.token}` };
+
+      return this.http.get<User>(`${environment.apiUrl}/User`, { headers: headers });
+    } else {
+      throw new Error('Unauthorized');
+    }
+  }
 }

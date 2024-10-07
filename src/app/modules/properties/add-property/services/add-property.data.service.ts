@@ -20,6 +20,10 @@ export class AddPropertyDataService {
   private generalInfoForm = new BehaviorSubject<FormGroup>(new FormGroup({}));
   generalInfoFormSource = this.generalInfoForm.asObservable();
 
+  // Images
+  private images = new BehaviorSubject<string[]>([]);
+  imagesSource = this.images.asObservable();
+
   constructor(private http: HttpClient) { }
 
   // Type form
@@ -38,6 +42,11 @@ export class AddPropertyDataService {
   changeGeneralInfoForm(form: FormGroup): void {
     this.generalInfoForm.next(form);
     // console.log('Service Form', form.value)
+  }
+
+  // SetImages
+  setImages(images: string[]): void {
+    this.images.next(images);
   }
 
   // UploadFiles

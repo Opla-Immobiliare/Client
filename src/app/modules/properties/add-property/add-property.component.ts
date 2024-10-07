@@ -1,6 +1,7 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, inject, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { AddPropertyDataService } from './sevices/add-property.data.service';
+import { AddPropertyDataService } from './services/add-property.data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-property',
@@ -8,6 +9,7 @@ import { AddPropertyDataService } from './sevices/add-property.data.service';
   styleUrls: ['./add-property.component.scss']
 })
 export class AddPropertyComponent implements OnInit {
+  router = inject(Router);
 
   step: number = 1;
   barWidth: string = 'w-1/4';
@@ -46,6 +48,32 @@ export class AddPropertyComponent implements OnInit {
         this.barWidth = 'w-4/4';
         this.title = '4/4. Revisione';
         this.subTitle = 'Controlli che tutto sia corretto e procediamo con la pubblicazione!';
+        break;
+    }
+  }
+
+  backStep(): void {
+    switch (this.step) {
+      case 3:
+        this.step = 2;
+        this.barWidth = 'w-2/4';
+        this.title = '2/4. Caratteristiche';
+        this.subTitle = 'Compila le caratteristiche del tuo immobile.';
+        this.next = 'Informazioni Generali';
+        break;
+      case 4:
+        this.step = 3;
+        this.barWidth = 'w-3/4';
+        this.title = '3/4. Informazioni Generali';
+        this.subTitle = 'Compila le caratteristiche del tuo immobile.';
+        this.next = 'Riveda & Pubblica';
+        break;
+      case 2:
+        this.step = 1;
+        this.barWidth = 'w-1/4';
+        this.title = '1/4. Tipo di Annuncio';
+        this.subTitle = 'Compila le seguenti informazioni per pubblicare il tuo annuncio.';
+        this.next = 'Caratteristiche';
         break;
     }
   }

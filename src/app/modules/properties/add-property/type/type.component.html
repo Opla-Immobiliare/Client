@@ -16,8 +16,8 @@
                         </li>
                         <!-- Buy -->
                         <li class="cursor-pointer">
-                            <input type="radio" id="buy" name="rentOrSale" formControlName="rentOrSale" value="buy" class="hidden peer"/>
-                            <label for="buy" class="w-full inline-flex justify-center items-center h-10 rounded-full bg-transparent peer-checked:bg-[#FCED69] text-sm">
+                            <input type="radio" id="sale" name="rentOrSale" formControlName="rentOrSale" value="sale" class="hidden peer"/>
+                            <label for="sale" class="w-full inline-flex justify-center items-center h-10 rounded-full bg-transparent peer-checked:bg-[#FCED69] text-sm">
                                 Vendita
                             </label>
                         </li>
@@ -30,29 +30,25 @@
             <div class="w-full mt-10">
                 <p class="text-base font-semibold">Seleziona la tipa dell'immobile</p>
                 <div class="w-full mt-6 grid space-y-4">
-                    <div class="w-max inline-flex justify-start items-center gap-4">
-                        <input id="1" type="radio" value="1" name="propertyType" formControlName="propertyType" class="w-6 h-6 text-[#5C503D] bg-transparent border-[#5C503D] focus:ring-none focus:ring-0" />
-                        <label for="1" class="text-base">Casa</label>
-                    </div>
-                    <div class="w-max inline-flex justify-start items-center gap-4">
-                        <input id="2" type="radio" value="2" name="propertyType" formControlName="propertyType" class="w-6 h-6 text-[#5C503D] bg-transparent border-[#5C503D] focus:ring-none focus:ring-0" />
-                        <label for="2" class="text-base">Casa</label>
+                    <div *ngFor="let item of propertyTypes$ | async" class="w-max inline-flex justify-start items-center gap-4">
+                        <input id="{{item.id}}" type="radio" [value]="item.id" name="propertyType" (click)="loadCategory(item.id)" formControlName="propertyType" class="w-6 h-6 text-[#5C503D] bg-transparent border-[#5C503D] focus:ring-none focus:ring-0" />
+                        <label for="{{item.id}}" class="text-base">{{ item.typeName }}</label>
                     </div>
                 </div>
             </div>
             <!-- / Poperty Type -->
 
             <!-- Property Category -->
-            <div class="w-full mt-10">
+            <div *ngIf="typeForm.value.propertyType == 1 || typeForm.value.propertyType == 2 || typeForm.value.propertyType == 3" class="w-full mt-10">
                 <p class="text-base font-semibold">Seleziona la categoria dell'immobile</p>
                 <div class="w-full mt-6 relative">
-                    <button data-modal-target="categories" data-modal-toggle="categories" type="button" class="h-12 w-[300px] inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full">
+                    <button (click)="propertyCategory = (propertyCategory == false) ? true : false" type="button" class="h-12 w-[300px] inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full">
                         <p class="text-base">{{ typeForm.value.category }}</p>
                         <app-caret-down class="w-4 h-4" color="#000"></app-caret-down>
                     </button>
-                    <div id="categories" class="hidden w-[300px] h-[288px] rounded-[20px] bg-[#CCC2B2] p-2 mt-1">
+                    <div id="categories" *ngIf="propertyCategory" class="w-[300px] h-[288px] rounded-[20px] bg-[#CCC2B2] p-2 mt-1">
                         <ul class="w-full">
-                            <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="typeForm.value.category = 'Aprtment'" data-modal-hide="categories">Appartamento</li>
+                            <li *ngFor="let item of propertyCategories" class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer"  (click)="typeForm.value.category = item.propertyCategoryName; propertyCategory = false">{{ item.propertyCategoryName }}</li>
                         </ul>
                     </div>
                 </div>
@@ -63,13 +59,13 @@
             <div class="w-full mt-10">
                 <p class="text-base font-semibold">In quale zona si trova l'immobile?</p>
                 <div class="w-full mt-6 relative">
-                    <button data-modal-target="comune" data-modal-toggle="comune" type="button" class="h-12 w-[300px] inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full">
-                        <p class="text-base">{{ typeForm.value.comune }}</p>
+                    <button (click)="province = (province == false) ? true : false" type="button" class="h-12 w-[300px] inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full">
+                        <p class="text-base">{{ typeForm.value.province }}</p>
                         <app-caret-down class="w-4 h-4" color="#000"></app-caret-down>
                     </button>
-                    <div id="comune" class="hidden w-[300px] h-[288px] rounded-[20px] bg-[#CCC2B2] p-2 mt-1">
+                    <div *ngIf="province" id="province" class="w-[300px] h-[288px] rounded-[20px] bg-[#CCC2B2] p-2 mt-1 overflow-y-scroll">
                         <ul class="w-full">
-                            <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="typeForm.value.comune = 'Lombardia'" data-modal-hide="comune">Lombardia</li>
+                            <li *ngFor="let item of province$ | async" class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="changeProvince(item)">{{ item.province }}</li>
                         </ul>
                     </div>
                 </div>
@@ -77,15 +73,31 @@
             <!-- Comune zone -->
 
             <!-- Area zone -->
-            <div class="w-full mt-10">
+            <div *ngIf="cittas.length > 0" class="w-full mt-10">
                 <div class="w-full relative">
-                    <button data-modal-target="area" data-modal-toggle="area" type="button" class="h-12 w-[300px] inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full">
-                        <p class="text-base">{{ typeForm.value.area }}</p>
+                    <button (click)="citta = (citta == false) ? true : false" type="button" class="h-12 w-[300px] inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full">
+                        <p class="text-base">{{ typeForm.value.citta }}</p>
                         <app-caret-down class="w-4 h-4" color="#000"></app-caret-down>
                     </button>
-                    <div id="area" class="hidden w-[300px] h-[288px] rounded-[20px] bg-[#CCC2B2] p-2 mt-1">
+                    <div *ngIf="citta" id="citta" class="w-[300px] h-[288px] rounded-[20px] bg-[#CCC2B2] p-2 mt-1 overflow-y-scroll">
                         <ul class="w-full">
-                            <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="typeForm.value.area = 'Lombardia'" data-modal-hide="area">Lombardia</li>
+                            <li *ngFor="let item of cittas" class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="setCitta(item)">{{ item.citta }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- / Area zone -->
+
+            <!-- Area zone -->
+            <div *ngIf="comuni.length > 0" class="w-full mt-10">
+                <div class="w-full relative">
+                    <button (click)="comune = (comune == false) ? true : false" type="button" class="h-12 w-[300px] inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full">
+                        <p class="text-base">{{ typeForm.value.comune }}</p>
+                        <app-caret-down class="w-4 h-4" color="#000"></app-caret-down>
+                    </button>
+                    <div *ngIf="comune" id="comune" class="w-[300px] h-[288px] rounded-[20px] bg-[#CCC2B2] p-2 mt-1 overflow-y-scroll">
+                        <ul class="w-full">
+                            <li *ngFor="let item of comuni" class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="setComune(item)">{{ item.comune }}</li>
                         </ul>
                     </div>
                 </div>

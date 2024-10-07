@@ -62,7 +62,7 @@ export class CompleteProfileComponent implements OnInit {
       agency: {
         country: this.additionalInfoForm.value.country,
         address: this.additionalInfoForm.value.address,
-        copmanyName: this.additionalInfoForm.value.copmanyName,
+        companyName: this.additionalInfoForm.value.companyName,
         tinNumber: this.additionalInfoForm.value.tinNumber,
       }
     });

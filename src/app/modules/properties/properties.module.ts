@@ -24,6 +24,12 @@ import { AuthGuard } from '../auth/services/auth.guard';
 import { EntityDataService, EntityDefinitionService, EntityMetadataMap } from '@ngrx/data';
 import { PropertiesDataService, } from './services/properties-data.service';
 import { PropertyEntityService } from './services/property-entity.service';
+import { PropertyTypeEntityService } from './add-property/services/property-type-entity.service';
+import { PropertyTypesDataService } from './add-property/services/property-types-data.service';
+import { PropertyTypesResolver } from './add-property/services/propertyTypes.resolver';
+import { ProvinceEntityService } from './add-property/services/province/province.entity.service';
+import { ProvinceResolver } from './add-property/services/province/province.resolver';
+import { ProvincesDataService } from './add-property/services/province/provinces-data.service';
 
 export const routes: Routes = [
   {
@@ -35,15 +41,21 @@ export const routes: Routes = [
     component: PropertyComponent
   },
   {
-    path: 'add',
+    path: 'add/new',
     component: AddPropertyComponent,
-    canActivate: [AuthGuard]
+    resolve: {
+      propertyType: PropertyTypesResolver,
+      province: ProvinceResolver
+    },
+    canActivate: [AuthGuard],
   }
 ]
 
 // Entity metadata
 const entityMetadata: EntityMetadataMap = {
-  Property: {}
+  Property: {},
+  PropertyType: {},
+  Province: {}
 };
 
 @NgModule({
@@ -76,6 +88,12 @@ const entityMetadata: EntityMetadataMap = {
   providers: [
     PropertiesDataService,
     PropertyEntityService,
+    PropertyTypeEntityService,
+    PropertyTypesDataService,
+    PropertyTypesResolver,
+    ProvinceEntityService,
+    ProvinceResolver,
+    ProvincesDataService
   ]
 })
 export class PropertiesModule {
@@ -83,9 +101,13 @@ export class PropertiesModule {
   constructor(
     private eds: EntityDefinitionService,
     private entityDataService: EntityDataService,
-    private propertiesService: PropertiesDataService
+    private propertiesService: PropertiesDataService,
+    private propertyTypes: PropertyTypesDataService,
+    private provinceService: ProvincesDataService
   ) {
     eds.registerMetadataMap(entityMetadata);
     entityDataService.registerService('Property', propertiesService);
+    entityDataService.registerService('PropertyType', propertyTypes);
+    entityDataService.registerService('Province', provinceService);
   }
 }

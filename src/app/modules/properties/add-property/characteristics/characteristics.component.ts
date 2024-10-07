@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AddPropertyDataService } from '../sevices/add-property.data.service';
+import { AddPropertyDataService } from '../services/add-property.data.service';
 
 @Component({
   selector: 'app-characteristics',
@@ -11,6 +11,8 @@ export class CharacteristicsComponent implements OnInit {
 
   characteristisForm: FormGroup;
 
+  buildingfloors: boolean = false;
+
   constructor(private data: AddPropertyDataService) {
     this.characteristisForm = this.generateCharacteristicsForm();
   }
@@ -19,20 +21,20 @@ export class CharacteristicsComponent implements OnInit {
     return new FormGroup({
       squareMetters: new FormControl<number | undefined>(undefined, [Validators.required]),
       price: new FormControl<number | undefined>(undefined, [Validators.required]),
-      constructionYear: new FormControl<number | undefined>(undefined, [Validators.required]),
-      renovated: new FormControl<string>('no', [Validators.required]),
-      renovationYear: new FormControl<number | undefined>(undefined, [Validators.required]),
-      renovationType: new FormControl<string>('completamente', [Validators.required]),
-      buildingFloors: new FormControl<number>(0, [Validators.required]),
-      apartmentFloor: new FormControl('scegli il piano dell appartamento', [Validators.required]),
-      energyClass: new FormControl<string>("Nessuno", [Validators.required]),
-      rooms: new FormControl<number>(0, [Validators.required]),
-      bathrooms: new FormControl<number>(0, [Validators.required]),
-      kitchens: new FormControl<number>(0, [Validators.required]),
-      livingRooms: new FormControl<number>(0, [Validators.required]),
-      parking: new FormControl<string>('no', [Validators.required]),
-      parkingSpace: new FormControl<number>(1, [Validators.required]),
-      parkingType: new FormControl('Interno', [Validators.required]),
+      constructionYear: new FormControl<number | undefined>(undefined),
+      renovated: new FormControl<string>('no'),
+      renovationYear: new FormControl<number | undefined>(undefined),
+      renovationType: new FormControl<string>('fully'),
+      buildingFloors: new FormControl<number>(0),
+      apartmentFloor: new FormControl('scegli il piano dell appartamento'),
+      energyClass: new FormControl<string>("None"),
+      rooms: new FormControl<number>(0),
+      bathrooms: new FormControl<number>(0),
+      kitchens: new FormControl<number>(0),
+      livingRooms: new FormControl<number>(0),
+      parking: new FormControl<string>('noParking'),
+      parkingSpace: new FormControl<number>(1),
+      parkingType: new FormControl('Al coperto'),
       furnished: new FormControl<boolean>(false),
       electricalDevices: new FormControl<boolean>(false),
       maintenanceFees: new FormControl<boolean>(false),
@@ -56,11 +58,11 @@ export class CharacteristicsComponent implements OnInit {
       alarmSystem: new FormControl<boolean>(false),
       pool: new FormControl<string>('nessuno'),
       garden: new FormControl<boolean>(false),
-      heating: new FormControl<string>('Autonomo', [Validators.required]),
-      heatingType: new FormControl<string>('Scegli il tipo di riscaldamento', [Validators.required]),
-      doorType: new FormControl<string>('Tipo di porta', [Validators.required]),
-      floorType: new FormControl<string>('Tipo di pavimento', [Validators.required]),
-      warehouse: new FormControl<string>('nessuno', [Validators.required]),
+      heating: new FormControl<string>('Autonomo'),
+      heatingType: new FormControl<string>('Scegli il tipo di riscaldamento'),
+      doorType: new FormControl<string>('Tipo di porta'),
+      floorType: new FormControl<string>('Tipo di pavimento'),
+      warehouse: new FormControl<string>('nessuno'),
     });
   }
 
@@ -76,7 +78,10 @@ export class CharacteristicsComponent implements OnInit {
 
   // Update Characteristics Form
   updateCharacteristicsForm(): void {
+    console.log("BeforePatch",this.characteristisForm.value);
     this.data.changeCharacteristicsForm(this.characteristisForm);
+    this.data.characteristicsFormSource.subscribe(res => {this.characteristisForm.patchValue(res.value); console.log("AfterPatch", res.value)});
+    // console.log(this.characteristisForm.value);
   }
 
   ngOnInit(): void {

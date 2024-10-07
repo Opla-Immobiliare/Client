@@ -16,13 +16,16 @@ export class FooterComponent implements OnInit{
   }
 
   hideFooter(): string {
-    if (this.route.url.includes('/shop/cart')) {
+    if (this.route.url.includes('shop/cart')) {
       return 'hidden';
     }
+    // if (this.route.url.includes('properties/add/new')) {
+    //   return 'hidden';
+    // }
     return 'lg:flex';
   }
 
   ngOnInit(): void {
-    this.hideFooter();
+    
   }
 }
