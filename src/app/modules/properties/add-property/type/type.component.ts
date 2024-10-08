@@ -59,7 +59,8 @@ export class TypeComponent implements OnInit {
 
   updateTypeForm(): void {
     this.data.changeTypeForm(this.typeForm);
-    console.log(this.typeForm.value);
+    this.data.typeFormSource.subscribe(res => this.typeForm.patchValue(res.value));
+    // console.log(this.typeForm.value);
   }
 
   loadCategory(id: number) {
@@ -84,8 +85,14 @@ export class TypeComponent implements OnInit {
   }
 
   setComune(item: Comune) {
-    this.typeForm.value.comuni = item.comune;
+    this.typeForm.value.comune = item.comune;
     this.comune = false;
     this.updateTypeForm();
+  }
+
+  labelControl(name: string): string {
+    if (this.typeForm.controls[name].valid && this.typeForm.controls[name].touched) return 'bg-[#CCC2B2] px-1 py-0.5';
+    if (this.typeForm.controls[name].invalid && (this.typeForm.controls[name].touched || this.typeForm.controls[name].dirty)) return 'bg-[#FF5449] peer-focus:bg-[#FF5449] py-0.5 px-1';
+    return 'bg-none';
   }
 }

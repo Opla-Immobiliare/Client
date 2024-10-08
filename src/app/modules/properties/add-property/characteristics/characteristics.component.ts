@@ -10,11 +10,19 @@ import { AddPropertyDataService } from '../services/add-property.data.service';
 export class CharacteristicsComponent implements OnInit {
 
   characteristisForm: FormGroup;
-
-  buildingfloors: boolean = false;
+  buildingFloor: boolean = false;
+  heating: boolean = false;
+  heatingType: boolean = false;
+  parkingTypeDropDown: boolean = false;
+  doorType: boolean = false;
+  floorType: boolean = false;
+  warehouse: boolean = false;
+  pool: boolean = false;
 
   constructor(private data: AddPropertyDataService) {
     this.characteristisForm = this.generateCharacteristicsForm();
+
+    const buildingFloor = document.getElementById("apartmentFloor");
   }
 
   generateCharacteristicsForm(): FormGroup {
@@ -78,9 +86,9 @@ export class CharacteristicsComponent implements OnInit {
 
   // Update Characteristics Form
   updateCharacteristicsForm(): void {
-    console.log("BeforePatch",this.characteristisForm.value);
+    // console.log("BeforePatch",this.characteristisForm.value);
     this.data.changeCharacteristicsForm(this.characteristisForm);
-    this.data.characteristicsFormSource.subscribe(res => {this.characteristisForm.patchValue(res.value); console.log("AfterPatch", res.value)});
+    this.data.characteristicsFormSource.subscribe(res => {this.characteristisForm.patchValue(res.value); /*console.log("AfterPatch", res.value)*/});
     // console.log(this.characteristisForm.value);
   }
 

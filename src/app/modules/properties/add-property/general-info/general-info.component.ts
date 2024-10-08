@@ -13,6 +13,11 @@ export class GeneralInfoComponent implements OnInit {
   url: any;
   imagesPaths: string[] = [];
 
+  acceessFrom: boolean = false;
+  viewType: boolean = false;
+  positioning: boolean = false;
+  zone: boolean = false;
+
   constructor(private data: AddPropertyDataService) {
     this.generalInfoForm = this.generateGeneralInfoForm();
   }
@@ -20,8 +25,8 @@ export class GeneralInfoComponent implements OnInit {
   generateGeneralInfoForm(): FormGroup {
     return new FormGroup({
       acceessFrom: new FormControl<string>('Strada', [Validators.required]),
-      accessibillity: new FormControl<string>('no', [Validators.required]),
-      view: new FormControl<string>('no'),
+      accessibillity: new FormControl<string>('noAccess', [Validators.required]),
+      view: new FormControl<string>('noView'),
       viewType: new FormControl<string>('Mare'),
       positioning: new FormControl<string>('Angolo'),
       zone: new FormControl<string>('Residenziale'),
@@ -44,6 +49,7 @@ export class GeneralInfoComponent implements OnInit {
 
   updateGeneralInfoForm(): void {
     this.data.changeGeneralInfoForm(this.generalInfoForm)
+    this.data.generalInfoFormSource.subscribe(res => this.generalInfoForm.patchValue(res.value));
   }
 
   selectedFiles(event: any): void {

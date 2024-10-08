@@ -39,6 +39,63 @@ export class ReviewComponent implements OnInit {
     // })
   }
 
+  propertyType(id: number): string {
+    switch(id) {
+      case 1: 
+        return 'House';
+        break;
+      case 2:
+        return 'Land';
+        break;
+      case 3: 
+        return 'Shops / Commercial premises';
+        break;
+      case 4: 
+        return 'Offices / Co-working';
+        break;
+      case 5: 
+        return 'Garage / Parking Spaces';
+        break;
+      default:
+        return '';
+        break;
+    }
+  }
+
+  renovated(): string {
+    if (this.charFormGroup.value.renovated == 'yes') {
+      let str: string = 'Si | ';
+      str += (this.charFormGroup.value.renovationType == 'fully') ? 'Completamente | ' : 'Parzialmente | ';
+      str += this.charFormGroup.value.renovationYear.toString();
+      return str;
+    }
+    return 'No';
+  }
+
+  heating(): string {
+    if (this.charFormGroup.value.heating == 'Senza') {
+      return 'Senza';
+    } else {
+      return `${this.charFormGroup.value.heating} | ${this.charFormGroup.value.heatingType}`;
+    }
+  }
+
+  parking(): string {
+    if (this.charFormGroup.value.parking == 'noParking') {
+      return 'No';
+    } else {
+      return `Si | ${this.charFormGroup.value.parkingType} con ${this.charFormGroup.value.parkingSpace} posizione`
+    }
+  }
+
+  view(): string {
+    if (this.generalFormGroup.value.view == 'noView') {
+      return 'No';
+    } else {
+      return `${this.generalFormGroup.value.view} | ${this.generalFormGroup.value.viewType}`;
+    }
+  }
+
   // Create Property Object
   createPropertyObject(): Object {
     return new Object({
@@ -46,7 +103,7 @@ export class ReviewComponent implements OnInit {
       price: this.charFormGroup.value.price,
       description: this.generalFormGroup.value.description,
       disabilitiesAccess: this.generalFormGroup.value.accessibillity,
-      view: this.generalFormGroup.value.view,
+      view: this.generalFormGroup.value.viewType,
       positioning: this.generalFormGroup.value.positioning,
       zone: this.generalFormGroup.value.zone,
       nearTo: this.generalFormGroup.value.nearTo,
@@ -68,14 +125,14 @@ export class ReviewComponent implements OnInit {
         typeOfHeating: this.charFormGroup.value.typeOfHeating,
         numberOfRooms: this.charFormGroup.value.rooms,
         bathrooms: this.charFormGroup.value.bathrooms,
-        kitchens: this.charFormGroup.value.kitchen,
+        kitchens: this.charFormGroup.value.kitchens,
         livingRooms: this.charFormGroup.value.livingRooms,
         parkingSpaces: this.charFormGroup.value.parkingSpace,
         parkingType: this.charFormGroup.value.parkingType
       },
       additionalFeatures: {
-        fournished: this.charFormGroup.value.fournished,
-        electricDevices: this.charFormGroup.value.electricDevices,
+        fournished: this.charFormGroup.value.furnished,
+        electricDevices: this.charFormGroup.value.electricalDevices,
         maintenanceFees: this.charFormGroup.value.maintenanceFees,
         floorType: this.charFormGroup.value.floorType,
         warehouse: this.charFormGroup.value.warehouse,
@@ -91,8 +148,8 @@ export class ReviewComponent implements OnInit {
         incomplete: this.charFormGroup.value.incomplete,
         luxurious: this.charFormGroup.value.luxurious,
         jacuzzi: this.charFormGroup.value.jacuzzi,
-        sateliteAntenna: this.charFormGroup.value.sateliteAntenna,
-        framesWithElectricShutters: this.charFormGroup.value.framesWithElectricShutters,
+        sateliteAntenna: this.charFormGroup.value.satelliteAntenna,
+        framesWithElectricShutters: this.charFormGroup.value.electricShutters,
         neoclassical: this.charFormGroup.value.neoclassical,
         veranda: this.charFormGroup.value.veranda,
         maintainable: this.charFormGroup.value.maintainable,

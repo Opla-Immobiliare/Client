@@ -2,8 +2,36 @@
     <form class="w-full" #f="ngForm" [formGroup]="generalInfoForm" (change)="updateGeneralInfoForm()">
         <table class="w-full border-none">
 
-            <!-- Access From -->
+            <!-- Alias -->
             <tr class="w-full">
+                <td class="w-1/4 py-4">
+                    <div class="inline-flex items-center gap-4">
+                        <p class="text-base font-semibold">Alias</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="relative z-0 w-[420px] group">
+                        <input 
+                            type="text"
+                            id="alias"
+                            formControlName="alias"
+                            [ngClass]="[!generalInfoForm.controls['alias'].valid && (generalInfoForm.controls['alias'].touched || generalInfoForm.controls['alias'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                            class="block w-full max-w-[480px] h-16 items-center text-left px-4 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                            placeholder=""
+                            autocomplete="off"
+                            required />
+                        <label
+                            for="alias"
+                            [ngClass]="labelControl('alias')"
+                            class="absolute text-base text-[#5C503D] duration-300 transform -translate-y-8 scale-75 top-5 left-4 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                            Property title
+                        </label>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Access From -->
+            <tr class="w-full mt-6">
                 <td class="w-1/4 py-4">
                     <div class="inline-flex items-center gap-4">
                         <p class="text-base font-semibold">Accesso da</p>
@@ -11,19 +39,19 @@
                 </td>
                 <td class="w-3/4 pl-6">
                     <div class="w-full relative">
-                        <button data-dropdown-toggle="acceessFrom" type="button" class="h-12 w-[300px] inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full">
+                        <button (click)="acceessFrom = (acceessFrom) ? false : true" type="button" class="h-12 w-[300px] inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full">
                             <p class="text-base">{{ generalInfoForm.value.acceessFrom }}</p>
                             <app-caret-down class="w-4 h-4" color="#000"></app-caret-down>
                         </button>
-                        <div id="acceessFrom" class="hidden w-[300px] h-[max] rounded-[20px] bg-[#CCC2B2] p-2 z-50">
+                        <div *ngIf="acceessFrom" class="absolute top-[52px] w-[300px] h-[max] rounded-[20px] bg-[#CCC2B2] p-2 z-50">
                             <ul class="w-full">
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.acceessFrom = 'Strada'">Strada</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.acceessFrom = 'Marciapiede'">Marciapiede</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.acceessFrom = 'Pavimentato'">Pavimentato</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.acceessFrom = 'Strada Sterrata'">Strada Sterrata</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.acceessFrom = 'Mare'">Mare</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.acceessFrom = 'Senza Accesso'">Senza Accesso</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.acceessFrom = 'Altro'">Altro</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="generalInfoForm.value.acceessFrom = 'Strada'; updateGeneralInfoForm(); acceessFrom=false;">Strada</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="generalInfoForm.value.acceessFrom = 'Marciapiede'; updateGeneralInfoForm(); acceessFrom=false;">Marciapiede</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="generalInfoForm.value.acceessFrom = 'Pavimentato'; updateGeneralInfoForm(); acceessFrom=false;">Pavimentato</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="generalInfoForm.value.acceessFrom = 'Strada Sterrata'; updateGeneralInfoForm(); acceessFrom=false;">Strada Sterrata</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="generalInfoForm.value.acceessFrom = 'Mare'; updateGeneralInfoForm(); acceessFrom=false;">Mare</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="generalInfoForm.value.acceessFrom = 'Senza Accesso'; updateGeneralInfoForm(); acceessFrom=false;">Senza Accesso</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="generalInfoForm.value.acceessFrom = 'Altro'; updateGeneralInfoForm(); acceessFrom=false;">Altro</li>
                             </ul>
                         </div>
                     </div>
@@ -39,16 +67,16 @@
                     </div>
                 </td>
                 <td class="w-3/4 pl-6">
-                    <div [ngClass]="generalInfoForm.value.accessibillity == 'si' ? 'bg-[#FBE525]' : 'bg-[#EBE7E0]'" class="w-max p-[2px] rounded-full">
+                    <div [ngClass]="generalInfoForm.value.accessibillity == 'yesAccess' ? 'bg-[#FBE525]' : 'bg-[#EBE7E0]'" class="w-max p-[2px] rounded-full">
                         <ul class="w-full grid grid-cols-2 gap-[2px]">
                             <li class="cursor-pointer">
-                                <input type="radio" id="noAccess" value="no" name="accessibillity" formControlName="accessibillity" class="peer hidden">
+                                <input type="radio" id="noAccess" value="noAccess" name="accessibillity" formControlName="accessibillity" class="peer hidden">
                                 <label for="noAccess" class="w-10 inline-flex justify-center items-center h-10 rounded-full bg-transparent peer-checked:bg-[#5C503D] peer-checked:text-white text-xs">
                                     No
                                 </label>
                             </li>
                             <li class="cursor-pointer">
-                                <input type="radio" id="yesAccess" name="accessibillity" formControlName="accessibillity" value="si" class="peer hidden">
+                                <input type="radio" id="yesAccess" name="accessibillity" formControlName="accessibillity" value="yesAccess" class="peer hidden">
                                 <label for="yesAccess" class="w-10 inline-flex justify-center items-center h-10 rounded-full bg-transparent peer-checked:bg-[#5C503D] peer-checked:text-white text-xs">
                                     Si
                                 </label>
@@ -66,38 +94,38 @@
                     </div>
                 </td>
                 <td class="w-3/4 pl-6">
-                    <div [ngClass]="generalInfoForm.value.view == 'si' ? 'w-[400px]' : 'w-max'" class="bg-[#EBE7E0] p-1 rounded-full inline-flex justify-between items-center">
-                        <ul [ngClass]="generalInfoForm.value.view == 'si' ? 'bg-[#FBE525]' : 'bg-transparent'" class="grid w-max grid-cols-2 rounded-full">
+                    <div [ngClass]="generalInfoForm.value.view == 'yesView' ? 'w-[400px]' : 'w-max'" class="bg-[#EBE7E0] p-1 rounded-full inline-flex justify-between items-center">
+                        <ul [ngClass]="generalInfoForm.value.view == 'yesView' ? 'bg-[#FBE525]' : 'bg-transparent'" class="grid w-max grid-cols-2 rounded-full">
                             <!-- Rent -->
                             <li class="cursor-pointer">
-                                <input type="radio" id="noView" name="view" formControlName="view" value="no" class="hidden peer"/>
+                                <input type="radio" id="noView" name="view" formControlName="view" value="noView" class="hidden peer"/>
                                 <label for="noView" class="w-10 inline-flex justify-center items-center h-10 rounded-full bg-transparent peer-checked:bg-[#5C503D] peer-checked:text-white text-xs">
                                     No
                                 </label>
                             </li>
                             <!-- Buy -->
                             <li class="cursor-pointer">
-                                <input type="radio" id="yesView" name="view" formControlName="view" value="si" class="hidden peer"/>
+                                <input type="radio" id="yesView" name="view" formControlName="view" value="yesView" class="hidden peer"/>
                                 <label for="yesView" class="w-10 inline-flex justify-center items-center h-10 rounded-full bg-transparent peer-checked:bg-[#5C503D] peer-checked:text-white text-xs">
                                     si
                                 </label>
                             </li>
                         </ul>
-                        <div [ngClass]="generalInfoForm.value.view == 'si' ? 'block' : 'hidden'" class="w-max relative">
-                            <button data-dropdown-toggle="viewType" type="button" class="h-12 w-[244px] inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full">
+                        <div [ngClass]="generalInfoForm.value.view == 'yesView' ? 'block' : 'hidden'" class="w-max relative">
+                            <button (click)="viewType = (viewType) ? false : true" type="button" class="h-12 w-[244px] inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full">
                                 <p class="text-base">{{ generalInfoForm.value.viewType }}</p>
                                 <app-caret-down class="w-4 h-4" color="#000"></app-caret-down>
                             </button>
-                            <div id="viewType" class="hidden w-[300px] h-[max] rounded-[20px] bg-[#CCC2B2] p-2 z-50">
+                            <div *ngIf="viewType" class="absolute top-[52px] w-[300px] h-[max] rounded-[20px] bg-[#CCC2B2] p-2 z-50">
                                 <ul class="w-full">
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.viewType = 'Mare'">Mare</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.viewType = 'Montagna'">Montagna</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.viewType = 'Vista di Apertura'">Vista di Apertura</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.viewType = 'Città'">Città</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.viewType = 'Pianura'">Pianura</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.viewType = 'Foresta'">Foresta</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.viewType = 'Parco'">Parco</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.viewType = 'Piazza'">Piazza</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="generalInfoForm.value.viewType = 'Mare'; updateGeneralInfoForm(); viewType=false;">Mare</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="generalInfoForm.value.viewType = 'Montagna'; updateGeneralInfoForm(); viewType=false;">Montagna</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="generalInfoForm.value.viewType = 'Vista di Apertura'; updateGeneralInfoForm(); viewType=false;">Vista di Apertura</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="generalInfoForm.value.viewType = 'Città'; updateGeneralInfoForm(); viewType=false;">Città</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="generalInfoForm.value.viewType = 'Pianura'; updateGeneralInfoForm(); viewType=false;">Pianura</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="generalInfoForm.value.viewType = 'Foresta'; updateGeneralInfoForm(); viewType=false;">Foresta</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="generalInfoForm.value.viewType = 'Parco'; updateGeneralInfoForm(); viewType=false;">Parco</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="generalInfoForm.value.viewType = 'Piazza'; updateGeneralInfoForm(); viewType=false;">Piazza</li>
                                 </ul>
                             </div>
                         </div>
@@ -114,19 +142,19 @@
                 </td>
                 <td class="w-3/4 pl-6">
                     <div class="w-full relative">
-                        <button data-dropdown-toggle="positioning" type="button" class="h-12 w-[300px] inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full">
+                        <button (click)="positioning = (positioning) ? false : true" type="button" class="h-12 w-[300px] inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full">
                             <p class="text-base">{{ generalInfoForm.value.positioning }}</p>
                             <app-caret-down class="w-4 h-4" color="#000"></app-caret-down>
                         </button>
-                        <div id="positioning" class="hidden w-[300px] h-[max] rounded-[20px] bg-[#CCC2B2] p-2 z-50">
+                        <div *ngIf="positioning" class="hidden w-[300px] h-[max] rounded-[20px] bg-[#CCC2B2] p-2 z-50">
                             <ul class="w-full">
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.positioning = 'Angolo'">Angolo</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.positioning = 'Facciata'">Facciata</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.positioning = 'Interione'">Interione</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.positioning = 'Lato'">Lato</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.positioning = 'Trasparente'">Trasparente</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.positioning = 'Luminoso'">Luminoso</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.positioning = 'Tre-Lati'">Tre-Lati</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="generalInfoForm.value.positioning = 'Angolo'; updateGeneralInfoForm(); positioning=false;">Angolo</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="generalInfoForm.value.positioning = 'Facciata'; updateGeneralInfoForm(); positioning=false;">Facciata</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="generalInfoForm.value.positioning = 'Interione'; updateGeneralInfoForm(); positioning=false;">Interione</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="generalInfoForm.value.positioning = 'Lato'; updateGeneralInfoForm(); positioning=false;">Lato</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="generalInfoForm.value.positioning = 'Trasparente'; updateGeneralInfoForm(); positioning=false;">Trasparente</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="generalInfoForm.value.positioning = 'Luminoso'; updateGeneralInfoForm(); positioning=false;">Luminoso</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="generalInfoForm.value.positioning = 'Tre-Lati'; updateGeneralInfoForm(); positioning=false;">Tre-Lati</li>
                             </ul>
                         </div>
                     </div>
@@ -142,18 +170,18 @@
                 </td>
                 <td class="w-3/4 pl-6">
                     <div class="w-full relative">
-                        <button data-dropdown-toggle="zone" type="button" class="h-12 w-[300px] inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full">
+                        <button (click)="zone = (zone) ? false : true" type="button" class="h-12 w-[300px] inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full">
                             <p class="text-base">{{ generalInfoForm.value.zone }}</p>
                             <app-caret-down class="w-4 h-4" color="#000"></app-caret-down>
                         </button>
-                        <div id="zone" class="hidden w-[300px] h-[max] rounded-[20px] bg-[#CCC2B2] p-2 z-50">
+                        <div *ngIf="zone" class="hidden w-[300px] h-[max] rounded-[20px] bg-[#CCC2B2] p-2 z-50">
                             <ul class="w-full">
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.zone = 'Residenziale'">Residenziale</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.zone = 'Commerciale'">Commerciale</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.zone = 'Agricolo'">Agricolo</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.zone = 'Industriale'">Industriale</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.zone = 'Rigenerazione'">Rigenerazione</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateGeneralInfoForm(); generalInfoForm.value.zone = 'Fuori piano'">Fuori piano</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="generalInfoForm.value.zone = 'Residenziale'; updateGeneralInfoForm(); zone=false">Residenziale</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="generalInfoForm.value.zone = 'Commerciale'; updateGeneralInfoForm(); zone=false">Commerciale</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="generalInfoForm.value.zone = 'Agricolo'; updateGeneralInfoForm(); zone=false">Agricolo</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="generalInfoForm.value.zone = 'Industriale'; updateGeneralInfoForm(); zone=false">Industriale</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="generalInfoForm.value.zone = 'Rigenerazione'; updateGeneralInfoForm(); zone=false">Rigenerazione</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="generalInfoForm.value.zone = 'Fuori piano'; updateGeneralInfoForm(); zone=false">Fuori piano</li>
                             </ul>
                         </div>
                     </div>
@@ -352,7 +380,7 @@
                 <p class="text-base">Carica le foto della casa qui.</p>
             </div>
 
-            <div *ngIf="imagesPaths.length > 0" class="w-full inline-flex flex-wrap gap-3 mt-8 bg-[#CCC2B2]">
+            <div *ngIf="imagesPaths.length > 0" class="w-full inline-flex flex-wrap gap-3 mt-8">
                 <div *ngFor="let item of imagesPaths; let i = index" class="w-max relative border-[4px] rounded-[15px] border-[#CCC2B2]">
                     <img class="w-[96px] h-[96px] rounded-[15px]" [src]="'http://localhost:5270/' + item" alt="House" />
                     <div (click)="removeImage(item)" class="w-6 h-6 bg-[#000] bg-opacity-20 hover:bg-opacity-100 inline-flex items-center justify-center absolute top-[2px] right-[2px] rounded-full">

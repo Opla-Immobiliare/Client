@@ -178,15 +178,15 @@
                         </div>
                         <!-- House Floor -->
                         <div [ngClass]="[characteristisForm.value.buildingFloors == 0 ? 'hidden' : 'block']" class="w-full relative">
-                            <button data-dropdown-toggle="apartmentFloor" type="button" class="h-12 w-[300px] inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full">
+                            <button type="button" (click)="buildingFloor = (buildingFloor == false) ? true : false;" class="h-12 w-[300px] inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full">
                                 <p class="text-base">{{ characteristisForm.value.apartmentFloor }}</p>
                                 <app-caret-down class="w-4 h-4" color="#000"></app-caret-down>
                             </button>
-                            <div id="apartmentFloor" class="hidden w-[300px] h-[288px] overflow-y-scroll rounded-[20px] bg-[#CCC2B2] p-2 z-50">
+                            <div *ngIf="buildingFloor" class="absolute top-[52px] w-[300px] h-[288px] overflow-y-scroll rounded-[20px] bg-[#CCC2B2] p-2 z-50">
                                 <ul class="w-full">
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.apartmentFloor = -1; updateCharacteristicsForm()">Seminterrato</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.apartmentFloor = 0; updateCharacteristicsForm()">Pianterreno</li>
-                                    <li *ngFor="let item of numSequence(characteristisForm.value.buildingFloors); let i = index;" class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.apartmentFloor = i + 1; updateCharacteristicsForm()">{{ i + 1 }}</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.apartmentFloor = -1; updateCharacteristicsForm(); buildingFloor = false;">Seminterrato</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.apartmentFloor = 0; updateCharacteristicsForm(); buildingFloor = false;">Pianterreno</li>
+                                    <li *ngFor="let item of numSequence(characteristisForm.value.buildingFloors); let i = index;" class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.apartmentFloor = i + 1; updateCharacteristicsForm(); buildingFloor = false;">{{ i + 1 }}</li>
                                     <!-- <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.apartmentFloor = 999">Last Floor / Penthouse</li> -->
                                 </ul>
                             </div>
@@ -238,45 +238,45 @@
                     <div class="w-full inline-flex items-center gap-6">
                         <!-- Heating -->
                         <div class="w-full relative">
-                            <button data-dropdown-toggle="heating" type="button" class="h-12 w-[300px] inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full">
+                            <button type="button" (click)="heating = (heating) ? false : true;" class="h-12 w-[300px] inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full">
                                 <app-camp-fire-icon dimensions="w-6 h-6" color="black"></app-camp-fire-icon>
                                 <p class="text-base">{{ characteristisForm.value.heating }}</p>
                                 <app-caret-down class="w-4 h-4" color="#000"></app-caret-down>
                             </button>
-                            <div id="heating" class="hidden w-[300px] h-[max] rounded-[20px] bg-[#CCC2B2] p-2 z-50">
+                            <div *ngIf="heating" class="absolute top-[52px] w-[300px] h-[max] rounded-[20px] bg-[#CCC2B2] p-2 z-50">
                                 <ul class="w-full">
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heating = 'Autonomo'; updateCharacteristicsForm()">Autonomo</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heating = 'Individuale'; updateCharacteristicsForm()">Individuale</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heating = 'Centrale'; updateCharacteristicsForm()">Centrale</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heating = 'Senza'; updateCharacteristicsForm()">Senza</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heating = 'Autonomo'; updateCharacteristicsForm(); heating = false;">Autonomo</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heating = 'Individuale'; updateCharacteristicsForm(); heating = false;">Individuale</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heating = 'Centrale'; updateCharacteristicsForm(); heating = false;">Centrale</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heating = 'Senza'; updateCharacteristicsForm(); heating = false;">Senza</li>
                                 </ul>
                             </div>
                         </div>
                         <!-- Heating Type -->
                         <div [ngClass]="characteristisForm.value.heating == 'Senza' ? 'hidden' : 'block'" class="w-full relative">
-                            <button data-dropdown-toggle="heatingType" type="button" class="h-12 w-[300px] inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full">
+                            <button type="button" (click)="heatingType = (heatingType) ? false : true" class="h-12 w-[300px] inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full">
                                 <p class="text-base">{{ characteristisForm.value.heatingType }}</p>
                                 <app-caret-down class="w-4 h-4" color="#000"></app-caret-down>
                             </button>
-                            <div id="heatingType" class="hidden w-[300px] h-[288px] overflow-y-scroll rounded-[20px] bg-[#CCC2B2] p-2 z-50">
+                            <div *ngIf="heatingType" class="absolute top-[52px] w-[300px] h-[288px] overflow-y-scroll rounded-[20px] bg-[#CCC2B2] p-2 z-50">
                                 <ul class="w-full">
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heatingType = 'Olio'; updateCharacteristicsForm()">Olio</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heatingType = 'Gas Naturale'; updateCharacteristicsForm()">Gas Naturale</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heatingType = 'LPG'; updateCharacteristicsForm()">LPG</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heatingType = 'Elettricità'; updateCharacteristicsForm()">Elettricità</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heatingType = 'Stufa'; updateCharacteristicsForm()">Stufa</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heatingType = 'Accumulatore di calore'; updateCharacteristicsForm()">Accumulatore di calore</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heatingType = 'Olio'; updateCharacteristicsForm(); heatingType = false;">Olio</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heatingType = 'Gas Naturale'; updateCharacteristicsForm(); heatingType = false;">Gas Naturale</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heatingType = 'LPG'; updateCharacteristicsForm(); heatingType = false;">LPG</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heatingType = 'Elettricità'; updateCharacteristicsForm(); heatingType = false;">Elettricità</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heatingType = 'Stufa'; updateCharacteristicsForm(); heatingType = false;">Stufa</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heatingType = 'Accumulatore di calore'; updateCharacteristicsForm(); heatingType = false;">Accumulatore di calore</li>
                                     <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heatingType = 'Termoconvettore'; updateCharacteristicsForm()">Termoconvettore</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heatingType = 'Pellet'; updateCharacteristicsForm()">Pellet</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heatingType = 'Infrarossi'; updateCharacteristicsForm()">Infrarossi</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heatingType = 'Ventilconvettore'; updateCharacteristicsForm()">Ventilconvettore</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heatingType = 'Legna'; updateCharacteristicsForm()">Legna</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heatingType = 'Teleriscaldamento'; updateCharacteristicsForm()">Teleriscaldamento</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heatingType = 'Energia geotermica'; updateCharacteristicsForm()">Energia geotermica</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heatingType = 'Pompa di calore'; updateCharacteristicsForm()">Pompa di calore</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heatingType = 'Camino'; updateCharacteristicsForm()">Camino</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heatingType = 'Pellet'; updateCharacteristicsForm(); heatingType = false;">Pellet</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heatingType = 'Infrarossi'; updateCharacteristicsForm(); heatingType = false;">Infrarossi</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heatingType = 'Ventilconvettore'; updateCharacteristicsForm(); heatingType = false;">Ventilconvettore</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heatingType = 'Legna'; updateCharacteristicsForm(); heatingType = false;">Legna</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heatingType = 'Teleriscaldamento'; updateCharacteristicsForm(); heatingType = false;">Teleriscaldamento</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heatingType = 'Energia geotermica'; updateCharacteristicsForm(); heatingType = false;">Energia geotermica</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heatingType = 'Pompa di calore'; updateCharacteristicsForm(); heatingType = false;">Pompa di calore</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heatingType = 'Camino'; updateCharacteristicsForm(); heatingType = false;">Camino</li>
                                     <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heatingType = 'Camino energetico'; updateCharacteristicsForm()">Camino energetico</li>
-                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heatingType = 'AC'; updateCharacteristicsForm()">AC</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.heatingType = 'AC'; updateCharacteristicsForm(); heatingType = false;">AC</li>
                                 </ul>
                             </div>
                         </div>
@@ -411,14 +411,14 @@
                         </div>
                         <div [ngClass]="characteristisForm.value.parking == 'yesParking' ? 'block' : 'hidden'" class="w-max">
                             <div class="w-full relative">
-                                <button data-dropdown-toggle="parkingTypeDropDown" type="button" class="h-12 w-max inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full gap-4">
+                                <button type="button" (click)="parkingTypeDropDown = (parkingTypeDropDown) ? false : true" class="h-12 w-max inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full gap-4">
                                     <p class="text-base">{{ characteristisForm.value.parkingType }}</p>
                                     <app-caret-down class="w-4 h-4" color="#000"></app-caret-down>
                                 </button>
-                                <div id="parkingTypeDropDown" class="w-[300px] h-max rounded-[20px] bg-[#CCC2B2] p-2 z-50">
+                                <div *ngIf="parkingTypeDropDown" class="absolute top-[52px] w-[300px] h-max rounded-[20px] bg-[#CCC2B2] p-2 z-50">
                                     <ul class="w-full">
-                                        <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.parkingType = 'Allaperto'; updateCharacteristicsForm()">All'aperto</li>
-                                        <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.parkingType = 'Al coperto'; updateCharacteristicsForm()">Al coperto</li>
+                                        <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.parkingType = 'Allaperto'; updateCharacteristicsForm(); parkingTypeDropDown=false">All'aperto</li>
+                                        <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.parkingType = 'Al coperto'; updateCharacteristicsForm(); parkingTypeDropDown=false">Al coperto</li>
                                     </ul>
                                 </div>
                             </div>
@@ -465,17 +465,17 @@
                 <!-- Door Type -->
                 <div>
                     <div class="w-full relative">
-                        <button data-dropdown-toggle="doorType" type="button" class="h-12 w-max inline-flex justify-between items-center px-4 bg-[#D6CEC2] rounded-full gap-4">
-                            <app-door-icon dimensions="w-6 h-6" color="black"></app-door-icon>
-                            <p class="text-base">{{ characteristisForm.value.doorType }}</p>
-                            <app-caret-down class="w-4 h-4" color="#000"></app-caret-down>
+                        <button type="button" (click)="doorType = (doorType) ? false : true" [ngClass]="[characteristisForm.value.doorType == 'Tipo di porta' ? 'bg-[#D6CEC2]' : 'bg-[#A39175]']" class="h-12 w-max inline-flex justify-between items-center px-4 rounded-full gap-4">
+                            <app-door-icon dimensions="w-6 h-6" [color]="characteristisForm.value.doorType == 'Tipo di porta' ? 'black' : 'white'"></app-door-icon>
+                            <p [ngClass]="[characteristisForm.value.doorType == 'Tipo di porta' ? 'text-black' : 'text-white']" class="text-base">{{ characteristisForm.value.doorType }}</p>
+                            <app-caret-down class="w-4 h-4" [color]="characteristisForm.value.doorType == 'Tipo di porta' ? 'black' : 'white'"></app-caret-down>
                         </button>
-                        <div id="doorType" class="hidden w-[300px] h-max rounded-[20px] bg-[#D6CEC2] p-2 z-50">
+                        <div *ngIf="doorType" class="absolute top-[52px] w-[300px] h-max rounded-[20px] bg-[#D6CEC2] p-2 z-50">
                             <ul class="w-full">
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.doorType = 'Corazzato'">Corazzato</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.doorType = 'Sicuro'">Sicuro</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.doorType = 'Semplice in legno'">Semplice in legno</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.doorType = 'Vetro'">Vetro</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.doorType = 'Corazzato'; updateCharacteristicsForm(); doorType = false;">Corazzato</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.doorType = 'Sicuro'; updateCharacteristicsForm(); doorType = false;">Sicuro</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.doorType = 'Semplice in legno'; updateCharacteristicsForm(); doorType = false;">Semplice in legno</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.doorType = 'Vetro'; updateCharacteristicsForm(); doorType = false;">Vetro</li>
                             </ul>
                         </div>
                     </div>
@@ -483,20 +483,20 @@
                 <!-- Type of flooring -->
                 <div>
                     <div class="w-full relative">
-                        <button data-dropdown-toggle="floorType" type="button" class="h-12 w-max inline-flex justify-between items-center px-4 bg-[#D6CEC2] rounded-full gap-4">
-                            <app-square-icon dimensions="w-6 h-6" color="black"></app-square-icon>
-                            <p class="text-base">{{ characteristisForm.value.floorType }}</p>
-                            <app-caret-down class="w-4 h-4" color="#000"></app-caret-down>
+                        <button (click)="floorType = (floorType) ? false : true" type="button"[ngClass]="[characteristisForm.value.floorType == 'Tipo di pavimento' ? 'bg-[#D6CEC2]' : 'bg-[#A39175]']" class="h-12 w-max inline-flex justify-between items-center px-4 rounded-full gap-4">
+                            <app-square-icon dimensions="w-6 h-6" [color]="characteristisForm.value.floorType == 'Tipo di pavimento' ? 'black' : 'white'"></app-square-icon>
+                            <p [ngClass]="[characteristisForm.value.floorType == 'Tipo di pavimento' ? 'text-black' : 'text-white']" class="text-base">{{ characteristisForm.value.floorType }}</p>
+                            <app-caret-down class="w-4 h-4" [color]="characteristisForm.value.floorType == 'Tipo di pavimento' ? 'black' : 'white'"></app-caret-down>
                         </button>
-                        <div id="floorType" class="hidden w-[300px] h-max rounded-[20px] bg-[#D6CEC2] p-2 z-50">
+                        <div *ngIf="floorType" class="absolute top-[52px] w-[300px] h-max rounded-[20px] bg-[#D6CEC2] p-2 z-50">
                             <ul class="w-full">
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.floorType = 'Marmo'">Marmo</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.floorType = 'Legno'">Legno</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.floorType = 'Pietra'">Pietra</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.floorType = 'Piastrella'">Piastrella</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.floorType = 'Mosaico'">Mosaico</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.floorType = 'Laminato'">Laminato</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.floorType = 'Tela'">Tela</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.floorType = 'Marmo'; updateCharacteristicsForm(); floorType=false;">Marmo</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.floorType = 'Legno'; updateCharacteristicsForm(); floorType=false;">Legno</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.floorType = 'Pietra'; updateCharacteristicsForm(); floorType=false;">Pietra</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.floorType = 'Piastrella'; updateCharacteristicsForm(); floorType=false;">Piastrella</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.floorType = 'Mosaico'; updateCharacteristicsForm(); floorType=false;">Mosaico</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.floorType = 'Laminato'; updateCharacteristicsForm(); floorType=false;">Laminato</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.floorType = 'Tela'; updateCharacteristicsForm(); floorType=false;">Tela</li>
                             </ul>
                         </div>
                     </div>
@@ -504,16 +504,16 @@
                 <!-- Warehouse -->
                 <div>
                     <div class="w-full relative">
-                        <button data-dropdown-toggle="warehouse" type="button" class="h-12 w-max inline-flex justify-between items-center px-4 bg-[#D6CEC2] rounded-full gap-4">
-                            <app-warehouse-icon dimensions="w-6 h-6" color="black"></app-warehouse-icon>
-                            <p class="text-base">Magazzino: {{ characteristisForm.value.warehouse }}</p>
-                            <app-caret-down class="w-4 h-4" color="#000"></app-caret-down>
+                        <button (click)="warehouse = (warehouse) ? false : true" type="button" [ngClass]="[characteristisForm.value.warehouse == 'nessuno' ? 'bg-[#D6CEC2]' : 'bg-[#A39175]']" class="h-12 w-max inline-flex justify-between items-center px-4 rounded-full gap-4">
+                            <app-warehouse-icon dimensions="w-6 h-6" [color]="characteristisForm.value.warehouse == 'nessuno' ? 'black' : 'white'"></app-warehouse-icon>
+                            <p [ngClass]="[characteristisForm.value.warehouse == 'nessuno' ? 'text-black' : 'text-white']" class="text-base">Magazzino: {{ characteristisForm.value.warehouse }}</p>
+                            <app-caret-down class="w-4 h-4" [color]="characteristisForm.value.warehouse == 'nessuno' ? 'black' : 'white'"></app-caret-down>
                         </button>
-                        <div id="warehouse" class="hidden w-[300px] h-max rounded-[20px] bg-[#D6CEC2] p-2 z-50">
+                        <div *ngIf="warehouse" class="absolute top-[52px] w-[300px] h-max rounded-[20px] bg-[#D6CEC2] p-2 z-50">
                             <ul class="w-full">
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.warehouse = 'nessuno'">nessuno</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.warehouse = 'interno'">interno</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.warehouse = 'fuori'">fuori</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.warehouse = 'nessuno'; updateCharacteristicsForm(); warehouse = false;">nessuno</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.warehouse = 'interno'; updateCharacteristicsForm(); warehouse = false;">interno</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.warehouse = 'fuori'; updateCharacteristicsForm(); warehouse = false;">fuori</li>
                             </ul>
                         </div>
                     </div>
@@ -684,16 +684,16 @@
                 <!-- pool -->
                 <div>
                     <div class="w-full relative">
-                        <button data-dropdown-toggle="pool" type="button" class="h-12 w-max inline-flex justify-between items-center px-4 bg-[#D6CEC2] rounded-full gap-4">
-                            <app-swimming-pool-icon dimensions="w-6 h-6" color="black"></app-swimming-pool-icon>
-                            <p class="text-base">Piscina: {{ characteristisForm.value.pool }}</p>
-                            <app-caret-down class="w-4 h-4" color="#000"></app-caret-down>
+                        <button (click)="pool = (pool) ? false : true" type="button" [ngClass]="[characteristisForm.value.pool == 'nessuno' ? 'bg-[#D6CEC2]' : 'bg-[#A39175]']"  class="h-12 w-max inline-flex justify-between items-center px-4 rounded-full gap-4">
+                            <app-swimming-pool-icon dimensions="w-6 h-6" [color]="characteristisForm.value.pool == 'nessuno' ? 'black' : 'white'"></app-swimming-pool-icon>
+                            <p [ngClass]="[characteristisForm.value.pool == 'nessuno' ? 'text-black' : 'text-white']" class="text-base">Piscina: {{ characteristisForm.value.pool }}</p>
+                            <app-caret-down class="w-4 h-4" [color]="characteristisForm.value.pool == 'nessuno' ? 'black' : 'white'"></app-caret-down>
                         </button>
-                        <div id="pool" class="hidden w-[300px] h-max rounded-[20px] bg-[#D6CEC2] p-2 z-50">
+                        <div *ngIf="pool" class="absolute top-[52px] w-[300px] h-max rounded-[20px] bg-[#D6CEC2] p-2 z-50">
                             <ul class="w-full">
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.pool = 'nessuno'">nessuno</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.pool = 'interno'">Interno</li>
-                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="updateCharacteristicsForm(); characteristisForm.value.pool = 'fuori'">Fuori</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.pool = 'nessuno'; updateCharacteristicsForm(); pool = false;">nessuno</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.pool = 'interno'; updateCharacteristicsForm(); pool = false;">Interno</li>
+                                <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.pool = 'fuori'; updateCharacteristicsForm(); pool = false;">Fuori</li>
                             </ul>
                         </div>
                     </div>
