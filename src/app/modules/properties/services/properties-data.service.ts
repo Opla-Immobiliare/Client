@@ -24,10 +24,11 @@ export class PropertiesDataService extends DefaultDataService<Property> {
 
     addProperty(obj: Object): Observable<number> {
         const USER_PROFILE = localStorage.getItem('user');
+        // console.log(USER_PROFILE);
         if (USER_PROFILE) {
             const USER: User = JSON.parse(USER_PROFILE);
             const headers = { 'Authorization': `Bearer ${USER.token}` };
-            return this.http.post<number>(`${environment.apiUrl}/Property`, obj,);
+            return this.http.post<number>(`${environment.apiUrl}/Property`, obj, {headers: headers});
         }
         else throw new Error(`Unauthorized`);
     }

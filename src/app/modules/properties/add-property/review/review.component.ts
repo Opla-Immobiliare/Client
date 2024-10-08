@@ -30,13 +30,13 @@ export class ReviewComponent implements OnInit {
   publishAd(): void {
     let obj = this.createPropertyObject();
     console.log("PropertyObject", obj);
-    // this.propertyService.addProperty(obj).subscribe(
-    // res => {
-    //   this.router.navigateByUrl(`/properties/${this.typeFormGroup.value.comune}/property/${res}`);
-    // },
-    // err => {
-    //   console.error(err.message);
-    // })
+    this.propertyService.addProperty(obj).subscribe(
+    res => {
+      this.router.navigateByUrl(`/properties/${this.typeFormGroup.value.comune}/property/${res}`);
+    },
+    err => {
+      console.error(err.message);
+    })
   }
 
   propertyType(id: number): string {
@@ -101,64 +101,64 @@ export class ReviewComponent implements OnInit {
     return new Object({
       propertyFor: this.typeFormGroup.value.rentOrSale == "rent" ? 0 : 1,
       price: this.charFormGroup.value.price,
+      squareMetters: this.charFormGroup.value.squareMetters,
       description: this.generalFormGroup.value.description,
-      disabilitiesAccess: this.generalFormGroup.value.accessibillity,
-      view: this.generalFormGroup.value.viewType,
-      positioning: this.generalFormGroup.value.positioning,
-      zone: this.generalFormGroup.value.zone,
+      disabilitiesAccess: (this.generalFormGroup.value.accessibillity == "yesAccess") ? true : false,
+      view: (this.generalFormGroup.value.view == 'yesView') ? this.generalFormGroup.value.viewType : null,
+      positioning: (this.generalFormGroup.value.positioning != "Select positioning") ? this.generalFormGroup.value.positioning : null,
+      zone: (this.generalFormGroup.value.zone != "Select zone") ? this.generalFormGroup.value.zone : null,
       nearTo: this.generalFormGroup.value.nearTo,
+      accessFrom: this.generalFormGroup.value.accessFrom != "Select Access" ? this.generalFormGroup.value.accessFrom : null,
       distanceFromSea: this.generalFormGroup.value.distanceFromSea,
       disatnceFromCity: this.generalFormGroup.value.distanceFromCity,
       distanceFromCenter: this.generalFormGroup.value.distanceFromCenter,
       distanceFromAirport: this.generalFormGroup.value.distanceFromAirport,
-      propertyImages: [
-        this.images
-      ],
+      propertyImages: this.images,
       propertyCharacteristics: {
         constractionYear: this.charFormGroup.value.constructionYear,
-        renovatedYear: this.charFormGroup.value.renovationYear,
-        renovationType: this.charFormGroup.value.renovationType,
+        renovatedYear: (this.charFormGroup.value.renovated == 'yes') ? this.charFormGroup.value.renovationYear : null,
+        renovationType: (this.charFormGroup.value.renovated == 'yes') ? this.charFormGroup.value.renovationType : null,
         buildingFloors: this.charFormGroup.value.buildingFloors,
         apartmentFloor: this.charFormGroup.value.apartmentFloor,
         energyClass: this.charFormGroup.value.energyClass,
         heating: this.charFormGroup.value.heating,
-        typeOfHeating: this.charFormGroup.value.typeOfHeating,
+        typeOfHeating: (this.charFormGroup.value.heating != "Senza") ? this.charFormGroup.value.typeOfHeating : null,
         numberOfRooms: this.charFormGroup.value.rooms,
         bathrooms: this.charFormGroup.value.bathrooms,
         kitchens: this.charFormGroup.value.kitchens,
         livingRooms: this.charFormGroup.value.livingRooms,
-        parkingSpaces: this.charFormGroup.value.parkingSpace,
-        parkingType: this.charFormGroup.value.parkingType
-      },
-      additionalFeatures: {
-        fournished: this.charFormGroup.value.furnished,
-        electricDevices: this.charFormGroup.value.electricalDevices,
-        maintenanceFees: this.charFormGroup.value.maintenanceFees,
-        floorType: this.charFormGroup.value.floorType,
-        warehouse: this.charFormGroup.value.warehouse,
-        petsAllowed: this.charFormGroup.value.petsAllowed,
-        cameras: this.charFormGroup.value.cameras,
-        cableTv: this.charFormGroup.value.cableTv,
-        floorHeating: this.charFormGroup.value.floorHeating,
-        internalStairs: this.charFormGroup.value.internalStairs,
-        playroom: this.charFormGroup.value.playroom,
-        elevator: this.charFormGroup.value.elevator,
-        solarWaterHeater: this.charFormGroup.value.solarWaterHeater,
-        garden: this.charFormGroup.value.garden,
-        incomplete: this.charFormGroup.value.incomplete,
-        luxurious: this.charFormGroup.value.luxurious,
-        jacuzzi: this.charFormGroup.value.jacuzzi,
-        sateliteAntenna: this.charFormGroup.value.satelliteAntenna,
-        framesWithElectricShutters: this.charFormGroup.value.electricShutters,
-        neoclassical: this.charFormGroup.value.neoclassical,
-        veranda: this.charFormGroup.value.veranda,
-        maintainable: this.charFormGroup.value.maintainable,
-        awnings: this.charFormGroup.value.awnings,
-        alarmSystem: this.charFormGroup.value.alarmSystem
+        parkingSpaces: (this.charFormGroup.value.parking != "noParking") ? this.charFormGroup.value.parkingSpace : 0,
+        parkingType: (this.charFormGroup.value.parking != "noParking") ? this.charFormGroup.value.parkingType : null,
+        additionalFeatures: {
+          fournished: this.charFormGroup.value.furnished,
+          electricDevices: this.charFormGroup.value.electricalDevices,
+          maintenanceFees: this.charFormGroup.value.maintenanceFees,
+          floorType: this.charFormGroup.value.floorType,
+          warehouse: (this.charFormGroup.value.warehouse == "nessuno") ? null : this.charFormGroup.value.warehouse,
+          petsAllowed: this.charFormGroup.value.petsAllowed,
+          cameras: this.charFormGroup.value.cameras,
+          cableTv: this.charFormGroup.value.cableTv,
+          floorHeating: this.charFormGroup.value.floorHeating,
+          internalStairs: this.charFormGroup.value.internalStairs,
+          playroom: this.charFormGroup.value.playroom,
+          elevator: this.charFormGroup.value.elevator,
+          solarWaterHeater: this.charFormGroup.value.solarWaterHeater,
+          garden: this.charFormGroup.value.garden,
+          incomplete: this.charFormGroup.value.incomplete,
+          luxurious: this.charFormGroup.value.luxurious,
+          jacuzzi: this.charFormGroup.value.jacuzzi,
+          sateliteAntenna: this.charFormGroup.value.satelliteAntenna,
+          framesWithElectricShutters: this.charFormGroup.value.electricShutters,
+          neoclassical: this.charFormGroup.value.neoclassical,
+          veranda: this.charFormGroup.value.veranda,
+          maintainable: this.charFormGroup.value.maintainable,
+          awnings: this.charFormGroup.value.awnings,
+          alarmSystem: this.charFormGroup.value.alarmSystem
+        },
       },
       propertyTypeId: this.typeFormGroup.value.propertyType,
       propertyCategoryId: this.typeFormGroup.value.propertyCategory,
-      comuneId: this.typeFormGroup.value.comune,
+      comune: this.typeFormGroup.value.comune,
       citta: this.typeFormGroup.value.citta,
       address: this.typeFormGroup.value.address,
       alias: this.generalFormGroup.value.alias

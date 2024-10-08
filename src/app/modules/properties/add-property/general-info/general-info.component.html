@@ -146,7 +146,7 @@
                             <p class="text-base">{{ generalInfoForm.value.positioning }}</p>
                             <app-caret-down class="w-4 h-4" color="#000"></app-caret-down>
                         </button>
-                        <div *ngIf="positioning" class="hidden w-[300px] h-[max] rounded-[20px] bg-[#CCC2B2] p-2 z-50">
+                        <div *ngIf="positioning" class="absolute top-[52px] w-[300px] h-[max] rounded-[20px] bg-[#CCC2B2] p-2 z-50">
                             <ul class="w-full">
                                 <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="generalInfoForm.value.positioning = 'Angolo'; updateGeneralInfoForm(); positioning=false;">Angolo</li>
                                 <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="generalInfoForm.value.positioning = 'Facciata'; updateGeneralInfoForm(); positioning=false;">Facciata</li>
@@ -174,7 +174,7 @@
                             <p class="text-base">{{ generalInfoForm.value.zone }}</p>
                             <app-caret-down class="w-4 h-4" color="#000"></app-caret-down>
                         </button>
-                        <div *ngIf="zone" class="hidden w-[300px] h-[max] rounded-[20px] bg-[#CCC2B2] p-2 z-50">
+                        <div *ngIf="zone" class="absolute top-[52px] w-[300px] h-[max] rounded-[20px] bg-[#CCC2B2] p-2 z-50">
                             <ul class="w-full">
                                 <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="generalInfoForm.value.zone = 'Residenziale'; updateGeneralInfoForm(); zone=false">Residenziale</li>
                                 <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="generalInfoForm.value.zone = 'Commerciale'; updateGeneralInfoForm(); zone=false">Commerciale</li>
