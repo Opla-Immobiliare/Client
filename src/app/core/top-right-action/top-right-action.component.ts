@@ -17,6 +17,7 @@ export class TopRightActionComponent implements OnInit {
   isLoggedIn$: Observable<boolean> | undefined;
   isLoggedOut$: Observable<boolean> | undefined;
   isAgency: boolean = false;
+  profileMenu: boolean = false;
 
   constructor(private store: Store<AppState>) {}
 
@@ -37,6 +38,7 @@ export class TopRightActionComponent implements OnInit {
   
   // Logout
   logout(): void {
+    this.profileMenu = false;
     this.store.dispatch(logout());
     this.authService.setAgency(false);
     this.authService.setUser(false);

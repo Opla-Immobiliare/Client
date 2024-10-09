@@ -48,9 +48,9 @@
                 </label>
                 <p class="text-xs text-[#8A785B] px-5 pt-2">La tua password deve:</p>
                 <ul class="text-[10px] text-[#8A785B] px-10 pt-1 list-disc">
-                    <li>Essere lunga almeno 7 caratteri</li>
+                    <li [ngClass]="[(registerForm.value.password.length >= 7) ? 'text-green-400' : 'text-black']">Essere lunga almeno 7 caratteri</li>
                     <li>Includere almeno 1 simbolo speciale (!#$%)</li>
-                    <li>Contenere almeno 1 numero (0123456789)</li>
+                    <li [ngClass]="[(registerForm.value.password.match('/\d+/') !== null) ? 'text-green-400' : 'text-black']">Contenere almeno 1 numero (0123456789)</li>
                 </ul>
             </div>
             <div class="self-end w-full mt-[60px] lg:mt-0">

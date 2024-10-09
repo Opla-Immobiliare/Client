@@ -2,6 +2,9 @@ import { inject, Injectable } from '@angular/core';
 import { User } from '../../auth/models/user.model';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Profile } from '../models/profile.model';
+import { UserProperty } from '../models/user-property.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -51,9 +54,21 @@ export class ProfileService {
       const USER: User = JSON.parse(USER_PROFILE);
       const headers = { 'Authorization': `Bearer ${USER.token}` };
 
-      return this.http.get<User>(`${environment.apiUrl}/User`, { headers: headers });
+      return this.http.get<Profile>(`${environment.apiUrl}/User`, { headers: headers });
     } else {
       throw new Error('Unauthorized');
     }
   }
+
+  getUserProperties(page: number): Observable<UserProperty[]> {
+    const USER_PROFILE = localStorage.getItem('user');
+    if (USER_PROFILE) {
+      const USER: User = JSON.parse(USER_PROFILE);
+      const headers = { 'Authorization': `Bearer ${USER.token}` };
+      return this.http.get<UserProperty[]>(`${environment.apiUrl}/User/properties?page=${page}`, {headers: headers});
+    } else {
+      throw new Error('Unauthorized');
+    }
+  }
+
 }

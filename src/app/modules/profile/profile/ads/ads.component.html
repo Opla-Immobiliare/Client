@@ -4,26 +4,31 @@
     <div class="w-full lg:flex lg:justify-between lg:items-center">
         <div class="inline-flex justify-start items-center gap-3">
             <app-house-icon dimensions="w-6 h-6" color="#000"></app-house-icon>
-            <p class="text-base">Annunci &#40;1 Slot Only&#41;</p>
+            <p class="text-base">Annunci &#40;{{user?.propertiesToAdd}} Left&#41;</p>
         </div>
-        <button [routerLink]="['/properties/add/new']" class="hidden lg:inline-flex bg-[#FBE525] rounded-full h-12 justify-center items-center cursor-pointer hover:shadow-[0_0_20px_0_rgba(251,229,37,1)] focus:shadow-none focus:bg-[#FBE525] px-14">Aggiungi nuovo annuncio</button>
+        <button 
+            *ngIf="(user?.addProperty) && (properties.length > 0)"
+            [routerLink]="['/properties/add/new']" 
+            class="hidden lg:inline-flex bg-[#FBE525] rounded-full h-12 justify-center items-center cursor-pointer hover:shadow-[0_0_20px_0_rgba(251,229,37,1)] focus:shadow-none focus:bg-[#FBE525] px-14">
+            Aggiungi nuovo annuncio
+        </button>
     </div>
     <!-- / Title -->
 
     <!-- No Ads -->
-    <div class="w-full h-24 rounded-[20px] border-2 border-dashed border-[#A39175] inline-flex justify-center gap-3 items-center mt-6">
+    <div *ngIf="properties.length == 0" [routerLink]="['/properties/add/new']" class="w-full h-24 rounded-[20px] border-2 border-dashed border-[#A39175] inline-flex justify-center gap-3 items-center mt-6 cursor-pointer">
         <app-plus-icon dimensions="w-10 h-10" color="#A39175"></app-plus-icon>
         <p class="text-sm text-center">Aggiungi la proprietà</p>
     </div>
     <!-- / No Ads -->
 
     <!-- Ads Card -->
-    <div class="w-full relative lg:flex lg:gap-4 bg-[#D6CEC2] rounded-[20px] mt-3 lg:p-2">
+    <div *ngFor="let prop of properties" [routerLink]="['/properties/' + prop.citta + '/property', prop.id]" class="w-full relative lg:flex lg:gap-4 bg-[#D6CEC2] rounded-[20px] mt-3 lg:p-2 lg:hover:shadow-[4px_0px_0px_0px_rgba(251,229,37,1)] cursor-pointer">
 
         <!-- Status Button -->
         <div class="w-max h-6 rounded-full inline-flex justify-center items-center bg-[#FEF9CD] px-2 absolute top-4 left-4 gap-3">
             <app-currency-circle-dollar-icon dimensions="w-4 h-4" color="#5C503D"></app-currency-circle-dollar-icon>
-            <p class="text-xs text-[#5C503D]">In Vendita</p>
+            <p class="text-xs text-[#5C503D]">In {{ (prop.propertyFor == 0) ? 'Affitto' : 'Vendita'}}</p>
         </div>
 
         <!-- Image -->
@@ -38,24 +43,24 @@
         <!-- Info -->
         <div class="px-4 pt-4 pb-6">
             <!-- Title -->
-            <h3 class="text-base">3-room in Via Bernardino Verro 78/a, Milano</h3>
+            <h3 class="text-base">{{ prop.alias }}</h3>
 
             <!-- Characteristics -->
             <div class="w-full inline-flex items-center gap-3 mt-3">
                 <!-- Square metters -->
                 <div class="w-max h-8 bg-[#EBE7E0] rounded inline-flex justify-center items-center gap-3 px-1">
                     <app-wave-square-icon dimensions="w-6 h-6" color="#5C503D"></app-wave-square-icon>
-                    <p class="text-xs text-[#5C503D]">72 &#13217;</p>
+                    <p class="text-xs text-[#5C503D]">{{ prop.squareMetters }} &#13217;</p>
                 </div>
                 <!-- Bathtub -->
-                <div class="w-max h-8 bg-[#EBE7E0] rounded inline-flex justify-center items-center gap-3 px-1">
+                <div *ngIf="prop.bathrooms != 0" class="w-max h-8 bg-[#EBE7E0] rounded inline-flex justify-center items-center gap-3 px-1">
                     <app-bathtub-icon dimensions="w-6 h-6" color="#5C503D"></app-bathtub-icon>
-                    <p class="text-xs text-[#5C503D]">2</p>
+                    <p class="text-xs text-[#5C503D]">{{ prop.bathrooms }}</p>
                 </div>
                 <!-- Beds -->
-                <div class="w-max h-8 bg-[#EBE7E0] rounded inline-flex justify-center items-center gap-3 px-1">
+                <div *ngIf="prop.bedrooms != 0" class="w-max h-8 bg-[#EBE7E0] rounded inline-flex justify-center items-center gap-3 px-1">
                     <app-bed-icon dimensions="w-6 h-6" color="#5C503D"></app-bed-icon>
-                    <p class="text-xs text-[#5C503D]">2</p>
+                    <p class="text-xs text-[#5C503D]">{{ prop.bedrooms }}</p>
                 </div>
             </div>
 
@@ -63,12 +68,12 @@
             <!-- Pricing -->
             <div class="w-full inline-flex items-center gap-3 mt-8">
                 <!-- Old Price -->
-                <div class="w-max inline-flex items-center gap-1">
+                <div *ngIf="prop.oldPrice" class="w-max inline-flex items-center gap-1">
                     <app-trend-down-icon dimensions="w-4 h-4" color="#539267"></app-trend-down-icon>
-                    <p class="text-xs text-[#8A785B] line-through">€ 400,000 (-12%)</p>
+                    <p class="text-xs text-[#8A785B] line-through">{{ prop.oldPrice | currency: 'EUR':'symbol':'1.2':'it'}} (-12%)</p>
                 </div>
                 <!-- Price -->
-                <p class="text-xl font-semibold">€ 352,000</p>
+                <p class="text-xl font-semibold">{{ prop.price | currency: 'EUR':'symbol':'1.2':'it'}}</p>
             </div>
 
             <!-- Management -->
@@ -76,19 +81,19 @@
                 <!-- Emails & Views -->
                 <div class="w-max inline-flex justify-center items-center gap-2">
                     <!-- Emails -->
-                    <div class="bg-[#FCED69] h-10 rounded shadow-[0_0_20px_0_rgba(252,237,105,0.8)] p-1 inline-flex justify-center items-center gap-3">
+                    <!-- <div class="bg-[#FCED69] h-10 rounded shadow-[0_0_20px_0_rgba(252,237,105,0.8)] p-1 inline-flex justify-center items-center gap-3">
                         <p class="pl-1 text-sm">&#40;2&#41; email</p>
                         <button class="w-10 inline-flex justify-center items-center bg-[#FEF9CD] h-8">ok</button>
-                    </div>
+                    </div> -->
                     <!-- Views -->
-                    <div class="w-max h-10 bg-[#E0DAD1] px-2 inline-flex justify-center items-center gap-3 rounded">
+                    <div *ngIf="prop.favs != 0" class="w-max h-10 bg-[#E0DAD1] px-2 inline-flex justify-center items-center gap-3 rounded">
                         <app-heart-icon dimensions="w-4 h-4" color="#5C503D"></app-heart-icon>
-                        <p class="text-xs text-[#5C503D]">234</p>
+                        <p class="text-xs text-[#5C503D]">{{ prop.favs }}</p>
                     </div>
                 </div>
 
-                <!-- Publish-->
-                <form #f="ngForm" class="w-max" [formGroup]="adForm">
+                <!-- Publish TODO:-->
+                <!-- <form #f="ngForm" class="w-max" [formGroup]="adForm">
                     <div class="w-max">
                         <div>
                             <ul class="grid grid-cols-2  p-1 gap-2 rounded-full w-max bg-[#FBE525]">
@@ -109,16 +114,24 @@
                             </ul>
                         </div>
                     </div>
-                </form>
+                </form> -->
             </div>
         </div>
     </div>
     <!-- / Ads Card -->
 
     <!-- Basic Acc Info -->
-    <div class="w-full inline-flex gap-3 mt-6">
+    <div *ngIf="user?.propertiesToAdd == 1" class="w-full inline-flex gap-3 mt-6">
         <app-info-icon dimensions="w-6 h-6" color="#4D4333"></app-info-icon>
         <p class="text-[#4D4333] text-xs">Gli account base possono pubblicare fino a 1 annuncio alla volta.<br/> <span class="font-bold text-[#7D7102] cursor-pointer">Se sei un agente immobiliare, aggiorna il tuo account cliccando qui.</span></p>
     </div>
     <!-- / Basic Acc Info -->
+
+    <!-- Load More Button -->
+    <div class="w-full inline-flex justify-center items-center">
+        <button type="button" (click)="loadMoreProperties()" class="rounded-full px-8 h-12 border-2 border-[#213A29] text-[#213A29] bg-transparent cursor-pointer mt-8 hover:bg-[#213A29] hover:text-[#FBE525] focus:bg-[#122017] focus:text-[#FBE525]">
+            Carica Altri
+        </button>
+    </div>
+    <!-- / Load More Button -->
 </div>
