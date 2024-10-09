@@ -383,7 +383,7 @@
             <div *ngIf="imagesPaths.length > 0" class="w-full inline-flex flex-wrap gap-3 mt-8">
                 <div *ngFor="let item of imagesPaths; let i = index" class="w-max relative border-[4px] rounded-[15px] border-[#CCC2B2]">
                     <img class="w-[96px] h-[96px] rounded-[15px]" [src]="'http://localhost:5270/' + item" alt="House" />
-                    <div (click)="removeImage(item)" class="w-6 h-6 bg-[#000] bg-opacity-20 hover:bg-opacity-100 inline-flex items-center justify-center absolute top-[2px] right-[2px] rounded-full">
+                    <div (click)="removeImage(item)" class="w-6 h-6 bg-[#000] bg-opacity-20 hover:bg-opacity-100 inline-flex items-center justify-center absolute top-[2px] right-[2px] rounded-full cursor-pointer">
                         <app-close-icon dimensions="w-3 h-3" color="white"></app-close-icon>
                     </div>
                     <div *ngIf="i == 0" class="w-[88px] h-[18px] rounded-full inline-flex justify-center items-center absolute bottom-1 bg-black bg-opacity-40">

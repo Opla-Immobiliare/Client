@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -57,5 +58,10 @@ export class AddPropertyDataService {
     }
     console.log(formData)
     return this.http.post<string[]>("http://localhost:5270/api/v1/Images", formData);
+  }
+
+  // Remove File
+  removeFile(item: string) {
+    return this.http.delete(`${environment.apiUrl}/Images?item=${item}`);
   }
 }

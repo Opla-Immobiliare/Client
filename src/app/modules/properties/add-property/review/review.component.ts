@@ -92,7 +92,7 @@ export class ReviewComponent implements OnInit {
     if (this.generalFormGroup.value.view == 'noView') {
       return 'No';
     } else {
-      return `${this.generalFormGroup.value.view} | ${this.generalFormGroup.value.viewType}`;
+      return `Si | ${this.generalFormGroup.value.viewType}`;
     }
   }
 
@@ -119,7 +119,7 @@ export class ReviewComponent implements OnInit {
         renovatedYear: (this.charFormGroup.value.renovated == 'yes') ? this.charFormGroup.value.renovationYear : null,
         renovationType: (this.charFormGroup.value.renovated == 'yes') ? this.charFormGroup.value.renovationType : null,
         buildingFloors: this.charFormGroup.value.buildingFloors,
-        apartmentFloor: this.charFormGroup.value.apartmentFloor,
+        apartmentFloor: (this.charFormGroup.value.apartmentFloor == 'scegli il piano dell appartamento') ? null : this.charFormGroup.value.apartmentFloor,
         energyClass: this.charFormGroup.value.energyClass,
         heating: this.charFormGroup.value.heating,
         typeOfHeating: (this.charFormGroup.value.heating != "Senza") ? this.charFormGroup.value.typeOfHeating : null,
@@ -129,6 +129,13 @@ export class ReviewComponent implements OnInit {
         livingRooms: this.charFormGroup.value.livingRooms,
         parkingSpaces: (this.charFormGroup.value.parking != "noParking") ? this.charFormGroup.value.parkingSpace : 0,
         parkingType: (this.charFormGroup.value.parking != "noParking") ? this.charFormGroup.value.parkingType : null,
+        buildingPermit: (this.charFormGroup.value.buildingPermit == "yesPermit") ? true : false,
+        constructionMeters: this.charFormGroup.value.constructionMeters,
+        buildingSquareArea: (this.charFormGroup.value.hasBuilding == 'noBuilding') ? null : this.charFormGroup.value.buildingSquareArea,
+        structureFactor: this.charFormGroup.value.structureFactor,
+        slope: (this.charFormGroup.value.slope == 'Select slope') ? null : this.charFormGroup.value.slope,
+        frontageLength: this.charFormGroup.value.frontageLength,
+        cityPlan: (this.charFormGroup.value.cityPlan == 'noCityPlan') ? false : true,
         additionalFeatures: {
           fournished: this.charFormGroup.value.furnished,
           electricDevices: this.charFormGroup.value.electricalDevices,

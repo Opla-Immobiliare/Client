@@ -37,7 +37,7 @@
                 <td class="w-1/4 border-r border-[#BAAC98] py-6">
                     <div class="inline-flex items-center gap-4">
                         <app-currency-euro-icon dimensions="w-6 h-6" color="#5C503D"></app-currency-euro-icon>
-                        <p class="text-base font-semibold">Prezzo fisso al mese</p>
+                        <p class="text-base font-semibold">Prezzo <span *ngIf="this.typeForm.value.rentOrSale == 'rent'">fisso al mese</span></p>
                     </div>
                 </td>
                 <td class="w-3/4 pl-6 py-4">
@@ -63,7 +63,7 @@
             </tr>
 
             <!-- Construction Year -->
-            <tr class="w-full">
+            <tr *ngIf="this.typeForm.value.propertyType == 1" class="w-full">
                 <td class="w-1/4 border-r border-[#BAAC98] py-6">
                     <div class="inline-flex items-center gap-4">
                         <app-calendar-dots-icon dimensions="w-6 h-6" color="#5C503D"></app-calendar-dots-icon>
@@ -92,7 +92,7 @@
             </tr>
             
             <!-- Renovated -->
-            <tr class="w-full">
+            <tr *ngIf="this.typeForm.value.propertyType == 1" class="w-full">
                 <td class="w-1/4 border-r border-[#BAAC98] py-6">
                     <div class="inline-flex items-center gap-4">
                         <app-hammer-icon dimensions="w-6 h-6" color="#5C503D"></app-hammer-icon>
@@ -156,7 +156,7 @@
             </tr>
 
             <!-- Floor --> 
-            <tr class="w-full">
+            <tr *ngIf="this.typeForm.value.propertyType == 1" class="w-full">
                 <td class="w-1/4 border-r border-[#BAAC98] py-6">
                     <div class="inline-flex items-center gap-4">
                         <app-steps-icon dimensions="w-6 h-6" color="#5C503D"></app-steps-icon>
@@ -196,7 +196,7 @@
             </tr>
 
             <!-- Energy Efficiency Class -->
-            <tr class="w-full">
+            <tr *ngIf="this.typeForm.value.propertyType == 1" class="w-full">
                 <td class="w-1/4 border-r border-[#BAAC98] py-6">
                     <div class="inline-flex items-center gap-4">
                         <app-light-bulb-filament-icon dimensions="w-6 h-6" color="#5C503D"></app-light-bulb-filament-icon>
@@ -227,7 +227,7 @@
             </tr>
 
             <!-- Heating  -->
-            <tr class="w-full">
+            <tr *ngIf="this.typeForm.value.propertyType == 1" class="w-full">
                 <td class="w-1/4 border-r border-[#BAAC98] py-6">
                     <div class="inline-flex items-center gap-4">
                         <app-fire-icon dimensions="w-6 h-6" color="#5C503D"></app-fire-icon>
@@ -285,7 +285,7 @@
             </tr>
 
             <!-- Rooms -->
-            <tr class="w-full">
+            <tr *ngIf="this.typeForm.value.propertyType == 1" class="w-full">
                 <td class="w-1/4 border-r border-[#BAAC98] py-6">
                     <div class="inline-flex items-center gap-4">
                         <app-bed-icon dimensions="w-6 h-6" color="#5C503D"></app-bed-icon>
@@ -306,7 +306,7 @@
             </tr>
 
             <!-- Bathrooms -->
-            <tr class="w-full">
+            <tr *ngIf="this.typeForm.value.propertyType == 1" class="w-full">
                 <td class="w-1/4 border-r border-[#BAAC98] py-6">
                     <div class="inline-flex items-center gap-4">
                         <app-bathtub-icon dimensions="w-6 h-6" color="#5C503D"></app-bathtub-icon>
@@ -327,7 +327,7 @@
             </tr>
 
             <!-- Kitchen -->
-            <tr class="w-full">
+            <tr *ngIf="this.typeForm.value.propertyType == 1" class="w-full">
                 <td class="w-1/4 border-r border-[#BAAC98] py-6">
                     <div class="inline-flex items-center gap-4">
                         <app-cooking-pot-icon dimensions="w-6 h-6" color="#5C503D"></app-cooking-pot-icon>
@@ -348,7 +348,7 @@
             </tr>
 
             <!-- Living Rooms -->
-            <tr class="w-full">
+            <tr *ngIf="this.typeForm.value.propertyType == 1" class="w-full">
                 <td class="w-1/4 border-r border-[#BAAC98] py-6">
                     <div class="inline-flex items-center gap-4">
                         <app-arm-chair-icon dimensions="w-6 h-6" color="#5C503D"></app-arm-chair-icon>
@@ -369,7 +369,7 @@
             </tr>
 
             <!-- Parking -->
-            <tr class="w-full">
+            <tr *ngIf="this.typeForm.value.propertyType == 1" class="w-full">
                 <td class="w-1/4 border-r border-[#BAAC98] py-6">
                     <div class="inline-flex items-center gap-4">
                         <app-parking-icon dimensions="w-6 h-6" color="#5C503D"></app-parking-icon>
@@ -426,10 +426,240 @@
                     </div>
                 </td>
             </tr>
+
+            <!-- Building Permit -->
+            <tr *ngIf="this.typeForm.value.propertyType == 2" class="w-full">
+                <td class="w-1/4 border-r border-[#BAAC98] py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <app-signature dimensions="w-6 h-6" color="#5C503D"></app-signature>
+                        <p class="text-base font-semibold">Building Permit</p>
+                    </div>
+                    <p class="text-sm text-[#5C503D]">Is there a building permission for this land?</p>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div [ngClass]="characteristisForm.value.buildingPermit == 'yesPermit' ? 'bg-[#FBE525]' : 'bg-[#EBE7E0]'" class="w-max p-[2px] rounded-full">
+                        <ul class="w-full grid grid-cols-2 gap-[2px]">
+                            <li class="cursor-pointer">
+                                <input type="radio" id="noPermit" value="noPermit" name="buildingPermit" formControlName="buildingPermit" class="peer hidden">
+                                <label for="noPermit" class="w-10 inline-flex justify-center items-center h-10 rounded-full bg-transparent peer-checked:bg-[#5C503D] peer-checked:text-white text-xs">
+                                    No
+                                </label>
+                            </li>
+                            <li class="cursor-pointer">
+                                <input type="radio" id="yesPermit" name="buildingPermit" formControlName="buildingPermit" value="yesPermit" class="peer hidden">
+                                <label for="yesPermit" class="w-10 inline-flex justify-center items-center h-10 rounded-full bg-transparent peer-checked:bg-[#5C503D] peer-checked:text-white text-xs">
+                                    Si
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Construction Metters -->
+            <tr *ngIf="this.typeForm.value.propertyType == 2" class="w-full">
+                <td class="w-1/4 border-r border-[#BAAC98] py-4">
+                    <div class="inline-flex items-center gap-4">
+                        <app-shovel-icon dimensions="w-6 h-6" color="#5C503D"></app-shovel-icon>
+                        <p class="text-base font-semibold">Construction Meters</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="relative z-0 w-[220px] group">
+                        <input 
+                            type="number"
+                            id="constructionMeters"
+                            formControlName="constructionMeters"
+                            [ngClass]="[!characteristisForm.controls['constructionMeters'].valid && (characteristisForm.controls['constructionMeters'].touched || characteristisForm.controls['constructionMeters'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                            class="block w-full max-w-[220px] h-16 items-center text-center px-4 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                            placeholder=""
+                            autocomplete="off"
+                            required />
+                        <label
+                            for="constructionMeters"
+                            [ngClass]="labelControl('constructionMeters')"
+                            class="absolute text-base text-[#5C503D] duration-300 transform -translate-y-8 scale-75 top-5 left-4 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                            Superficie
+                        </label>
+                        <label class="absolute right-5 top-5 text-[#5C503D] text-base">&#13217;</label>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Has Building -->
+            <tr *ngIf="this.typeForm.value.propertyType == 2" class="w-full">
+                <td class="w-1/4 border-r border-[#BAAC98] py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <app-barn-icon dimensions="w-6 h-6" color="#5C503D"></app-barn-icon>
+                        <p class="text-base font-semibold">Has building?</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div [ngClass]="characteristisForm.value.hasBuilding == 'yesBuilding' ? 'w-full' : 'w-max'" class="w-full bg-[#EBE7E0] p-1 rounded-full inline-flex justify-between items-center">
+                        <!-- Yes / No -->
+                        <div [ngClass]="characteristisForm.value.hasBuilding == 'yesBuilding' ? 'bg-[#FBE525]' : 'bg-transparent'" class="w-[92px] p-[2px] rounded-full">
+                            <ul class="grid w-full gap-[2px] grid-cols-2">
+                                <!-- Rent -->
+                                <li class="cursor-pointer">
+                                    <input type="radio" id="noBuilding" name="hasBuilding" formControlName="hasBuilding" value="noBuilding" class="hidden peer"/>
+                                    <label for="noBuilding" class="w-10 inline-flex justify-center items-center h-10 rounded-full bg-transparent peer-checked:bg-[#5C503D] peer-checked:text-white text-xs">
+                                        No
+                                    </label>
+                                </li>
+                                <!-- Buy -->
+                                <li class="cursor-pointer">
+                                    <input type="radio" id="yesBuilding" name="hasBuilding" formControlName="hasBuilding" value="yesBuilding" class="hidden peer"/>
+                                    <label for="yesBuilding" class="w-10 inline-flex justify-center items-center h-10 rounded-full bg-transparent peer-checked:bg-[#5C503D] peer-checked:text-white text-xs">
+                                        Si
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Input -->
+                        <div *ngIf="characteristisForm.value.hasBuilding == 'yesBuilding'" class="w-max inline-flex items-center gap-3">
+                            <div class="relative z-0 w-[220px] group">
+                                <input 
+                                    type="number"
+                                    id="buildingSquareArea"
+                                    formControlName="buildingSquareArea"
+                                    [ngClass]="[!characteristisForm.controls['buildingSquareArea'].valid && (characteristisForm.controls['buildingSquareArea'].touched || characteristisForm.controls['buildingSquareArea'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                                    class="block w-full max-w-[220px] h-12 items-center text-center px-4 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                                    placeholder=""
+                                    autocomplete="off"
+                                    required />
+                                <label
+                                    for="buildingSquareArea"
+                                    [ngClass]="labelControl('buildingSquareArea')"
+                                    class="absolute text-base text-[#5C503D] duration-300 transform -translate-y-8 scale-75 top-3 left-4 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                                    Building Square Area
+                                </label>
+                            </div>
+                        
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Structure Factor -->
+            <tr *ngIf="this.typeForm.value.propertyType == 2" class="w-full">
+                <td class="w-1/4 border-r border-[#BAAC98] py-4">
+                    <div class="inline-flex items-center gap-4">
+                        <app-shovel-icon dimensions="w-6 h-6" color="#5C503D"></app-shovel-icon>
+                        <p class="text-base font-semibold">Structure Factor</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="relative z-0 w-[220px] group">
+                        <input 
+                            type="number"
+                            id="structureFactor"
+                            formControlName="structureFactor"
+                            [ngClass]="[!characteristisForm.controls['structureFactor'].valid && (characteristisForm.controls['structureFactor'].touched || characteristisForm.controls['structureFactor'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                            class="block w-full max-w-[220px] h-16 items-center text-center px-4 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                            placeholder=""
+                            autocomplete="off"
+                            required />
+                        <label
+                            for="structureFactor"
+                            [ngClass]="labelControl('structureFactor')"
+                            class="absolute text-base text-[#5C503D] duration-300 transform -translate-y-8 scale-75 top-5 left-4 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                            Factor
+                        </label>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Slope  -->
+            <tr *ngIf="this.typeForm.value.propertyType == 2" class="w-full">
+                <td class="w-1/4 border-r border-[#BAAC98] py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <app-wave-sine-icon dimensions="w-6 h-6" color="#5C503D"></app-wave-sine-icon>
+                        <p class="text-base font-semibold">Slope</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-full inline-flex items-center gap-6">
+                        <!-- Slope -->
+                        <div class="w-full relative">
+                            <button type="button" (click)="slope = (slope) ? false : true;" class="h-12 w-[300px] inline-flex justify-between items-center px-4 bg-[#CCC2B2] rounded-full">
+                                <p class="text-base">{{ characteristisForm.value.slope }}</p>
+                                <app-caret-down class="w-4 h-4" color="#000"></app-caret-down>
+                            </button>
+                            <div *ngIf="slope" class="absolute top-[52px] w-[300px] h-[max] rounded-[20px] bg-[#CCC2B2] p-2 z-50">
+                                <ul class="w-full">
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.slope = 'Flat'; updateCharacteristicsForm(); slope = false;">Flat</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.slope = 'Inclined'; updateCharacteristicsForm(); slope = false;">Inclined</li>
+                                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer" (click)="characteristisForm.value.slope = 'Amphitheater'; updateCharacteristicsForm(); slope = false;">Amphitheater</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Frontage Length -->
+            <tr *ngIf="this.typeForm.value.propertyType == 2" class="w-full">
+                <td class="w-1/4 border-r border-[#BAAC98] py-4">
+                    <div class="inline-flex items-center gap-4">
+                        <app-house-simple-icon dimensions="w-6 h-6" color="#5C503D"></app-house-simple-icon>
+                        <p class="text-base font-semibold">Frontage Length</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="relative z-0 w-[220px] group">
+                        <input 
+                            type="number"
+                            id="frontageLength"
+                            formControlName="frontageLength"
+                            [ngClass]="[!characteristisForm.controls['frontageLength'].valid && (characteristisForm.controls['frontageLength'].touched || characteristisForm.controls['frontageLength'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                            class="block w-full max-w-[220px] h-16 items-center text-center px-4 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                            placeholder=""
+                            autocomplete="off"
+                            required />
+                        <label
+                            for="frontageLength"
+                            [ngClass]="labelControl('frontageLength')"
+                            class="absolute text-base text-[#5C503D] duration-300 transform -translate-y-8 scale-75 top-5 left-4 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                            Meters
+                        </label>
+                        <label class="absolute right-5 top-5 text-[#5C503D] text-base">m.</label>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Building Permit -->
+            <tr *ngIf="this.typeForm.value.propertyType == 2" class="w-full">
+                <td class="w-1/4 border-r border-[#BAAC98] py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <app-city-icon dimensions="w-6 h-6" color="#5C503D"></app-city-icon>
+                        <p class="text-base font-semibold">City Plan</p>
+                    </div>
+                    <p class="text-sm text-[#5C503D]">Is there a building permission for this land?</p>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div [ngClass]="characteristisForm.value.cityPlan == 'yesCityPlan' ? 'bg-[#FBE525]' : 'bg-[#EBE7E0]'" class="w-max p-[2px] rounded-full">
+                        <ul class="w-full grid grid-cols-2 gap-[2px]">
+                            <li class="cursor-pointer">
+                                <input type="radio" id="noCityPlan" value="noCityPlan" name="cityPlan" formControlName="cityPlan" class="peer hidden">
+                                <label for="noCityPlan" class="w-10 inline-flex justify-center items-center h-10 rounded-full bg-transparent peer-checked:bg-[#5C503D] peer-checked:text-white text-xs">
+                                    No
+                                </label>
+                            </li>
+                            <li class="cursor-pointer">
+                                <input type="radio" id="yesCityPlan" name="cityPlan" formControlName="cityPlan" value="yesCityPlan" class="peer hidden">
+                                <label for="yesCityPlan" class="w-10 inline-flex justify-center items-center h-10 rounded-full bg-transparent peer-checked:bg-[#5C503D] peer-checked:text-white text-xs">
+                                    Si
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+
         </table>
 
         <!-- Additional Characteristics -->
-        <div class="w-full mt-16 pt-6 border-t border-[#C2B6A3]">
+        <div *ngIf="typeForm.value.propertyType == 1" class="w-full mt-16 pt-6 border-t border-[#C2B6A3]">
             <div class="w-max">
                 <p class="text-[25px] font-semibold">Caratteristiche Aggiuntive</p>
                 <p class="text-base pt-2">Scegli le caratteristiche disponibili nel tuo appartamento</p>

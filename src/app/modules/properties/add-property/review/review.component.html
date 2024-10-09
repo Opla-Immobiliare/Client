@@ -124,8 +124,113 @@
                 </td>
             </tr>
 
+            <!-- Building Permit -->
+            <tr *ngIf="typeFormGroup.value.propertyType == 2" class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <app-signature dimensions="w-6 h-6" color="#5C503D"></app-signature>
+                        <p class="text-base">Building Permit</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-max h-8 inline-flex justify-center items-center bg-[#D6CEC2] rounded px-6">
+                        <p class="text-base font-semibold text-[#5C503D]">{{ (charFormGroup.value.buildingPermit == 'noPermit') ? 'No' : 'Si' }}</p>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Construction Meters -->
+            <tr *ngIf="typeFormGroup.value.propertyType == 2" class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <app-shovel-icon dimensions="w-6 h-6" color="#5C503D"></app-shovel-icon>
+                        <p class="text-base">Construction Meters</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-max h-8 inline-flex justify-center items-center bg-[#D6CEC2] rounded px-6">
+                        <p class="text-base font-semibold text-[#5C503D]">{{ charFormGroup.value.constructionMeters }}</p>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Has Building -->
+            <tr *ngIf="typeFormGroup.value.propertyType == 2" class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <app-barn-icon dimensions="w-6 h-6" color="#5C503D"></app-barn-icon>
+                        <p class="text-base">Building</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-max h-8 inline-flex justify-center items-center bg-[#D6CEC2] rounded px-6">
+                        <p class="text-base font-semibold text-[#5C503D]">{{ (charFormGroup.value.hasBuilding == "yesBuilding" ? 'Si | ' : 'No') }}{{ charFormGroup.value.buildingSquareArea }}</p>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Structure Factor -->
+            <tr *ngIf="typeFormGroup.value.propertyType == 2" class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <app-barn-icon dimensions="w-6 h-6" color="#5C503D"></app-barn-icon>
+                        <p class="text-base">Structure Factor</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-max h-8 inline-flex justify-center items-center bg-[#D6CEC2] rounded px-6">
+                        <p class="text-base font-semibold text-[#5C503D]">{{ charFormGroup.value.structureFactor }}</p>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Slope -->
+            <tr *ngIf="typeFormGroup.value.propertyType == 2" class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <app-wave-sine-icon dimensions="w-6 h-6" color="#5C503D"></app-wave-sine-icon>
+                        <p class="text-base">Slope</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-max h-8 inline-flex justify-center items-center bg-[#D6CEC2] rounded px-6">
+                        <p class="text-base font-semibold text-[#5C503D]">{{ charFormGroup.value.slope }}</p>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Frontage Length -->
+            <tr *ngIf="typeFormGroup.value.propertyType == 2" class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <app-house-simple-icon dimensions="w-6 h-6" color="#5C503D"></app-house-simple-icon>
+                        <p class="text-base">Frontage Length</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-max h-8 inline-flex justify-center items-center bg-[#D6CEC2] rounded px-6">
+                        <p class="text-base font-semibold text-[#5C503D]">{{ charFormGroup.value.frontageLength }}</p>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- City Plan -->
+            <tr *ngIf="typeFormGroup.value.propertyType == 2" class="w-full">
+                <td class="w-1/4 py-6">
+                    <div class="inline-flex items-center gap-4">
+                        <app-city-icon dimensions="w-6 h-6" color="#5C503D"></app-city-icon>
+                        <p class="text-base">City Plan</p>
+                    </div>
+                </td>
+                <td class="w-3/4 pl-6">
+                    <div class="w-max h-8 inline-flex justify-center items-center bg-[#D6CEC2] rounded px-6">
+                        <p class="text-base font-semibold text-[#5C503D]">{{ (charFormGroup.value.cityPlan == "vnoCityPlan") ? 'No' : 'Si' }}</p>
+                    </div>
+                </td>
+            </tr>
+
             <!-- Rooms -->
-            <tr class="w-full">
+            <tr *ngIf="typeFormGroup.value.propertyType == 1" class="w-full">
                 <td class="w-1/4 py-6">
                     <div class="inline-flex items-center gap-4">
                         <app-bed-icon dimensions="w-6 h-6" color="#5C503D"></app-bed-icon>
@@ -140,7 +245,7 @@
             </tr>
 
             <!-- Bathrooms -->
-            <tr class="w-full">
+            <tr *ngIf="typeFormGroup.value.propertyType == 1" class="w-full">
                 <td class="w-1/4 py-6">
                     <div class="inline-flex items-center gap-4">
                         <app-bathtub-icon dimensions="w-6 h-6" color="#5C503D"></app-bathtub-icon>
@@ -155,7 +260,7 @@
             </tr>
 
             <!-- Kitchens -->
-            <tr class="w-full">
+            <tr *ngIf="typeFormGroup.value.propertyType == 1" class="w-full">
                 <td class="w-1/4 py-6">
                     <div class="inline-flex items-center gap-4">
                         <app-cooking-pot-icon dimensions="w-6 h-6" color="#5C503D"></app-cooking-pot-icon>
@@ -170,7 +275,7 @@
             </tr>
 
             <!-- livingRooms -->
-            <tr class="w-full">
+            <tr *ngIf="typeFormGroup.value.propertyType == 1" class="w-full">
                 <td class="w-1/4 py-6">
                     <div class="inline-flex items-center gap-4">
                         <app-arm-chair-icon dimensions="w-6 h-6" color="#5C503D"></app-arm-chair-icon>
@@ -185,7 +290,7 @@
             </tr>
 
             <!-- energyClass -->
-            <tr class="w-full">
+            <tr *ngIf="typeFormGroup.value.propertyType == 1" class="w-full">
                 <td class="w-1/4 py-6">
                     <div class="inline-flex items-center gap-4">
                         <app-light-bulb-filament-icon dimensions="w-6 h-6" color="#5C503D"></app-light-bulb-filament-icon>
@@ -200,7 +305,7 @@
             </tr>
 
             <!-- energyClass -->
-            <tr class="w-full">
+            <tr *ngIf="typeFormGroup.value.propertyType == 1" class="w-full">
                 <td class="w-1/4 py-6">
                     <div class="inline-flex items-center gap-4">
                         <app-steps-icon dimensions="w-6 h-6" color="#5C503D"></app-steps-icon>
@@ -215,7 +320,7 @@
             </tr>
 
             <!-- Renovated -->
-            <tr class="w-full">
+            <tr *ngIf="typeFormGroup.value.propertyType == 1" class="w-full">
                 <td class="w-1/4 py-6">
                     <div class="inline-flex items-center gap-4">
                         <app-hammer-icon dimensions="w-6 h-6" color="#5C503D"></app-hammer-icon>
@@ -230,7 +335,7 @@
             </tr>
 
             <!-- Heating -->
-            <tr class="w-full">
+            <tr *ngIf="typeFormGroup.value.propertyType == 1" class="w-full">
                 <td class="w-1/4 py-6">
                     <div class="inline-flex items-center gap-4">
                         <app-fire-icon dimensions="w-6 h-6" color="#5C503D"></app-fire-icon>
@@ -245,7 +350,7 @@
             </tr>
 
             <!-- Parking -->
-            <tr class="w-full">
+            <tr *ngIf="typeFormGroup.value.propertyType == 1" class="w-full">
                 <td class="w-1/4 py-6">
                     <div class="inline-flex items-center gap-4">
                         <app-parking-icon dimensions="w-6 h-6" color="#5C503D"></app-parking-icon>

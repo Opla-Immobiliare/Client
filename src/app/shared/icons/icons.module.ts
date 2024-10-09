@@ -96,6 +96,12 @@ import { EnvelopeIconComponent } from './envelope-icon/envelope-icon.component';
 import { ArrowUpIconComponent } from './arrow-up-icon/arrow-up-icon.component';
 import { ArrowsDownUpIconComponent } from './arrows-down-up-icon/arrows-down-up-icon.component';
 import { WarningIconComponent } from './warning-icon/warning-icon.component';
+import { SignatureComponent } from './signature/signature.component';
+import { ShovelIconComponent } from './shovel-icon/shovel-icon.component';
+import { BarnIconComponent } from './barn-icon/barn-icon.component';
+import { SealPercentageIconComponent } from './seal-percentage-icon/seal-percentage-icon.component';
+import { WaveSineIconComponent } from './wave-sine-icon/wave-sine-icon.component';
+import { HouseSimpleIconComponent } from './house-simple-icon/house-simple-icon.component';
 
 
 
@@ -197,6 +203,12 @@ import { WarningIconComponent } from './warning-icon/warning-icon.component';
     ArrowUpIconComponent,
     ArrowsDownUpIconComponent,
     WarningIconComponent,
+    SignatureComponent,
+    ShovelIconComponent,
+    BarnIconComponent,
+    SealPercentageIconComponent,
+    WaveSineIconComponent,
+    HouseSimpleIconComponent,
   ],
   imports: [
     CommonModule
@@ -298,7 +310,13 @@ import { WarningIconComponent } from './warning-icon/warning-icon.component';
     EnvelopeIconComponent,
     ArrowUpIconComponent,
     ArrowsDownUpIconComponent,
-    WarningIconComponent
+    WarningIconComponent,
+    SignatureComponent,
+    ShovelIconComponent,
+    BarnIconComponent,
+    WaveSineIconComponent,
+    SealPercentageIconComponent,
+    HouseSimpleIconComponent,
   ]
 })
 export class IconsModule { }

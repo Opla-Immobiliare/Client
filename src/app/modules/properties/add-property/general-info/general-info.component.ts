@@ -62,7 +62,11 @@ export class GeneralInfoComponent implements OnInit {
   }
 
   removeImage(item: string) {
-
+    for (let i = 0; i < this.imagesPaths.length; i++) {
+      if (this.imagesPaths[i] == item) {
+        this.data.removeFile(item).subscribe( res => this.imagesPaths.splice(i, 1))
+      }
+    }
   }
 
   ngOnInit(): void {}

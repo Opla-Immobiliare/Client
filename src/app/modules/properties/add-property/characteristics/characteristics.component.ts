@@ -10,6 +10,7 @@ import { AddPropertyDataService } from '../services/add-property.data.service';
 export class CharacteristicsComponent implements OnInit {
 
   characteristisForm: FormGroup;
+  typeForm: FormGroup = new FormGroup({});
   buildingFloor: boolean = false;
   heating: boolean = false;
   heatingType: boolean = false;
@@ -18,6 +19,7 @@ export class CharacteristicsComponent implements OnInit {
   floorType: boolean = false;
   warehouse: boolean = false;
   pool: boolean = false;
+  slope: boolean = false;
 
   constructor(private data: AddPropertyDataService) {
     this.characteristisForm = this.generateCharacteristicsForm();
@@ -71,6 +73,14 @@ export class CharacteristicsComponent implements OnInit {
       doorType: new FormControl<string>('Tipo di porta'),
       floorType: new FormControl<string>('Tipo di pavimento'),
       warehouse: new FormControl<string>('nessuno'),
+      buildingPermit: new FormControl<string>('noPermit'),
+      constructionMeters: new FormControl<number | undefined>(undefined),
+      hasBuilding: new FormControl<string>('noBuilding'),
+      buildingSquareArea: new FormControl<number | undefined>(undefined),
+      structureFactor: new FormControl<number | undefined>(undefined),
+      slope: new FormControl<string>("Select slope"),
+      frontageLength: new FormControl<number | undefined>(undefined),
+      cityPlan: new FormControl<string>("noCityPlan"),
     });
   }
 
@@ -93,6 +103,9 @@ export class CharacteristicsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+    this.data.typeFormSource.subscribe(res => {
+      this.typeForm = res;
+      console.log(res);
+    });
   }
 }
