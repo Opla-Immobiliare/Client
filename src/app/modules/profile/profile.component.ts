@@ -23,4 +23,12 @@ export class ProfileComponent implements OnInit {
     else this.profileService.getUser().pipe(res => this.user$ = res);
     this.authService.isUser.subscribe(val => this.isUser = val);
   }
+
+  uploadProfileImage(event: any): void {
+    const file: File = event.target.files[0];
+    console.log(file);
+    this.profileService.addProfileImage(file).subscribe(res => {
+      this.profileService.getUser().pipe(res => this.user$ = res)
+    });
+  }
 }

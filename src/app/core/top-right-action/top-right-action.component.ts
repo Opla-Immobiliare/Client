@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { logout } from 'src/app/modules/auth/services/auth.actions';
 import { isLoggedIn, isLoggedOut } from 'src/app/modules/auth/services/auth.selectors';
 import { AuthService } from 'src/app/modules/auth/services/auth.service';
+import { UserPlan } from 'src/app/modules/profile/models/user-plan.model';
+import { ProfileService } from 'src/app/modules/profile/services/profile.service';
 import { AppState } from 'src/app/reducers';
 
 @Component({
@@ -13,11 +15,13 @@ import { AppState } from 'src/app/reducers';
 })
 export class TopRightActionComponent implements OnInit {
   private authService = inject(AuthService);
+  private pfolieService = inject(ProfileService);
 
   isLoggedIn$: Observable<boolean> | undefined;
   isLoggedOut$: Observable<boolean> | undefined;
   isAgency: boolean = false;
   profileMenu: boolean = false;
+  userPlan$: Observable<UserPlan> = new Observable<UserPlan>();
 
   constructor(private store: Store<AppState>) {}
 
@@ -32,8 +36,10 @@ export class TopRightActionComponent implements OnInit {
       .pipe(
         select(isLoggedOut)
       );
-
     
+      if (this.isAgency) {
+        this.getUserPlan();
+      }
   }
   
   // Logout
@@ -42,5 +48,9 @@ export class TopRightActionComponent implements OnInit {
     this.store.dispatch(logout());
     this.authService.setAgency(false);
     this.authService.setUser(false);
+  }
+
+  getUserPlan() {
+    this.pfolieService.getUserPlan().pipe(res => this.userPlan$ = res);
   }
 }

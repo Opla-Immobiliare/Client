@@ -57,7 +57,7 @@ export class CompleteProfileComponent implements OnInit {
     }
     let obj = new Object({
       fullName: name,
-      phoneNumber: "+" + this.additionalInfoForm.value.phoneCode.replace("/\D/g, ''") + this.additionalInfoForm.value.phone,
+      phoneNumber:  this.additionalInfoForm.value.phoneCod + this.additionalInfoForm.value.phone,
       dateOfBirth: `${this.additionalInfoForm.value.year}-${this.additionalInfoForm.value.month}-${this.additionalInfoForm.value.day}`,
       agency: {
         country: this.additionalInfoForm.value.country,

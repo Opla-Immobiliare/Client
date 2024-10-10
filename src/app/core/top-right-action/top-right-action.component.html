@@ -28,9 +28,11 @@
 
 <!-- LogedIn -->
 <div [ngClass]="[(isLoggedIn$ | async) ? '' : 'hidden']" class="w-max inline-flex items-center gap-6 lg:mt-6">
-    <button *ngIf="isAgency" [routerLink]="['/profile/subscriptions']" type="button" class="w-max px-6 h-12 rounded-full bg-[#FEFCE6] cursor-pointer">
-        <p class="text-sm text-black">Free | Upgrade</p>
-    </button>
+    <div *ngIf="(isAgency)" class="w-max">
+        <button *ngIf="(userPlan$ | async) as userPlan" [routerLink]="['/profile/subscriptions']" type="button" class="w-max px-6 h-12 rounded-full bg-[#FEFCE6] cursor-pointer">
+            <p class="text-sm text-black">{{userPlan.planName}} {{(userPlan.planName == "Free" ? '| Upgrade': '')}}</p>
+        </button>
+    </div>
     <div class="relative">
         <button type="button" (click)="profileMenu = (profileMenu) ? false : true" class="w-[137px] h-12 bg-[#8A785B] rounded-full inline-flex items-center gap-4 p-1">
             <img class="rounded-full w-10 h-10" src="http://localhost:5270/Content/real-estate-agent.jpg" alt="RealEstateAgent">

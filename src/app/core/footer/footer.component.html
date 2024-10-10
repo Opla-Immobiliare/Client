@@ -1,5 +1,5 @@
 <div [ngClass]="hideFooter()" class="p-4 w-full lg:px-[90px] lg:justify-center">
-    <div class="pt-16 px-4 pb-4 bg-[#213A29] flex flex-col items-center border-none rounded-[30px] w-full lg:px-20 lg:pt-24 lg:max-w-[1100px]">
+    <div class="pt-16 px-4 pb-4 bg-[#213A29] flex flex-col items-center border-none rounded-[30px] w-full lg:px-20 lg:pt-24">
         
         <div class="lg:w-full lg:flex lg:flex-row lg:justify-between">
             <div class="lg:flex lg:flex-col lg:justify-center">
@@ -35,9 +35,9 @@
         <div class="w-full border border-[#2E5139] mt-10"></div>
 
         <!-- Bottom Nav -->
-        <div class="grid grid-cols-2 lg:grid-cols-3 items-center w-full space-y-6">
+        <div class="grid grid-cols-2 items-center w-full space-y-6">
             <!-- Terms -->
-            <div class="col-span-2 lg:col-span-1 flex justify-center mt-5 w-full px-4 lg:order-2">
+            <div class="col-span-2 lg:col-span-1 flex justify-center gap-2 mt-5 w-full px-4 lg:order-2">
                 <ul class="text-[#BEDAC7] text-[11px] flex justify-between items-center w-full">
                     <li [routerLink]="['/terms-of-use']" routerLinkActive="text-white" class="hover:text-white cursor-pointer">Terms Of Use</li>
                     <li [routerLink]="['/privacy-policy']" routerLinkActive="text-white" class="hover:text-white cursor-pointer">Privacy Policy</li>
@@ -53,7 +53,7 @@
             <!-- / Copyright -->
             
             <!-- Language -->
-            <div class="justify-self-end lg:order-3 cursor-pointer">
+            <!-- <div class="justify-self-end lg:order-3 cursor-pointer">
                 <div class="max-w-[145px] h-10 bg-[#2E5139] rounded-[24px] flex justify-between items-center px-5 gap-3 lg:gap-2">
                     <div class="flex flex-row gap-3">
                         <img class="w-5 h-auto" src="{{getCountryFlag('Italian')}}" alt="Italian" />
@@ -61,7 +61,7 @@
                     </div>
                     <app-arrow-icon></app-arrow-icon>
                 </div>
-            </div>
+            </div> -->
             <!-- / Language -->
         </div>
         <!-- / Bottom Nav -->    

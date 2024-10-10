@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Profile } from '../models/profile.model';
 import { UserProperty } from '../models/user-property.model';
 import { Observable } from 'rxjs';
+import { UserPlan } from '../models/user-plan.model';
 
 @Injectable({
   providedIn: 'root'
@@ -71,4 +72,27 @@ export class ProfileService {
     }
   }
 
+  getUserPlan(): Observable<UserPlan> {
+    const USER_PROFILE = localStorage.getItem('user');
+    if (USER_PROFILE) {
+      const USER: User = JSON.parse(USER_PROFILE);
+      const headers = { 'Authorization': `Bearer ${USER.token}` };
+      return this.http.get<UserPlan>(`${environment.apiUrl}/User/plan`, { headers: headers });
+    } else {
+      throw new Error('Unauthorized');
+    }
+  }
+
+  addProfileImage(file: File) {
+    const formData = new FormData();
+    formData.append('file', file);
+    const USER_PROFILE = localStorage.getItem('user');
+    if (USER_PROFILE) {
+      const USER: User = JSON.parse(USER_PROFILE);
+      const headers = { 'Authorization': `Bearer ${USER.token}` };
+    return this.http.post<string[]>("http://localhost:5270/api/v1/Images/user", formData, {headers: headers});
+    } else {
+      throw new Error('Unauthorized');
+    }
+  }
 }

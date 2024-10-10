@@ -54,7 +54,7 @@ export class GeneralInfoComponent implements OnInit {
 
   selectedFiles(event: any): void {
     const files: File = event.target.files;
-    console.log(files);
+    // console.log(files);
     this.data.uploadFiles(files).subscribe(res => {
       res.forEach(file => this.imagesPaths.push(file));
       this.data.setImages(this.imagesPaths);
