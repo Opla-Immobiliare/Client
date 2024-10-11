@@ -6,6 +6,7 @@ import { Profile } from '../models/profile.model';
 import { UserProperty } from '../models/user-property.model';
 import { Observable } from 'rxjs';
 import { UserPlan } from '../models/user-plan.model';
+import { UserSettings } from '../models/user-settings.model';
 
 @Injectable({
   providedIn: 'root'
@@ -91,6 +92,39 @@ export class ProfileService {
       const USER: User = JSON.parse(USER_PROFILE);
       const headers = { 'Authorization': `Bearer ${USER.token}` };
     return this.http.post<string[]>("http://localhost:5270/api/v1/Images/user", formData, {headers: headers});
+    } else {
+      throw new Error('Unauthorized');
+    }
+  }
+
+  getUserSettings(): Observable<UserSettings> {
+    const USER_PROFILE = localStorage.getItem('user');
+    if (USER_PROFILE) {
+      const USER: User = JSON.parse(USER_PROFILE);
+      const headers = { 'Authorization': `Bearer ${USER.token}` };
+      return this.http.get<UserSettings>("http://localhost:5270/api/v1/User/settings", { headers: headers });
+    } else {
+      throw new Error('Unauthorized');
+    }
+  }
+
+  changePassword(obj: any) {
+    const USER_PROFILE = localStorage.getItem('user');
+    if (USER_PROFILE) {
+      const USER: User = JSON.parse(USER_PROFILE);
+      const headers = { 'Authorization': `Bearer ${USER.token}` };
+      return this.http.post("http://localhost:5270/api/v1/User/change-password", obj,{ headers: headers });
+    } else {
+      throw new Error('Unauthorized');
+    }
+  }
+
+  receivePromotionalEmails(val: boolean) {
+    const USER_PROFILE = localStorage.getItem('user');
+    if (USER_PROFILE) {
+      const USER: User = JSON.parse(USER_PROFILE);
+      const headers = { 'Authorization': `Bearer ${USER.token}` };
+      return this.http.put(`http://localhost:5270/api/v1/User/recieve-promotional-emails?reievePromotionalEmails=${val}`, null, { headers: headers });
     } else {
       throw new Error('Unauthorized');
     }

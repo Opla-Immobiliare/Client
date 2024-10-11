@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
           this.store.dispatch(login({ user }));
           if (user.role === 'agency') this.auth.setAgency(true);
           if (user.role === 'user') this.auth.setUser(true);
-          this.router.navigateByUrl('/profile/complete');
+          window.location.href = "http://localhost:4200/profile/complete";
         })
       )
       .subscribe(

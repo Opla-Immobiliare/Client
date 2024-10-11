@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/modules/auth/services/auth.service';
+import { UserSettings } from '../../models/user-settings.model';
 
 const countryCodes = require('country-codes-list');
 
@@ -9,9 +11,13 @@ const countryCodes = require('country-codes-list');
   styleUrls: ['./update-user-form.component.scss']
 })
 export class UpdateUserFormComponent implements OnInit{
+  private authService = inject(AuthService);
 
   updateUserForm: FormGroup;
   countryCodesList = countryCodes.customList('countryCallingCode', '(+{countryCallingCode} {countryCode})');
+  phonecodes: boolean = false;
+  isAgency: boolean = false;
+  @Input() user?: UserSettings;
 
   constructor() {
     this.updateUserForm = this.generateUpdateUserForm();
@@ -21,13 +27,18 @@ export class UpdateUserFormComponent implements OnInit{
   generateUpdateUserForm(): FormGroup {
     let date = new Date();
     return new FormGroup({
-      name: new FormControl(undefined, [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
-      lastname: new FormControl(undefined, [Validators.required, Validators.pattern('[a-zA-Z]*')]),
-      phoneCode: new FormControl('(+39 IT)', [Validators.required]),
-      phone: new FormControl(undefined, [Validators.required, Validators.pattern('[0-9]*')]),
-      day: new FormControl(date.getDate(), [Validators.required, Validators.max(31), Validators.min(1)]),
-      month: new FormControl(this.setMonthValue(date.getMonth()+1), [Validators.required]),
-      year: new FormControl(date.getFullYear() - 18, [Validators.required, Validators.min(date.getFullYear() - 120), Validators.max(date.getFullYear() - 18)])
+      fullName: new FormControl(undefined),
+      phoneCode: new FormControl('(+39 IT)'),
+      phoneNumber: new FormControl(undefined, [Validators.pattern('[0-9]*')]),
+      day: new FormControl(date.getDate(), [Validators.max(31), Validators.min(1)]),
+      month: new FormControl(this.setMonthValue(date.getMonth()+1)),
+      year: new FormControl(date.getFullYear() - 18, [Validators.min(date.getFullYear() - 120), Validators.max(date.getFullYear() - 18)]),
+      companyName: new FormControl(undefined),
+      country: new FormControl({ value: "Italy", disabled: true }),
+      city: new FormControl(undefined),
+      address: new FormControl(undefined),
+      zip: new FormControl(undefined),
+      tinNumber: new FormControl(undefined),
     })
   }
 
@@ -86,5 +97,20 @@ export class UpdateUserFormComponent implements OnInit{
     return 'bg-none';
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authService.isAgency.subscribe(res => this.isAgency = res);
+    console.log("user", this.user);
+    if (this.user)
+    {
+      this.updateUserForm.patchValue({
+        fullName: this.user.fullName,
+        phoneNumber: this.user.phoneNumber,
+        companyName: this.user.companyName,
+        city: this.user.city,
+        address: this.user.address,
+        zip: this.user.zipCode,
+        tinNumber: this.user.tinNumber,
+      });
+    }
+  }
 }

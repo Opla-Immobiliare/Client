@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./delete-account.component.scss']
 })
 export class DeleteAccountComponent {
-
+  deleteModal: boolean = false;
 }

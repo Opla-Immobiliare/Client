@@ -5,7 +5,7 @@
         <p class="mt-5 text-sm">Voglio ricevere email promozionali.</p>
     </div>
 
-    <form class="w-full mt-4" #f="ngForm" [formGroup]="promotionForm" (change)="test()">
+    <form class="w-full mt-4" #f="ngForm" [formGroup]="promotionForm" (change)="receivePromoEmails()">
         <div class="w-max">
             <label class="inline-flex items-center cursor-pointer">
                 <input type="checkbox" formControlName="promotional" value="" class="sr-only peer">

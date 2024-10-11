@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ProfileService } from '../../services/profile.service';
 
 @Component({
   selector: 'app-additional-settings',
@@ -7,8 +8,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./additional-settings.component.scss']
 })
 export class AdditionalSettingsComponent implements OnInit {
-
+  private profileService = inject(ProfileService);
   promotionForm: FormGroup;
+  @Input() receivePromotionalEmails: boolean = false;
 
   constructor () {
     this.promotionForm = this.generatePromotionsGroup();
@@ -16,13 +18,15 @@ export class AdditionalSettingsComponent implements OnInit {
 
   generatePromotionsGroup(): FormGroup{
     return new FormGroup({
-      promotional: new FormControl(undefined, [Validators.required])
+      promotional: new FormControl(false, [Validators.required])
     })
   }
 
-  test(): void {
-    console.log('Promotional', this.promotionForm.value.promotional);
+  receivePromoEmails(): void {
+    this.profileService.receivePromotionalEmails(this.promotionForm.value.promotional).subscribe();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.promotionForm.patchValue({ promotional: this.receivePromotionalEmails });
+  }
 }

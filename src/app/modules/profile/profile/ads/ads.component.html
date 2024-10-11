@@ -4,7 +4,7 @@
     <div class="w-full lg:flex lg:justify-between lg:items-center">
         <div class="inline-flex justify-start items-center gap-3">
             <app-house-icon dimensions="w-6 h-6" color="#000"></app-house-icon>
-            <p class="text-base">Annunci &#40;{{user?.propertiesToAdd}} Left&#41;</p>
+            <p class="text-base">Annunci <span *ngIf="user?.propertiesToAdd != -1">&#40;{{user?.propertiesToAdd}} Left&#41;</span></p>
         </div>
         <button 
             *ngIf="(user?.addProperty) && (properties.length > 0)"
@@ -121,7 +121,7 @@
     <!-- / Ads Card -->
 
     <!-- Basic Acc Info -->
-    <div *ngIf="user?.propertiesToAdd == 1" class="w-full inline-flex gap-3 mt-6">
+    <div *ngIf="user?.propertiesToAdd == 0" class="w-full inline-flex gap-3 mt-6">
         <app-info-icon dimensions="w-6 h-6" color="#4D4333"></app-info-icon>
         <p class="text-[#4D4333] text-xs">Gli account base possono pubblicare fino a 1 annuncio alla volta.<br/> <span class="font-bold text-[#7D7102] cursor-pointer">Se sei un agente immobiliare, aggiorna il tuo account cliccando qui.</span></p>
     </div>

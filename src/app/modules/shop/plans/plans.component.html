@@ -38,7 +38,7 @@
     <!-- / Free Plan -->
     
     <!-- Plans Anual -->
-    <div [ngClass]="[planMethod == 'year'? 'grid': 'hidden']" class="gap-4 mt-4 lg:grid-cols-6">
+    <div [ngClass]="[planMethod == 'year'? 'grid': 'hidden']" class="gap-4 mt-4 lg:grid-cols-3">
             <!-- Plan Card -->
             <div *ngFor="let plan of plansAnual$ | async" class="w-full p-8 bg-[#FEF9CD] border-none rounded-[20px] flex flex-col gap-3 lg:p-6 lg:gap-5">
                 <!-- Banner -->
@@ -73,7 +73,7 @@
     <!-- / Plans -->
 
     <!-- Plans Month -->
-    <div [ngClass]="[planMethod == 'month'? 'grid': 'hidden']" class="gap-4 mt-4 lg:grid-cols-6">
+    <div [ngClass]="[planMethod == 'month'? 'grid': 'hidden']" class="gap-4 mt-4 lg:grid-cols-3">
             <!-- Plan Card -->
             <div *ngFor="let plan of plans$ | async" class="w-full p-8 bg-[#FEF9CD] border-none rounded-[20px] flex flex-col gap-3 lg:p-6 lg:gap-5">
                 <!-- Banner -->

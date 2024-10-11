@@ -6,12 +6,12 @@ import { AppState } from 'src/app/reducers';
 import { Store } from '@ngrx/store';
 import { login } from '../services/auth.actions';
 import { noop, tap } from 'rxjs';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
+
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
@@ -25,7 +25,8 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.generateLoginForm();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   // Login
   doLogin(): void {
@@ -40,9 +41,10 @@ export class LoginComponent implements OnInit {
           if (user.role === 'agency') this.auth.setAgency(true);
           if (user.role === 'user') this.auth.setUser(true);
           if (user.completedProfile) {
-            this.router.navigateByUrl('/');
+            // this.router.navigateByUrl('/');
+            window.location.href= "http://localhost:4200/profile"
           }
-          this.router.navigateByUrl('/profile/complete');
+          window.location.href = "http://localhost:4200/profile/complete"
         })
       )
       .subscribe(

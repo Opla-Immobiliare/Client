@@ -39,8 +39,10 @@ export class CompleteProfileComponent implements OnInit {
       month: new FormControl(this.setMonthValue(date.getMonth())),
       year: new FormControl(date.getFullYear() - 18, [Validators.min(date.getFullYear() - 120), Validators.max(date.getFullYear() - 18)]),
       companyName: new FormControl(undefined),
-      country: new FormControl("Italy"),
+      country: new FormControl({value: "Italy", disabled:true}),
+      city: new FormControl(undefined),
       address: new FormControl(undefined),
+      zip: new FormControl(undefined),
       tinNumber: new FormControl(undefined),
       managersFullName: new FormControl(undefined, [Validators.pattern('[a-zA-Z ]*')]),
     })
@@ -48,24 +50,7 @@ export class CompleteProfileComponent implements OnInit {
 
   // Submit Additional Information Form
   submitAdditionalInfo(): void {
-    let name = "";
-    if (this.additionalInfoForm.value.name == undefined && this.additionalInfoForm.value.lastname == undefined) {
-      name = this.additionalInfoForm.value.managersFullName;
-    }
-    else {
-      name = this.additionalInfoForm.value.name + " " + this.additionalInfoForm.value.lastname;
-    }
-    let obj = new Object({
-      fullName: name,
-      phoneNumber:  this.additionalInfoForm.value.phoneCod + this.additionalInfoForm.value.phone,
-      dateOfBirth: `${this.additionalInfoForm.value.year}-${this.additionalInfoForm.value.month}-${this.additionalInfoForm.value.day}`,
-      agency: {
-        country: this.additionalInfoForm.value.country,
-        address: this.additionalInfoForm.value.address,
-        companyName: this.additionalInfoForm.value.companyName,
-        tinNumber: this.additionalInfoForm.value.tinNumber,
-      }
-    });
+    let obj = this.createCompleteProfileObj();
     this.profileService.completeProfile(obj).subscribe(
       suc => {
         this.profileService.setProfileAsCompleted();
@@ -80,6 +65,31 @@ export class CompleteProfileComponent implements OnInit {
         alert('An error Occured');
       }
     );
+  }
+
+  createCompleteProfileObj(): Object {
+    let code = this.additionalInfoForm.value.phoneCode.replace(/\D/g, "");
+    let name = "";
+    if (this.additionalInfoForm.value.name == undefined && this.additionalInfoForm.value.lastname == undefined) {
+      name = this.additionalInfoForm.value.managersFullName;
+    }
+    else {
+      name = this.additionalInfoForm.value.name + " " + this.additionalInfoForm.value.lastname;
+    }
+    return new Object({
+      fullName: name,
+      phoneNumber: code + this.additionalInfoForm.value.phone,
+      dateOfBirth: `${this.additionalInfoForm.value.year}-${this.additionalInfoForm.value.month}-${this.additionalInfoForm.value.day}`,
+      agency: {
+        country: this.additionalInfoForm.value.country,
+        address: this.additionalInfoForm.value.address,
+        companyName: this.additionalInfoForm.value.companyName,
+        tinNumber: this.additionalInfoForm.value.tinNumber,
+        zip: this.additionalInfoForm.value.zip,
+        city: this.additionalInfoForm.value.city,
+        countryIsoCode: "IT"
+      }
+    });
   }
 
   // Set Month value

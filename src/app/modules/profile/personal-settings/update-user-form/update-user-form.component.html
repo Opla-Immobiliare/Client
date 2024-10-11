@@ -4,55 +4,55 @@
         <!-- Name -->
         <div class="relative z-0 w-full mt-10 group">
             <input 
-                type="name"
-                id="name"
-                formControlName="name"
-                [ngClass]="[updateUserForm.controls['name'].invalid && (updateUserForm.controls['name'].touched || updateUserForm.controls['name'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                type="text"
+                id="fullName"
+                formControlName="fullName"
+                [ngClass]="[updateUserForm.controls['fullName'].invalid && (updateUserForm.controls['fullName'].touched || updateUserForm.controls['fullName'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
                 class="block w-full h-16 items-center px-6 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
                 placeholder=""
                 autocomplete="off"
                 required />
             <label
-                for="name"
-                [ngClass]="labelControl('name')"
+                for="fullName"
+                [ngClass]="labelControl('fullName')"
                 class="absolute text-base duration-300 transform -translate-y-8 scale-75 top-5 left-6 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
-                Nome
+                {{ (isAgency) ? 'Manager\'s Full Name' : 'Full Name' }}
             </label>
         </div>
         <!--/ Name -->
 
-        <!-- Last Name -->
-        <div class="relative z-0 w-full mt-5 group">
+        <!-- Company Name -->
+        <div *ngIf="isAgency" class="relative z-0 w-full mt-5 group">
             <input 
-                type="lastname"
-                id="lastname"
-                formControlName="lastname"
-                [ngClass]="[!updateUserForm.controls['lastname'].valid && (updateUserForm.controls['lastname'].touched || updateUserForm.controls['lastname'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                type="companyName"
+                id="companyName"
+                formControlName="companyName"
+                [ngClass]="[!updateUserForm.controls['companyName'].valid && (updateUserForm.controls['companyName'].touched || updateUserForm.controls['companyName'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
                 class="block w-full h-16 items-center px-6 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
                 placeholder=""
                 autocomplete="off"
                 required />
             <label
-                for="lastname"
-                [ngClass]="labelControl('lastname')"
+                for="companyName"
+                [ngClass]="labelControl('companyName')"
                 class="absolute text-base duration-300 transform -translate-y-8 scale-75 top-5 left-6 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
-                Cognome
+                Company Name
             </label>
         </div>
-        <!--/ Last Name -->
+        <!--/ Company Name-->
 
         <!-- Phone -->
         <div class="flex mt-5">
 
             <!-- Phone Code -->
-            <div class="flex items-center gap-4 px-6 rounded-l-[20px] border-2 border-[#CCC2B2] h-16 w-max">
+            <div class="flex items-center gap-4 px-6 rounded-l-[20px] border-2 border-[#CCC2B2] h-16 w-max relative">
                 <label for="phone" class="w-max">{{ updateUserForm.value.phoneCode }}</label>
-                <button id="phonecode-dropdown" data-dropdown-toggle="phonecodes">
+                <button id="phonecode-dropdown" (click)="phonecodes = (phonecodes) ? false : true">
                     <app-arrow-icon dimension="w-4 h-4" color="#000"></app-arrow-icon>
                 </button>
-                <div id="phonecodes" class="z-10 hidden bg-[#CCC2B2] p-6 w-max h-96 overflow-y-scroll rounded-[20px] devide-y">
+                <div *ngIf="phonecodes" class="z-10 absolute top-[52px] bg-[#CCC2B2] p-6 w-max h-96 overflow-y-scroll rounded-[20px] devide-y">
                     <ul class="space-y-4 text-sm" aria-labelledby="phonecode-dropdown">
-                        <li *ngFor="let code of countryCodesList | keyvalue" (click)="updateUserForm.value.phoneCode = code.value">{{ code.value }}</li>
+                        <li *ngFor="let code of countryCodesList | keyvalue" (click)="updateUserForm.value.phoneCode = code.value; phonecodes = false;">{{ code.value }}</li>
                     </ul>
                 </div>
             </div>
@@ -62,16 +62,16 @@
             <div class="relative z-0 w-full group">
                 <input 
                     type="phone"
-                    id="phone"
-                    formControlName="phone"
-                    [ngClass]="[!updateUserForm.controls['phone'].valid && (updateUserForm.controls['phone'].touched || updateUserForm.controls['phone'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                    id="phoneNumber"
+                    formControlName="phoneNumber"
+                    [ngClass]="[!updateUserForm.controls['phoneNumber'].valid && (updateUserForm.controls['phoneNumber'].touched || updateUserForm.controls['phoneNumber'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
                     class="block w-full h-16 items-center px-6 text-sm text-black bg-transparent border-2 border-l-0 border-[#CCC2B2] rounded-r-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
                     placeholder=""
                     autocomplete="off"
                     required />
                 <label
-                    for="phone"
-                    [ngClass]="labelControl('phone')"
+                    for="phoneNumber"
+                    [ngClass]="labelControl('phoneNumber')"
                     class="absolute text-base duration-300 transform -translate-y-8 scale-75 top-5 left-6 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
                     Telefono
                 </label>
@@ -81,7 +81,7 @@
         <!-- / Phone -->
 
         <!-- Date of Birth -->
-        <div class="flex gap-1 mt-5">
+        <div *ngIf="!isAgency" class="flex gap-1 mt-5">
             <!-- Day -->
             <div class="relative z-0 w-[20%] group">
                 <input 
@@ -137,6 +137,126 @@
                 </label>
             </div>
         </div>
+
+        <!-- Company Name -->
+        <div *ngIf="isAgency" class="relative z-0 w-full mt-5 group">
+            <input 
+                type="companyName"
+                id="companyName"
+                formControlName="companyName"
+                [ngClass]="[!updateUserForm.controls['companyName'].valid && (updateUserForm.controls['companyName'].touched || updateUserForm.controls['companyName'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                class="block w-full h-16 items-center px-6 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                placeholder=""
+                autocomplete="off"
+                required />
+            <label
+                for="companyName"
+                [ngClass]="labelControl('companyName')"
+                class="absolute text-base duration-300 transform -translate-y-8 scale-75 top-5 left-6 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                Company Name
+            </label>
+        </div>
+        <!--/ Company Name-->
+
+        <!-- Country -->
+        <div *ngIf="isAgency" class="relative z-0 w-full mt-5 group">
+            <input 
+                type="country"
+                id="country"
+                formControlName="country"
+                [ngClass]="[!updateUserForm.controls['country'].valid && (updateUserForm.controls['country'].touched || updateUserForm.controls['country'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                class="block w-full h-16 items-center px-6 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                placeholder=""
+                autocomplete="off"
+                required />
+            <label
+                for="country"
+                [ngClass]="labelControl('country')"
+                class="absolute text-base duration-300 transform -translate-y-8 scale-75 top-5 left-6 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                Country
+            </label>
+        </div>
+        <!--/ Country -->
+
+        <!-- City -->
+        <div *ngIf="isAgency" class="relative z-0 w-full mt-5 group">
+            <input 
+                type="text"
+                id="city"
+                formControlName="city"
+                [ngClass]="[!updateUserForm.controls['city'].valid && (updateUserForm.controls['city'].touched || updateUserForm.controls['city'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                class="block w-full h-16 items-center px-6 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                placeholder=""
+                autocomplete="off"
+                required />
+            <label
+                for="city"
+                [ngClass]="labelControl('city')"
+                class="absolute text-base duration-300 transform -translate-y-8 scale-75 top-5 left-6 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                City
+            </label>
+        </div>
+        <!--/ City -->
+
+        <!-- Address -->
+        <div *ngIf="isAgency" class="relative z-0 w-full mt-5 group">
+            <input 
+                type="address"
+                id="address"
+                formControlName="address"
+                [ngClass]="[!updateUserForm.controls['address'].valid && (updateUserForm.controls['address'].touched || updateUserForm.controls['address'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                class="block w-full h-16 items-center px-6 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                placeholder=""
+                autocomplete="off"
+                required />
+            <label
+                for="address"
+                [ngClass]="labelControl('address')"
+                class="absolute text-base duration-300 transform -translate-y-8 scale-75 top-5 left-6 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                Address
+            </label>
+        </div>
+        <!--/ Address -->
+
+        <!-- ZIP -->
+        <div *ngIf="isAgency" class="relative z-0 w-full mt-5 group">
+            <input 
+                type="text"
+                id="zip"
+                formControlName="zip"
+                [ngClass]="[!updateUserForm.controls['zip'].valid && (updateUserForm.controls['zip'].touched || updateUserForm.controls['zip'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                class="block w-full h-16 items-center px-6 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                placeholder=""
+                autocomplete="off"
+                required />
+            <label
+                for="zip"
+                [ngClass]="labelControl('zip')"
+                class="absolute text-base duration-300 transform -translate-y-8 scale-75 top-5 left-6 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                Zip Code
+            </label>
+        </div>
+        <!--/ ZIP -->
+
+        <!-- TinNumber -->
+        <div *ngIf="isAgency" class="relative z-0 w-full mt-5 group">
+            <input 
+                type="tinNumber"
+                id="tinNumber"
+                formControlName="tinNumber"
+                [ngClass]="[!updateUserForm.controls['tinNumber'].valid && (updateUserForm.controls['tinNumber'].touched || updateUserForm.controls['tinNumber'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                class="block w-full h-16 items-center px-6 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                placeholder=""
+                autocomplete="off"
+                required />
+            <label
+                for="tinNumber"
+                [ngClass]="labelControl('tinNumber')"
+                class="absolute text-base duration-300 transform -translate-y-8 scale-75 top-5 left-6 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                TIN Number
+            </label>
+        </div>
+        <!--/ TinNumber -->
 
         <button
             [disabled]="updateUserForm.invalid"

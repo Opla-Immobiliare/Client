@@ -7,7 +7,6 @@ import { AuthService } from 'src/app/modules/auth/services/auth.service';
 import { UserPlan } from 'src/app/modules/profile/models/user-plan.model';
 import { ProfileService } from 'src/app/modules/profile/services/profile.service';
 import { AppState } from 'src/app/reducers';
-
 @Component({
   selector: 'app-top-right-action',
   templateUrl: './top-right-action.component.html',
@@ -17,11 +16,13 @@ export class TopRightActionComponent implements OnInit {
   private authService = inject(AuthService);
   private pfolieService = inject(ProfileService);
 
+
   isLoggedIn$: Observable<boolean> | undefined;
   isLoggedOut$: Observable<boolean> | undefined;
   isAgency: boolean = false;
   profileMenu: boolean = false;
   userPlan$: Observable<UserPlan> = new Observable<UserPlan>();
+  authModal: Observable<boolean> = new Observable<boolean>();
 
   constructor(private store: Store<AppState>) {}
 
