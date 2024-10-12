@@ -106,6 +106,46 @@
             </div>
             <!--/ Country -->
 
+            <!-- City -->
+            <div *ngIf="isAgency" class="relative z-0 w-full mt-5 group">
+                <input 
+                    type="text"
+                    id="city"
+                    formControlName="city"
+                    [ngClass]="[!additionalInfoForm.controls['city'].valid && (additionalInfoForm.controls['city'].touched || additionalInfoForm.controls['city'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                    class="block w-full h-16 items-center px-6 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                    placeholder=""
+                    autocomplete="off"
+                    required />
+                <label
+                    for="city"
+                    [ngClass]="labelControl('city')"
+                    class="absolute text-base duration-300 transform -translate-y-8 scale-75 top-5 left-6 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                    City
+                </label>
+            </div>
+            <!--/ City -->
+
+            <!-- ZipCode -->
+            <div *ngIf="isAgency" class="relative z-0 w-full mt-5 group">
+                <input 
+                    type="text"
+                    id="zip"
+                    formControlName="zip"
+                    [ngClass]="[!additionalInfoForm.controls['zip'].valid && (additionalInfoForm.controls['zip'].touched || additionalInfoForm.controls['zip'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                    class="block w-full h-16 items-center px-6 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                    placeholder=""
+                    autocomplete="off"
+                    required />
+                <label
+                    for="zip"
+                    [ngClass]="labelControl('zip')"
+                    class="absolute text-base duration-300 transform -translate-y-8 scale-75 top-5 left-6 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                    Zip Code
+                </label>
+            </div>
+            <!--/ ZipCode -->
+
             <!-- Address -->
             <div *ngIf="isAgency" class="relative z-0 w-full mt-5 group">
                 <input 
