@@ -46,7 +46,7 @@
                         <p class="text-base">{{ typeForm.value.category }}</p>
                         <app-caret-down class="w-4 h-4" color="#000"></app-caret-down>
                     </button>
-                    <div id="categories" *ngIf="propertyCategory" class="w-[300px] h-[288px] rounded-[20px] bg-[#CCC2B2] p-2 mt-1">
+                    <div id="categories" *ngIf="propertyCategory" class="w-[300px] h-[288px] rounded-[20px] bg-[#CCC2B2] p-2 mt-1 overflow-y-scroll">
                         <ul class="w-full">
                             <li *ngFor="let item of propertyCategories" class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer"  (click)="typeForm.value.propertyCategory = item.propertyCategoryName; propertyCategory = false">{{ item.propertyCategoryName }}</li>
                         </ul>
