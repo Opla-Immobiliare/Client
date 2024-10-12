@@ -19,6 +19,7 @@ export class OrderOverviewComponent implements OnInit {
   paymentElement?: StripePaymentElement;
   private basketService = inject(BasketService);
   basket$: Observable<Basket | null> = new Observable<Basket>;
+  loading: boolean = false;
 
   async ngOnInit() {
     try {
@@ -37,6 +38,7 @@ export class OrderOverviewComponent implements OnInit {
   }
 
   async confirmPayment() {
+    this.loading = true;
     await this.stripeService.confirmPayment();
   }
 }

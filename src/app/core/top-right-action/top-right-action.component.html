@@ -9,9 +9,9 @@
 <div id="auth-modal" data-modal-target="auth-modal" tabindex="-1" aria-hidden="true" class="hidden bg-[#EBE7E0] lg:bg-[#B8AA94] lg:bg-opacity-80 overflow-y-scroll fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%)] max-h-full">
 
     <!-- Modal Content -->
-    <div class="w-full px-4 py-8 lg:max-w-[1010px] lg:h-[565px] lg:bg-[#EBE7E0] lg:border-none lg:rounded-[30px] lg:px-5 lg:py-[15px] lg:m-auto relative">
+    <div class="w-full px-4 py-8 h-full lg:max-w-[1010px] lg:h-[565px] lg:bg-[#EBE7E0] lg:border-none lg:rounded-[30px] lg:px-5 lg:py-[15px] lg:m-auto relative">
         <!-- Modal Actions -->
-        <div class="w-full flex justify-between items-center absolute top-4 right--4">
+        <div class="w-full flex justify-between items-center absolute top-4 right-3">
             <button data-modal-hide="auth-modal" class=" cursor-pointer w-12 h-12">
                 <app-left-arrow class="lg:hidden"></app-left-arrow>
             </button>
@@ -27,14 +27,14 @@
 </div>
 
 <!-- LogedIn -->
-<div [ngClass]="[(isLoggedIn$ | async) ? '' : 'hidden']" class="w-max inline-flex items-center gap-6 lg:mt-6">
+<div [ngClass]="[(isLoggedIn$ | async) ? 'bg-[#CCC2B2] lg:bg-transparent' : 'hidden']" class="w-full hidden lg:w-max lg:inline-flex items-center gap-6 lg:mt-6">
     <div *ngIf="(isAgency)" class="w-max">
         <button *ngIf="(userPlan$ | async) as userPlan" [routerLink]="['/profile/subscriptions']" type="button" class="w-max px-6 h-12 rounded-full bg-[#FEFCE6] cursor-pointer">
             <p class="text-sm text-black">{{userPlan.planName}} {{(userPlan.planName == "Free" ? '| Upgrade': '')}}</p>
         </button>
     </div>
-    <div class="relative">
-        <button type="button" (click)="profileMenu = (profileMenu) ? false : true" class="w-[137px] h-12 bg-[#8A785B] rounded-full inline-flex items-center gap-4 p-1">
+    <div class="relative w-full">
+        <button type="button" (click)="profileMenu = (profileMenu) ? false : true" class="w-[137px] h-12 bg-[#8A785B] rounded-full hidden lg:inline-flex items-center gap-4 p-1">
             <img class="rounded-full w-10 h-10" src="http://localhost:5270/Content/real-estate-agent.jpg" alt="RealEstateAgent">
             <p class="text-white text-base">Profile</p>
         </button>
@@ -61,3 +61,16 @@
     </div>
 </div>
 <!-- / Logged in -->
+
+<!-- MB: LoggedIn -->
+<div *ngIf="(isLoggedIn$ | async)" class="w-full inline-flex justify-center items-center lg:hidden h-16 rounded-br-[20px] bg-[#C2B6A3]">
+    <div class="inline-flex justify-end items-center gap-6 pr-4 w-full">
+        <button *ngIf="(userPlan$ | async) as userPlan" [routerLink]="['/profile/subscriptions']" type="button" class="w-max px-4 h-10 rounded-full bg-[#FEFCE6] cursor-pointer">
+            <p class="text-sm text-black">{{userPlan.planName}} {{(userPlan.planName == "Free" ? '| Upgrade': '')}}</p>
+        </button>
+        <button type="button" (click)="logout()" class="h-12 w-12 bg-transparent border-none inline-flex items-center justify-center">
+            <app-sign-out-icon dimensions="w-6 h-6" color="#5C503D"></app-sign-out-icon>
+        </button>
+    </div>
+</div>
+<!-- /MB: LoggedIn -->
