@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
+import { FavoritesService } from '../services/favorites.service';
 
 @Component({
   selector: 'app-favourites',
@@ -6,7 +7,10 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./favourites.component.scss']
 })
 export class FavouritesComponent {
+  private favService = inject(FavoritesService);
+  @Input() propertyId?: number;
+
   manageFavs(): void {
-    console.log('Favs', 'Boom');
+    this.favService.addOrRemoveFromFavorites(this.propertyId!);
   }
 }
