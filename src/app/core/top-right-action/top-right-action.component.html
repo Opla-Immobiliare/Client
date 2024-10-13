@@ -27,7 +27,7 @@
 </div>
 
 <!-- LogedIn -->
-<div [ngClass]="[(isLoggedIn$ | async) ? 'bg-[#CCC2B2] lg:bg-transparent' : 'hidden']" class="w-full hidden lg:w-max lg:inline-flex items-center gap-6 lg:mt-6">
+<div *ngIf="(isLoggedIn$ | async)" class="w-full hidden lg:w-max lg:inline-flex items-center gap-6 lg:mt-6">
     <div *ngIf="(isAgency)" class="w-max">
         <button *ngIf="(userPlan$ | async) as userPlan" [routerLink]="['/profile/subscriptions']" type="button" class="w-max px-6 h-12 rounded-full bg-[#FEFCE6] cursor-pointer">
             <p class="text-sm text-black">{{userPlan.planName}} {{(userPlan.planName == "Free" ? '| Upgrade': '')}}</p>

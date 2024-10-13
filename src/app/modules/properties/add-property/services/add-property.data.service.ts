@@ -57,7 +57,7 @@ export class AddPropertyDataService {
       formData.append('files', files[i])
     }
     console.log(formData)
-    return this.http.post<string[]>("http://localhost:5270/api/v1/Images", formData);
+    return this.http.post<string[]>(`${environment.apiUrl}/Images`, formData);
   }
 
   // Remove File

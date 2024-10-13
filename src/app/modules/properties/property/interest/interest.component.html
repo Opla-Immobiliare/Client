@@ -1,4 +1,4 @@
-<div class="fixed lg:hidden bottom-0 left-0 bg-[#DFD9D0] rounded-t-[20px] shadow-[0_-5px_20px_0_rgba(0,0,0,0.15)] px-4 py-3 inline-flex justify-center items-center gap-3 w-full">
+<div class="fixed lg:hidden bottom-0 left-0 bg-[#DFD9D0] rounded-t-[20px] shadow-[0_-5px_20px_0_rgba(0,0,0,0.15)] px-4 py-3 inline-flex justify-center items-center gap-3 w-full z-50">
     
     <!-- Phone -->
     <button type="button" class="bg-transparent rounded-full inline-flex justify-center h-10 items-center gap-3 w-full border-2 border-[#FBE525] hover:bg-[#FBE525] hover:shadow-[0_0__20px_0_rgba(251,229,37,1)] focus:shadow-none focus:border-[#E1CB04] focus:bg-[#E1CB04]">
@@ -13,7 +13,7 @@
     </button>
 </div>
 
-<div *ngIf="enableInterestForm" tabindex="-1" aria-hidden="true" class="bg-[#EBE7E0] lg:bg-[#B8AA94] lg:bg-opacity-80 overflow-y-scroll fixed top-0 right-0 left-0 z-50 justify-start lg:flex lg:justify-center items-center w-full md:inset-0 h-[calc(100%)] max-h-full">
+<div *ngIf="enableInterestForm" tabindex="-1" aria-hidden="true" class="bg-[#EBE7E0] lg:bg-[#B8AA94] lg:bg-opacity-80 overflow-y-scroll lg:overflow-y-none fixed top-0 right-0 left-0 z-50 justify-start lg:flex lg:justify-center items-center w-full md:inset-0 h-[calc(100%)] max-h-full">
     <div class="w-full lg:max-w-[600px] bg-[#EBE7E0] px-4 mt-4 pb-6 lg:rounded-[20px]">
 
         <div class="inline-flex justify-between items-center w-full pb-3 border-b border-[#D6CEC2]">
@@ -79,40 +79,42 @@
             </div>
 
             <!-- Call time -->
-            <div class="grid gap-1 mt-4">
-                <div class="flex items-center me-4">
-                    <input id="morning" type="radio" value="morning" name="callTime" formControlName="callTime" class="w-4 h-4 text-[#5C503D] bg-transparent border-[#5C503D] focus:ring-none focus:ring-0">
-                    <label for="morning" class="ms-2 text-sm">Καλέστε πρωινές ώρες</label>
+            <div class="w-full flex justify-center items-start lg:flex-row flex-col">
+                <div class="grid gap-1 mt-4 w-full">
+                    <div class="flex items-center me-4">
+                        <input id="morning" type="radio" value="morning" name="callTime" formControlName="callTime" class="w-4 h-4 text-[#5C503D] bg-transparent border-[#5C503D] focus:ring-none focus:ring-0">
+                        <label for="morning" class="ms-2 text-sm">Καλέστε πρωινές ώρες</label>
+                    </div>
+                    <div class="flex items-center me-4">
+                        <input id="afternoon" type="radio" value="afternoon" name="callTime" formControlName="callTime" class="w-4 h-4 text-[#5C503D] bg-transparent border-[#5C503D] focus:ring-none focus:ring-0">
+                        <label for="afternoon" class="ms-2 text-sm">Μεσημεριανές ώρες</label>
+                    </div>
+                    <div class="flex items-center me-4">
+                        <input id="evening" type="radio" value="evening" name="callTime" formControlName="callTime" class="w-4 h-4 text-[#5C503D] bg-transparent border-[#5C503D] focus:ring-none focus:ring-0">
+                        <label for="evening" class="ms-2 text-sm">Απογευματινές ώρες</label>
+                    </div>
                 </div>
-                <div class="flex items-center me-4">
-                    <input id="afternoon" type="radio" value="afternoon" name="callTime" formControlName="callTime" class="w-4 h-4 text-[#5C503D] bg-transparent border-[#5C503D] focus:ring-none focus:ring-0">
-                    <label for="afternoon" class="ms-2 text-sm">Μεσημεριανές ώρες</label>
-                </div>
-                <div class="flex items-center me-4">
-                    <input id="evening" type="radio" value="evening" name="callTime" formControlName="callTime" class="w-4 h-4 text-[#5C503D] bg-transparent border-[#5C503D] focus:ring-none focus:ring-0">
-                    <label for="evening" class="ms-2 text-sm">Απογευματινές ώρες</label>
-                </div>
-            </div>
 
-            <!-- mobilePhone -->
-            <div class="relative z-0 w-full mt-6 group">
-                <input 
-                    type="text"
-                    id="mobilePhone"
-                    formControlName="mobilePhone"
-                    [ngClass]="[interestForm.controls['mobilePhone'].invalid && (interestForm.controls['mobilePhone'].touched || interestForm.controls['mobilePhone'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
-                    class="block w-full h-16 items-center px-6 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
-                    placeholder=""
-                    autocomplete="off"
-                    required />
-                <label
-                    for="mobilePhone"
-                    [ngClass]="labelControl('mobilePhone')"
-                    class="absolute text-base duration-300 transform -translate-y-8 scale-75 top-5 left-6 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
-                    Phone number
-                </label>
+                <!-- mobilePhone -->
+                <div class="relative z-0 w-full mt-6 group">
+                    <input 
+                        type="text"
+                        id="mobilePhone"
+                        formControlName="mobilePhone"
+                        [ngClass]="[interestForm.controls['mobilePhone'].invalid && (interestForm.controls['mobilePhone'].touched || interestForm.controls['mobilePhone'].dirty) ? 'border-[#FF5449] focus:border-[#FF5449]' : '']"
+                        class="block w-full h-16 items-center px-6 text-sm text-black bg-transparent border-2 border-[#CCC2B2] rounded-[20px] appearance-none focus:bg-[#F5F3F0] focus:outline-none focus:ring-0 focus:border-[3px] focus:border-[#CCC2B2] hover:bg-[#F5F3F0] peer"
+                        placeholder=""
+                        autocomplete="off"
+                        required />
+                    <label
+                        for="mobilePhone"
+                        [ngClass]="labelControl('mobilePhone')"
+                        class="absolute text-base duration-300 transform -translate-y-8 scale-75 top-5 left-6 z-10 origin-[0] peer-focus:px-1 peer-focus:py-0.5 peer-focus:bg-[#CCC2B2] flex justify-center justify-items-center items-center rounded-[4px] drop-shadow-[0px_2px_5px_rgba(0,0,0,0.2)] peer-focus:start-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
+                        Phone number
+                    </label>
+                </div>
+                <!--/ mobilePhone -->
             </div>
-            <!--/ mobilePhone -->
 
             <input type="submit" class="w-full py-4 bg-[#FBE525] border-none rounded-[500px] text-sm font-semibold text-center mt-6 hover:drop-shadow-[0px_0px_20px_rgba(251,229,37,1)] active:drop-shadow-none active:bg-[#E1CB04] cursor-pointer" value="Send message">
         </form>

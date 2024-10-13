@@ -12,11 +12,11 @@ registerLocaleData(localeIt, 'it');
   templateUrl: './loan.component.html',
   styleUrls: ['./loan.component.scss']
 })
-export class LoanComponent{
+export class LoanComponent implements OnInit{
   
   loanForm: FormGroup;
   loan: LoanModel | undefined;
-  showLoan: boolean = true;
+  showLoan: boolean = false;
 
   @Input() propertyPrice?: number;
 
@@ -36,18 +36,18 @@ export class LoanComponent{
   generateForm(): FormGroup {
     let mortageAm = this.propertyPrice! - (30 / 100 * this.propertyPrice!);
     return new FormGroup({
-      propertyPrice: new FormControl(),
+      propertyPrice: new FormControl(0),
       mortageAmount: new FormControl<number>(0),
       mortageRate: new FormControl<number>(3),
       mortageDuration: new FormControl<number>(20)
     });
   }
 
-  showHideLoan(): void {
-    if (this.showLoan) {
-      this.showLoan = false;
-    } else {
-      this.showLoan = true;
-    }
+  ngOnInit(): void {
+      if (this.propertyPrice) {
+        this.loanForm.patchValue({ propertyPrice: this.propertyPrice });
+        this.loanForm.patchValue({ mortageAmount: this.propertyPrice - (30 / 100 * this.propertyPrice) });
+        this.calculateLoan();
+      }
   }
 }

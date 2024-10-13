@@ -15,6 +15,7 @@ export class DetailsTableComponent {
   @Input() price?: number;
   @Input() propertyFor?: number;
   @Input() availableFrom?: string;
+  @Input() typeId?: number;
 
   getDate(val: string): string {
     let date = new Date(val);

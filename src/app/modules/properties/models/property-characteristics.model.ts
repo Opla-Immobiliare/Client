@@ -1,30 +1,28 @@
 import { PropertyAdditionalFeatures } from "./property-additional-features.model";
 
 export interface PropertyCharacteristics {
-    constractionYear: any
-    renovatedYear: any
-    renovationType: any
-    buildingFloors: number
-    apartmentFloor: any
-    energyClass: string
-    heating: string
-    typeOfHeating: any
-    numberOfRooms: number
-    bathrooms: number
-    wCs: number
-    kitchens: number
-    livingRooms: number
-    parkingSpaces: number
-    parkingType: any
-    landSquareMetters: number
-    buildingPermit: boolean
-    buildingSquareMetters: number
-    structureFactor: any
-    shape: any
-    frontageLength: number
-    cityPlan: boolean
-    propertyId: number
-    propertyAdditinalFeatureId: number
-    propertyAdditionalFeatures: PropertyAdditionalFeatures
-    id: number
+    constractionYear: number;
+    renovatedYear: number;
+    renovationType: string;
+    buildingFloors: number;
+    apartmentFloor: number;
+    energyClass: string;
+    heating: string;
+    typeOfHeating: string;
+    numberOfRooms: number;
+    bathrooms: number;
+    wCs: number;
+    kitchens: number;
+    livingRooms: number;
+    parkingSpaces: number;
+    parkingType: string;
+    landSquareMetters: number;
+    buildingPermit: boolean;
+    buildingSquareMeters: number;
+    structureFactor: number;
+    shape: string;
+    frontageLength: number;
+    cityPlan: boolean;
+    additionalFeatures: PropertyAdditionalFeatures;
+    constructionMeters: number;
 }

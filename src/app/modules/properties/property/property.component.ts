@@ -17,6 +17,8 @@ registerLocaleData(localeIt, 'it');
 export class PropertyComponent implements OnInit {
 
   property$: Observable<Property> = new Observable<Property>;
+  photoGallery: boolean = false;
+  imageIndex: number = 1;
 
   constructor(
     private clipboard: ClipboardService,
@@ -34,7 +36,7 @@ export class PropertyComponent implements OnInit {
     const PROPERTY_ID = this.route.snapshot.paramMap.get('id');
 
     this.propertyEntityService.getById(PROPERTY_ID!).pipe(data => this.property$ = data);
-    console.log('Property', this.property$);
+    // console.log('Property', this.property$);
   }
 
   getDate(val: string): string {

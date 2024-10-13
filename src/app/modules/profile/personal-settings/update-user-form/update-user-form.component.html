@@ -259,7 +259,7 @@
         <!--/ TinNumber -->
 
         <button
-            [disabled]="updateUserForm.invalid"
+            [disabled]="updateUserForm.invalid || !updateUserForm.touched"
             type="submit" 
             class="w-full py-4 mt-10 bg-[#FBE525] rounded-[500px] flex justify-center items-center border-none text-sm font-semibold hover:drop-shadow-[0px_0px_20px_rgba(251,229,37,1)] active:drop-shadow-none active:bg-[#E1CB04] lg:max-w-[450px] lg:text-[16px] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:drop-shadow-none">
             Salva Cambiamenti

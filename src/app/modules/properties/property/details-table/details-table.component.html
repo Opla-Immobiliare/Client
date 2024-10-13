@@ -26,7 +26,7 @@
     </tr>
 
     <!-- Rooms -->
-    <tr class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
+    <tr *ngIf="typeId == 1" class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
         <td class="w-1/2 py-2 pl-3">
             <div class="inline-flex items-center gap-4">
                 <app-bed-icon dimensions="w-6 h-6" color="#5C503D"></app-bed-icon>
@@ -39,7 +39,7 @@
     </tr>
 
     <!-- Bathrooms -->
-    <tr class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
+    <tr *ngIf="typeId == 1" class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
         <td class="w-1/2 py-2 pl-3">
             <div class="inline-flex items-center gap-4">
                 <app-bathtub-icon dimensions="w-6 h-6" color="#5C503D"></app-bathtub-icon>
@@ -52,7 +52,7 @@
     </tr>
 
     <!-- Bathrooms -->
-    <tr class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
+    <tr *ngIf="typeId == 1" class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
         <td class="w-1/2 py-2 pl-3">
             <div class="inline-flex items-center gap-4">
                 <app-bathtub-icon dimensions="w-6 h-6" color="#5C503D"></app-bathtub-icon>
@@ -65,7 +65,7 @@
     </tr>
 
     <!-- Kitchens -->
-    <tr class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
+    <tr *ngIf="typeId == 1" class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
         <td class="w-1/2 py-2 pl-3">
             <div class="inline-flex items-center gap-4">
                 <app-bathtub-icon dimensions="w-6 h-6" color="#5C503D"></app-bathtub-icon>
@@ -78,7 +78,7 @@
     </tr>
 
     <!-- Living rooms -->
-    <tr class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
+    <tr *ngIf="typeId == 1" class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
         <td class="w-1/2 py-2 pl-3">
             <div class="inline-flex items-center gap-4">
                 <app-arm-chair-icon dimensions="w-6 h-6" color="#5C503D"></app-arm-chair-icon>
@@ -91,7 +91,7 @@
     </tr>
 
     <!-- EnergyClass -->
-    <tr class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
+    <tr *ngIf="typeId == 1" class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
         <td class="w-1/2 py-2 pl-3">
             <div class="inline-flex items-center gap-4">
                 <app-light-bulb-filament-icon dimensions="w-6 h-6" color="#5C503D"></app-light-bulb-filament-icon>
@@ -104,7 +104,7 @@
     </tr>
 
     <!-- Floors -->
-    <tr class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
+    <tr *ngIf="typeId == 1" class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
         <td class="w-1/2 py-2 pl-3">
             <div class="inline-flex items-center gap-4">
                 <app-steps-icon dimensions="w-6 h-6" color="#5C503D"></app-steps-icon>
@@ -117,7 +117,7 @@
     </tr>
 
     <!-- Construction Year -->
-    <tr class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
+    <tr *ngIf="typeId == 1" class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
         <td class="w-1/2 py-2 pl-3">
             <div class="inline-flex items-center gap-4">
                 <app-calendar-dots-icon dimensions="w-6 h-6" color="#5C503D"></app-calendar-dots-icon>
@@ -130,7 +130,7 @@
     </tr>
 
     <!-- Parking Space -->
-    <tr class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
+    <tr *ngIf="typeId == 1" class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
         <td class="w-1/2 py-2 pl-3">
             <div class="inline-flex items-center gap-4">
                 <app-parking-icon dimensions="w-6 h-6" color="#5C503D"></app-parking-icon>
@@ -139,6 +139,97 @@
         </td>
         <td class="w-1/2 pl-3 border-[2px] border-[#D6CEC2] rounded-[20px]">
             <p class="text-base text-[#5C503D]">{{ characteristics?.parkingSpaces }}, {{ characteristics?.parkingType }}</p>
+        </td>
+    </tr>
+
+    <!-- Building Permit -->
+    <tr *ngIf="typeId == 2" class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
+        <td class="w-1/2 py-2 pl-3">
+            <div class="inline-flex items-center gap-4">
+                <app-signature dimensions="w-6 h-6" color="#5C503D"></app-signature>
+                <p class="text-base">Building Permit</p>
+            </div>
+        </td>
+        <td class="w-1/2 pl-3 border-[2px] border-[#D6CEC2] rounded-[20px]">
+            <p class="text-base text-[#5C503D]">{{ (characteristics?.buildingPermit) ? 'Si' : 'No'}}</p>
+        </td>
+    </tr>
+
+    <!-- Constrction Meter -->
+    <tr *ngIf="typeId == 2 && characteristics?.constructionMeters != 0" class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
+        <td class="w-1/2 py-2 pl-3">
+            <div class="inline-flex items-center gap-4">
+                <app-shovel-icon dimensions="w-6 h-6" color="#5C503D"></app-shovel-icon>
+                <p class="text-base">Construction Meters</p>
+            </div>
+        </td>
+        <td class="w-1/2 pl-3 border-[2px] border-[#D6CEC2] rounded-[20px]">
+            <p class="text-base text-[#5C503D]">{{ characteristics?.constructionMeters }}</p>
+        </td>
+    </tr>
+
+    <!-- Has building -->
+    <tr *ngIf="typeId == 2 && characteristics?.buildingSquareMeters != null" class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
+        <td class="w-1/2 py-2 pl-3">
+            <div class="inline-flex items-center gap-4">
+                <app-barn-icon dimensions="w-6 h-6" color="#5C503D"></app-barn-icon>
+                <p class="text-base">Building Square Meters</p>
+            </div>
+        </td>
+        <td class="w-1/2 pl-3 border-[2px] border-[#D6CEC2] rounded-[20px]">
+            <p class="text-base text-[#5C503D]">{{ characteristics?.buildingSquareMeters }}</p>
+        </td>
+    </tr>
+
+    <!-- Structure Factor -->
+    <tr *ngIf="typeId == 2 && characteristics?.structureFactor != null" class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
+        <td class="w-1/2 py-2 pl-3">
+            <div class="inline-flex items-center gap-4">
+                <app-shovel-icon dimensions="w-6 h-6" color="#5C503D"></app-shovel-icon>
+                <p class="text-base">Structure Factor</p>
+            </div>
+        </td>
+        <td class="w-1/2 pl-3 border-[2px] border-[#D6CEC2] rounded-[20px]">
+            <p class="text-base text-[#5C503D]">{{ characteristics?.structureFactor }}</p>
+        </td>
+    </tr>
+
+    <!-- Shape -->
+    <tr *ngIf="typeId == 2 && characteristics?.shape != null" class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
+        <td class="w-1/2 py-2 pl-3">
+            <div class="inline-flex items-center gap-4">
+                <app-wave-sine-icon dimensions="w-6 h-6" color="#5C503D"></app-wave-sine-icon>
+                <p class="text-base">Structure Factor</p>
+            </div>
+        </td>
+        <td class="w-1/2 pl-3 border-[2px] border-[#D6CEC2] rounded-[20px]">
+            <p class="text-base text-[#5C503D]">{{ characteristics?.shape }}</p>
+        </td>
+    </tr>
+
+    <!-- Frontage Length -->
+    <tr *ngIf="typeId == 2 && characteristics?.frontageLength != 0" class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
+        <td class="w-1/2 py-2 pl-3">
+            <div class="inline-flex items-center gap-4">
+                <app-house-simple-icon dimensions="w-6 h-6" color="#5C503D"></app-house-simple-icon>
+                <p class="text-base">Frontage Length</p>
+            </div>
+        </td>
+        <td class="w-1/2 pl-3 border-[2px] border-[#D6CEC2] rounded-[20px]">
+            <p class="text-base text-[#5C503D]">{{ characteristics?.frontageLength }}</p>
+        </td>
+    </tr>
+
+    <!-- City Plan -->
+    <tr *ngIf="typeId == 2" class="w-full border-[2px] border-[#D6CEC2] rounded-[20px]">
+        <td class="w-1/2 py-2 pl-3">
+            <div class="inline-flex items-center gap-4">
+                <app-city-icon dimensions="w-6 h-6" color="#5C503D"></app-city-icon>
+                <p class="text-base">City Plan</p>
+            </div>
+        </td>
+        <td class="w-1/2 pl-3 border-[2px] border-[#D6CEC2] rounded-[20px]">
+            <p class="text-base text-[#5C503D]">{{ (characteristics?.cityPlan) ? 'Si' : 'No' }}</p>
         </td>
     </tr>
 

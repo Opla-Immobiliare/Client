@@ -91,7 +91,7 @@ export class ProfileService {
     if (USER_PROFILE) {
       const USER: User = JSON.parse(USER_PROFILE);
       const headers = { 'Authorization': `Bearer ${USER.token}` };
-    return this.http.post<string[]>("http://localhost:5270/api/v1/Images/user", formData, {headers: headers});
+      return this.http.post<string[]>(`${environment.apiUrl}/Images/user`, formData, {headers: headers});
     } else {
       throw new Error('Unauthorized');
     }
@@ -102,7 +102,7 @@ export class ProfileService {
     if (USER_PROFILE) {
       const USER: User = JSON.parse(USER_PROFILE);
       const headers = { 'Authorization': `Bearer ${USER.token}` };
-      return this.http.get<UserSettings>("http://localhost:5270/api/v1/User/settings", { headers: headers });
+      return this.http.get<UserSettings>(`${environment.apiUrl}/User/settings`, { headers: headers });
     } else {
       throw new Error('Unauthorized');
     }
@@ -113,7 +113,7 @@ export class ProfileService {
     if (USER_PROFILE) {
       const USER: User = JSON.parse(USER_PROFILE);
       const headers = { 'Authorization': `Bearer ${USER.token}` };
-      return this.http.post("http://localhost:5270/api/v1/User/change-password", obj,{ headers: headers });
+      return this.http.post("${environment.apiUrl}/User/change-password", obj,{ headers: headers });
     } else {
       throw new Error('Unauthorized');
     }
@@ -124,7 +124,18 @@ export class ProfileService {
     if (USER_PROFILE) {
       const USER: User = JSON.parse(USER_PROFILE);
       const headers = { 'Authorization': `Bearer ${USER.token}` };
-      return this.http.put(`http://localhost:5270/api/v1/User/recieve-promotional-emails?reievePromotionalEmails=${val}`, null, { headers: headers });
+      return this.http.put(`${environment.apiUrl}/User/recieve-promotional-emails?reievePromotionalEmails=${val}`, null, { headers: headers });
+    } else {
+      throw new Error('Unauthorized');
+    }
+  }
+
+  updateUser(obj: Object): Observable<UserSettings> {
+    const USER_PROFILE = localStorage.getItem('user');
+    if (USER_PROFILE) {
+      const USER: User = JSON.parse(USER_PROFILE);
+      const headers = { 'Authorization': `Bearer ${USER.token}` };
+      return this.http.put<UserSettings>(`${environment.apiUrl}/User`, obj, { headers: headers });
     } else {
       throw new Error('Unauthorized');
     }

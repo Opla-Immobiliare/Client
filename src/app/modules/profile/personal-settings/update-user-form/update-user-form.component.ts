@@ -2,6 +2,7 @@ import { Component, inject, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/modules/auth/services/auth.service';
 import { UserSettings } from '../../models/user-settings.model';
+import { ProfileService } from '../../services/profile.service';
 
 const countryCodes = require('country-codes-list');
 
@@ -12,6 +13,7 @@ const countryCodes = require('country-codes-list');
 })
 export class UpdateUserFormComponent implements OnInit{
   private authService = inject(AuthService);
+  private profileService = inject(ProfileService);
 
   updateUserForm: FormGroup;
   countryCodesList = countryCodes.customList('countryCallingCode', '(+{countryCallingCode} {countryCode})');
@@ -44,7 +46,21 @@ export class UpdateUserFormComponent implements OnInit{
 
   // Update User
   updateUser(): void {
+    let obj = new Object({
+      fullName: this.updateUserForm.value.fullName,
+      phoneNumber: this.updateUserForm.value.phoneNumber,
+      dateOfbirth: `${this.updateUserForm.value.year}-${this.updateUserForm.value.month}-${this.updateUserForm.value.day}`,
+      companyName: this.updateUserForm.value.companyName,
+      country: this.updateUserForm.value.country,
+      city: this.updateUserForm.value.city,
+      address: this.updateUserForm.value.address,
+      zip: this.updateUserForm.value.zip,
+      tinNumber: this.updateUserForm.value.tinNumber,
+    });
 
+    this.profileService.updateUser(obj).subscribe( res => {
+      
+    })
   }
 
   // Set Month value
@@ -99,7 +115,7 @@ export class UpdateUserFormComponent implements OnInit{
 
   ngOnInit(): void {
     this.authService.isAgency.subscribe(res => this.isAgency = res);
-    console.log("user", this.user);
+    // console.log("user", this.user);
     if (this.user)
     {
       this.updateUserForm.patchValue({
