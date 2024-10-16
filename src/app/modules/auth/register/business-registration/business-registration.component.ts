@@ -46,7 +46,7 @@ export class BusinessRegistrationComponent implements OnInit {
         let obj = new Object({
           email: this.registerForm.value.email,
           password: this.registerForm.value.password,
-          clientUri: "https://localhost:4200",
+          clientUri: "http://167.99.247.80",
           role: "agency"
         });
         this.auth.register(obj).pipe(
@@ -54,7 +54,7 @@ export class BusinessRegistrationComponent implements OnInit {
             if (user.role === 'agency') this.auth.setAgency(true);
             if (user.role === 'user') this.auth.setUser(true);
             this.store.dispatch(login({ user }));
-            window.location.href = "http://localhost:4200/profile/complete";
+            window.location.href = "http://167.99.247.80/profile/complete";
           })
         )
           .subscribe(

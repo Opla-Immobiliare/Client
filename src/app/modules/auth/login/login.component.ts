@@ -42,9 +42,9 @@ export class LoginComponent implements OnInit {
           if (user.role === 'user') this.auth.setUser(true);
           if (user.completedProfile) {
             // this.router.navigateByUrl('/');
-            window.location.href= "http://localhost:4200/profile"
+            window.location.href = "http://167.99.247.80/profile"
           }
-          window.location.href = "http://localhost:4200/profile/complete"
+          window.location.href = "http://167.99.247.80/profile/complete"
         })
       )
       .subscribe(

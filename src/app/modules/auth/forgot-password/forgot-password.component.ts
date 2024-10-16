@@ -21,7 +21,7 @@ export class ForgotPasswordComponent implements OnInit{
   forgotPassword(): void {
     let obj = new Object({
       email: this.forgotPasswordForm.value.email,
-      clientUri: "https://localhost:4200/auth/reset-password"
+      clientUri: "http://167.99.247.80/auth/reset-password"
     });
 
     // this.aithService.forgotPassword(obj).subscribe(

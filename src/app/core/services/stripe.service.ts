@@ -115,7 +115,7 @@ export class StripeService {
         clientSecret: <string>basket!.stripeToken,
         elements: this.elements,
         confirmParams: {
-          return_url: 'http://localhost:4200/shop/thank-you'
+          return_url: 'http://167.99.247.80/shop/thank-you'
         },
       })
     }
