@@ -9,6 +9,7 @@ import { IconsModule } from "../../shared/icons/icons.module";
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BusinessRegistrationComponent } from './business-registration/business-registration.component';
 
 export const routes: Routes = [
   {
@@ -34,6 +35,10 @@ export const routes: Routes = [
   {
     path: '404',
     component: NotFoundComponent
+  },
+  {
+    path: 'business',
+    component: BusinessRegistrationComponent,
   }
 ]
 
@@ -44,7 +49,8 @@ export const routes: Routes = [
     PrivacyPolicyComponent,
     CookiesPolicyComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    BusinessRegistrationComponent
   ],
   imports: [
     CommonModule,
