@@ -54,7 +54,8 @@ export const routes = [
   ],
   exports: [
     LoginComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    BusinessRegistrationComponent
   ]
 })
 export class AuthModule {

@@ -9,7 +9,8 @@ import { IconsModule } from "../../shared/icons/icons.module";
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BusinessRegistrationComponent } from './business-registration/business-registration.component';
+import { BusinessRegistrationComponent } from './business/business.component';
+import { AuthModule } from '../auth/auth.module';
 
 export const routes: Routes = [
   {
@@ -57,7 +58,8 @@ export const routes: Routes = [
     RouterModule.forChild(routes),
     IconsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AuthModule
 ]
 })
 export class PagesModule { }
