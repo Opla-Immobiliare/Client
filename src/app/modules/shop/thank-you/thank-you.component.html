@@ -1,1 +1,91 @@
-<p>thank-you works!</p>
+<div class="w-full px-4 pt-2 pb-8 flex flex-col justify-center items-center">
+
+    <!-- Logo -->
+    <div class="w-full max-w-[182px] h-14 bg-[#FBE525] border-none rounded-full inline-flex justify-center items-center">
+        <app-opla-logo dimensions="w-[90px] h-[30px]" color="#213A29"></app-opla-logo>
+    </div>
+    <div class="w-full border-b-[1px] border-b-[#C2B6A3] mt-8 hidden lg:block"></div>
+    <!--/ Logo -->
+
+    <!-- Success Icon -->
+    <div class="mt-10 mb-5">
+        <app-check-circle dimensions="w-[32px] h-[32px]" color="#213A29"></app-check-circle>
+    </div>
+    <!--/ Success Icon -->
+    
+    <!-- Page Title -->
+    <div class="w-full flex flex-col gap-5 mb-16 justify-center items-center">
+        <p class="text-[#A39175] text-[35px] lg:text-[49px]">Transazione Riuscita</p>
+        <p class="text-sm lg:text-base">Il tuo viaggio è diventato ancora più emozionante!</p>
+    </div>
+    <!--/ Page Title -->
+
+    <!-- Plans -->
+    <div class="w-full flex flex-col justify-center items-center gap-5 lg:flex-row">
+
+        <!-- Plan Info -->
+        <div class="w-full p-5 bg-[#EBE7E0] border-none rounded-[20px] flex flex-col gap-5 lg:w-[60%]">
+
+            <!-- Key Selection -->
+            <div class="w-full flex flex-col">
+                <div class="w-full flex justify-between items-center">
+                    <p class="text-[#5C503D] text-sm lg:text-base">Chiave di Argento</p>
+                    <p class="text-[#5C503D] text-sm lg:text-base">228 €</p>
+                </div>
+                <p class="text-[#5C503D] text-sm lg:text-base">19€ x 12 mesi</p>
+            </div>
+            <!--/ Key Selection -->
+
+            <!-- Tax -->
+            <div class="w-full flex justify-between items-center">
+                <p class="text-[#5C503D] text-sm lg:text-base">Tax + 24%</p>
+                <p class="text-[#5C503D] text-sm lg:text-base">54,72 €</p>
+            </div>
+            <div class="w-full border-b-2 border-b-[#D6CEC2]"></div>
+            <!--/ Tax -->
+
+            <!-- Total -->
+            <div class="w-full flex justify-between items-center">
+                <p class="text-[#5C503D] text-sm font-semibold lg:text-base">Totale</p>
+                <p class="text-[#5C503D] text-sm font-semibold lg:text-base">282,72 €</p>
+            </div>
+            <!--/ Total -->
+
+            <!-- Message -->
+            <p class="text-[#5C503D] text-[10px] lg:text-[11px]">L'abbonamento annuale verrà rinnovato automaticamente ogni anno.</p>
+            <!--/ Message -->
+
+        </div>
+        <!--/ Plan Info -->
+
+        <!-- Properties Number -->
+        <div class="w-full p-5 bg-[#FDF39B] border-none rounded-[20px] flex flex-col items-center gap-8 lg:w-[40%] lg:gap-9">
+
+            <!-- Key Selection -->
+            <div class="max-w-[150px] lg:max-w-[180px] px-4 py-1 bg-[#AF9E03] border-none rounded-[12px] flex justify-center items-center">
+                <p class="text-white text-sm lg:text-base">Chiave di Argento</p>
+            </div>
+            <!--/ Key Selection -->
+
+            <!-- House Icon -->
+            <app-home-icon></app-home-icon>
+            <!--/ House Icon -->
+
+            <!-- Properties to Add -->
+            <div class="w-full flex flex-col justify-center items-center gap-1">
+                <p class="text-[15px] text-opacity-80 lg:text-[11px]">Puoi registrare fino a</p>
+                <p class="text-[17px] text-opacity-80 lg:text-[20px]">12 proprietà</p>
+            </div>
+            <!--/ Properties to Add -->
+
+        </div>
+        <!--/ Properties Number -->
+
+    </div>
+    <!--/ Plans -->
+
+    <!-- Back to Home Button -->
+    <button [routerLink]="['/profile']" class="w-full p-3 mt-20 bg-[#FBE525] border-none rounded-[500px] text-sm font-semibold lg:text-base lg:max-w-[368px] hover:drop-shadow-[0px_0px_20px_#FBE525] focus:drop-shadow-none focus:bg-[#E1CB04]">Torna al Profilo</button>
+    <!--/ Back to Home Button -->
+
+</div>

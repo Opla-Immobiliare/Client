@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-check-circle',
@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class CheckCircleComponent {
 
+  @Input() color:string = '';
+  @Input() dimensions:string = '';
 }
