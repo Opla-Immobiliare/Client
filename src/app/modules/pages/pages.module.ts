@@ -11,11 +11,18 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BusinessRegistrationComponent } from './business/business.component';
 import { AuthModule } from '../auth/auth.module';
+import { EntityDataService, EntityDefinitionService, EntityMetadataMap } from '@ngrx/data';
+import { PropertyCategoriesEntityService } from './home/services/property-categories-entity.service';
+import { PropertyCategoriesDataService } from './home/services/property-categories-data.service';
+import { PropertyCategoriesResolver } from './home/services/property-categories.resolver';
 
 export const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: HomeComponent,
+    resolve: {
+      propertyTypesWithCategories: PropertyCategoriesResolver
+    }
   },
   {
     path: 'terms-of-use',
@@ -43,6 +50,11 @@ export const routes: Routes = [
   }
 ]
 
+// Entity metadata
+const entityMetadata: EntityMetadataMap = {
+  PropertyTypesWithCategories: {},
+};
+
 @NgModule({
   declarations: [
     ContactComponent,
@@ -60,6 +72,16 @@ export const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     AuthModule
-]
+  ],
+  providers: [
+    PropertyCategoriesEntityService,
+    PropertyCategoriesDataService,
+    PropertyCategoriesResolver
+  ]
 })
-export class PagesModule { }
+export class PagesModule {
+  constructor(private eds: EntityDefinitionService, private entityDataService: EntityDataService, private propertyCategoriesService: PropertyCategoriesDataService) {
+    eds.registerMetadataMap(entityMetadata);
+    entityDataService.registerService('PropertyTypesWithCategories', propertyCategoriesService);
+  }
+}

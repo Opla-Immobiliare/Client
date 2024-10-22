@@ -6,6 +6,8 @@ import { HttpOptions, QueryParams } from "@ngrx/data/src/dataservices/interfaces
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
 import { User } from "../../auth/models/user.model";
+import { query } from "@angular/animations";
+import { PropertyList } from "../models/property-list.model";
 
 @Injectable()
 export class PropertiesDataService extends DefaultDataService<Property> {
@@ -20,6 +22,10 @@ export class PropertiesDataService extends DefaultDataService<Property> {
 
     override getById(key: number | string, options?: HttpOptions): Observable<Property> {
         return this.http.get<Property>(`${environment.apiUrl}/Property/${key}`);
+    }
+
+    getProperties(queryParams: QueryParams | string | undefined, options?: HttpOptions): Observable<PropertyList[]> {
+        return this.http.get<PropertyList[]>(`${environment.apiUrl}/Property?${queryParams}`);
     }
 
     addProperty(obj: Object): Observable<number> {

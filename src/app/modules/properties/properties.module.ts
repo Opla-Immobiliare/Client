@@ -30,6 +30,8 @@ import { PropertyTypesResolver } from './add-property/services/propertyTypes.res
 import { ProvinceEntityService } from './add-property/services/province/province.entity.service';
 import { ProvinceResolver } from './add-property/services/province/province.resolver';
 import { ProvincesDataService } from './add-property/services/province/provinces-data.service';
+import { PropertyCategoriesEntityService } from '../pages/home/services/property-categories-entity.service';
+import { PropertyCategoriesDataService } from '../pages/home/services/property-categories-data.service';
 
 export const routes: Routes = [
   {
@@ -55,7 +57,7 @@ export const routes: Routes = [
 const entityMetadata: EntityMetadataMap = {
   Property: {},
   PropertyType: {},
-  Province: {}
+  Province: {},
 };
 
 @NgModule({
@@ -103,7 +105,7 @@ export class PropertiesModule {
     private entityDataService: EntityDataService,
     private propertiesService: PropertiesDataService,
     private propertyTypes: PropertyTypesDataService,
-    private provinceService: ProvincesDataService
+    private provinceService: ProvincesDataService,
   ) {
     eds.registerMetadataMap(entityMetadata);
     entityDataService.registerService('Property', propertiesService);

@@ -1,7 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, inject, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SearchCriteria } from './models/searchCriteria.model';
 import { SearchCriteriaService } from './services/search-criteria-service.service';
+import { Observable } from 'rxjs';
+import { CittaEComune } from './models/cittaEComune.model';
+import { SearchService } from './services/search.service';
+import { PropertyCategories, PropertyTypesWithCategories } from './models/propertyTypesWithCategories.model';
+import { PropertyCategoriesEntityService } from './services/property-categories-entity.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,39 +15,75 @@ import { SearchCriteriaService } from './services/search-criteria-service.servic
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  private searchService = inject(SearchService);
+  private propertyCategories = inject(PropertyCategoriesEntityService);
+  private router = inject(Router);
 
   searchForm: FormGroup;
-  areasForm: FormGroup;
-  searchCriteriaModel: SearchCriteria | undefined;
+  searchCriteriaModel?: SearchCriteria;
+  areas: string[] = [];
+  isfrmChecked: any;
+  categories: string[] = [];
+  isCatChecked: any;
+
+  cittaEComune$: Observable<CittaEComune[]> = new Observable<CittaEComune[]>();
+  typesWithCategories$: Observable<PropertyTypesWithCategories[]> = new Observable<PropertyTypesWithCategories[]>();
 
   constructor(private searchCriteriaService: SearchCriteriaService) {
     this.searchForm = this.generateSearchForm();
-    this.areasForm = this.generateAreasForm();
   }
 
   generateSearchForm(): FormGroup {
     return new FormGroup({
-      searchType: new FormControl<string>("rent", [Validators.required]),
-      category: new FormControl<string>("All", [Validators.required]),
+      searchType: new FormControl<string>("rent"),
+      category: new FormControl<string>("All"),
+      categoryId: new FormControl<number>(0),
       municipality: new FormControl<string | undefined>(undefined, [Validators.required])
     })
   }
 
-  generateAreasForm(): FormGroup {
-    return new FormGroup({
-      areas: new FormArray([])
-    })
-  }
-
   searchCriteria(): void {
-    console.log('AreasForm', this.areasForm.value)
-    this.searchCriteriaModel!.searchType = this.searchForm.value.searchType;
-    this.searchCriteriaModel!.category = this.searchForm.value.category;
-    this.searchCriteriaModel!.municipality = this.searchForm.value.municipality;
-    this.searchCriteriaModel!.areas = this.areasForm.value.areas;
+    let params = new URLSearchParams();
+    this.areas.forEach(res => {
+      params.append("area", res);
+    });
+    this.searchCriteriaModel = {
+      searchType: this.searchForm.value.searchType,
+      areas: params.toString(),
+      category: this.searchForm.value.categoryId,
+      municipality: this.searchForm.value.municipality,
+    }
     console.log('SearchCriteria', this.searchCriteriaModel);
     this.searchCriteriaService.updateSearchCriterria(this.searchCriteriaModel!);
+    this.router.navigateByUrl(`/properties/${this.searchCriteriaModel.municipality.toLowerCase()}?${this.searchCriteriaModel.areas}&category=${this.searchCriteriaModel.category}&type=${this.searchCriteriaModel.searchType}`);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.propertyCategories.entities$.pipe(res => this.typesWithCategories$ = res);
+  }
+
+  getCittaEComune(): void {
+    if (this.searchForm.value.municipality != undefined && this.searchForm.value.municipality.length >= 4) {
+      // console.log("Here I am!!");
+      this.searchService.getComune(this.searchForm.value.municipality).pipe( res => this.cittaEComune$ = res);
+    }
+  }
+
+
+  addAreas(event: any, isChecked: boolean) {
+    if (isChecked) {
+      this.areas.push(event.target.value);
+    }
+    else {
+      let index = this.areas.indexOf(event.target.value);
+      this.areas.splice(index, 1);
+    }
+  }
+
+  setCategory(val: PropertyCategories): void {
+    this.searchForm.patchValue({
+      category: val.categoryName,
+      categoryId: val.id,
+    })
+  }
 }
