@@ -26,8 +26,12 @@ export class HomeComponent implements OnInit {
   categories: string[] = [];
   isCatChecked: any;
 
-  cittaEComune$: Observable<CittaEComune[]> = new Observable<CittaEComune[]>();
+  cittaEComune$: CittaEComune[] = [];
   typesWithCategories$: Observable<PropertyTypesWithCategories[]> = new Observable<PropertyTypesWithCategories[]>();
+
+  areasModal: boolean = false;
+  categoriesModal: boolean = false;
+  categoriesDropdown: boolean = false;
 
   constructor(private searchCriteriaService: SearchCriteriaService) {
     this.searchForm = this.generateSearchForm();
@@ -38,7 +42,8 @@ export class HomeComponent implements OnInit {
       searchType: new FormControl<string>("rent"),
       category: new FormControl<string>("All"),
       categoryId: new FormControl<number>(0),
-      municipality: new FormControl<string | undefined>(undefined, [Validators.required])
+      municipality: new FormControl<string | undefined>(undefined, [Validators.required]),
+      municipalityId: new FormControl()
     })
   }
 
@@ -55,7 +60,7 @@ export class HomeComponent implements OnInit {
     }
     console.log('SearchCriteria', this.searchCriteriaModel);
     this.searchCriteriaService.updateSearchCriterria(this.searchCriteriaModel!);
-    this.router.navigateByUrl(`/properties/${this.searchCriteriaModel.municipality.toLowerCase()}?${this.searchCriteriaModel.areas}&category=${this.searchCriteriaModel.category}&type=${this.searchCriteriaModel.searchType}`);
+    this.router.navigateByUrl(`/properties/${this.cittaEComune$[0].citta}?${this.searchCriteriaModel.areas}&category=${this.searchCriteriaModel.category}&type=${this.searchCriteriaModel.searchType}&cityId=${this.cittaEComune$[0].cittaId}`);
   }
 
   ngOnInit(): void {
@@ -65,7 +70,13 @@ export class HomeComponent implements OnInit {
   getCittaEComune(): void {
     if (this.searchForm.value.municipality != undefined && this.searchForm.value.municipality.length >= 4) {
       // console.log("Here I am!!");
-      this.searchService.getComune(this.searchForm.value.municipality).pipe( res => this.cittaEComune$ = res);
+      this.searchService.getComune(this.searchForm.value.municipality).subscribe( res =>{
+        this.cittaEComune$ = res;
+        // this.searchForm.patchValue({
+        //   municipality: res[0].citta,
+        //   municipalityId: res[0].cittaId
+        // })
+      });
     }
   }
 
@@ -84,6 +95,8 @@ export class HomeComponent implements OnInit {
     this.searchForm.patchValue({
       category: val.categoryName,
       categoryId: val.id,
-    })
+    });
+    this.categoriesModal = false;
+    this.categoriesDropdown = false;
   }
 }
