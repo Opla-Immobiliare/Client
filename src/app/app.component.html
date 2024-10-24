@@ -1,8 +1,8 @@
-<main class="w-full max-w-[1280px]">
-    <header class="w-full">
+<main class="w-full flex justify-center items-center flex-col">
+    <header class="w-full max-w-[1100px] lg:px-6">
         <app-header class="w-full"></app-header>
     </header>
-    <section class="w-full max-w-[1100px]">
+    <section class="w-full max-w-[1100px] px-4 lg:px-6">
         <router-outlet *ngIf="!loading"></router-outlet>
         <div *ngIf="this.loading" role="status" class="w-full h-[500px] inline-flex justify-center items-center">
             <svg aria-hidden="true" class="inline w-36 h-36 text-[#FBE525] animate-spin fill-[#213A29]" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12,7 +12,7 @@
             <span class="sr-only">Loading...</span>
         </div>
     </section>
-    <footer class="w-full">
+    <footer class="w-full max-w-[1100px] px-4 lg:px-6">
         <app-footer class="w-full"></app-footer>
     </footer>
 </main>

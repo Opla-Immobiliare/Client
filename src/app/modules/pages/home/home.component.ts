@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit {
   areasModal: boolean = false;
   categoriesModal: boolean = false;
   categoriesDropdown: boolean = false;
+  cityId: number = 0;
 
   constructor(private searchCriteriaService: SearchCriteriaService) {
     this.searchForm = this.generateSearchForm();
@@ -41,7 +42,7 @@ export class HomeComponent implements OnInit {
     return new FormGroup({
       searchType: new FormControl<string>("rent"),
       category: new FormControl<string>("All"),
-      categoryId: new FormControl<number>(0),
+      categoryId: new FormControl<number | undefined>(undefined),
       municipality: new FormControl<string | undefined>(undefined, [Validators.required]),
       municipalityId: new FormControl()
     })
@@ -58,9 +59,11 @@ export class HomeComponent implements OnInit {
       category: this.searchForm.value.categoryId,
       municipality: this.searchForm.value.municipality,
     }
-    console.log('SearchCriteria', this.searchCriteriaModel);
+    params.append("type", this.searchForm.value.searchType);
+    if (this.searchForm.value.categoryId) params.append("category", this.searchForm.value.categoryId);
+    if (this.cityId != 0) params.append("cityId", this.cityId.toString());
     this.searchCriteriaService.updateSearchCriterria(this.searchCriteriaModel!);
-    this.router.navigateByUrl(`/properties/${this.cittaEComune$[0].citta}?${this.searchCriteriaModel.areas}&category=${this.searchCriteriaModel.category}&type=${this.searchCriteriaModel.searchType}&cityId=${this.cittaEComune$[0].cittaId}`);
+    this.router.navigateByUrl(`/properties/${this.cittaEComune$[0].citta}?${params.toString()}`);
   }
 
   ngOnInit(): void {
@@ -98,5 +101,9 @@ export class HomeComponent implements OnInit {
     });
     this.categoriesModal = false;
     this.categoriesDropdown = false;
+  }
+
+  setCity(cityId: number): void {
+    this.cityId = cityId;
   }
 }

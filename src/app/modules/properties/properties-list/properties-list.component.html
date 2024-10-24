@@ -27,13 +27,13 @@
             </div>
             <!-- / Type Rental -->
             <!-- Categories -->
-            <div class="w-full lg:max-w-[220px] relative">
-                <button type="button" (click)="categories = (categories) ? false : true;" class="inline-flex w-full lg:max-w-[220px] justify-between items-center bg-[#CCC2B2] h-12 px-4  rounded-full">
+            <div class="w-max relative">
+                <button type="button" (click)="categories = (categories) ? false : true;" class="inline-flex w-max gap-2 justify-between items-center bg-[#CCC2B2] h-12 px-4  rounded-full">
                     <p class="text-base">{{ filtersForm.value.category }}</p>
                     <app-caret-down dimensions="w-4 h-4" color="#000"></app-caret-down>
                 </button>
                 <div *ngIf="categories" class="absolute top-[52px] w-max h-96 overflow-y-auto bg-[#CCC2B2] rounded-[20px] p-6 z-50">
-                    <ul *ngFor="let item of typesWithCategories$ | async" class="w-full mt-3 grid">
+                    <ul *ngFor="let item of typesWithCategories$" class="w-full mt-3 grid">
                         <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] font-semibold">{{ item.typeName }}</li>
                         <li *ngFor="let cat of item.propertyCategories" (click)="patchCat(cat)" class="inline-flex justify-start items-center gap-2 pl-2 hover:bg-[#D6CEC2] rounded-[10px] cursor-pointer">
                             {{ cat.categoryName }}
@@ -42,16 +42,48 @@
                 </div>
             </div>
             <!-- / Categories -->
+            <!-- Price -->
+            <div class="w-max relative">
+                <button type="button" (click)="showPrice = (showPrice) ? false : true;" class="inline-flex w-max gap-2 justify-between items-center bg-[#CCC2B2] h-12 px-4  rounded-full">
+                    <p class="text-base">Price</p>
+                    <app-caret-down dimensions="w-4 h-4" color="#000"></app-caret-down>
+                </button>
+                <div *ngIf="showPrice" class="absolute top-[52px] w-max h-max overflow-y-auto bg-[#CCC2B2] rounded-[20px] p-6 z-50">
+                    <div class="w-full inline-flex flex-col justify-center items-center gap-2">
+                        <input type="number" formControlName="minPrice" class="rounded-[20px] w-full h-16 border-2 bg-transparent border-[#B8AA94] hover:bg-[#F5F3F0] focus:border-[3px] focus:ring-0 focus:border-[#CCC2B2] text-base" placeholder="Min. Price"/>
+                        <input type="number" formControlName="maxPrice" class="rounded-[20px] w-full h-16 border-2 bg-transparent border-[#B8AA94] hover:bg-[#F5F3F0] focus:border-[3px] focus:ring-0 focus:border-[#CCC2B2] text-base" placeholder="Max. Price"/>
+                    </div>
+                </div>
+            </div>
+            <!-- / Price -->
             <!-- Filter -->
             <button class="w-max inline-flex rounded-full border-2 border-[#FBE525] bg-transparent justify-center items-center h-12 px-4 gap-3" data-modal-target="filters-modal" data-modal-show="filters-modal">
                     <app-sliders-horizontal-icon dimensions="w-4 lg:w-6 h-4 lg:h-6" color="#000"></app-sliders-horizontal-icon>
-                    <p class="text-[10px] lg:text-sm">Filters &#40;2&#41;</p>
+                    <p class="text-[10px] lg:text-sm">Filters</p>
             </button>
             <!-- / Filters -->
         </div>
     </div>
 </form>
 
+<!-- MB: Filters Button -->
+<div class="w-full flex lg:hidden justify-center items-center fixed bottom-9">
+    <div class="w-max inline-flex justify-center items-center h-12 px-4 bg-[#FBE525] rounded-full">
+        <!-- area -->
+        <button class="w-max inline-flex justify-center items-center pr-4 border-r border-black gap-3">
+            <p class="text-[10px]">Area {{ activeAreas.length }}</p>
+            <app-caret-down dimensions="w-4 h-4" color="#000"></app-caret-down>
+        </button>
+        <!-- filters -->
+        <button class="w-max inline-flex justify-center items-center pl-4 gap-3" data-modal-target="filters-modal" data-modal-show="filters-modal">
+            <app-sliders-horizontal-icon dimensions="w-4 h-4" color="#000"></app-sliders-horizontal-icon>
+            <p class="text-[10px]">Filters</p>
+        </button>
+    </div>
+</div>
+<!-- / MB: Filters Button -->
+
+<!-- Active Cities -->
 <div *ngIf="activeCity" class="w-full hidden lg:flex justify-between items-center mt-8">
     <div class="w-full flex justify-start items-center gap-1">
         <div class="px-3 py-1 rounded-full bg-[#D6CEC2]">
@@ -70,7 +102,7 @@
             </button>
             <div *ngIf="showAreas" class="absolute top-[52px] w-max h-96 overflow-y-auto bg-[#CCC2B2] rounded-[20px] p-6">
                 <ul *ngFor="let item of activeCity.areas" class="w-full mt-3 grid">
-                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] text-base">{{ item.area }}</li>
+                    <li class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] text-base" (click)="addArea(item.areaId)">{{ item.area }}</li>
                 </ul>
             </div>
         </div>
@@ -78,19 +110,20 @@
     <!-- Sort -->
     <div class="w-max relative">
         <button type="button" (click)="showSort = (showSort) ? false : true;" class="inline-flex w-max justify-between items-center gap-2 h-12 px-4  rounded-full">
-            <p class="text-xs">Sort</p>
+            <p class="text-xs">{{ sortView }}</p>
             <app-caret-down dimensions="w-3 h-3" color="#000"></app-caret-down>
         </button>
         <div *ngIf="showSort" class="absolute top-[40px] left-[-10px] w-max h-max overflow-y-auto bg-[#CCC2B2] rounded-[20px] p-3 z-50">
             <ul class="w-full grid">
-                <li (click)="setSort('dateAsc')" class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] text-base">Last Update</li>
-                <li (click)="setSort('priceAsc')" class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] text-base">Low Price</li>
-                <li (click)="setSort('priceDesc')" class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] text-base">High Price</li>
+                <li (click)="setSort('dateAsc', 'Last Update')" class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] text-base">Last Update</li>
+                <li (click)="setSort('priceAsc', 'Low Price')" class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] text-base">Low Price</li>
+                <li (click)="setSort('priceDesc', 'High Price')" class="w-full px-2 py-3 hover:bg-[#D6CEC2] rounded-[10px] text-base">High Price</li>
             </ul>
         </div>
     </div>
     <!-- / Sort -->
 </div>
+<!-- / Active Cities -->
 
 <div class="w-full">
 
@@ -99,6 +132,11 @@
         <div *ngFor="let item of properties$ | async" class="w-full">
             <app-property-card [property]="item"></app-property-card>
         </div>
+    </div>
+
+    <div *ngIf="(properties$ | async)?.length == 0" class="w-full h-[450px] flex flex-col justify-center items-center gap-6">
+        <app-sad-icon dimensions="w-[128px] h-[128px]" color="#000"></app-sad-icon>
+        <p class="text-xl font-semibold">There are no ads in this area</p>
     </div>
 
     <!-- Pagination -->
@@ -146,14 +184,14 @@
         <div class="w-full inline-flex justify-between items-center  pb-6 border-b border-[#D6CEC2]">
             <div class="w-full inline-flex justify-start gap-5 items-center">
                 <p class="text-base w-max">Filters</p>
-                <button type="button" class="bg-none border-none text-[#7D7102] text-sm underline cursor-pointer w-max">Remove all</button>
+                <button type="button" (click)="resetForm()" data-modal-hide="filters-modal" class="bg-none border-none text-[#7D7102] text-sm underline cursor-pointer w-max">Remove all</button>
             </div>
             <div data-modal-hide="filters-modal" class="w-12 h-12 inline-flex justify-center items-center">
                 <app-close-icon dimensions="w-6 h-6" color="#000"></app-close-icon>
             </div>
         </div>
 
-        <form class="w-full mt-6" #f="ngForm" [formGroup]="filtersForm">
+        <form class="w-full mt-6" #f="ngForm" [formGroup]="filtersForm" (ngSubmit)="updateProperties()">
             <!-- Type Rental -->
             <div class="w-full rounded-full bg-[#CCC2B2] p-[2px] lg:hidden">
                 <ul class="grid w-full gap-[2px] grid-cols-2">
@@ -178,15 +216,14 @@
             <!-- Category -->
             <div class="w-full rounded-full bg-[#CCC2B2] h-12 inline-flex justify-center items-center mt-6 lg:hidden">
                 <button type="button" class="w-full inline-flex justify-between items-center px-6">
-                    <p class="">Category: all</p>
+                    <p class="">Category: {{ filtersForm.value.category }}</p>
                     <app-caret-down dimensions="w-4 h-4" color="#000"></app-caret-down>
                 </button>
             </div>
             <!-- / Category -->
 
-            <!-- Floor -->
-            <div class="w-full mt-12">
-                <!-- Header -->
+            <!-- TODO: Floor -->
+            <!-- <div class="w-full mt-12">
                 <div class="w-full inline-flex justify-between items-center">
                     <div class="w-max inline-flex items-center gap-3">
                         <app-stairs-icon dimensions="w-6 h-6" color="#000"></app-stairs-icon>
@@ -196,11 +233,8 @@
                         <button type="button" class="bg-none border-none text-[#7D7102] text-sm underline cursor-pointer w-max">Remove</button>
                     </div>
                 </div>
-
-                <!-- From - To -->
                 <div class="w-full mt-4">
                     <div class="w-max inline-flex items-center gap-3">
-                        <!-- from button -->
                         <div class="w-max">
                             <button id="floor-from-dropdown" data-dropdown-toggle="floor-from" class="inline-flex items-center gap-8 bg-[#CCC2B2] rounded-full px-4 h-12">
                                 <p class="text-sm">From: Ground</p>
@@ -212,7 +246,6 @@
                                 </ul>
                             </div>
                         </div>
-                        <!-- to button -->
                         <div class="w-max">
                             <button id="floor-to-dropdown" data-dropdown-toggle="floor-to" class="inline-flex items-center gap-8 bg-[#CCC2B2] rounded-full px-4 h-12">
                                 <p class="text-sm">To: 2nd</p>
@@ -225,12 +258,12 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </div> 
+            </div>  -->
             <!-- / Floor -->
 
             <!-- Price -->
-            <div class="w-full mt-8">
+            <div class="w-full mt-8 lg:hidden">
                 <div class="w-max inline-flex items-center gap-3">
                     <app-currency-euro-icon dimensions="w-6 h-6" color="#5C503D"></app-currency-euro-icon>
                     <p class="text-sm font-semibold">Price</p>
@@ -335,8 +368,8 @@
             </div>
             <!-- / Energy Class -->
 
-            <!-- Additional Characteristics -->
-            <div class="w-full mt-8">
+            <!-- TODO: Additional Characteristics -->
+            <!-- <div class="w-full mt-8">
                 <div class="w-max inline-flex items-center gap-3">
                     <p class="text-sm font-semibold">Additional Characteristics</p>
                 </div>
@@ -366,11 +399,12 @@
                         </label>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- / Additional Characteristics -->
 
             <button
                 type="submit" 
+                data-modal-hide="filters-modal"
                 class="w-full py-4 mt-10 mb-6 bg-[#FBE525] rounded-[500px] flex justify-center items-center border-none text-sm font-semibold hover:drop-shadow-[0px_0px_20px_rgba(251,229,37,1)] active:drop-shadow-none active:bg-[#E1CB04] lg:max-w-[450px] lg:text-[16px] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:drop-shadow-none">
                 Search
             </button>

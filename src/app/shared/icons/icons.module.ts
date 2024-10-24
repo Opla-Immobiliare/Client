@@ -102,6 +102,7 @@ import { BarnIconComponent } from './barn-icon/barn-icon.component';
 import { SealPercentageIconComponent } from './seal-percentage-icon/seal-percentage-icon.component';
 import { WaveSineIconComponent } from './wave-sine-icon/wave-sine-icon.component';
 import { HouseSimpleIconComponent } from './house-simple-icon/house-simple-icon.component';
+import { SadIconComponent } from './sad-icon/sad-icon.component';
 
 
 
@@ -209,6 +210,7 @@ import { HouseSimpleIconComponent } from './house-simple-icon/house-simple-icon.
     SealPercentageIconComponent,
     WaveSineIconComponent,
     HouseSimpleIconComponent,
+    SadIconComponent
   ],
   imports: [
     CommonModule
@@ -317,6 +319,7 @@ import { HouseSimpleIconComponent } from './house-simple-icon/house-simple-icon.
     WaveSineIconComponent,
     SealPercentageIconComponent,
     HouseSimpleIconComponent,
+    SadIconComponent
   ]
 })
 export class IconsModule { }

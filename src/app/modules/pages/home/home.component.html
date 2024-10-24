@@ -33,7 +33,7 @@
             <!-- / Type Rental -->
 
             <!-- Input -->
-            <div class="relative w-full h-[330px] bg-[#D6CEC2] lg:bg-transparent lg:border-[3px] lg:border-[#C2B6A3] rounded-[30px] p-2 lg:p-6 mt-2 lg:mt-0">
+            <div class="relative w-full h-[330px] bg-[#D6CEC2] lg:bg-[#DFD9D0] lg:border-[3px] lg:border-[#C2B6A3] rounded-[30px] p-2 lg:p-6 mt-2 lg:mt-0">
                 <div class="w-full  lg:inline-flex lg:items-center lg:gap-6">
                     <div class="w-full max-w-[260px] rounded-full bg-[#CCC2B2] p-1 lg:block hidden">
                         <ul class="grid w-full gap-[2px] grid-cols-2">
@@ -74,12 +74,36 @@
                     
                 </div>
 
-                <textarea type="text" name="municipality" formControlName="municipality" (keyup)="getCittaEComune()" class="bg-transparent focus:ring-0 focus:border-0 text-[29px] lg:text-[39px] break-words text-[#4B4401] h-full w-full border-none mt-3 leading-[43px] placeholder:text-[#4B4401]" placeholder="Type the area of your interest"></textarea>
+                <textarea type="text" name="municipality" formControlName="municipality" (keyup)="getCittaEComune()" class="bg-transparent resize-none focus:ring-0 focus:border-0 text-[29px] lg:text-[39px] break-words text-[#4B4401] h-full lg:h-max w-full border-none mt-3 leading-[43px] placeholder:text-[#4B4401]" placeholder="Type the area of your interest"></textarea>
 
-                <button type="button" (click)="areasModal = (areasModal) ? false : true;" class="rounded-full w-16 h-16 inline-flex justify-center items-center cursor-pointer bg-[#FBE525] absolute bottom-2 right-2 disabled:hidden">
+                <button type="button" (click)="areasModal = (areasModal) ? false : true;" class="rounded-full w-16 h-16 inline-flex justify-center items-center cursor-pointer bg-[#FBE525] absolute bottom-2 right-2 lg:hidden">
                     <app-magnifying-glass-icon dimensions="w-6 h-6" color="#000"></app-magnifying-glass-icon>
                 </button>
+
+                <!-- Desktop -->
+                <button [disabled]="" type="button" (click)="searchCriteria()" class="rounded-full w-full max-w-[200px] h-12 bg-[#FBE525] lg:flex justify-center items-center border-none text-sm font-semibold hover:drop-shadow-[0px_0px_20px_rgba(251,229,37,1)] active:drop-shadow-none active:bg-[#E1CB04] lg:text-[16px] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:drop-shadow-none absolute bottom-2 right-2 hidden">
+                    Search
+                </button>
+                <!-- / Desktop -->
             </div>
+            <!-- / Input -->
+
+            <!-- Areas Table -->
+            <div *ngIf="cittaEComune$.length > 0"  class="w-full bg-[#C2B6A3] rounded-[20px] hidden lg:block pt-12 -mt-10 -z-10 h-[278px] overflow-y-auto">
+                <ul *ngFor="let city of cittaEComune$" class="w-full grid px-6">
+                    <li (click)="setCity(city.cittaId)" class="w-full px-4 h-8 hover:bg-[#B8AA94] rounded-full inline-flex justify-between items-center cursor-pointer">
+                        <label class="text-base text-[#4D4333]">{{ city.citta }}</label>
+                        <app-caret-right dimensions="w-4 h-4" color="#4D4333"></app-caret-right>
+                    </li>
+                    <ul *ngIf="cityId == city.cittaId" class="grid pb-8 pl-4 pt-2">
+                        <li *ngFor="let area of city.comuni" class="inline-flex justify-start items-center gap-2 cursor-pointer">
+                            <input [id]="area.id" type="checkbox" [value]="area.id" (change)="$any($event.target)?.checked ? (isfrmChecked = true) : (isfrmChecked = false); addAreas($event, isfrmChecked)" class="w-4 h-4 text-[#8A785B] cursor-pointer bg-transparent border-[#8A785B] rounded focus:ring-[#8A785B] focus:ring-0">
+                            <label [for]="area.id" class="text-sm cursor-pointer">{{ area.comune }}</label>
+                        </li>
+                    </ul>
+                </ul>
+            </div>
+            <!-- / Areas Table -->
         </form>
     </div>
     <!-- SearchForm -->
